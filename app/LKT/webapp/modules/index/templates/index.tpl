@@ -519,7 +519,7 @@
                                     </ul>
                                 </div>
                                 <div class="news">
-                                    <div class="realDivTitle" style="border-bottom: 2px solid #eee;">授权信息</div>
+                                    <div class="realDivTitle" style="border-bottom: 2px solid #eee;">授权信息(此处代码可自行删除)</div>
                                     <ul style="height: 120px;overflow: auto;">
                                         {$authorization}
                                     </ul>

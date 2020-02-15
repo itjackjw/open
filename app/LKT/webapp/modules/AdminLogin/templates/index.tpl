@@ -20,7 +20,7 @@
 	<link rel="stylesheet" href="style/css/message.css">
 	<link rel="stylesheet" href="style/css/changeIndex.css" />
 
-	<title>来客电商管理系统</title>
+	<title>LaiKeTui商城系统 · 专注用户体验</title>
 	{literal}
 		<style type="text/css">
 			.bk_2{
@@ -96,19 +96,6 @@
 				background: #fff;
 				border-radius: 10px;
 			}
-			/* .closeMask{
-				width: 100px;
-				height: 50px;
-				border: 1px solid #eee;
-				border-radius: 5px;
-				background: #008DEF;
-				color: #fff;
-				font-size: 16px;
-				line-height: 50px;
-				position: absolute;
-				bottom: 30px;
-				left: 200px;
-			} */
 			#jbxx,#changePassword{
 				position: absolute;
 				z-index: 9999999;
