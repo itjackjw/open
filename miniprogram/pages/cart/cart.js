@@ -13,11 +13,6 @@ Page({
   //页面加载完成函数 remind: '加载中',
   onReady: function () {
     var that = this;
-    // setTimeout(function () {
-    //   that.setData({
-
-    //   });
-    // }, 1000);
   },
   //下拉刷新
   onPullDownRefresh: function () {
