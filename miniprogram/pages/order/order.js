@@ -81,13 +81,6 @@ Page({
 		}
 
 	},
-  // openshare: function (e) {
-  //   var order_id = e.currentTarget.dataset.orderId; //订单ID
-  //   console.log(e)
-  //   wx.navigateTo({
-  //     url: '../draw/cantuan?orderId=' + order_id + '&&type1=11'
-  //   })
-  // },
 	//下拉刷新
 	onPullDownRefresh: function() {
 		wx.showNavigationBarLoading() //在标题栏中显示加载
@@ -107,8 +100,6 @@ Page({
 		}, 1000);
 	},
 	onLoad: function(options) {
-		// console.log(options);
-		// console.log('options');
 		if(options.otype) {
 			var otype = options.otype;
 			this.setData({
@@ -165,12 +156,6 @@ Page({
 			success: function(res) {
 				var status = res.data.status;
 				var order = res.data.order;
-				// if(res.data.groupmsg !== false) {
-				// 	that.setData({
-				// 		groupid: res.data.groupmsg.status,
-				// 		man_num: res.data.groupmsg.man_num
-				// 	});
-				// }
 				switch(that.data.currentTab) {
 					case 0:
 						that.setData({
@@ -319,32 +304,7 @@ Page({
 			}
 		});
 	},
-	// onShareAppMessage: function(res) {
-	// 	//分享 
-	// 	var that = this;
-	// 	var id = res.target.dataset.orderPid[0].p_id;
-	// 	var drawid = res.target.dataset.orderDrawid;
-	// 	var title = res.target.dataset.orderPid[0].p_name;
-	// 	var role = res.target.dataset.orderRole;
-
-	// 	if(res.from === 'button') {
-	// 		// 来自页面内转发按钮
-	// 		console.log(res.target)
-	// 	}
-	// 	return {
-	// 		title: title,
-	// 		path: 'pages/product/detail?productId=' + id + '&type1=1&choujiangid=' + drawid + '&role=' + role,
-	// 		imageUrl: 'http://pic.qiantucdn.com/58pic/28/18/51/53k58PIC7DN_1024.jpg',
-	// 		success: function(res) {
-	// 			console.log('转发成功')
-	// 			// 转发成功
-	// 		},
-	// 		fail: function(res) {
-	// 			console.log('转发失败')
-	// 			// 转发失败
-	// 		}
-	// 	}
-	// },
+	
 	bindChange: function(e) {
 		console.log('1111')
 		var that = this;
