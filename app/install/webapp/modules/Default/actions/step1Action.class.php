@@ -26,7 +26,6 @@ class step1Action extends Action
         //设置目录权限
         @chmod(WEB_PATH, 0777);
         $request = $this->getContext()->getRequest();
-        $type = true;
         $_SESSION['install_step'] = '1';
         //环境检测
 
@@ -85,8 +84,6 @@ class step1Action extends Action
                     if(is_dir($val[3])) {
                         $val[1] = '<span>[√]可读</span>';
                         $val[2] = 'error';
-                        // $_SESSION['install_error'] = $type;
-
                     } else {
                         $val[1] = '<span style="color:#f30">[×]不存在</span>';
                         $val[2] = 'error';

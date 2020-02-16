@@ -15,7 +15,6 @@ class step2Action extends Action
     public function getDefaultView()
     {
 
-        $type = isset($_SESSION['install_error']) ? $_SESSION['install_error'] : [];
         if (isset($_SESSION['install_error'])) {
             $msg = " 编号 400".$_SESSION['install_error'];
             header("Content-type: text/html;charset=utf-8");
