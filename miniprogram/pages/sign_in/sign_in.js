@@ -22,9 +22,7 @@ Page({
     }, 1000);
   },
   onLoad: function () {
-    // if (app.userlogin(1)) {
-    //   return
-    // }
+    
     wx.setNavigationBarColor({
       frontColor: app.d.frontColor,
       backgroundColor: app.d.bgcolor, //页面标题为路由参数

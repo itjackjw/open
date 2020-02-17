@@ -22,9 +22,7 @@ Page({
     }, 1500);
     this.DataonLoad();
   },
-  // onShow: function () {
-  //   this.DataonLoad();
-  // },
+  
    onLoad: function (options) {
      wx.setNavigationBarTitle({
        title: '公告详情', //修改页面标题

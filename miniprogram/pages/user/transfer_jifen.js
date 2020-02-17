@@ -63,9 +63,8 @@ Page({
   },
   //获取好友ID
   withdrawals: function (e) {
-    // console.log(e);
+    
     var that = this;
-    // console.log(6666)
     var user_id = e.detail.value.user_id;
 
     wx.redirectTo({//跳转

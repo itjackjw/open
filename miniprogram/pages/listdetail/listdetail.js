@@ -50,9 +50,6 @@ Page({
     }
   },
   onLoad: function (options) {
-    // if (app.userlogin(1)) {
-    //   return
-    // }
     var objectId = options.class;
     var title = options.title;
     //页面初始化 options为页面跳转所带来的参数
