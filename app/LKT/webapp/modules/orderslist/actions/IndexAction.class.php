@@ -164,7 +164,6 @@ class IndexAction extends Action
             $sql1 = "select o.id,o.consumer_money,o.sNo,o.name,o.sheng,o.shi,o.xian,o.source,o.address,o.add_time,o.mobile,o.z_price,o.status,o.reduce_price,o.coupon_price,o.allow,o.drawid,o.otype,o.ptstatus,o.spz_price,o.pay,o.drawid,lu.user_name,o.user_id from lkt_order as o left join lkt_user as lu on o.user_id = lu.user_id $condition order by add_time desc limit $start,$pagesize";
             $res1 = $db->select($sql1);
         }
-        // print_r($sql1);die;
 
         $pager = new ShowPager($total, $pagesize, $page);
         $url = 'index.php?module=orderslist' . $con;
@@ -325,7 +324,7 @@ class IndexAction extends Action
 
             }
             $res1[$k]->freight = $freight;
-            if ($courier_num111[0]) {//去重
+            if (count($courier_num111)>0 && $courier_num111[0]) {//去重
                 $key = "id";
                 $arr = $courier_num111;
                 $tmp_arr = [];
@@ -355,8 +354,7 @@ class IndexAction extends Action
             }
             $res1[$k]->courier_num = $ddd;
         }
-        // print_r($res1);die;
-
+        
         $sql02 = "select * from lkt_express ";
         $r02 = $db->select($sql02);
         $request->setAttribute("express", $r02);
