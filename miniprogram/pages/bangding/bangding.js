@@ -39,10 +39,7 @@ Page({
   },
   //页面加载完成函数
   onReady: function () {
-    // var that = this;
-    // setTimeout(function () {
-      
-    // }, 1000);
+    
   },
   radioChange: function (e) {
     var items = this.data.items;
@@ -305,11 +302,6 @@ Page({
               duration: 3000
             })
             
-            // setTimeout(function () {
-            //   wx.navigateBack({
-            //     delta: 1
-            //   })
-            // }, 2500);
           } else {
             wx.showToast({
               title: res.data.err ? res.data.err : '非法操作！',

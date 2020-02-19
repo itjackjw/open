@@ -95,15 +95,9 @@ Page({
   },
   // 点击选择城市
   translate: function (e) {
-    // if (t == 0) {
-    //   moveY = 0;
-    //   this.data.show = false;
-    //   t = 1;
-    // } else {
       moveY = 200;
       this.data.show = true;
       t = 0;
-    // }
     var province = this.data.province ? this.data.province : this.data.sheng[0].G_CName, 
       city = this.data.city ? this.data.city : this.data.shi[0].G_CName, 
       county = this.data.county ? this.data.county : this.data.xian[0].G_CName;

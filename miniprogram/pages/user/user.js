@@ -144,9 +144,6 @@ Page({
 						duration: 2000
 					});
 				}
-
-        // app.userlogin(1);
-
 			},
 			error: function(e) {
 				wx.showToast({
