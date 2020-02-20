@@ -34,7 +34,7 @@ class viewAction extends Action
     public function execute()
     {
 
-       
+
 
     }
 
