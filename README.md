@@ -82,6 +82,8 @@
 
 ![新版本截图](https://images.gitee.com/uploads/images/2019/0927/080854_34db1391_2029865.png "100638_e7f9fbc9_2029865.png")
 
+### 生鲜电商APP+H5+小程序版本截图（新版商业皮肤）
+![输入图片说明](https://images.gitee.com/uploads/images/2020/0220/170134_19dbc645_2029865.png "水果.png")
 
 ### 相关思维导图
 ![前端](https://images.gitee.com/uploads/images/2018/1101/171831_05d3ecb6_2029865.jpeg "来客小程序.jpg")
