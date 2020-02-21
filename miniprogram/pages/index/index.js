@@ -233,9 +233,7 @@ Page({
           
           console.log(res.data.list.length)
           if (res.data.list.length){
-            // setTimeout(function () {
               that.listnsg();
-            // }, 2000);
           }
 
         },

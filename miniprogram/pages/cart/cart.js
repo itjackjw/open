@@ -465,7 +465,6 @@ Page({
   },
   bindManual: function (e) {
     var num = e.detail.value;
-    // var index = e.target.dataset.index;
     var carid = e.target.dataset.cartid;
     var carts = this.data.carts;
     var that = this;
