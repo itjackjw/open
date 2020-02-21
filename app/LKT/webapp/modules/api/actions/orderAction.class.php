@@ -521,6 +521,9 @@ class orderAction extends BaseAction {
             }
             
             $freight = 0;
+            $p_id = "";
+            $dr = "";
+            $title ="";
             // 根据订单号,查询订单详情
             $sql = "select * from lkt_order_details where r_sNo = '$sNo'" ;
             $list = $db->select($sql);
