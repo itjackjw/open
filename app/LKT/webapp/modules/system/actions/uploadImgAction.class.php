@@ -5,14 +5,11 @@ require_once(MO_LIB_DIR . '/Tools.class.php');
 class uploadImgAction extends Action {
 
     public function getDefaultView() {
-        $db = DBAction::getInstance();
-        $request = $this->getContext()->getRequest();
         return View :: INPUT;
     }
 
     public function execute(){
 
-        $request = $this->getContext()->getRequest();
         $db = DBAction::getInstance();
         
         // 查询配置表信息

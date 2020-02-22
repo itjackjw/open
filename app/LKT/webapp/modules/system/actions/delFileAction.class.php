@@ -12,8 +12,6 @@ class delFileAction extends Action {
 
 
     public function getDefaultView() {
-        $db = DBAction::getInstance();
-        $request = $this->getContext()->getRequest();
         $path = '../LKT/webapp/_compile';
         $delDir = false;
         $this->delDirAndFile($path,$delDir);//连同文件一起清除
@@ -26,9 +24,7 @@ class delFileAction extends Action {
     }
 
     public function execute(){
-        $db = DBAction::getInstance();
-        $request = $this->getContext()->getRequest();
-    
+
         return;
     }
 

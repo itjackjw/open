@@ -19,7 +19,6 @@ class template_messageAction extends Action {
 
         $db = DBAction::getInstance();
         $request = $this->getContext()->getRequest();
-        $id = intval($request->getParameter("id")); 
         $sql = "select * from lkt_notice where id = '1'";
         $r = $db->select($sql);
         $notice = $r[0]; // notice模板
@@ -43,19 +42,14 @@ class template_messageAction extends Action {
         }
         if($r == -1) {
             echo "<script type='text/javascript'>" .
-
                 "alert('未知原因，修改失败！');" .
-
                 "location.href='index.php?module=system&action=template_message';</script>";
 
             return $this->getDefaultView();
         } else {
             header("Content-type:text/html;charset=utf-8");
-
             echo "<script type='text/javascript'>" .
-
                 "alert('修改成功！');" .
-
                 "location.href='index.php?module=system&action=template_message';</script>";
         }
         return;
