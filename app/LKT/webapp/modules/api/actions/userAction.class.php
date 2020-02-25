@@ -799,7 +799,7 @@ class userAction extends BaseAction {
             $xian = 0;
         }
         
-        if(preg_match("/^1[2345678]\d{9}$/", $mobile)){
+        if(preg_match("/^\d{11}$/", $mobile)){
             // 根据微信id,查询会员id
             $sql = "select * from lkt_user where wx_id = '$openid'";
             $r = $db->select($sql);

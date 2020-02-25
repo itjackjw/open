@@ -264,7 +264,7 @@ Page({
       var cartId = this.data.cartId,
       mobile = e.detail.value.mobile;
       //预处理验证手机号码
-      if (mobile.match(/^(13[0-9]|14[579]|15[0-3,5-9]|16[6]|17[0135678]|18[0-9]|19[89])\d{8}$/)){
+      if (mobile.match(/^\d{11}$/)){
           wx.request({
             url: app.d.ceshiUrl + '&action=user&m=SaveAddress',
             data: {
