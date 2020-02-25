@@ -256,7 +256,7 @@ class modifyAction extends Action {
         $brand_id = addslashes(trim($request->getParameter('brand_class'))); // 品牌
         $weight = addslashes(trim($request->getParameter('weight'))); // 关键词
         $s_type = $request->getParameter('s_type'); // 显示类型
-        $content = addslashes(trim($request->getParameter('content'))); // 产品内容
+        $content = trim($request->getParameter('content')); // 产品内容
         $image = addslashes(trim($request->getParameter('image'))); // 产品图片
         $img_oldpic = addslashes(trim($request->getParameter('img_oldpic'))); // 产品图片
         $initial = $request->getParameter('initial'); // 初始值

@@ -205,7 +205,7 @@ class copyAction extends Action {
         $brand_id = addslashes(trim($request->getParameter('brand_class'))); // 品牌
         $weight = addslashes(trim($request->getParameter('weight'))); // 重量
         $s_type = $request->getParameter('s_type'); // 显示类型
-        $content = addslashes(trim($request->getParameter('content'))); // 产品内容
+        $content = trim($request->getParameter('content')); // 产品内容
         $image = addslashes(trim($request->getParameter('image'))); // 产品图片
         $oldpic = addslashes(trim($request->getParameter('oldpic'))); // 产品图片
         $imgurls = $request->getParameter('imgurls'); // 产品图片
