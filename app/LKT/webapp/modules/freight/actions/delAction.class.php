@@ -11,37 +11,14 @@ class delAction extends Action {
         $db = DBAction::getInstance();
         $request = $this->getContext()->getRequest();
         $admin_id = $this->getContext()->getStorage()->read('admin_id');
-
         // 接收信息
         $id = $request->getParameter('id'); // 产品id
+        $sql = "delete from lkt_freight where id = '$id' ";
+        $db->delete($sql);
+        $db->admin_record($admin_id,' 删除规则id为 '.$id.' 的信息',3);
+        $res = array('status'=>1,'info'=>'成功！');
+        echo json_encode($res);
 
-        $id = rtrim($id, ','); // 去掉最后一个逗号
-        $id = explode(',',$id); // 变成数组
-
-        foreach ($id as $k => $v){
-            $sql = "select id from lkt_product_list where freight = '$v'";
-            $r = $db->select($sql);
-            if($r){
-                $res = array('status'=>2,'info'=>'运费使用中');
-                echo json_encode($res);
-                return;
-                // $sql = "update lkt_product_list set freight = 0 where id = " . $r[0]->id;
-                // $db->update($sql);
-            }else{
-                // 根据产品id，删除产品信息
-                $sql = "delete from lkt_freight where id = '$v'";
-                $db->delete($sql);
-                $db->admin_record($admin_id,' 删除规则id为 '.$v.' 的信息',3);
-                $res = array('status'=>1,'info'=>'成功！');
-                echo json_encode($res);
-                return;
-            }
-            
-
-            
-        }
-
-        
     }
 
     public function execute(){

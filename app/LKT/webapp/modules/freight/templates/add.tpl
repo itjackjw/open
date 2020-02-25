@@ -78,7 +78,7 @@ function check(f){
         <div class="row cl">
             <label class="form-label col-2">运费规则：</label>
             <div class="formControls col-2">
-                <button class = "btn btn-primary radius" type = "button" onclick="choice()" ><i class = "Hui-iconfont" > &#xe610;</i> 新增条目</button >
+                <button class = "btn btn-primary radius" type = "button" onclick="choice()" >新增条目</button >
             </div>
         </div>
         <div class='row cl' id='information' style='width: 80%;padding-left: 100px;display: none'>
