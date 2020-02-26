@@ -7,8 +7,6 @@ var common = require("../../utils/common.js");
 function countdown(that) {
   // 渲染倒计时时钟
   var _this = that;
-  // console.log(that.data.rstatus+'-----')
-  // if(that.data.rstatus!=0) return;
   let total_micro_second = that.data.total_micro_second;
   if(that.data.rstatus!=0) return;
   that.setData({
@@ -690,7 +688,7 @@ Page({
 						paySign: res.data.paySign,
 						success: function(res) {
               if (app.globalData.userInfo.referee_openid && app.globalData.userInfo.openid && app.globalData.userInfo.referee_openid != 'undefined') {
-                // console.log(66411)
+                
                 var referee_openid = app.globalData.userInfo.referee_openid;
                 var openid = app.globalData.userInfo.openid
                 that.promiss(that.refereeopenid, referee_openid, openid).then(res => {
