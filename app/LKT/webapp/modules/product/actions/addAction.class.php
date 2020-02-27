@@ -359,6 +359,7 @@ class addAction extends Action
                 echo "<script type='text/javascript'>" .
                     "alert('产品发布成功！');" .
                     "location.href='index.php?module=product';</script>";
+                exit;
 
 
             } else {
@@ -373,6 +374,7 @@ class addAction extends Action
                 echo "<script type='text/javascript'>" .
                     "alert('未知原因，产品发布失败！');" .
                     "location.href='index.php?module=product';</script>";
+                exit;
 
             }
 
