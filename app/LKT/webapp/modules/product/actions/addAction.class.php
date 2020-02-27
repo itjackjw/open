@@ -258,86 +258,14 @@ class addAction extends Action
         $volume = trim($request->getParameter('volume')); //拟定销量
         $freight = $request->getParameter('freight'); // 运费
 
-        if ($product_title == '') {
-            header("Content-type:text/html;charset=utf-8");
-            echo "<script type='text/javascript'>" .
-                "alert('产品名称不能为空！');" .
-                "</script>";
-            return $this->getDefaultView();
-        }
-
-
-        if ($product_class == '0') {
-            header("Content-type:text/html;charset=utf-8");
-            echo "<script type='text/javascript'>" .
-                "alert('请选择产品类别！');" .
-                "</script>";
-            return $this->getDefaultView();
-        }
-
-        if ($brand_id == '0' || $brand_id == '') {
-            header("Content-type:text/html;charset=utf-8");
-            echo "<script type='text/javascript'>" .
-                "alert('请选择品牌！');" .
-                "</script>";
-            return $this->getDefaultView();
-        }
 
         if ($initial) {
-            foreach ($initial as $k => $v) {
-                if ($k == 'cbj' && $v == '') {
-                    header("Content-type:text/html;charset=utf-8");
-                    echo "<script type='text/javascript'>" .
-                        "alert('成本价初始值不能为空！');" .
-                        "</script>";
-                    return $this->getDefaultView();
-                } else if ($k == 'yj' && $v == '') {
-                    header("Content-type:text/html;charset=utf-8");
-                    echo "<script type='text/javascript'>" .
-                        "alert('原价初始值不能为空！');" .
-                        "</script>";
-                    return $this->getDefaultView();
-                } else if ($k == 'sj' && $v == '') {
-                    header("Content-type:text/html;charset=utf-8");
-                    echo "<script type='text/javascript'>" .
-                        "alert('售价初始值不能为空！');" .
-                        "</script>";
-                    return $this->getDefaultView();
-
-                } else if ($k == 'unit' && $v == '0') {
-                    header("Content-type:text/html;charset=utf-8");
-                    echo "<script type='text/javascript'>" .
-                        "alert('单位初始值不能为空！');" .
-                        "</script>";
-                    return $this->getDefaultView();
-
-                } else if ($k == 'kucun' && $v == '') {
-                    header("Content-type:text/html;charset=utf-8");
-                    echo "<script type='text/javascript'>" .
-                        "alert('库存初始值不能为空！');" .
-                        "</script>";
-                    return $this->getDefaultView();
-
-                }
-            }
             $initial = serialize($initial);
-        } else {
-            header("Content-type:text/html;charset=utf-8");
-            echo "<script type='text/javascript'>" .
-                "alert('初始值不能为空！');" .
-                "</script>";
-            return $this->getDefaultView();
         }
+
         $z_num = 0;
         $attributes = [];
-        if (count($attr) == 0) {
-            header("Content-type:text/html;charset=utf-8");
-            echo "<script type='text/javascript'>" .
-                "alert('请填写属性！');" .
-                "</script>";
-            return $this->getDefaultView();
-
-        } else {
+        if (count($attr) > 0) {
             foreach ($attr as $key => $value) {
                 $attr_list = $value['attr_list'];
                 $attr_list_arr = [];
@@ -347,37 +275,6 @@ class addAction extends Action
                     $attr_list_srt .= $v['attr_group_name'] . '-' . $v['attr_name'];
                 }
                 $z_num += $value['num'];
-
-                if ($value['img'] == '') {
-                    header("Content-type:text/html;charset=utf-8");
-                    echo "<script type='text/javascript'>" .
-                        "alert('$attr_list_srt 的属性图片未上传！');" .
-                        "</script>";
-                    return $this->getDefaultView();
-                }
-                //价格判断
-                foreach ($value as $cvkey => $cvvalue) {
-                    if (!is_array($cvvalue)) {
-                        if (empty($cvvalue) && $cvvalue != 0) {
-                            header("Content-type:text/html;charset=utf-8");
-                            echo "<script type='text/javascript'>" .
-                                "alert('请完善属性');" .
-                                "</script>";
-                            return $this->getDefaultView();
-                        }
-                    }
-                }
-                $costprice = $value['costprice'];
-                $price = $value['price'];
-                if ($costprice > $price) {
-
-                    header("Content-type:text/html;charset=utf-8");
-                    echo "<script type='text/javascript'>" .
-                        "alert('成本价不能大于售价！');" .
-                        "</script>";
-                    return $this->getDefaultView();
-                }
-
                 $value['img'] = preg_replace('/.*\//', '', $value['img']);
                 $value['attribute'] = serialize($attr_list_arr);
                 $value = $this->array_key_remove($value, 'attr_list');
@@ -394,12 +291,6 @@ class addAction extends Action
         } else {
             if ($oldpic) {
                 $image = preg_replace('/.*\//', '', $oldpic);
-            } else {
-                header("Content-type:text/html;charset=utf-8");
-                echo "<script type='text/javascript'>" .
-                    "alert('产品主图不能为空！');" .
-                    "</script>";
-                return $this->getDefaultView();
             }
         }
 
@@ -427,7 +318,7 @@ class addAction extends Action
                     if ($info) {
                         //循环遍历插入商品图片表
                         $sql_img = "insert into lkt_product_img(id,product_url,product_id,add_date) " . "values(0,'$imgURL_name','$id1',CURRENT_TIMESTAMP)";
-                        $id2 = $db->insert($sql_img, 'last_insert_id');
+                        $db->insert($sql_img, 'last_insert_id');
 
                     }
                 }
@@ -461,38 +352,37 @@ class addAction extends Action
             if ($r_num == count($attributes)) {//判断属性是否添加完全
                 if ($c_num < 1) {//库存不足，下架（0::上架 1:下架）
                     $sql_1 = "update lkt_product_list set status='1' where id = '$id1'";
-                    $r_update = $db->update($sql_1);
+                    $db->update($sql_1);
                 }
+                $db->commit();
                 header("Content-type:text/html;charset=utf-8");
                 echo "<script type='text/javascript'>" .
                     "alert('产品发布成功！');" .
                     "location.href='index.php?module=product';</script>";
-                $db->commit();
-                return $this->getDefaultView();
+
+
             } else {
                 $sql = "delete from lkt_product_list where id = '$id1'";
                 $db->delete($sql);
-
                 $sql = "delete from lkt_product_img where product_id = '$id1'";
                 $db->delete($sql);
-
                 $sql = "delete from lkt_product_attribute where pid = '$id1'";
                 $db->delete($sql);
-
                 $db->rollback();
                 header("Content-type:text/html;charset=utf-8");
                 echo "<script type='text/javascript'>" .
                     "alert('未知原因，产品发布失败！');" .
                     "location.href='index.php?module=product';</script>";
-                return $this->getDefaultView();
+
             }
+
         } else {
             $db->rollback();
             header("Content-type:text/html;charset=utf-8");
             echo "<script type='text/javascript'>" .
                 "alert('未知原因，产品发布失败！');" .
                 "location.href='index.php?module=product';</script>";
-            return $this->getDefaultView();
+
         }
         return;
     }
