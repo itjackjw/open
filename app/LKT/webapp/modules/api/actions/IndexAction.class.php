@@ -146,7 +146,7 @@ order by a.sort DESC LIMIT 0,10";
         }
         $start = 10*$paegr;
         $end = 10;
-        $product ='';
+        $product = array();
         //查询商品并分类显示返回JSON至小程序
         if($index == 0){
 
@@ -166,7 +166,7 @@ group by c.pid  order by a.volume desc limit  $start,$end";
                     $price_yh =$r_ttt[0]->price;
                     
                     $valuec->imgurl = $img . $valuec->imgurl;
-                    $product[] = array('id' => $valuec->id,'product_title' => $valuec->product_title,'price' =>$valuec->yprice,'price_yh' => $valuec->price,'imgurl' => $valuec->imgurl,'volume' => $valuec->volume);
+                    $product[] = array('id' => $valuec->id,'product_title' => $valuec->product_title,'price' => $price,'price_yh' => $valuec->price,'imgurl' => $valuec->imgurl,'volume' => $valuec->volume);
                 }
             }
 
