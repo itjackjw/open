@@ -322,7 +322,6 @@ Page({
 				remind: ''
 			});
 		}, 1000);
-		// countdown(that);
 	},
   //获取插件
   get_plug: function (e) {
@@ -354,7 +353,6 @@ Page({
     //储存id 并跳转
     var formid = e.detail.formId;
     var order_id = e.detail.target.dataset.orderid; //订单ID
-    // var order_sn = e.detail.target.dataset.ordersn; //订单号
     this.sendFormid(formid, 'order');
     wx.navigateTo({
       url: '../draw/cantuan?orderId=' + order_id + '&&type1=11'
@@ -413,10 +411,8 @@ Page({
             var t_res = t_time - d_date + 9000;
             var two_day = failure * 60 * 60 * 1000;
             var djs = two_day - t_res;
-            // total_micro_second = djs;
             //倒计时结束
-            // console.log("--add-time--"+str+'--failure--'+failure+'--1--'+d_date+'--2--'+t_time+'--3--'+t_res+'--4--'+two_day+'--5--'+djs)
-
+            
             that.setData({
               pro_price: pro_price,
               freight: freight,

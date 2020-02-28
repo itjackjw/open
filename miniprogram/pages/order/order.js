@@ -222,7 +222,6 @@ Page({
 						'Content-Type': 'application/x-www-form-urlencoded'
 					},
 					success: function(res) {
-						//--init data
 						var status = res.data.status;
 						if(status == 1) {
               that.commission(sNo);//分销返佣
