@@ -1,20 +1,17 @@
 <?php
 /**
-
  * [Laike System] Copyright (c) 2017-2020 laiketui.com
-
  * Laike is not a free software, it under the license terms, visited http://www.laiketui.com/ for more details.
-
  */
 require_once('BaseAction.class.php');
 
-class IndexAction extends BaseAction {
-    
-    // 获取小程序首页数据
-    public function index(){
-        $db = DBAction::getInstance();
-        $request = $this->getContext()->getRequest();
+class IndexAction extends BaseAction
+{
 
+    // 获取小程序首页数据
+    public function index()
+    {
+        $db = DBAction::getInstance();
         $appConfig = $this->getAppInfo();
         $img = $appConfig['imageRootUrl'];
         $title = $appConfig['appName'];
@@ -24,7 +21,7 @@ class IndexAction extends BaseAction {
         $sql = "select * from lkt_banner order by sort,id";
         $r = $db->select($sql);
         $banner = array();
-        foreach($r as $k=>$v){
+        foreach ($r as $k => $v) {
             $result = array();
             $result['id'] = $v->id; // 轮播图id
             $result['image'] = $img . $v->image; // 图片
@@ -39,7 +36,7 @@ from lkt_product_list AS a RIGHT JOIN (select min(price) price,pid from lkt_conf
 where a.status = 0 and a.num >0 and s_type like '%4%' 
  order by a.volume desc limit  0,10";
         $r_cs = $db->select($sql_cs);
-        if($r_cs){
+        if ($r_cs) {
             foreach ($r_cs as $keyc => $valuec) {
                 $valuec->imgurl = $img . $valuec->imgurl;
                 $shou[] = $valuec;
@@ -54,16 +51,16 @@ where a.status = 0 and a.num >0 and s_type like '%4%'
         $r_c = $db->select($sql_c);
         $twoList = [];
         foreach ($r_c as $key => $value) {
-            $sql_e = 'select cid,pname,img from lkt_product_class where sid=\''.$value->cid.'\' and recycle!=1 order by sort desc LIMIT 0,10';
+            $sql_e = 'select cid,pname,img from lkt_product_class where sid=\'' . $value->cid . '\' and recycle!=1 order by sort desc LIMIT 0,10';
             $r_e = $db->select($sql_e);
-            $icons=[];
-            if($r_e){
+            $icons = [];
+            if ($r_e) {
                 foreach ($r_e as $ke => $ve) {
                     $imgurl = $img . $ve->img;
-                    $icons[$ke] = array('id' => $ve->cid,'name' => $ve->pname,'img' => $imgurl);
+                    $icons[$ke] = array('id' => $ve->cid, 'name' => $ve->pname, 'img' => $imgurl);
                 }
-            }else{
-                $icons=[];
+            } else {
+                $icons = [];
             }
 
             $ttcid = $value->cid;
@@ -78,26 +75,26 @@ order by a.sort DESC LIMIT 0,10";
             $r_s = $db->select($sql_s);
             $product = [];
 
-            $r_s = empty($r_s)? []:($r_s ? $r_s:[]);
+            $r_s = empty($r_s) ? [] : ($r_s ? $r_s : []);
 
             foreach ($r_s as $k => $v) {
-                $imgurl = $img .$v->imgurl;
+                $imgurl = $img . $v->imgurl;
                 $pid = $v->id;
                 $sql_ttt = "select price,yprice from lkt_configure where pid ='$pid' order by price asc ";
                 $r_ttt = $db->select($sql_ttt);
-                $price =$r_ttt[0]->yprice;
-                $price_yh =$r_ttt[0]->price;
+                $price = $r_ttt[0]->yprice;
+                $price_yh = $r_ttt[0]->price;
 
-                $product[$k] = array('id' => $v->id,'name' => $v->product_title,'price' => $price,'price_yh' => $price_yh,'imgurl' => $imgurl,'volume' => $v->volume);
+                $product[$k] = array('id' => $v->id, 'name' => $v->product_title, 'price' => $price, 'price_yh' => $price_yh, 'imgurl' => $imgurl, 'volume' => $v->volume);
             }
-            $twoList['0'] = array('id' => '0','name' => '首页','count' => 1,'twodata' => $shou,'distributor'=>$distributor);
-            $twoList[$key+1] = array('id' => $value->cid,'name' => $value->pname,'count' => 1,'twodata' => $product,'icons'=>$icons);
+            $twoList['0'] = array('id' => '0', 'name' => '首页', 'count' => 1, 'twodata' => $shou, 'distributor' => $distributor);
+            $twoList[$key + 1] = array('id' => $value->cid, 'name' => $value->pname, 'count' => 1, 'twodata' => $product, 'icons' => $icons);
         }
         $sql = "select * from lkt_background_color where status = 1";
-        $r = $db -> select($sql);
-        if($r){
+        $r = $db->select($sql);
+        if ($r) {
             $bgcolor = $r[0]->color;
-        }else{
+        } else {
             $bgcolor = '#FF6347';
         }
 
@@ -105,12 +102,12 @@ order by a.sort DESC LIMIT 0,10";
         // 查询插件表里,状态为启用的插件
         $sql = "select * from lkt_plug_ins where status = 1 and type = 0 and software_id = 3";
         $plug = $db->select($sql);
-        if($plug){
+        if ($plug) {
 
             foreach ($plug as $k => $v) {
                 $v->image = $img . $v->image;
-                
-                if(strpos($v->code,'FX') !== false){ 
+
+                if (strpos($v->code, 'FX') !== false) {
                     unset($plug[$k]);
                 }
             }
@@ -119,20 +116,21 @@ order by a.sort DESC LIMIT 0,10";
 
         $lkt_set_notice = "select id,name from lkt_set_notice order by time desc";
         $notice = [];
-        $res_notice= $db -> select($lkt_set_notice);//公告
-        if($res_notice){
+        $res_notice = $db->select($lkt_set_notice);//公告
+        if ($res_notice) {
             foreach ($res_notice as $key => $value) {
-               $notice[$key] = array('url' => $value->id, 'title' => $value->name);
+                $notice[$key] = array('url' => $value->id, 'title' => $value->name);
             }
         }
-        echo json_encode(array('banner'=>$banner,'notice'=>$notice,'djname'=>'','twoList'=>$twoList,'bgcolor'=>$bgcolor,'plug'=>$plug,'title'=>$title,'logo'=>$logo,'list'=>$pmd));
+        echo json_encode(array('banner' => $banner, 'notice' => $notice, 'djname' => '', 'twoList' => $twoList, 'bgcolor' => $bgcolor, 'plug' => $plug, 'title' => $title, 'logo' => $logo, 'list' => $pmd));
         exit();
-        
+
     }
 
 
     // 加载更多商品
-    public function get_more(){
+    public function get_more()
+    {
         $db = DBAction::getInstance();
         $request = $this->getContext()->getRequest();
         $paegr = addslashes(trim($request->getParameter('page'))); //  '显示位置'
@@ -141,14 +139,14 @@ order by a.sort DESC LIMIT 0,10";
         $appConfig = $this->getAppInfo();
         $img = $appConfig['imageRootUrl'];
 
-        if(!$paegr){
+        if (!$paegr) {
             $paegr = 1;
         }
-        $start = 10*$paegr;
+        $start = 10 * $paegr;
         $end = 10;
         $product = array();
         //查询商品并分类显示返回JSON至小程序
-        if($index == 0){
+        if ($index == 0) {
 
             $sql_cs = "select a.id,a.product_title,a.volume,a.imgurl,
 min(c.price) as price
@@ -157,26 +155,26 @@ where a.status = 0 and a.num >0 and s_type like '%4%'
 group by c.pid  order by a.volume desc limit  $start,$end";
             $r_cs = $db->select($sql_cs);
 
-            if($r_cs){
+            if ($r_cs) {
                 foreach ($r_cs as $keyc => $valuec) {
                     $pid = $valuec->id;
                     $sql_ttt = "select price,yprice from lkt_configure where pid ='$pid' order by price asc ";
                     $r_ttt = $db->select($sql_ttt);
-                    $price =$r_ttt[0]->yprice;
-                    $price_yh =$r_ttt[0]->price;
-                    
+                    $price = $r_ttt[0]->yprice;
+                    $price_yh = $r_ttt[0]->price;
+
                     $valuec->imgurl = $img . $valuec->imgurl;
-                    $product[] = array('id' => $valuec->id,'product_title' => $valuec->product_title,'price' => $price,'price_yh' => $valuec->price,'imgurl' => $valuec->imgurl,'volume' => $valuec->volume);
+                    $product[] = array('id' => $valuec->id, 'product_title' => $valuec->product_title, 'price' => $price, 'price_yh' => $valuec->price, 'imgurl' => $valuec->imgurl, 'volume' => $valuec->volume);
                 }
             }
 
-         echo json_encode(array('prolist'=>$product,'status'=>1));
-                    exit;
-        }else if(!$index){
-                    echo json_encode(array('prolist'=>[],'status'=>0));
-                    exit;
-               
-        }else{
+            echo json_encode(array('prolist' => $product, 'status' => 1));
+            exit;
+        } else if (!$index) {
+            echo json_encode(array('prolist' => [], 'status' => 0));
+            exit;
+
+        } else {
             //查询商品并分类显示返回JSON至小程序
             $sql_t = "select a.id,a.product_title,a.volume,c.price,a.imgurl 
 from lkt_product_list AS a 
@@ -186,54 +184,55 @@ where a.product_class like '%-$ttcid-%' and a.status = 0 and a.num >0
 order by a.sort DESC LIMIT $start,$end";
             $r_s = $db->select($sql_t);
             $product = [];
-            if($r_s){
-            foreach ($r_s as $k => $v) {
-                $imgurl = $img .$v->imgurl;/* end 保存*/
-                $pid = $v->id;
-                $sql_ttt = "select price,yprice from lkt_configure where pid ='$pid' order by price asc ";
-                $r_ttt = $db->select($sql_ttt);
-                $price =$r_ttt[0]->yprice;
-                $price_yh =$r_ttt[0]->price;
-                $product[$k] = array('id' => $v->id,'product_title' => $v->product_title,'price' => $price,'price_yh' => $price_yh,'imgurl' => $imgurl,'volume' => $v->volume);
-            }
-                    echo json_encode(array('prolist'=>$product,'status'=>1));
-                    exit;
-            }else{
-                    echo json_encode(array('prolist'=>$product,'status'=>0));
-                    exit;
+            if ($r_s) {
+                foreach ($r_s as $k => $v) {
+                    $imgurl = $img . $v->imgurl;/* end 保存*/
+                    $pid = $v->id;
+                    $sql_ttt = "select price,yprice from lkt_configure where pid ='$pid' order by price asc ";
+                    $r_ttt = $db->select($sql_ttt);
+                    $price = $r_ttt[0]->yprice;
+                    $price_yh = $r_ttt[0]->price;
+                    $product[$k] = array('id' => $v->id, 'product_title' => $v->product_title, 'price' => $price, 'price_yh' => $price_yh, 'imgurl' => $imgurl, 'volume' => $v->volume);
+                }
+                echo json_encode(array('prolist' => $product, 'status' => 1));
+                exit;
+            } else {
+                echo json_encode(array('prolist' => $product, 'status' => 0));
+                exit;
             }
         }
 
     }
-  public function class_sort($product_class)//根据类别查询下一级
+
+    public function class_sort($product_class)//根据类别查询下一级
     {
-          $db = DBAction::getInstance();
-         $typestr=trim($product_class,'-');
-            $typeArr=explode('-',$typestr);
-            //  取数组最后一个元素 并查询分类名称
-            $cid = end($typeArr);//找到本级ID
-            $k[] = '-'.$product_class.'-';
+        $db = DBAction::getInstance();
+        $typestr = trim($product_class, '-');
+        $typeArr = explode('-', $typestr);
+        //  取数组最后一个元素 并查询分类名称
+        $cid = end($typeArr);//找到本级ID
+        $k[] = '-' . $product_class . '-';
 
-            if(!empty($cid)){//循环下一级
-                $sql_e = "select cid,pname from lkt_product_class where recycle = 0 and sid = $cid";
-                $r_e = $db->select($sql_e);
+        if (!empty($cid)) {//循环下一级
+            $sql_e = "select cid,pname from lkt_product_class where recycle = 0 and sid = $cid";
+            $r_e = $db->select($sql_e);
 
-                if($r_e){
-                    foreach ($r_e as $k01 => $v01) {//循环第三级
-                        $k[] = '-'.$product_class.'-'.$v01->cid.'-';
-                        $sql_e01 = "select cid,pname from lkt_product_class where recycle = 0 and sid = $v01->cid";
-                        $r_e01 = $db->select($sql_e01); 
+            if ($r_e) {
+                foreach ($r_e as $k01 => $v01) {//循环第三级
+                    $k[] = '-' . $product_class . '-' . $v01->cid . '-';
+                    $sql_e01 = "select cid,pname from lkt_product_class where recycle = 0 and sid = $v01->cid";
+                    $r_e01 = $db->select($sql_e01);
 
-                        if($r_e01){
-                            foreach ($r_e01 as $k02 => $v02) {
-                                
-                               $k[] = '-'.$product_class.'-'.$v01->cid.'-'.$v02->cid.'-';
-                            }
-                        } 
-                    }  
+                    if ($r_e01) {
+                        foreach ($r_e01 as $k02 => $v02) {
+
+                            $k[] = '-' . $product_class . '-' . $v01->cid . '-' . $v02->cid . '-';
+                        }
+                    }
                 }
             }
-            return $k;
+        }
+        return $k;
     }
 }
 

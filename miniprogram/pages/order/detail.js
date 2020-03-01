@@ -12,7 +12,6 @@ function countdown(that) {
   that.setData({
     clock: dateformat(total_micro_second) //格式化时间  
   });
-  // console.log(that.data.rstatus + '-----')
   if (total_micro_second <= 0) {
     that.setData({
       clock: "已取消"
