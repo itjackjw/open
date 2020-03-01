@@ -4010,6 +4010,7 @@ div.check-version-dialog .aui-content .title {
     cursor: hand;
 }
 
+/*
 .confirm {
     width: 100%;
     height: 100%;
@@ -4021,6 +4022,7 @@ div.check-version-dialog .aui-content .title {
     align-items: center;
     background: rgba(0, 0, 0, .5);
 }
+*/
 
 .confirm > div {
     background: #fff;
