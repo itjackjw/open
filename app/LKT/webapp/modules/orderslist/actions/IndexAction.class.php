@@ -324,7 +324,7 @@ class IndexAction extends Action
 
             }
             $res1[$k]->freight = $freight;
-            if (count($courier_num111)>0 && $courier_num111[0]) {//去重
+            if (count($courier_num111) > 0 && $courier_num111[0]) {//去重
                 $key = "id";
                 $arr = $courier_num111;
                 $tmp_arr = [];
@@ -354,7 +354,7 @@ class IndexAction extends Action
             }
             $res1[$k]->courier_num = $ddd;
         }
-        
+
         $sql02 = "select * from lkt_express ";
         $r02 = $db->select($sql02);
         $request->setAttribute("express", $r02);

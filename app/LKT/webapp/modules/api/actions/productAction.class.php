@@ -1153,7 +1153,7 @@ class productAction extends BaseAction
                     $size_id = $product['Size_id']; // 商品Size_id  
                     $unit = $product['unit'];
                     $freight_id = $r_c[0]->freight; // 运费id
-
+                    $freight = 0;
                     if (empty($freight_id) || $freight_id == 0) { // 当运费id不存在 或者 为0 时
                         $freight = 0; // 运费为0
                     } else {
@@ -1172,7 +1172,6 @@ class productAction extends BaseAction
                                     $two = $v2['two']; // 运费
                                     $three = $v2['three']; // 续件/重
                                     $four = $v2['four']; // 续费
-                                    $province_name = $G_CName; // 省
                                     $freight_status = 1; // 表示收货地址存在运费规则里
                                     continue;
                                 }
