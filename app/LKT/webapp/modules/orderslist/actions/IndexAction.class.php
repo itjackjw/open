@@ -109,7 +109,6 @@ class IndexAction extends Action
             }
         } else if (strlen($status) == 6) {
             if ($status !== false) {
-                $cstatus = intval(substr($status, 6));
                 $condition .= " and (o.status=7 or o.status=6)";
             }
         }
@@ -169,14 +168,10 @@ class IndexAction extends Action
         $url = 'index.php?module=orderslist' . $con;
         $pages_show = $pager->multipage($url, $total, $page, $pagesize, $start, $para = '');
         foreach ($res1 as $k => $v) {
-
             $freight = 0;
-
             $res1[$k]->statu = $res1[$k]->status;
-            $zqprice = 0;
             $order_id = $v->sNo;
             $pay = $v->pay;
-            // $res1[$k] ->consumer_money = $vp->consumer_money;
             if ($pay == 'combined_Pay') {
                 $psql = "select weixin_pay,balance_pay,total from lkt_combined_pay where order_id = '$order_id'";
                 $pres = $db->select($psql);
@@ -187,7 +182,6 @@ class IndexAction extends Action
                 }
             }
 
-            $user_id = $v->user_id;
             $sqldt = "select lpl.imgurl,lpl.product_title,lpl.product_number,lod.p_price,lod.unit,lod.num,lod.size,lod.p_id,lod.courier_num,lod.express_id,lod.freight from lkt_order_details as lod left join lkt_product_list as lpl on lpl.id=lod.p_id where r_sNo='$v->sNo' $prostr";
             $products = $db->select($sqldt);
             $res1[$k]->freight = $freight;
