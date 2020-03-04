@@ -29,7 +29,7 @@ class delorderAction extends Action
         $res = $db->select($sql);
         $gcode = $db->select("select group_id,ptstatus,sNo from lkt_group_open where ptstatus=1");
         $group = array();
-        
+
 
         if ($gcode) {
             foreach ($res as $k => $v) {
