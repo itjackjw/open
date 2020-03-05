@@ -384,12 +384,12 @@ function check(f) {
                                         <div class="attr-list">
                                             <div class="attr-input-group">
                                                 <div class="attr_input_group">
-                                                    <span class="arrt_span">{{attr_group.attr_group_name}}：</span>
+                                                    <span class="arrt_span" style="width: 153px">{{attr_group.attr_group_name}}：</span>
                                                     <input type="text" class="add-attr-input add_input" ref="input_value" placeholder="请输入属性值" style="padding-left: 10px;">
                                                     <a v-bind:index="i" class="add-attr-btn adds_ntn" href="javascript:"><span>添加属性值</span></a>
                                                     <a v-bind:index="i" href="javascript:" class="attr-group-delete dels_btn"><span>删除属性</span></a>
                                                 </div>
-                                                <div class="arrt_bgcolor">
+                                                <div class="arrt_bgcolor" style="margin-left: 160px;margin-top:10px">
                                                     <div v-for="(attr,j) in attr_group.attr_list" class="attr_input_group arrt_clear arrt_zi">
                                                         <span>属性值：</span>
                                                         <input class="add-attr-input" :value="attr.attr_name" readonly="readonly" style="padding-left: 10px;background-color: #F8F8F8 !important;">
@@ -403,7 +403,7 @@ function check(f) {
                                     </div>
                                 </div>
                             </div>
-                            <div class="arrt_bgcolor arrt_fiv">
+                            <div class="arrt_bgcolor arrt_fiv" style="margin-left: 160px;">
                                 <div v-if="attr_group_list && attr_group_list.length>0">
                                     <table class="attr-table attr_table">
                                         <thead>
