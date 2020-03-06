@@ -126,21 +126,18 @@ function imgShow(outerdiv, innerdiv, bigimg, _this){
             <label class="form-label col-4"><span class="c-red"></span>上级分类：</label>
             <div class="formControls col-1 slevel_1"> 
                 <select name="select_1" class="select" onchange="one()" id="select_1" disabled="disabled">
-                    <!-- <option selected="true" value="0">请选择</option> -->
                     {$ctype}
                 </select>
                 
             </div>
             <div class="formControls col-1 slevel_2">
                 <select name="select_2" class="select" onchange="two()" id="select_2" disabled="disabled">
-                    <!-- <option selected="true" value="0">请选择</option> -->
                     {$ctype1}
                 </select>
                 
             </div>
             <div class="formControls col-1 slevel_3"> 
                 <select name="select_3" class="select" onchange="three()" id="select_3" disabled="disabled">
-                    <!-- <option selected="true" value="0">请选择</option> -->
                     {$ctype2}
                 </select>
                 
@@ -148,7 +145,6 @@ function imgShow(outerdiv, innerdiv, bigimg, _this){
 
             <div class="formControls col-1 slevel_4"> 
                 <select name="select_4" class="select" onchange="four()" id="select_4" disabled="disabled">
-                    <!-- <option selected="true" value="0">请选择</option> -->
                     {$ctype2}
                 </select>
                
@@ -156,7 +152,6 @@ function imgShow(outerdiv, innerdiv, bigimg, _this){
 
             <div class="formControls col-1 slevel_5"> 
                 <select name="select_5" class="select" onchange="five()" id="select_5" disabled="disabled">
-                    <!-- <option selected="true" value="0">请选择</option> -->
                     {$ctype2}
                 </select>
                
@@ -212,7 +207,7 @@ function imgShow(outerdiv, innerdiv, bigimg, _this){
                 <input type="submit" name="Submit" value="提 交" class="btn btn-primary radius">
                 
                 <input type="button" name="reset" value="返回"  class="btn btn-primary radius" id="resetId" onclick="javascript :history.back(-1);">
-               <!--  <input type="reset" name="reset" value="重 写"  class="btn btn-primary radius"> -->
+               
             </div>
         </div>
     </form>
@@ -243,13 +238,9 @@ function onlaod() {
         arr.push(str_option[i]); //属性
         keds.push(i);
     }
-    // console.log(keds);
-    // console.log(arr);
     for (var i = 0; i < arr.length; i++) {
-        // console.log('str_option',str_option);
         var tid = i+1;
         var obj = $("#select_"+tid);
-        // console.log("#select_"+tid);
         var str = '';
         for (var j = 0; j < arr[i].length; j++) {
             if(keds[i]==arr[i][j].cid){
@@ -266,8 +257,6 @@ function onlaod() {
 
 function slevel() {
     var select_c = $("#select_c").val();
-    
-    // console.log(select_c);
     if(select_c < 1){
        $(".slevel_box").hide(); 
     }else{
