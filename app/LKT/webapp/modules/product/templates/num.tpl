@@ -62,7 +62,6 @@
                 <th>发布时间</th>
                 <th>价格</th>
                 <th>数量（双击修改）</th>
-                {*<th width="100px">操作</th>*}
             </tr>
             </thead>
             <tbody>
@@ -76,16 +75,7 @@
                     <td>{$item->add_date}</td>
                     <td><span style="color:red;">{$item->price}</span></td>
                     <td><input type="number" class="input-text" name="num" id="num_{$item->attribute_id}" value="{$item->num}" readOnly="readOnly" style="background-color: #eeeeee;" ondblclick="double({$item->attribute_id})" onblur="leave({$item->id},{$item->attribute_id});" />{$item->unit}</td>
-                    {*<td>*}
-                        {*<a style="text-decoration:none" class="ml-5"  onclick="confirm('确定要删除此商品吗?',{$item->id})">*}
-                        	{*<div style="align-items: center;font-size: 12px;display: flex;">*}
-                            	{*<div style="margin:0 auto;;display: flex;align-items: center;"> *}
-                                {*<img src="images/icon1/del.png"/>&nbsp;删除*}
-                            	{*</div>*}
-                            {*</div>*}
-                        {*</a>*}
-                    {*</td>*}
-                </tr>
+               </tr>
             {/foreach}
             </tbody>
         </table>

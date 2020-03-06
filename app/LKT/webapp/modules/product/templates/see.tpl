@@ -162,12 +162,10 @@
         </div>
         <div class="row cl">
             <label class="form-label col-2"><span class="c-red"></span>商品品牌：</label>
-            <div class="formControls col-2"><!--  <span class="select-box"> -->
+            <div class="formControls col-2">
                 <select name="brand_class" class="select" id="brand_classId" disabled>
-                    <!-- <option selected="selected" value="0">请选择品牌</option> -->
                         {$r02}
                 </select>
-                <!-- </span> -->
             </div>
         </div>
                 <div class="row cl">
@@ -176,7 +174,6 @@
                 <input type="hidden" id="picurl" value="{$uploadImg}{$imgurl}" class="td-input" name="image"/>
                 <input type="hidden" name="img_oldpic" value="{$imgurl}" >
                 <img id="thumb_url" src='{$uploadImg}{$imgurl}' style="height:160px;width:160px">
-                <!-- <span class="btn btn-success " id="image"  type="button" disabled>选择图片</span> -->
             </div>
         </div>
         <div class="row cl">
