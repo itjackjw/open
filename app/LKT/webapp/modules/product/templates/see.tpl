@@ -154,7 +154,7 @@
 
         <div class="row cl">
             <label class="form-label col-2"><span class="c-red">*</span>商品类别：</label>
-            <div class="formControls col-2"> <!-- <span class="select-box"> -->
+            <div class="formControls col-2">
                 <select name="product_class" class="select" id="product_classId" disabled>
                     {$ctypes}
                 </select>
@@ -180,7 +180,7 @@
             <label class="form-label col-2">商品展示图：</label>
             <div class="formControls col-10">
                 <div class="uploader-thum-container">
-                    <!-- <input name="imgurls[]" id="imgurls"  multiple='multiple' type="file" style="width:210px;" accept="upload_image/x-png,image/gif,image/jpeg" / disabled> -->
+
                     {if $imgurls != ''}
                         {foreach from=$imgurls item=item name=f1}
                             <img class="pimg" src="{$uploadImg}{$item->product_url}" style="width: 50px;height: 50px;">

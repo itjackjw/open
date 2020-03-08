@@ -186,11 +186,9 @@ form .select{
                     </div>
 
                 </th>
-                {*<th>商品编号</th>*}
                 <th>商品图片</th>
                 <th>商品标题</th>
                 <th>分类名称</th>
-                <!-- <th>发布时间</th> -->
                 <th>商品品牌</th>
                 <th>价格</th>
                 <th>库存</th>
@@ -208,7 +206,6 @@ form .select{
                             <label for="{$item->id}"></label>
                         </div>
                     </td>
-                    {*<td style="min-width: 70px;">{$item->product_number}</td>*}
                     <td style="min-width: 70px;">{if $item->img != ''}<span>暂无图片</span>{else}<img class='pimg' onclick="pimg(this)" style="width: 50px;height: 50px;" src="../LKT/images/{$item->imgurl}">{/if}</td>
                     <td class="tableTitle">{$item->product_title}
                         {foreach from=$item->s_type item=item1 name=f2}
@@ -219,7 +216,6 @@ form .select{
                         {/foreach}
                     </td>
                     <td style="min-width: 140px;">{$item->pname}</td>
-                    <!-- <td style="min-width: 70px;">{$item->add_date}</td> -->
                     <td style="min-width: 70px;">{if $item->brand_name != ''}{$item->brand_name}{else}无{/if}</td>
                     <td><span style="color:red;">{$item->price}</span></td>
                     <td {if $item->num <= $min_inventory}style="color: red;" {/if}>{$item->num}{$item->unit}</td>
@@ -299,16 +295,12 @@ form .select{
 {literal}
 <script type="text/javascript">
 
-
-
 $("#ipt1").bind("click",
             function () {
                 $(".orders_select").prop("checked", $(this).prop("checked"));
             });
 
 
-
-    
 function empty() {
     location.replace('index.php?module=product');
 }

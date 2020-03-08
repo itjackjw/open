@@ -246,25 +246,21 @@ function check(f) {
 
         <div class="row cl">
             <label class="form-label col-2"><span class="c-red">*</span>商品类别：</label>
-            <div class="formControls col-2"><!--  <span class="select-box"> -->
-                
+            <div class="formControls col-2">
                 <select name="product_class" id="product_classId" class="select">
                     <option selected="selected" value="0">请选择类别</option>
                     {$ctype}
                 </select>
-                <!-- </span> -->
             </div>
         </div>
 
         <div class="row cl">
             <label class="form-label col-2"><span class="c-red">*</span>商品品牌：</label>
             <div class="formControls col-2">
-                <!-- <span class="select-box"> -->
                     <select name="brand_class" id="brand_classId" class="select">
                         <option selected="selected" value="0">请选择品牌</option>
                         {$brand}
                     </select>
-               <!--  </span> -->
             </div>
         </div>
 
@@ -721,8 +717,6 @@ KindEditor.ready(function (K) {
             });
             // 添加属性
             $(".add-attr-group-btn").click(function() {
-                // console.log(2)
-                // console.log($(this))
                 var name = $(".add-attr-group-input").val();
                 name = $.trim(name);
                 if(name == "") {
