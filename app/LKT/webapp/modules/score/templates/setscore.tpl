@@ -105,7 +105,6 @@
    var a = 2;
   }
    retbuy.shift();
-   //console.log(retbuy);
    var levs = '';
    $.each(retbuy,function(index,element){    
       levs += '<div class="row cl leverd"><label class="form-label col-xs-3 col-sm-3"><span class="c-red">'+element.lever+' 级</span> : 单笔订单满</label><div class="formControls col-xs-2 col-sm-1"><input type="number" name="order'+element.lever+'" value="'+element.ordernum+'" class="input-text" onkeypress="return event.keyCode>=48&&event.keyCode<=57" ng-pattern="/[^a-zA-Z]/" min="1" onblur="modifyValue(event)"></div><div class="form-label col-xs-1 col-sm-1">可抵用</div><div class="formControls col-xs-2 col-sm-1"><input type="number" name="score'+element.lever+'" value="'+element.scorenum+'" min="1" class="input-text" onblur="modifyValue(event)" onkeypress="return event.keyCode>=48&&event.keyCode<=57" ng-pattern="/[^a-zA-Z]/" /></div><div class="col-xs-3 col-sm-2" style="color:#666;">元人民币的积分</div><button class="btn btn-default radius" type="button" onclick="removelever('+element.lever+')">&nbsp;删除&nbsp;</button></div>';
@@ -208,7 +207,6 @@
 
          str = str.substring(0,(str.length-1));
          str += '}';
-         //console.log(data);
          $.ajax({
                url:"index.php?module=sign&action=setscore",
                type:"post",
