@@ -268,11 +268,6 @@ Page({
     var secStr = sec.toString();
     if (secStr.length == 1) secStr = '0' + secStr;
 
-    /*if (day < 1) {
-      return "剩 " + hrStr + ":" + minStr + ":" + secStr;
-    } else {
-      return "剩 " + day + " 天 " + hrStr + ":" + minStr + ":" + secStr;
-    }*/
     this.setData({
       day: day,
       hour: hrStr,

@@ -228,8 +228,6 @@ Page({
         if (res.data.code == 1){
         that.setData({
           list: res.data.list,
-          // groupman: res.data.groupman,
-          // groupid: res.data.groupid
         })
           var titlee = res.data.groupname;
           wx.setNavigationBarTitle({
@@ -293,8 +291,6 @@ Page({
         that.setData({
           page: page,
           list: that.data.list.concat(prolist),
-          // groupman: res.data.groupman,
-          // groupid: res.data.groupid
         });
         }else{
           that.setData({
@@ -323,9 +319,6 @@ Page({
     
   },
   onLoad: function (options) {
-    // if (app.userlogin(1)) {
-    //   return
-    // }
     this.setData({
       bgcolor: app.d.bgcolor,
     });
@@ -352,7 +345,6 @@ Page({
         'content-type': 'application/x-www-form-urlencoded'
       },
       success: function (res) {
-        // var titlee = res.data.groupname;
         wx.setNavigationBarTitle({
           title: '拼团', //修改页面标题
 
@@ -366,15 +358,11 @@ Page({
           that.setData({
             page: page,
             list: list,
-            // groupman: res.data.groupman,
-            // groupid: res.data.groupid
           });
           
         }else{
           that.setData({
             list: list,
-            // groupman: res.data.groupman,
-            // groupid: res.data.groupid,
           })
          
         }

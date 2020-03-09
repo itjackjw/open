@@ -17,7 +17,6 @@ Page({
     man_num:null //团满人数
   },
   onLoad:function(options){
-    // console.log(options,'opppppppppppppppppp')
     var self = this
     self.id = options.id;
     self.groupid = options.groupid;
