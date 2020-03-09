@@ -10,37 +10,7 @@
 {php}include BASE_PATH."/modules/assets/templates/top.tpl";{/php}
 
 <title>系统参数</title>
-{literal}
 
-
-<style type="text/css">
-
-
-.iconfont {
-  font-family:"iconfont" !important;
-  font-size:30px;
-  font-style:normal;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-.icon-zhengshu-copy:before { content: "\e640"; }
-
-.isbad{
-    border: 2px solid red;
-}
-
-.button-conter {
-    display: flex;
-    justify-content: center;
-}
-
-#btn1 {
-    margin-right: 5px;
-}
-</style>
-
-{/literal}
 </head>
 
 <body>
