@@ -384,7 +384,6 @@ Page({
     this.sum();
   },
   onShow: function () {
-    // app.userlogin(true);
     var cont = this.data.cont;
     var carts = this.data.carts;
     var purchase = app.d.purchase;

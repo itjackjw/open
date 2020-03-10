@@ -156,13 +156,8 @@ Page({
     var commentList = that.data.commentList;
     var images = commentList[id].images;
     images.splice(index, 1);
-    // 循环设置数据
-    //for (var i = 0, len = commentList.length; i < len; i++) {
-     // if (i == id) {
-        commentList[id].images = images;
-        commentList[id].addHide = images.length;
-     // }
-    //}
+    commentList[id].images = images;
+    commentList[id].addHide = images.length;
     that.setData({
       commentList: commentList,
     });
