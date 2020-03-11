@@ -20,16 +20,8 @@ Page({
   onReady: function () {
     this.pop = this.selectComponent("#pop")
     var that = this;
-    // setTimeout(function () {
-    //   that.setData({
-        
-    //   });
-    // }, 1000);
   },
   onLoad: function (options) {
-    // if (app.userlogin(1)) {
-    //   return
-    // }
     wx.setNavigationBarColor({
       frontColor: app.d.frontColor,
       backgroundColor: app.d.bgcolor, //页面标题为路由参数
@@ -186,7 +178,6 @@ Page({
   },
   // 点击使用
   getvou: function (e) {
-    // if (e.currentTarget.dataset.point == '立即使用') {
       var that = this;
       wx.request({
         url: app.d.ceshiUrl + '&action=Coupon&m=immediate_use',
@@ -216,6 +207,5 @@ Page({
           });
         }
       });
-    // }
   }
 })

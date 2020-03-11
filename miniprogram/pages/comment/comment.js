@@ -278,7 +278,6 @@ Page({
           },
           fail: function (res) {
             console.log(res);
-            // typeof fail == "function" && fail(res); 回调
           }
         })
   },
