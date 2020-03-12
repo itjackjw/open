@@ -527,7 +527,6 @@ Page({
       itemData.num = haveSkuBean[0].count;
       var choujiangid = that.data.choujiangid;
       var sizeid = haveSkuBean[0].cid;
-      // console.log(sizeid)
       that.setData({
         itemData: itemData,
         sizeid: sizeid,
@@ -535,7 +534,6 @@ Page({
         value: canGetInfoLog
       });
     } else {
-      // console.log('没选完')
       that.setData({
         sizeid: '',
         value: ''

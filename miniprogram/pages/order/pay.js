@@ -146,7 +146,6 @@ Page({
         }
       });
     }
-    // console.log('onUnload监听页面卸载');
   },
 
   onShow: function () {

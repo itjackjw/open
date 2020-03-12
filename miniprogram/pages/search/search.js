@@ -48,7 +48,6 @@ Page({
     });
   },
   onShow: function () {
-    // app.userlogin(true);
     var cont = this.data.cont;
     var that = this;
     

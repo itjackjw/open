@@ -251,11 +251,6 @@ Page({
       success: function (res) {
         var prolist = res.data.pro;
         if (prolist == '' || res.data.status == 0) {
-          // wx.showToast({
-          //   title: '没有更多数据！',
-          //   icon: 'warn',
-          //   duration: 2000
-          // });
           that.setData({
             period: true
           });

@@ -627,8 +627,6 @@ Page({
 		var user_id = app.globalData.userInfo.openid;
 		//调起微信支付
     
-    console.log(price)
-    // var cmoney = price.toFixed(2);
 		wx.request({
 			url: app.d.ceshiUrl + '&action=pay&m=pay',
 			data: {
