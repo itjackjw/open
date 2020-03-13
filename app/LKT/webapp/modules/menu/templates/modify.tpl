@@ -194,16 +194,12 @@
 
     var level = $(".level").val();
     if (level != 0) {
-      // document.getElementById('zname').style.display = '';
-      // document.getElementById('name').disabled = 'false';
 
       document.getElementById('tubiao').style.display = 'none';
       document.getElementById('tubiao1').style.display = 'none';
       document.getElementById('url').style.display = '';
 
     } else {
-      // document.getElementById('zname').style.display = '';
-      // document.getElementById('name').disabled = '';
 
       document.getElementById('tubiao').style.display = '';
       document.getElementById('tubiao1').style.display = '';
