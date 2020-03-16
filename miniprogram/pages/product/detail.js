@@ -258,12 +258,7 @@ Page({
           });
         },
       });
-    // } else {
-    //   //不存在openid  先获取 在回调  传递that
-    //   setTimeout(function () {
-    //     that.loadProductDetail();
-    //   }, 1000);
-    // }
+    
 
   },
   // 弹窗

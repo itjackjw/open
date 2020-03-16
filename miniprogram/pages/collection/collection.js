@@ -26,11 +26,6 @@ Page({
   //页面加载完成函数
   onReady: function () {
     var that = this;
-    // setTimeout(function () {
-    //   that.setData({
-        
-    //   });
-    // }, 1000);
   },
   onShow: function () {
     // 页面显示
