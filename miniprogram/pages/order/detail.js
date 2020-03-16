@@ -2,8 +2,7 @@ var app = getApp();
 var util = require('../../utils/util.js')
 //获取应用实例  
 var common = require("../../utils/common.js");
-// 定义一个总毫秒数，以一天为例  
-// var total_micro_second = 7200 * 1000 * 24; //这是两天倒计时  
+
 function countdown(that) {
   // 渲染倒计时时钟
   var _this = that;
@@ -166,7 +165,6 @@ Page({
         if (checked_one == 'wallet_Pay') {
           console.log(payment, yuan)
           if (user_money >= payment) {
-            // console.log(user_money, payment)
             if (user_money < payment) {
               wx.showToast({
                 title: '余额不足，请更换支付方式或选择组合支付2！',
