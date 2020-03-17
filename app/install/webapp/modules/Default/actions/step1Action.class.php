@@ -27,6 +27,7 @@ class step1Action extends Action
         @chmod(WEB_PATH, 0777);
         $request = $this->getContext()->getRequest();
         $_SESSION['install_step'] = '1';
+        $_SESSION['install_error'] = 0;
         //环境检测
 
         $config = array(
