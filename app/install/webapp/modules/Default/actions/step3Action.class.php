@@ -77,11 +77,11 @@ class step3Action extends Action
         }
 
         //第二步创建数据库
-        $res_two = $this->create_database($DB['database'], $db);
+        $this->create_database($DB['database'], $db);
         //第三步创建数据表
-        $res_two = $this->create_db_tables($DB['prefix'], $db, $DB['database']);
+        $this->create_db_tables($DB['prefix'], $db, $DB['database']);
         //最后添加管理员
-        $res_for = $this->insert_member($db, $DB['prefix'], $info);
+        $this->insert_member($db, $DB['prefix'], $info);
         $_SESSION['install_step'] = '3';
 
         return View::INPUT;
