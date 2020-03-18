@@ -29,7 +29,7 @@ class step1Action extends Action
 
         $config = array(
             array('操作系统', '不限制', '类Unix', PHP_OS, 'success'),
-            array('PHP版本', '5.4', '5.4+', PHP_VERSION, 'success'),
+            array('PHP版本', '5.6', '5.6+', PHP_VERSION, 'success'),
             array('MYSQL版本', '5.5', '5.6+', '未知', 'success'), //PHP5.5不支持mysql版本检测
             array('附件上传', '不限制', '2M+', '未知', 'success'),
             array('GD库', '2.0', '2.0+', '未知', 'success'),
@@ -38,7 +38,7 @@ class step1Action extends Action
 
 
         //PHP版本检测
-        if(PHP_VERSION < 5.4 || phpversion()< 5.4 ){
+        if(PHP_VERSION < 5.6 || phpversion()< 5.6 ){
             $config[1][4] = 'error';
             $_SESSION['install_error'] = 1;
         }
