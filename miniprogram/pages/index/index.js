@@ -1,11 +1,11 @@
 var app = getApp();
 var zi = 0;
-var cont_time=0;//首页tab点击
+var cont_time = 0; //首页tab点击
 var util = require('../../utils/util.js')
 Page({
   data: {
     pop: null,
-    inforList: [],//公告
+    inforList: [], //公告
     banner: [],
     indicatorDots: true, // 是否显示面板指示点
     autoplay: true, // 是否自动切换
@@ -13,44 +13,42 @@ Page({
     duration: 1000, // 滑动动画时长
     circular: true, // 是否采用衔接滑动
     scrollLeft: 0, //tab标题的滚动条位置
-    current: 0,//当前选中的Tab项
-    current1:0,
+    current: 0, //当前选中的Tab项
+    current1: 0,
     page: 1,
     index: 1,
-    cont:1,
-    tabid:0,
-    loading:false,
+    cont: 1,
+    tabid: 0,
+    loading: false,
     remind: '加载中',
     showModal: false,
     plug: [],
-    timestamp:0,
-    searchView:false,
-    images:{},
+    timestamp: 0,
+    searchView: false,
+    images: {},
     zjList: {},
-    zjList_box:false,
-    cart:0,//购物车数量
-   // mainHeight: 0,
+    zjList_box: false,
+    cart: 0, //购物车数量
+    // mainHeight: 0,
   },
   //下拉事件
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
     wx.showNavigationBarLoading() //在标题栏中显示加载
-    setTimeout(function () {
-      wx.hideNavigationBarLoading() //完成停止加载
-      wx.stopPullDownRefresh() //停止下拉刷新
-    }, 1800);
     this.onLoad();
+    wx.hideNavigationBarLoading() //完成停止加载
+    wx.stopPullDownRefresh() //停止下拉刷新
   },
-  current1Change:function(e){
+  current1Change: function(e) {
     this.setData({
       current1: e.detail.current,
     })
   },
-  imgW: function (e) {
-    var $width = e.detail.width,    //获取图片真实宽度
+  imgW: function(e) {
+    var $width = e.detail.width, //获取图片真实宽度
       $height = e.detail.height,
-      ratio = $width / $height;    //图片的真实宽高比例
-    var viewWidth = 718,           //设置图片显示宽度，左右留有16rpx边距
-      viewHeight = 718 / ratio;    //计算的高度值
+      ratio = $width / $height; //图片的真实宽高比例
+    var viewWidth = 718, //设置图片显示宽度，左右留有16rpx边距
+      viewHeight = 718 / ratio; //计算的高度值
     var image = this.data.images;
     //将图片的datadata-index作为image对象的key,然后存储图片的宽高值
     image[e.target.dataset.index] = {
@@ -61,8 +59,8 @@ Page({
       images: image
     })
   },
-  getMore: function (e) {
-    
+  getMore: function(e) {
+
     var that = this;
     var page = that.data.page;
     var index = that.data.tabid;
@@ -77,7 +75,7 @@ Page({
       header: {
         'Content-Type': 'application/x-www-form-urlencoded'
       },
-      success: function (res) {
+      success: function(res) {
         var prolist = res.data.prolist;
 
         wx.hideNavigationBarLoading() //完成停止加载
@@ -88,10 +86,10 @@ Page({
 
         if (prolist == '' || res.data.status == 0) {
           return false;
-        }else{
-          
+        } else {
+
           var twoList = that.data.twoList;
-          
+
           twoList[current].twodata.push(...prolist)
           var indexTwoData = twoList[0].twodata
           that.setData({
@@ -101,7 +99,7 @@ Page({
           });
         }
       },
-      fail: function (e) {
+      fail: function(e) {
         wx.showToast({
           title: '网络异常！',
           duration: 2000
@@ -109,42 +107,43 @@ Page({
       }
     })
   },
-  inputConfirm: function (e) {
-    var that = this, value = e.detail.value;
-      this.setData({
-        value: e.detail.value,
-      });
+  inputConfirm: function(e) {
+    var that = this,
+      value = e.detail.value;
+    this.setData({
+      value: e.detail.value,
+    });
 
-      if (value != '') {
-        wx.navigateTo({
-          url: "../listdetail/listdetail?keyword=" + value
-        })
-      }
+    if (value != '') {
+      wx.navigateTo({
+        url: "../listdetail/listdetail?keyword=" + value
+      })
+    }
   },
-  searchView:function(e){
+  searchView: function(e) {
     console.log(e);
-     this.setData({
-       searchView:!this.data.searchView,
-     });
+    this.setData({
+      searchView: !this.data.searchView,
+    });
   },
-  inputBlur: function (e) {
+  inputBlur: function(e) {
     this.setData({
       value: e.detail.value,
     });
     this.searchView();
   },
-  search_cancel: function (e) {
+  search_cancel: function(e) {
     var formId = e.detail.formId;
     var value = e.detail.value.search_value;
-    console.log(this.data.value,e);
-    if(value.length > 0){
+    console.log(this.data.value, e);
+    if (value.length > 0) {
       wx.navigateTo({
         url: "../listdetail/listdetail?keyword=" + value
       })
-    }else{
+    } else {
       wx.showToast({
         title: '请输入关键词！',
-        icon:'none',
+        icon: 'none',
         duration: 2000
       });
     }
@@ -152,16 +151,20 @@ Page({
       var page = 'pages/index/index'
       app.request.wxRequest({
         url: '&action=product&m=save_formid',
-        data: { from_id: formId, userid: app.globalData.userInfo.openid },
+        data: {
+          from_id: formId,
+          userid: app.globalData.userInfo.openid
+        },
         method: 'post',
-        success: function (res) {
+        success: function(res) {
 
         }
       })
     }
   },
-  search: function () {
-    var that = this, value = this.data.value;
+  search: function() {
+    var that = this,
+      value = this.data.value;
     if (value != '') {
       wx.navigateTo({
         url: "../listdetail/listdetail?keyword=" + value
@@ -169,7 +172,7 @@ Page({
     }
   },
 
-  loadProductDetail: function () {
+  loadProductDetail: function() {
     var that = this;
 
     var userinfo = wx.getStorageSync('userInfo');
@@ -177,7 +180,7 @@ Page({
       app.globalData.userInfo = userinfo;
     }
 
-    var openid = app.globalData.userInfo.openid ? app.globalData.userInfo.openid:false;
+    var openid = app.globalData.userInfo.openid ? app.globalData.userInfo.openid : false;
     if (openid) {
       wx.request({
         url: app.d.ceshiUrl + '&action=Index&m=index',
@@ -188,82 +191,18 @@ Page({
         header: {
           'Content-Type': 'application/x-www-form-urlencoded'
         },
-        success: function (res) {
+        success: function(res) {
           var banner = res.data.banner; // 轮播图
-          var twoList = res.data.twoList;     //产品显示
-          var bgcolor = res.data.bgcolor;     //产品显示
-          var plug = res.data.plug;     
+          var twoList = res.data.twoList; //产品显示
+          var bgcolor = res.data.bgcolor; //产品显示
+          var plug = res.data.plug;
           var title = res.data.title;
           app.d.bgcolor = bgcolor;
           var arr = Object.keys(twoList[0].distributor);
           var banner_num = Object.keys(banner); // 轮播图
           var notice = res.data.notice;
-          var indexTwoData = twoList[0].twodata// 获取首页的数据对象
-          
-          app.globalData.logoimg = res.data.logo
-          app.globalData.title = res.data.title
-          that.setData({
-            distributor: arr,
-            inforList: notice,
-            banner: banner,
-            banner_num: banner_num,
-            twoList: twoList,
-            indexTwoData: indexTwoData,
-            bgcolor: bgcolor,
-            plug: plug,
-            mch_name: title,
-            logo: res.data.logo,
-            djname: res.data.djname,
-            zjList:res.data.list
-          });
+          var indexTwoData = twoList[0].twodata // 获取首页的数据对象
 
-          wx.setNavigationBarColor({
-            frontColor: app.d.frontColor,
-            backgroundColor: app.d.bgcolor //页面标题为路由参数
-          });
-          wx.setNavigationBarTitle({
-            title: title,
-            success: function () {
-            },
-          });
-
-          that.setData({
-            remind: ''
-          });
-          
-          console.log(res.data.list.length)
-          if (res.data.list.length){
-              that.listnsg();
-          }
-
-        },
-        fail: function (e) {
-          wx.showToast({
-            title: '网络异常！',
-            duration: 2000
-          });
-        },
-      })
-    }else{
-      wx.request({
-        url: app.d.ceshiUrl + '&action=Index&m=index',
-        method: 'post',
-        data: {},
-        header: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        success: function (res) {
-          var banner = res.data.banner; // 轮播图
-          var twoList = res.data.twoList;     //产品显示
-          var bgcolor = res.data.bgcolor;     //产品显示
-          var plug = res.data.plug;     //抽奖产品
-          var title = res.data.title;
-          app.d.bgcolor = bgcolor;
-          var arr = [];//Object.keys(twoList[0].distributor);
-          var banner_num = Object.keys(banner); // 轮播图
-          var notice = res.data.notice;
-          var indexTwoData = twoList[0].twodata// 获取首页的数据对象
-          
           app.globalData.logoimg = res.data.logo
           app.globalData.title = res.data.title
           that.setData({
@@ -287,8 +226,70 @@ Page({
           });
           wx.setNavigationBarTitle({
             title: title,
-            success: function () {
-            },
+            success: function() {},
+          });
+
+          that.setData({
+            remind: ''
+          });
+
+          console.log(res.data.list.length)
+          if (res.data.list.length) {
+            that.listnsg();
+          }
+
+        },
+        fail: function(e) {
+          wx.showToast({
+            title: '网络异常！',
+            duration: 2000
+          });
+        },
+      })
+    } else {
+      wx.request({
+        url: app.d.ceshiUrl + '&action=Index&m=index',
+        method: 'post',
+        data: {},
+        header: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        success: function(res) {
+          var banner = res.data.banner; // 轮播图
+          var twoList = res.data.twoList; //产品显示
+          var bgcolor = res.data.bgcolor; //产品显示
+          var plug = res.data.plug; //抽奖产品
+          var title = res.data.title;
+          app.d.bgcolor = bgcolor;
+          var arr = []; //Object.keys(twoList[0].distributor);
+          var banner_num = Object.keys(banner); // 轮播图
+          var notice = res.data.notice;
+          var indexTwoData = twoList[0].twodata // 获取首页的数据对象
+
+          app.globalData.logoimg = res.data.logo
+          app.globalData.title = res.data.title
+          that.setData({
+            distributor: arr,
+            inforList: notice,
+            banner: banner,
+            banner_num: banner_num,
+            twoList: twoList,
+            indexTwoData: indexTwoData,
+            bgcolor: bgcolor,
+            plug: plug,
+            mch_name: title,
+            logo: res.data.logo,
+            djname: res.data.djname,
+            zjList: res.data.list
+          });
+
+          wx.setNavigationBarColor({
+            frontColor: app.d.frontColor,
+            backgroundColor: app.d.bgcolor //页面标题为路由参数
+          });
+          wx.setNavigationBarTitle({
+            title: title,
+            success: function() {},
           });
 
           that.setData({
@@ -298,43 +299,43 @@ Page({
           console.log(res.data.list.length)
           if (res.data.list.length) {
             // setTimeout(function () {
-              that.listnsg();
+            that.listnsg();
             // }, 2000);
           }
 
         },
-        fail: function (e) {
+        fail: function(e) {
           wx.showToast({
             title: '网络异常！',
             duration: 2000
           });
         },
       })
-    } 
+    }
   },
-  onHide: function () {
+  onHide: function() {
     clearTimeout();
   },
-  listnsg:function(){
+  listnsg: function() {
     var zjList = this.data.zjList;
     var that = this;
-    
+
     var time = 1500;
-    if (zjList[zi].type == 2){
+    if (zjList[zi].type == 2) {
       time = 6000;
-    }else{
+    } else {
       time = 1500;
     }
-
-    setTimeout(function () {
+    
+    setTimeout(function() {
       that.setData({
         zjList_box: false
       })
-      setTimeout(function () {
+      setTimeout(function() {
         that.listnsg();
       }, 2000);
     }, time);
-    
+
     that.setData({
       headimgurl: zjList[zi].headimgurl,
       user_name: zjList[zi].user_name,
@@ -342,61 +343,61 @@ Page({
       zjList_box: true
     })
     zi++;
-    if (zi == zjList.length){
+    if (zi == zjList.length) {
       zi = 0;
     }
   },
   //上拉事件
-  onReachBottom: function () {
+  onReachBottom: function() {
     var that = this;
     that.setData({
       loading: true,
     });
     that.getMore();
-   
+
   },
-  obm: function () {
+  obm: function() {
     var that = this;
     var timestamp = Date.parse(new Date());
     console.log(timestamp, that.data.timestamp)
-    if (timestamp - that.data.timestamp > 2000){
+    if (timestamp - that.data.timestamp > 2000) {
       that.setData({
         timestamp: timestamp,
       });
-     
+
     }
 
   },
   /**
    * Tab的点击切换事件
    */
-  tabItemClick: function (e) {
+  tabItemClick: function(e) {
     //防止点击过快带来的闪屏问题
     var timestamp = Date.parse(new Date());
     timestamp = timestamp / 1000;
     var data = e.currentTarget.dataset;
-    var that=this;
-    if (cont_time){
-      if (timestamp - cont_time >= 1){
+    var that = this;
+    if (cont_time) {
+      if (timestamp - cont_time >= 1) {
         that.nextpic(data);
         cont_time = timestamp;
-      }else{
+      } else {
         cont_time = timestamp;
       }
-    }else{
+    } else {
       that.nextpic(data);
       cont_time = timestamp;
-    } 
-    that.checkCor(e); 
+    }
+    that.checkCor(e);
   },
-  nextpic: function (data) {
+  nextpic: function(data) {
     this.setData({
       current: data.pos,
       tabid: data.tabid
     });
   },
   //设置点击tab大于第七个是自动跳到后面
-  checkCor: function (e) {
+  checkCor: function(e) {
     if (this.data.current > 4) {
       this.setData({
         scrollLeft: 800
@@ -410,7 +411,7 @@ Page({
   /**
    * 内容区域swiper的切换事件
    */
-  contentChange: function (e) {
+  contentChange: function(e) {
     var that = this;
     var id = e.detail.current;
     var tabid = that.data.twoList[id].id;
@@ -421,22 +422,22 @@ Page({
     })
     this.checkCor();
   },
-  onShow: function () {
+  onShow: function() {
     console.log(app)
     // app.getUserSessionKey()
 
     var indexchase = app.d.indexchase;
     var that = this;
-    if (indexchase){
+    if (indexchase) {
       that.onLoad();
       app.d.indexchase = false;
     }
-    util.getUesrBgplus(that, app,false)
+    util.getUesrBgplus(that, app, false)
   },
-  onReady: function () {
+  onReady: function() {
     this.pop = this.selectComponent("#pop")
   },
-  onLoad: function (e) {
+  onLoad: function(e) {
     var that = this;
     //签到活动弹窗,勿删
     /*
@@ -468,23 +469,23 @@ Page({
 
   },
 
-  preventTouchMove: function () {
+  preventTouchMove: function() {
 
   },
-  
-  go: function () {
+
+  go: function() {
     this.setData({
       showModal: false
     })
   },
-  navigate_sign: function (){
+  navigate_sign: function() {
     wx.navigateTo({
       url: '../sign_in/sign_in',
     })
   },
-  material: function (res) {
+  material: function(res) {
     wx.getUserInfo({
-      success: function (res) {
+      success: function(res) {
         var userInfo = res.userInfo;
         var nickName = userInfo.nickName;
         var avatarUrl = userInfo.avatarUrl;
@@ -501,7 +502,7 @@ Page({
           header: {
             'Content-Type': 'application/x-www-form-urlencoded'
           },
-          success: function (res) {
+          success: function(res) {
             wx.showToast({
               title: res.data.info,
               success: 2000
@@ -512,7 +513,7 @@ Page({
     })
   },
   //获取用户信息新接口
-  agreeGetUser: function (e) {
+  agreeGetUser: function(e) {
     let that = this
     if (e.detail.errMsg == 'getUserInfo:ok') {
       //获取成功设置状态
@@ -538,8 +539,8 @@ Page({
       that.getOP(e.detail.userInfo)
     }
   },
-  login: function () {
-    
+  login: function() {
+
     var that = this;
     //取出本地存储用户信息，解决需要每次进入小程序弹框获取用户信息
     var userInfo = wx.getStorageSync('userInfo');
@@ -549,7 +550,7 @@ Page({
         app.globalData.code = res.code
         wx.setStorageSync('code', res.code)
       },
-      fail: function () {
+      fail: function() {
         wx.showToast({
           title: '系统提示:网络错误！',
           icon: 'warn',
@@ -580,7 +581,7 @@ Page({
           }
         }
       },
-      fail: function () {
+      fail: function() {
         wx.showToast({
           title: '系统提示:网络错误！',
           icon: 'warn',
@@ -589,7 +590,7 @@ Page({
       }
     })
   },
-  getOP: function (res) {
+  getOP: function(res) {
     //提交用户信息 获取用户id
     let that = this
     let userInfo = res;
@@ -615,7 +616,7 @@ Page({
       header: {
         'Content-Type': 'application/x-www-form-urlencoded'
       },
-      success: function (res) {
+      success: function(res) {
         wx.showToast({
           title: '授权成功!',
           success: 2000
@@ -624,10 +625,10 @@ Page({
       }
     })
   },
-  getqx(event){
+  getqx(event) {
     let name = event.currentTarget.dataset.name
 
-    if (name === "签到" || name === "钱包"){
+    if (name === "签到" || name === "钱包") {
       if (app.userlogin(1)) {
         this.pop.clickPup(this)
         return
@@ -638,11 +639,11 @@ Page({
       url: event.currentTarget.dataset.path,
     })
   },
-  onShareAppMessage: function (res) {
+  onShareAppMessage: function(res) {
     var that = this;
     var id = that.data.productId;
     var type1 = that.data.type1;
-    var uname = app.globalData.userInfo.nickName ? app.globalData.userInfo.nickName : '' ;
+    var uname = app.globalData.userInfo.nickName ? app.globalData.userInfo.nickName : '';
     var title = uname + '邀请你来' + that.data.mch_name;
     var user_id = app.globalData.userInfo.user_id;
     if (res.from === 'button') {
@@ -651,11 +652,11 @@ Page({
     return {
       title: title,
       imageUrl: that.data.logo,
-      path: 'pages/index/index?userid='+ user_id,
-      success: function (res) {
+      path: 'pages/index/index?userid=' + user_id,
+      success: function(res) {
         console.log('转发成功');
       },
-      fail: function (res) {
+      fail: function(res) {
         console.log('转发失败')
       }
     }

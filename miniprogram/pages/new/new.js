@@ -23,11 +23,8 @@ Page({
     sort: 0,// 1 asc 升序   0 desc 降序
   },
   onPullDownRefresh: function () {
+   
     wx.showNavigationBarLoading() //在标题栏中显示加载
-    setTimeout(function () {
-      wx.hideNavigationBarLoading() //完成停止加载
-      wx.stopPullDownRefresh() //停止下拉刷新
-    }, 1500);
     var that = this;
     var objectId = that.data.objectId;
     var select = that.data.select;
@@ -51,6 +48,8 @@ Page({
           page:2,
           period: false
         })
+        wx.hideNavigationBarLoading() //完成停止加载
+        wx.stopPullDownRefresh() //停止下拉刷新
       },
       error: function (e) {
         wx.showToast({
@@ -177,6 +176,8 @@ Page({
   //上拉事件
   onReachBottom: function () {
     var that = this;
+    that.getMore();
+    /*
     setTimeout(function () {
       that.getMore();
       wx.hideNavigationBarLoading() //完成停止加载
@@ -185,6 +186,7 @@ Page({
         loading: false,
       });
     }, 1500);
+    */
     that.setData({
       loading: true,
     });

@@ -27,7 +27,7 @@ App({
   //控制授权登入
   userlogin: function(page) {
     if (this.globalData.userInfo.openid == '' || !this.globalData.userInfo.openid) {
-      
+
       if (page) {
         return true
       } else {
@@ -52,7 +52,7 @@ App({
       wx.stopPullDownRefresh() //停止下拉刷新
     }, 1500);
   },
-  getUserInfo: function (cb, stype, uesr, callback) {
+  getUserInfo: function(cb, stype, uesr, callback) {
     var that = this;
 
     if (this.d.one) {
@@ -72,14 +72,14 @@ App({
           that.getUserSessionKey(code, cb, uesr, callback);
         }
       });
-      
+
     }
     //添加控制在同一秒执行同一个方法两次
   },
-  getHomeData: function () {
+  getHomeData: function() {
     var that = this;
     wx.login({
-      success: function (res) {
+      success: function(res) {
         that.globalData.code = res.code;
         var userinfo = wx.getStorageSync('userInfo');
         if (userinfo.nickName) {
@@ -90,7 +90,7 @@ App({
     });
   },
   // 获取用户会话密钥
-  getUserSessionKey: function (code, cb, stype, callback) {
+  getUserSessionKey: function(code, cb, stype, callback) {
     var that = this;
     wx.request({
       url: that.d.ceshiUrl + '&action=app&m=index',
@@ -125,7 +125,7 @@ App({
         that.globalData.userInfo['sign_image'] = res.data.sign_image; // 签到图片
         that.globalData.userInfo['user_id'] = res.data.user_id; // user_id
         that.globalData.userInfo['nickName'] = res.data.nickName;
-        that.globalData.userInfo['avatarUrl'] = res.data.avatarUrl;//头像
+        that.globalData.userInfo['avatarUrl'] = res.data.avatarUrl; //头像
         that.globalData.userInfo['session_key'] = res.data.user.session_key;
         that.globalData.userInfo['openid'] = res.data.user.openid;
         that.globalData.userInfo['nickName'] = res.data.user.nickName;
@@ -137,7 +137,7 @@ App({
         wx.setStorageSync('userInfo', that.globalData.userInfo);
         callback()
       },
-      fail: function (e) {
+      fail: function(e) {
         wx.showToast({
           title: '网络异常！err:getsessionkeys',
           duration: 2000
