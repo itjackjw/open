@@ -11,17 +11,13 @@ class is_defaultAction extends Action {
         $db = DBAction::getInstance();
         $request = $this->getContext()->getRequest();
         $admin_id = $this->getContext()->getStorage()->read('admin_id');
-
-        // 接收信息
-        $id = $request->getParameter('id'); // 产品id
-
+        $id = $request->getParameter('id');
         $sql = "select id,is_default from lkt_freight";
         $r = $db->select($sql);
         if($r){
             $y_id = 0;
             foreach ($r as $k => $v){
                 $is_default = $v->is_default;
-
                 if($is_default == 1){
                     $y_id = $v->id;
                 }
@@ -33,7 +29,6 @@ class is_defaultAction extends Action {
                 }else{
                     $sql = "update lkt_freight set is_default = 0";
                     $db->update($sql);
-
                     $sql = "update lkt_freight set is_default = 1 where id = '$id'";
                     $db->update($sql);
                 }

@@ -10,10 +10,7 @@ class modifyAction extends Action {
 	public function getDefaultView() {
         $db = DBAction::getInstance();
         $request = $this->getContext()->getRequest();
-
-        // 接收信息
-        $id = intval($request->getParameter("id")); // 产品id
-
+        $id = intval($request->getParameter("id"));
         $sql = "select * from lkt_freight where id = '$id'";
         $r = $db->select($sql);
         if($r){
@@ -52,7 +49,6 @@ class modifyAction extends Action {
 		$db = DBAction::getInstance();
 		$request = $this->getContext()->getRequest();
         $admin_id = $this->getContext()->getStorage()->read('admin_id');
-
         // 接收数据
         $id = addslashes(trim($request->getParameter('id'))); // 规则id
         $name = addslashes(trim($request->getParameter('name'))); // 规则名称
