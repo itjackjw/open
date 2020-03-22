@@ -228,7 +228,6 @@ Page({
   //倒计时
   countDown: function (endtime) {
     var that = this
-    //var endTime = new Date(endtime.replace(/-/g, '/')).getTime();
     var nowTime = new Date().getTime();
     var total_second = endtime - nowTime;
      that.dateformat(total_second)
@@ -252,17 +251,14 @@ Page({
     var second = Math.floor(micro_second / 1000);
     // 天数
     var day = Math.floor(second / 3600 / 24);
-
     // 小时
     var hr = Math.floor(second / 3600 % 24);
     var hrStr = hr.toString();
     if (hrStr.length == 1) hrStr = '0' + hrStr;
-
     // 分钟
     var min = Math.floor(second / 60 % 60);
     var minStr = min.toString();
     if (minStr.length == 1) minStr = '0' + minStr;
-
     // 秒
     var sec = Math.floor(second % 60);
     var secStr = sec.toString();
