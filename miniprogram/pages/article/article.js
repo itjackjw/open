@@ -104,7 +104,6 @@ Page({
       title: Article_title,
       imageUrl:that.data.article.Article_imgurl,
       path: '/pages/index/index?id?p_openid=' + app.globalData.userInfo.openid,
-      // path: '/pages/user/envelope?id=' + id + '&p_openid=' + app.globalData.userInfo.openid,
       success: function (res) {
         // 转发成功
         wx.request({
@@ -258,7 +257,7 @@ Page({
                   })
                 }
               }, fail: function (res) {
-                console.log(11111)
+                
               }
             })
           }
