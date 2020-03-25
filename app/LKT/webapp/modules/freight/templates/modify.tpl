@@ -31,6 +31,18 @@
     height: 14px;
     background: #ffffff !important;
 }
+
+.inputC:checked + label::before {
+    display: block;
+    content: "";
+    width: 12px;
+    height: 12px;
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    left: 100px;
+    z-index: 999;
+}
     
 </style>
 <script type="text/javascript">
