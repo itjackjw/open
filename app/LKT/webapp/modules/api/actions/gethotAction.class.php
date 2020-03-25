@@ -18,7 +18,6 @@ class gethotAction extends Action {
 
     public function execute(){
         $db = DBAction::getInstance();
-        $request = $this->getContext()->getRequest();
         $sql = 'select keyword from lkt_hotkeywords';
         $res = $db -> selectarray($sql);
         foreach ($res as $k => $v) {

@@ -15,7 +15,7 @@ define("APP_ID", "wxa9f7cdfa06b2fd0c");
 define("APP_SECRECT", "70a8039ea1b5ee9d78a61ac4aa04117e");
 
 
-
+//这个类已经取消了
 class kfAction extends Action {
 
   public function getDefaultView() {
@@ -23,9 +23,6 @@ class kfAction extends Action {
   }
 
   public function execute(){
-    $db = DBAction::getInstance();
-    $request = $this->getContext()->getRequest();
-    $m = addslashes(trim($request->getParameter('m')));
     if(isset($_GET['echostr'])) {
       // 2.调用方法
   	  $this->valid();
