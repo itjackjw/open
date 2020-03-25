@@ -12,7 +12,7 @@
 <title>钱包参数</title>
 </head>
 <body>
-<nav class="breadcrumb"><i class="Hui-iconfont">&#xe616;</i> 配置管理 <span class="c-gray en">&gt;</span> 钱包参数 </nav>
+<nav class="breadcrumb"> 配置管理 <span class="c-gray en">&gt;</span> 钱包参数 </nav>
 <div class="page-container">
     <form name="form1" action="index.php?module=finance&action=config" class="form form-horizontal" method="post"   enctype="multipart/form-data" >
         <div id="tab-system" class="HuiTab">
