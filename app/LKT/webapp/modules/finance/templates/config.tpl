@@ -42,7 +42,7 @@
                 </div>
             </div>
             <div class="row cl">
-                <label class="form-label col-4">小程序和APP钱包单位：</label>
+                <label class="form-label col-4">小程序钱包单位：</label>
                 <div class="formControls col-4">
                     <input type="text" class="input-text" value="{$unit}" id="unit" name="unit">
                 </div>
