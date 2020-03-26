@@ -265,6 +265,7 @@ class addAction extends Action
 
         $z_num = 0;
         $attributes = [];
+        //有设置属性的情况
         if (count($attr) > 0) {
             foreach ($attr as $key => $value) {
                 $attr_list = $value['attr_list'];
