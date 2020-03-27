@@ -32,14 +32,6 @@ class setAction extends Action {
         $request = $this->getContext()->getRequest();
         $name = trim($request -> getParameter('name'));
         $tel = trim($request -> getParameter('tel'));
-
-        if(strlen($tel) >15){
-            header("Content-type:text/html;charset=utf-8");
-            echo "<script type='text/javascript'>" .
-                "alert('手机号码格式错误！');" .
-                "location.href='index.php?module=return&action=set';</script>";
-            exit;
-        }
         $address = trim($request -> getParameter('address'));
         $sql1 = "select * from lkt_user_address where uid = 'admin'";
         $r = $db->select($sql1);
