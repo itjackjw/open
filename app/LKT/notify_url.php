@@ -37,10 +37,10 @@ class order
         $user_id = $r[0]->user_id; // 用户id
         $event = $trade_no;
         $sqll = "insert into lkt_record (user_id,money,oldmoney,event,type) values ('$user_id','$cmoney','$money','$event',1)";
-        $rr = $db->insert($sqll);
+        $db->insert($sqll);
         //修改金额   
         $sql = "update lkt_user set money = money+'$cmoney' where wx_id = '$openid'";
-        $r = $db->update($sql);
+        $db->update($sql);
         exit;
     }
 
@@ -168,7 +168,7 @@ class order
                 $istsql3 = "insert into lkt_order_details(user_id,p_id,p_name,p_price,num,r_sNo,add_time,r_status,size,sid) values('$uid',$pro_id,'$pro_name',$y_price,$buy_num,'$ordernum','$creattime',-1,'$pro_size',$sizeid)";
                 $res3 = $db->insert($istsql3);
                 $updsql = "update lkt_group_open set ptnumber=ptnumber+1 where group_id='$groupid' and ptcode='$oid'";
-                $updres = $db->update($updsql);
+                $db->update($updsql);
                 if ($res2 > 0 && $res3 > 0) {
 
                     $idres = $db->select("select id from lkt_order where sNo='$ordernum'");
@@ -222,8 +222,7 @@ class order
 
                 if ($res2 > 0 && $res3 > 0) {
                     $sql = "select * from lkt_notice where id = '1'";
-                    $r = $db->select($sql);
-                    $template_id = $r[0]->group_success;
+                    $db->select($sql);
                     $db->commit();
                 } else {
                     $db->rollback();
@@ -233,7 +232,7 @@ class order
 
             } else if ($ptnumber == $man_num) {
 
-                $bere = $db->update("update lkt_user set money=money+$price where user_id='$uid'");
+                $beres = $db->update("update lkt_user set money=money+$price where user_id='$uid'");
                 if ($beres < 1) {
                     $db->rollback();
                     return 'code:6';
@@ -246,7 +245,7 @@ class order
 
         } else {
 
-            $bere = $db->update("update lkt_user set money=money+$price where user_id='$uid'");
+            $beres = $db->update("update lkt_user set money=money+$price where user_id='$uid'");
             if ($beres < 1) {
                 $db->rollback();
                 return 'code:8';
