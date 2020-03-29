@@ -52,9 +52,7 @@ class order
         //开启事务
         $db->begin();
         $uid = $order['uid'];
-        $form_id = $order['form_id'];
         $pro_id = $order['pro_id'];
-        $man_num = $order['man_num'];
         $time_over = $order['time_over'];
         $sizeid = $order['sizeid'];
         $groupid = $order['groupid'];
@@ -67,7 +65,6 @@ class order
         $quyu = $order['quyu'];
         $address = $order['address'];
         $tel = $order['tel'];
-        $lack = $order['lack'];
         $buy_num = $order['buy_num'];
         $paytype = $order['paytype'];
         $trade_no = $order['trade_no'];
@@ -121,7 +118,6 @@ class order
         $db->begin();
         $oid = $order['oid'];
         $uid = $order['uid'];
-        $form_id = $order['form_id'];
         $pro_id = $order['pro_id'];
         $man_num = $order['man_num'];
         $sizeid = $order['sizeid'];
@@ -135,7 +131,6 @@ class order
         $quyu = $order['quyu'];
         $address = $order['address'];
         $tel = $order['tel'];
-        $lack = $order['lack'];
         $buy_num = $order['buy_num'];
         $paytype = $order['paytype'];
         $trade_no = $order['trade_no'];
@@ -150,7 +145,6 @@ class order
         if (!empty($selres)) {
 
             $ptnumber = $selres[0]->ptnumber;
-            $ptstatus = $selres[0]->ptstatus;
             $endtime = strtotime($selres[0]->endtime);
 
         }
@@ -189,7 +183,7 @@ class order
                 $istsql3 = "insert into lkt_order_details(user_id,p_id,p_name,p_price,num,r_sNo,add_time,r_status,size,sid) values('$uid',$pro_id,'$pro_name',$y_price,$buy_num,'$ordernum','$creattime',-1,'$pro_size',$sizeid)";
                 $res3 = $db->insert($istsql3);
                 $updsql = "update lkt_group_open set ptnumber=ptnumber+1,ptstatus=2 where group_id='$groupid' and ptcode='$oid'";
-                $updres = $db->update($updsql);
+                $db->update($updsql);
                 $beres = $db->update("update lkt_order set ptstatus=2,status=1 where pid='$groupid' and ptcode='$oid'");
 
                 if ($beres < 1) {
