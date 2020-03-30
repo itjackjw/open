@@ -122,8 +122,6 @@
 		
   function attr_tijiao(i){
     if($('input[name=checkid'+i+']').prop('checked') == true){
-        // var canprice = $('#set_price_'+i).val();
-        // var kaiprice = $('#price_member_'+i).val();
         tuanZ[i] = '~';
     }else{
         delete tuanZ[i];
@@ -135,8 +133,6 @@
        if(allcheck == true){
           $.each($('input[data-type=checkpro]'),function (index,element){
             var attr_id = $(element).val();
-            // var canprice = $('#set_price_'+attr_id).val();
-            // var kaiprice = $('#price_member_'+attr_id).val();
               if(!tuanZ[attr_id]){
                  tuanZ[attr_id] = '~';
               }
