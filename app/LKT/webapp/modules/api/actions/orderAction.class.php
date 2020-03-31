@@ -341,6 +341,9 @@ class orderAction extends BaseAction {
 
     }
 
+    /*
+     * 默认使用快递100的免费接口，有时候订单信息会有延迟，所以有需要的童鞋最好使用快递100的收费接口
+     */
     public static function logistics2($type,$courier_num){
         $url = 'http://poll.kuaidi100.com/poll/query.do'; //实时查询
         $key = 'suLyYnWs4118';           //客户授权key
