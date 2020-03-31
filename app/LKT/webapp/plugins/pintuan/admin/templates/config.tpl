@@ -125,24 +125,24 @@
 <body>
 
 <nav class="breadcrumb">
-	<span class="c-gray en"></span>
-	<i class="Hui-iconfont">&#xe6ca;</i>
-	插件管理
-	<span class="c-gray en">&gt;</span>
-	拼团
+	拼团管理
 	<span class="c-gray en">&gt;</span>
 	拼团设置
 </nav>
-<div class="swivch page_bgcolor swivch_bot" style="    padding-left: 10px;display: flex;">
-	<a href="index.php?module=pi&p=pintuan&c=Home&status=0" class="btn1" style="height: 42px !important">拼团商品</a>
-	<a href="index.php?module=pi&p=pintuan&c=Home&status=4" class="btn1" style="height: 42px !important">开团记录</a>
-	<a href="index.php?module=pi&p=pintuan&c=Home&status=5" class="btn1" style="height: 42px !important">参团记录</a>
-	<a href="index.php?module=pi&p=pintuan&c=config" class="btn1 active1 swivch_active" style="border-right: 1px solid #ddd!important;width: 112px !important;height: 42px !important;">拼团设置</a>
 
-	<div class="clearfix" style="margin-top: 0px;"></div>
-</div>
-<div class="page_h16"></div>
-<div class="page-container" style="border-left: #edf1f5 10px solid;">
+<div class="page-container pd-20 page_absolute" >
+
+	<div style="display: flex;flex-direction: row;font-size: 16px;" class="page_bgcolor">
+		<div class="status qh " style="border-radius: 2px 0px 0px 2px !important;"><a
+					href="index.php?module=pi&p=pintuan&c=Home&status=0" onclick="statusclick(0)">拼团商品</a></div>
+		<div class="status qh "><a href="index.php?module=pi&p=pintuan&c=Home&status=4"
+															  onclick="statusclick(4)">开团记录</a></div>
+		<div class="status qh "><a href="index.php?module=pi&p=pintuan&c=Home&status=5"
+															  onclick="statusclick(5)">参团记录</a></div>
+		<div class="status qh isclick" style="border-radius: 0px 2px 2px 0px !important;"><a
+					href="index.php?module=pi&p=pintuan&c=config" onclick="statusclick(5)">拼团设置</a></div>
+	</div>
+	<div class="page_h16"></div>
 
 	<form name="form1" action="index.php?module=pi&p=pintuan&c=config" class="form form-horizontal" method="post"   enctype="multipart/form-data" >
 		<div class="config-box">
