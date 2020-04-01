@@ -89,41 +89,7 @@
                             	</div>
                     		</div>
                         </a>
-                        {if $item->http != ''}
-                            {if $item->http == 'go_group'}
-                                <a style="text-decoration:none" class="ml-5" href="index.php?module={$item->http}&action=config" title="参数" >
-	                                <div style="align-items: center;font-size: 12px;display: flex;">
-		                            	<div style="margin:0 auto;;display: flex;align-items: center;">
-		                                <img src="images/icon1/cs.png"/>&nbsp;参数
-		                            	</div>
-	                    			</div>
-                                </a>
-                            {elseif $item->http == 'draw'}
-                                <a style="text-decoration:none" class="ml-5" href="index.php?module={$item->http}" title="参数" >
-                                	<div style="align-items: center;font-size: 12px;display: flex;">
-		                            	<div style="margin:0 auto;;display: flex;align-items: center;"> 
-		                                <img src="images/icon1/cs.png"/>&nbsp;参数
-		                            	</div>
-	                    			</div>
-                                </a>
-                            {elseif $item->http == 'red_packet'}
-                                <a style="text-decoration:none" class="ml-5" href="index.php?module=plug_ins&action=red_packet_modify" title="参数" >
-                                	<div style="align-items: center;font-size: 12px;display: flex;">
-		                            	<div style="margin:0 auto;;display: flex;align-items: center;">
-		                                <img src="images/icon1/cs.png"/>&nbsp;参数
-		                            	</div>
-	                    			</div>
-                                </a>
-                            {else}
-                            <a style="text-decoration:none" class="ml-5" href="index.php?module={$item->http}&action=config&id={$item->id}&software_id={$item->software_id}" title="参数" >
-                            	<div style="align-items: center;font-size: 12px;display: flex;">
-		                            	<div style="margin:0 auto;;display: flex;align-items: center;"> 
-		                                <img src="images/icon1/cs.png"/>&nbsp;参数
-		                            	</div>
-	                    			</div>
-                            </a>
-                            {/if}
-                        {/if}
+
                         
                     </td>
                 </tr>

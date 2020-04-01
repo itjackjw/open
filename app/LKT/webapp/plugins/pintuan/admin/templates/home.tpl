@@ -181,8 +181,6 @@
     {if $status==0}拼团商品{/if}
     {if $status==4}开团记录{/if}
     {if $status==5}参团记录{/if}
-
-
 </nav>
 
 

@@ -69,7 +69,7 @@ td a{
         </form>
         <div class="swivch">
         	<a href="index.php?module=coupon" class="btn1" style="background-color: #62b3ff;color: #fff;">活动</a>
-            <a href="index.php?module=coupon&action=coupon" class="btn1" style="color: #6a7076;">优惠券列表</a>
+            <a href="index.php?module=coupon&action=coupon" class="btn1" style="color: #6a7076;">列表</a>
 			<div class="clearfix"></div>
         </div>
     </div>

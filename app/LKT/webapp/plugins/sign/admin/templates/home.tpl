@@ -50,6 +50,7 @@
 
         <a href="index.php?module=pi&p=sign" class="btn1" style="background-color: #62b3ff;color: #fff;">活动列表</a>
         <a href="index.php?module=pi&p=sign&c=record" class="btn1">签到记录</a>
+        <a href="index.php?module=pi&p=sign&c=config" class="btn1">签到设置</a>
 
         <div class="clearfix" style="margin-top: 0px;"></div>
     </div>

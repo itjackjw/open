@@ -39,8 +39,7 @@
 
 <nav class="breadcrumb">
     插件管理 <span class="c-gray en">&gt;</span> 
-    <a href="index.php?module=coupon">活动列表</a> <span class="c-gray en">&gt;</span> 
-    优惠券列表 <span class="c-gray en">&gt;</span> 
+    <a href="index.php?module=coupon">列表</a> <span class="c-gray en">&gt;</span>
     <a href="javascript:history.go(-1)">返回</a>
 </nav>
 
@@ -59,7 +58,7 @@
         </form>
         <div class="swivch">
         	<a href="index.php?module=coupon" class="btn1" style="color: #6a7076;" >活动</a>
-            <a href="index.php?module=coupon&action=coupon" style="background-color: #62b3ff;color: #fff;" class="btn1">优惠券列表</a>
+            <a href="index.php?module=coupon&action=coupon" style="background-color: #62b3ff;color: #fff;" class="btn1">列表</a>
 			<div class="clearfix"></div>
         </div>
     </div>

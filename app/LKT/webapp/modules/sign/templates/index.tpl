@@ -54,7 +54,7 @@
     <div style="display: flex;flex-direction: row;font-size: 16px;" class="page_bgcolor">
         <div class="status qh isclick"><a href="index.php?module=sign">活动列表</a></div>
         <div class="status qh "><a href="index.php?module=sign&action=record">签到记录</a></div>
-        <div class="status qh " ><a href="index.php?module=sign&action=config">签到设置</a></div>
+        <div class="status qh "><a href="index.php?module=sign&action=config">签到设置</a></div>
     </div>
 
     <div class="mt-20" style="clear:both;">
