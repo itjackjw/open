@@ -248,6 +248,7 @@ class addAction extends Action
         $product_title = addslashes(trim($request->getParameter('product_title'))); // 产品标题
         $subtitle = addslashes(trim($request->getParameter('subtitle'))); // 小标题
         $initial = $request->getParameter('initial'); // 初始值
+        $oldinitial = $initial;
         $product_class = addslashes(trim($request->getParameter('product_class'))); // 产品类别
         $brand_id = addslashes(trim($request->getParameter('brand_class'))); // 品牌
         $weight = addslashes(trim($request->getParameter('weight'))); // 重量
@@ -266,7 +267,8 @@ class addAction extends Action
         $z_num = 0;
         $attributes = [];
         //有设置属性的情况
-        if (count($attr) > 0) {
+
+        if (isset($attr) && count($attr) > 0) {
             foreach ($attr as $key => $value) {
                 $attr_list = $value['attr_list'];
                 $attr_list_arr = [];
@@ -281,7 +283,12 @@ class addAction extends Action
                 $value = $this->array_key_remove($value, 'attr_list');
                 $attributes[] = $value;
             }
+        }else{
+            $timg = preg_replace('/.*\//', '', $image);
+            $z_num += $oldinitial['kucun'];
+            $attributes[] = Array ( 'costprice' => $oldinitial['cbj'], 'yprice' => $oldinitial['yj'], 'price' => $oldinitial['sj'], 'num' =>  $oldinitial['kucun'], 'unit' =>'', 'img' => $timg, 'attribute' => 'a:1:{s:6:"默认";s:6:"默认";}' );
         }
+
         if (count($s_type) == 0) {
             $type = 0;
         } else {

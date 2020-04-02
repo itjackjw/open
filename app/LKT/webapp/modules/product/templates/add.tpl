@@ -364,7 +364,7 @@ function check(f) {
                         <!-- 有规格 -->
                         <div>
                             <div class="arrt_block">
-                                <div class="formTextSD"><span class="must">*</span>属性名称：</div>
+                                <div class="formTextSD">属性名称SKU：</div>
                                 <div class="formInputSD">
                                     <div class="arrt_flex">
                                         <div class="arrt_froup">
@@ -458,7 +458,7 @@ function check(f) {
                     </div>
                 </div>
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>显示类型：</label>
+            <label class="form-label col-xs-4 col-sm-2">显示类型：</label>
             <div class="formControls col-xs-8 col-sm-8 skin-minimal">
             
                 <div class="ra1">
@@ -944,7 +944,7 @@ KindEditor.ready(function (K) {
             });
             editor.loadPlugin('image', function () {
                 editor.plugin.imageDialog({
-                    showRemote: false, //网络图片不开启
+                    showRemote: true, //网络图片不开启
                     //showLocal : false, //不开启本地图片上传
                     imageUrl: K("#picurl2"+id).val(),
                     clickFn: function (url, title, width, height, border, align) {
@@ -1012,15 +1012,6 @@ KindEditor.ready(function (K) {
         }
 
 
-        if(page.$data.attr_group_list.length == 0){
-            alert('请设置属性名称!')
-            return false
-        }
-
-        if(s_type === 0){
-            alert('请选择显示类型!')
-            return false
-        }
         
         return true
     }

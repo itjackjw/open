@@ -325,7 +325,7 @@ form[name=form1] input{
             </div>
         </div>
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>显示类型：</label>
+            <label class="form-label col-xs-4 col-sm-2">显示类型：</label>
             <div class="formControls col-xs-8 col-sm-8 skin-minimal">
                 <div class="ra1">
                     <input name="s_type[]" type="checkbox" class="inputC" id="sex-1" value="1" {if in_array(1,$s_type)}checked="checked"{/if}>
@@ -965,10 +965,7 @@ var page = new Vue({
             return false
         }
 
-        if(s_type === 0){
-            alert('请选择显示类型!')
-            return false
-        }
+       
 
         return true
     }
