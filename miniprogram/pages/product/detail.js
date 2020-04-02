@@ -209,11 +209,9 @@ Page({
               zhekou: res.data.zhekou != '' ? res.data.zhekou : false,
             });
             util.getUesrBgplus(that,app,true)
-            setTimeout(function () {
-              that.setData({
-                remind: false
-              });
-            }, 1000);
+            that.setData({
+              remind: false
+            });
             //默认选中
             that.one();
 
