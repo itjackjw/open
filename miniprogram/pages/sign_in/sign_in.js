@@ -159,6 +159,7 @@ Page({
             dateArr: dateArr, // 签到数组 
             imgurl: res.data.imgurl, // 签到图片
             num: num, // 连续签到天数
+            sign_status: app.globalData.userInfo.sign_status
           });
         } else if (res.data.status == 2) {
           wx.navigateBack({
