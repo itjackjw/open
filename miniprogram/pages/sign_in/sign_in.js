@@ -1,4 +1,4 @@
-const app = getApp();
+var app = getApp();
 var WxParse = require('../../wxParse/wxParse.js');
 Page({
   data: {
@@ -15,11 +15,9 @@ Page({
   },
   onReady: function () {
     var that = this;
-    setTimeout(function () {
-      that.setData({
-        remind: ''
-      });
-    }, 1000);
+    that.setData({
+      remind: ''
+    });
   },
   onLoad: function () {
     
@@ -32,7 +30,7 @@ Page({
       }
     });
     console.log(app)
-    console.log('app')
+    console.log('app' + app.globalData.userInfo.sign_status)
     let now = new Date();
     let year = now.getFullYear(); // 获得年
     let month = now.getMonth() + 1; // 获得月份
@@ -152,14 +150,15 @@ Page({
             }
           }
           var num = res.data.num;
-          if (app.globalData.userInfo.sign_status == 0){
+          console.log(app.globalData.userInfo.sign_status+"00----")
+          if (res.data.sign_status == 0){
             num = num + 1;
           }
           that.setData({
             dateArr: dateArr, // 签到数组 
             imgurl: res.data.imgurl, // 签到图片
             num: num, // 连续签到天数
-            sign_status: app.globalData.userInfo.sign_status
+            sign_status: res.data.sign_status
           });
         } else if (res.data.status == 2) {
           wx.navigateBack({
@@ -222,9 +221,10 @@ Page({
             dateArr: dateArr, // 签到数组 
             imgurl: res.data.imgurl, // 签到图片
             showModal: true,
-            sign_status: 0 // 是否签到
+            //sign_status: 0 // 是否签到
           });
           app.globalData.userInfo.sign_status = 0; // 修改签到状态(签到)
+          
         } else if (res.data.status == 2){
             wx.navigateBack({
               delta: 1
