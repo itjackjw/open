@@ -960,25 +960,11 @@ var page = new Vue({
             }
         }
 
-        if(page.$data.attr_group_list.length == 0){
-            alert('请设置属性名称!')
-            return false
-        }
-
-
-
         return true
     }
 
     function check() {
-
-
-
-        
-        if(!verificationForm()){
-            return false
-        }
-
+        return verificationForm();
     }
 
 
