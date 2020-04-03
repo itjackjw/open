@@ -965,7 +965,7 @@ var page = new Vue({
             return false
         }
 
-       
+
 
         return true
     }
