@@ -326,16 +326,11 @@ Page({
     } else {
       time = 1500;
     }
+    that.setData({
+      zjList_box: false
+    });
+    that.listnsg();
     
-    setTimeout(function() {
-      that.setData({
-        zjList_box: false
-      })
-      setTimeout(function() {
-        that.listnsg();
-      }, 2000);
-    }, time);
-
     that.setData({
       headimgurl: zjList[zi].headimgurl,
       user_name: zjList[zi].user_name,
