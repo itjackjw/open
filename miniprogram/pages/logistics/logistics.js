@@ -54,7 +54,8 @@ Page({
             });
           }else{
             that.setData({
-              res: false
+              wuliu: res.data.res_1.data,
+              res: res.data
             });
           }
           console.log(res.data.res_1.data)

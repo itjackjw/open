@@ -81,11 +81,9 @@ Page({
 	onReady: function() {
 		var that = this;
     this.pop = this.selectComponent("#pop")
-		setTimeout(function() {
-			that.setData({
-				remind: ''
-			});
-		}, 1000);
+    that.setData({
+      remind: ''
+    });
 	},
 	onShow: function() {
 		var cont = this.data.cont;

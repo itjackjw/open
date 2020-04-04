@@ -319,9 +319,6 @@ class orderAction extends BaseAction {
 
         $request = $this->getContext()->getRequest();
         // 获取信息
-        $id = addslashes(trim($request->getParameter('id')));// 订单详情id 
-        $details = addslashes($request->getParameter('details'));
-        $type = addslashes(trim($request->getParameter('type')));
         $courier_num=addslashes(trim($request->getParameter('courier_num'))) ;//kuaididanhao
         $express_id=addslashes(trim($request->getParameter('express_id'))) ;//kuaididanhao
         if($express_id && $courier_num){
