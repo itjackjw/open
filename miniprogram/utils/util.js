@@ -84,7 +84,7 @@ function getUesrBgplus(that,app,is) {
 }
 
 function getUri(){
-  return 'http://localhost/open/app/LKT/index.php?module=api&software_name=3&edition=1.0'
+  return 'http://xiaochengxu.houjiemeishi.com/zhibo/LKT/index.php?module=api&software_name=3&edition=1.0'
 }
 
 module.exports = {

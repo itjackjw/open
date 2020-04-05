@@ -97,11 +97,6 @@
       }
     ]
   },
-  "sitemapLocation": "sitemap.json",
-  "plugins": {
-    "live-player-plugin": {
-        "version": "1.0.4", 
-        "provider": "wx2b03c6e691cd7370" 
-    }
-  }
+  "sitemapLocation": "sitemap.json"
+  
 }
