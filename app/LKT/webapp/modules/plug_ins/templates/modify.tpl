@@ -53,29 +53,7 @@ function change(){
         <input type="text" class="input-text" value="{$subtitle_name}" placeholder="" id="" name="subtitle_name">
       </div>
     </div>
-    <div class="row cl">
-        <label class="form-label col-4"><span class="c-red"></span>插件类型：</label>
-        <div class="formControls col-4 skin-minimal">
-            <div class="radio-box">
-                <input name="type" type="radio" value="0" {if $type == 0} checked="checked" {/if} onclick="change()"/>
-                <label for="sex-0">小程序</label>
-            </div>
-            <div class="radio-box">
-                <input name="type" type="radio" value="1" {if $type == 1} checked="checked" {/if} onclick="change()"/>
-                <label for="sex-1">app</label>
-            </div>
-        </div>
-        <div class="col-4"> </div>
-    </div>
-    <div class="row cl">
-        <label class="form-label col-xs-4 col-sm-4"><span class="c-red">*</span>请选择软件：</label>
-        <div class="formControls col-xs-8 col-sm-4"> 
-            <select name="software_id" class="select" style="width: 80px;height: 31px;vertical-align: middle;">
-                {$list}
-            </select>
-        </div>
-        <div class="col-4"> </div>
-    </div>
+
     <div class="row cl">
       <label class="form-label col-xs-4 col-sm-4"><span class="c-red">*</span>首页插件图标：</label>
       <div class="formControls col-xs-8 col-sm-4"> 
@@ -122,12 +100,7 @@ function change(){
             <input type="text" class="input-text" value="{$sort}" placeholder="" id="" name="sort">
         </div>
     </div>
-    <div class="row cl">
-      <label class="form-label col-4">参数设置地址：</label>
-      <div class="formControls col-4">
-        <input type="text" class="input-text" disabled value="{$http}" placeholder="" id="" name="http">
-      </div>
-    </div>
+
     <div class="row cl">
       <label class="form-label col-4">插件标志code:</label>
       <div class="formControls col-4">

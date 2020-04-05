@@ -119,93 +119,28 @@ class modifyAction extends Action {
         }else{
             $subtitle_image = $oldpic2;
         }
-        if($software_id){
-            $software_id_1=trim($software_id,','); // 移除两侧的逗号
-            $software_id_2=explode(',',$software_id_1); // 字符串打散为数组
-        }else{
+
+
+        //更新数据表
+        $sql = "update lkt_plug_ins " .
+            "set image = '$image',subtitle_image = '$subtitle_image',url = '$url',subtitle_url = '$subtitle_url', name = '$name',subtitle_name = '$subtitle_name',add_time = CURRENT_TIMESTAMP,sort = '$sort',type = 0  "
+            ."where id = '$id'";
+        $r = $db->update($sql);
+
+        if($r == -1) {
+            $db->admin_record($admin_id,' 修改插件id为 '.$id.' 的信息失败 ',2);
+            echo "<script type='text/javascript'>" .
+                "alert('未知原因，修改失败！');" .
+                "location.href='index.php?module=plug_ins';</script>";
+            return $this->getDefaultView();
+        } else {
+            $db->admin_record($admin_id,' 修改插件id为 '.$id.' 的信息 ',2);
             header("Content-type:text/html;charset=utf-8");
             echo "<script type='text/javascript'>" .
-                "alert('请选择软件!');" .
-                "</script>";
-            return $this->getDefaultView();
+                "alert('修改成功！');" .
+                "location.href='index.php?module=plug_ins';</script>";
         }
-        if($name){
-            foreach ($software_id_2 as $key => $value) {
-                // 根据插件名称查询插件表
-                $sql = "select * from lkt_plug_ins where name = '$name' and id != '$id' and type = '$type' and software_id = '$value'";
-                $r = $db->select($sql);
-                if($r){
-                    header("Content-type:text/html;charset=utf-8");
-                    echo "<script type='text/javascript'>" .
-                        "alert('首页插件".$name."已存在!');" .
-                        "</script>";
-                    return $this->getDefaultView();
-                }else{
-                    $name = $name;
-                }
-            }
-        }else{
-            header("Content-type:text/html;charset=utf-8");
-                echo "<script type='text/javascript'>" .
-                    "alert('首页插件名称不能为空!');" .
-                    "</script>";
-                return $this->getDefaultView();
-        }
-        if($subtitle_name){
-            foreach ($software_id_2 as $key => $value) {
-                // 根据插件名称查询插件表
-                $sql = "select * from lkt_plug_ins where subtitle_name = '$subtitle_name' and id != '$id' and type = '$type' and software_id = '$value'";
-                $r = $db->select($sql);
-                if($r){
-                    header("Content-type:text/html;charset=utf-8");
-                    echo "<script type='text/javascript'>" .
-                        "alert('个人中心插件".$subtitle_name."已存在!');" .
-                        "</script>";
-                    return $this->getDefaultView();
-                }else{
-                    $subtitle_name = $subtitle_name;
-                }
-            }
-        }else{
-            $subtitle_name = $name;
-        }
-        if(empty($url)){
-            echo "<script type='text/javascript'>" .
-                "alert('首页链接不能为空！');" .
-                "</script>";
-            return $this->getDefaultView();
-        }
-        if(empty($subtitle_url)){
-            $subtitle_url = $url;
-        }
-        if(floor($sort) == $sort){
-            //更新数据表
-            $sql = "update lkt_plug_ins " .
-                "set image = '$image',subtitle_image = '$subtitle_image',url = '$url',subtitle_url = '$subtitle_url', name = '$name',subtitle_name = '$subtitle_name',add_time = CURRENT_TIMESTAMP,sort = '$sort',type = '$type',software_id = '$software_id' "
-                ."where id = '$id'";
-            $r = $db->update($sql);
 
-            if($r == -1) {
-                $db->admin_record($admin_id,' 修改插件id为 '.$id.' 的信息失败 ',2);
-
-                echo "<script type='text/javascript'>" .
-                    "alert('未知原因，修改失败！');" .
-                    "location.href='index.php?module=plug_ins';</script>";
-                return $this->getDefaultView();
-            } else {
-                $db->admin_record($admin_id,' 修改插件id为 '.$id.' 的信息 ',2);
-
-                header("Content-type:text/html;charset=utf-8");
-                echo "<script type='text/javascript'>" .
-                    "alert('修改成功！');" .
-                    "location.href='index.php?module=plug_ins';</script>";
-            }
-        }else{
-            echo "<script type='text/javascript'>" .
-                "alert('排序不为整数！');" .
-                "</script>";
-            return $this->getDefaultView();
-        }
 		return;
 	}
 

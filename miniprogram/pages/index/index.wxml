@@ -113,7 +113,6 @@
             </swiper>
           </view>
           <!-- 滚动公告条结束 -->
-
           <view class="cont" wx:if="{{item.id == 0}}">
             <block wx:for="{{item.twodata}}" wx:for-item="twodata" wx:key="id">
               <navigator  class="img-box" wx:if="{{twodata.url}}" url="{{twodata.url}}" hover-class="changestyle">
@@ -133,7 +132,6 @@
                       
                     </view>
                     <view style="display:flex;line-height:50rpx;color:#999">
-
                       <view class="gmxx" style="  color: red;">¥ {{twos.price}}</view>
                       <view class="ku" style="width:70%">销量：{{twos.volume}}</view>
                     </view>

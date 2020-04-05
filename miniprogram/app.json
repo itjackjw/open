@@ -48,8 +48,10 @@
     "pages/distribution/myclientdef",
     "pages/distribution/commission",
     "pages/distribution/brokerage",
-    "pages/distribution/brokeragedatails"
+    "pages/distribution/brokeragedatails",
+    "pages/live/index"
   ],
+  
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#ffffff",
@@ -94,5 +96,12 @@
         "text": "个人中心"
       }
     ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "plugins": {
+    "live-player-plugin": {
+        "version": "1.0.4", 
+        "provider": "wx2b03c6e691cd7370" 
+    }
   }
 }
