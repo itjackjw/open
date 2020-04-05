@@ -304,7 +304,6 @@ class getcodeAction extends Action {
            }else if($value->type == 'qr'){
                 $AccessToken = $this->getAccessToken($appid, $appsecret);
                 $share_qrcode = $this->get_share_qrcode($path,$value->width,$id,$AccessToken);
-                // var_dump($dest,$data,$share_qrcode);exit;
                 $dest =  $this->write_img($dest,$data,$share_qrcode);
            }else if($value->type == 'img'){
                 if($value->src){
@@ -645,7 +644,6 @@ class getcodeAction extends Action {
             $currentTime = time();
             // 2.修改文件时间
             $fileName = "accessToken"; // 文件名
-            // var_dump(is_file($fileName),$fileName);
             if(is_file($fileName)) {
                 $modifyTime = filemtime($fileName);
                 if(($currentTime - $modifyTime) < 7200) {
