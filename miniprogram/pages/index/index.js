@@ -77,7 +77,6 @@ Page({
       },
       success: function(res) {
         var prolist = res.data.prolist;
-
         wx.hideNavigationBarLoading() //完成停止加载
         wx.stopPullDownRefresh() //停止下拉刷新
         that.setData({
@@ -174,7 +173,6 @@ Page({
 
   loadProductDetail: function() {
     var that = this;
-
     var userinfo = wx.getStorageSync('userInfo');
     if (userinfo.nickName) {
       app.globalData.userInfo = userinfo;
@@ -228,11 +226,7 @@ Page({
             title: title,
             success: function() {},
           });
-
-          that.setData({
-            remind: ''
-          });
-
+          that.setData({remind: ''});
           console.log(res.data.list.length)
           if (res.data.list.length) {
             that.listnsg();
@@ -292,15 +286,12 @@ Page({
             success: function() {},
           });
 
-          that.setData({
-            remind: ''
-          });
+          that.setData({remind: ''});
 
-          console.log(res.data.list.length)
+          console.log(res.data.list.length+"---")
           if (res.data.list.length) {
-            // setTimeout(function () {
             that.listnsg();
-            // }, 2000);
+            
           }
 
         },
@@ -319,7 +310,6 @@ Page({
   listnsg: function() {
     var zjList = this.data.zjList;
     var that = this;
-
     var time = 1500;
     if (zjList[zi].type == 2) {
       time = 6000;
@@ -330,7 +320,6 @@ Page({
       zjList_box: false
     });
     that.listnsg();
-    
     that.setData({
       headimgurl: zjList[zi].headimgurl,
       user_name: zjList[zi].user_name,
