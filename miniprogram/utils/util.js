@@ -84,7 +84,9 @@ function getUesrBgplus(that,app,is) {
 }
 
 function getUri(){
-  return 'http://xiaochengxu.houjiemeishi.com/zhibo/LKT/index.php?module=api&software_name=3&edition=1.0'
+  //如果不想安装后台服务，请使用注释这一行做简单数据体验
+  //return 'http://xiaochengxu.houjiemeishi.com/zhibo/LKT/index.php?module=api&software_name=3&edition=1.0'
+  return 'http://localhost/open/app/LKT/index.php?module=api&software_name=3&edition=1.0'
 }
 
 module.exports = {

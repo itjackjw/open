@@ -87,9 +87,7 @@ class userAction extends BaseAction {
                 }
             }
         }
-        //控制红包显示
-        $sqlfhb = "select user_id from lkt_red_packet_users where user_id = '$user_id'";
-        $rfhb = $db->select($sqlfhb);
+
         // 查询插件表里,状态为启用的插件
         $sql = "select id,subtitle_name,subtitle_image,subtitle_url,code from lkt_plug_ins where status = 1 and type = 0 and software_id = 3 order by sort";
         $r_c = $db->select($sql);

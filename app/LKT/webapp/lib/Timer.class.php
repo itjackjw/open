@@ -17,7 +17,7 @@ function huodongzhuangtai($db)
                 $re = $db->select("select lkt_product_list.recycle ,lkt_product_list.status from lkt_group_product,lkt_product_list where group_id = $value->id and lkt_group_product.product_id = lkt_product_list.id");
                 if ($re) {
                     if ($re[0]->recycle != 1 && $re[0]->status != 1) {
-                        $res = $db->update("UPDATE `lkt_group_product` SET `g_status`='2' WHERE id = " . $value->id);
+                        $db->update("UPDATE `lkt_group_product` SET `g_status`='2' WHERE id = " . $value->id);
 
                     }
                 }
@@ -43,7 +43,7 @@ function huodongzhuangtai($db)
                                 $db->update("UPDATE lkt_user SET money =money+$value02->z_price WHERE user_id = '" . $value02->user_id . "'");
                                 $event = $value02->user_id . '退回拼团金额' . $value02->z_price . '';
                                 $sqlldr = "insert into lkt_record (user_id,money,oldmoney,event,type) values ('$value02->user_id','$value02->z_price','','$event',5)";
-                                $beres1 = $db->insert($sqlldr);
+                                $db->insert($sqlldr);
                             }
                         }
                         $db->update("UPDATE `lkt_order` SET `ptstatus`='3', `status`='11' WHERE ptcode = " . $value01->ptcode);
@@ -99,17 +99,16 @@ function guoqi($db, $group_id)
     if ($r) {
 
         foreach ($r as $key01 => $value01) {
-            // print_r(111);
             $db->update("UPDATE `lkt_group_open` SET `ptstatus`='3' WHERE id = " . $value01->id);
             $ee = $db->select("select user_id,z_price,sNo,pay from lkt_order where ptcode = '" . $value01->ptcode . "'");
-            // print_r($ee);die;
+
             if ($ee) {
                 foreach ($ee as $key02 => $value02) {
                     $db->update("UPDATE `lkt_order_details` SET `r_status`='11' WHERE r_sNo = '" . $value02->sNo . "'");
                     $db->update("UPDATE lkt_user SET money =money+$value02->z_price WHERE user_id = '" . $value02->user_id . "'");
                     $event = $value02->user_id . '退回拼团金额' . $value02->z_price . '';
                     $sqlldr = "insert into lkt_record (user_id,money,oldmoney,event,type) values ('$value02->user_id','$value02->z_price','','$event',5)";
-                    $beres1 = $db->insert($sqlldr);
+                    $db->insert($sqlldr);
                 }
             }
             $db->update("UPDATE `lkt_order` SET `ptstatus`='3', `status`='11' WHERE ptcode = " . $value01->ptcode);
@@ -124,7 +123,7 @@ function addkuncun($db, $size_id, $pid, $num)
     $r_p = $db->update($sql_p);
     // 根据商品id,修改卖出去的销量
     $sql_x = "update lkt_product_list set volume = volume - $num,num = num+$num where id = $pid";
-    $r_x = $db->update($sql_x);
+    $db->update($sql_x);
 
     // 在库存记录表里，添加一条入库信息
     $sql = "insert into lkt_stock(product_id,attribute_id,flowing_num,type,add_date) values('$pid','$size_id','$num',0,CURRENT_TIMESTAMP)";
@@ -138,10 +137,10 @@ function delkuncun($db, $size_id, $pid, $num)
 
     // 根据商品id,修改商品数量
     $sql_p = "update lkt_configure set  num = num - $num where id = $size_id";
-    $r_p = $db->update($sql_p);
+    $db->update($sql_p);
     // 根据商品id,修改卖出去的销量
     $sql_x = "update lkt_product_list set volume = volume + $num,num = num-$num where id = $pid";
-    $r_x = $db->update($sql_x);
+    $db->update($sql_x);
     // 在库存记录表里，添加一条出库库信息
     $sql = "insert into lkt_stock(product_id,attribute_id,flowing_num,type,add_date) values('$pid','$size_id','$num',1,CURRENT_TIMESTAMP)";
     $db->insert($sql);
@@ -151,20 +150,18 @@ function delkuncun($db, $size_id, $pid, $num)
 
 function up_status($db, $id, $ptcode)
 {//过期修改拼团未成功订单
-    $updres = $db->update("update lkt_group_open set ptstatus=3 where id='$id'");//时间到了拼团未满
-    $updres1 = $db->update("update lkt_order set status=11,ptstatus = 3 where ptcode='$ptcode'");//订单状态
+    $db->update("update lkt_group_open set ptstatus=3 where id='$id'");//时间到了拼团未满
+    $db->update("update lkt_order set status=11,ptstatus = 3 where ptcode='$ptcode'");//订单状态
     // echo "update lkt_order set status=10,ptstatus = 3 where pid='$group_id'";
     $ds = $db->select("select sNo,z_price,user_id from lkt_order where ptcode='$ptcode'");
     if ($ds) {
         foreach ($ds as $key => $value) {
             $r_sNo = $value->sNo;
-            $updres2 = $db->update("update lkt_order_details set r_status=11 where r_sNo='$r_sNo'");//订单详情
+            $db->update("update lkt_order_details set r_status=11 where r_sNo='$r_sNo'");//订单详情
             $db->update("UPDATE lkt_user SET money =money+$value->z_price WHERE user_id = '" . $value->user_id . "'");
             $event = $value->user_id . '退回拼团金额' . $value->z_price . '';
             $sqlldr = "insert into lkt_record (user_id,money,oldmoney,event,type) values ('$value->user_id','$value->z_price','','$event',5)";
-
-            // print_r($sqlldr);
-            $beres1 = $db->insert($sqlldr);
+            $db->insert($sqlldr);
         }
     }
 
@@ -173,14 +170,13 @@ function up_status($db, $id, $ptcode)
 
 function up_su_status($db, $id, $ptcode)
 {//过期修改拼团成功订单
-    $updres = $db->update("update lkt_group_open set ptstatus=2 where id='$id'");//时间到了拼团未满
-    $updres1 = $db->update("update lkt_order set status=1,ptstatus = 2 where ptcode='$ptcode'");//订单状态
+    $db->update("update lkt_group_open set ptstatus=2 where id='$id'");//时间到了拼团未满
+    $db->update("update lkt_order set status=1,ptstatus = 2 where ptcode='$ptcode'");//订单状态
     $ds = $db->select("select sNo from lkt_order where ptcode='$ptcode'");
     if ($ds) {
         foreach ($ds as $key => $value) {
             $r_sNo = $value->sNo;
-            $updres2 = $db->update("update lkt_order_details set r_status=1 where r_sNo='$r_sNo'");////订单详情
-            // echo "update lkt_order_details set r_status=1 where r_sNo='$r_sNo''";
+            $db->update("update lkt_order_details set r_status=1 where r_sNo='$r_sNo'");////订单详情
         }
     }
     return;
