@@ -166,14 +166,14 @@ class HomeAction extends PluginAction
             $user_id = $rr[0]->user_id;
 
 
-            $time_start = date("Y-m-d H:i:s",mktime(0,0,0,date('m'),date('d'),date('Y'))); // 当前时间
+            $time_start = date("Y-m-d H:i:s", mktime(0, 0, 0, date('m'), date('d'), date('Y'))); // 当前时间
             // 根据用户id、签到时间大于当天开始时间,查询签到记录
             $sql = "select * from lkt_sign_record where user_id = '$user_id' and sign_time >= '$time_start' and type = 0";
             $r_sign = $db->select($sql);
             $sign_status = 1;
-            if($r_sign){
-                 $sign_status = 0; // 有数据,代表当天签名了,不用弹出签名框
-             }
+            if ($r_sign) {
+                $sign_status = 0; // 有数据,代表当天签名了,不用弹出签名框
+            }
 
             // 查询正在进行的签到活动
             $sql = "select * from lkt_sign_activity where status = 1";
@@ -234,10 +234,10 @@ class HomeAction extends PluginAction
                         }
                         $sign_time[$k] = $y . $m . $d;
                     }
-                    echo json_encode(array('status' => 1,'sign_status'=>$sign_status, 'sign_time' => $sign_time, 'imgurl' => $imgurl, 'num' => $num, 'details' => $details));
+                    echo json_encode(array('status' => 1, 'sign_status' => $sign_status, 'sign_time' => $sign_time, 'imgurl' => $imgurl, 'num' => $num, 'details' => $details));
                     exit;
                 } else {
-                    echo json_encode(array('status' => 0, 'sign_status'=>$sign_status,'sign_time' => $sign_time, 'err' => '暂无签到记录！', 'num' => 0, 'details' => $details));
+                    echo json_encode(array('status' => 0, 'sign_status' => $sign_status, 'sign_time' => $sign_time, 'err' => '暂无签到记录！', 'num' => 0, 'details' => $details));
                     exit;
                 }
             } else {
@@ -307,7 +307,6 @@ class HomeAction extends PluginAction
     public function transfer_jifen()
     {
         $db = DBAction::getInstance();
-        $request = $this->getContext()->getRequest();
         $user_id = addslashes($_POST['user_id']);
         $openid = addslashes($_POST['openid']);
         $jifen = addslashes($_POST['jifen']);
