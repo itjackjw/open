@@ -16,7 +16,7 @@
 <body>
 
 <nav class="breadcrumb">
-    <a href="index.php?module=sign" >配置管理</a> <span class="c-gray en">&gt;</span> 
+    配置管理 <span class="c-gray en">&gt;</span>
     积分设置
 </nav>
 
@@ -208,7 +208,7 @@
          str = str.substring(0,(str.length-1));
          str += '}';
          $.ajax({
-               url:"index.php?module=sign&action=setscore",
+               url:"index.php?module=pi&p=sign&c=setscore",
                type:"post",
                data:{bili:bili,data:str},
                dataType:"json",
