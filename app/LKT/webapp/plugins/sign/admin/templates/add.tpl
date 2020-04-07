@@ -15,11 +15,11 @@
 </head>
 
 <body>
-   
+
 
 <nav class="breadcrumb">
     <a href="index.php?module=pi&p=sign" >签到管理</a> <span class="c-gray en">&gt;</span>
-    添加活动 <span class="c-gray en">&gt;</span> 
+    添加活动 <span class="c-gray en">&gt;</span>
     <a href="javascript:history.go(-1)">返回</a>
 </nav>
 
@@ -46,11 +46,11 @@
                 <div class="formControls col-10">
                     <input id="start_time" name="starttime" value="" class="scinput_s"
                         style="width: 180px; height:26px;font-size: 14px;vertical-align: middle;" placeholder="开始时间">
-                    - 
+                    -
                     <input id="end_time" name="endtime" value="" class="scinput_s"
                         style="width: 180px; height:26px;font-size: 14px;vertical-align: middle;" placeholder="结束时间">
 
-                    
+
                 </div>
             </div>
 
@@ -72,12 +72,12 @@
 
     </div>
 
-    
+
 {php}include BASE_PATH."/modules/assets/templates/footer.tpl";{/php}
 
-    {literal}
-    <script>
+{literal}
 
+<script>
         function check(vm){
 
             var start_time = $("#start_time").val()
@@ -93,9 +93,6 @@
                 alert('开始时间与结束时间相同，请修改！')
                 return false
             }
-
-
-            
             return true
         }
 
@@ -106,16 +103,12 @@
           type: 'datetime',
 
         });
-       
+
         laydate.render({
           elem: '#end_time',
           trigger: 'click',
           type: 'datetime'
         });
-
-
-        
-
 
         KindEditor.ready(function (K) {
             var pic = $("#pic").val();
@@ -131,7 +124,7 @@
             K('#image').click(function () {
                 editor.loadPlugin('image', function () {
                     editor.plugin.imageDialog({
-                        showRemote : false, //网络图片不开启
+                        showRemote : true, //网络图片不开启
                         //showLocal : false, //不开启本地图片上传
                         imageUrl: K('#picurl').val(),
                         clickFn: function (url, title, width, height, border, align) {
@@ -143,20 +136,13 @@
                 });
             });
         });
-    </script>
-    <script type="text/javascript">
-        var isShow = false
-$(function(){
-    var ue = UE.getEditor('editor');
-    
 
+ $(function(){
+ UE.getEditor('editor');
 });
+</script>
 
-        function mobanxuanze() {
-
-        }
-    </script>
-    {/literal}
+{/literal}
 </body>
 
 </html>

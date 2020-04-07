@@ -113,19 +113,11 @@ laydate.render({
             });
         });
 
-</script>
-<script type="text/javascript">
-var isShow = false
 $(function(){
-    var ue = UE.getEditor('editor');
-    
-
+UE.getEditor('editor');
 });
-
-function mobanxuanze(){
-    
-}
 </script>
+
 {/literal}
 </body>
 </html>
