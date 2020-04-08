@@ -15,11 +15,9 @@ Page({
   //页面加载完成函数
   onReady: function () {
     var that = this;
-    setTimeout(function () {
-      that.setData({
-        remind: ''
-      });
-    }, 1000);
+    that.setData({
+      remind: ''
+    });
   },
   /**
    * 生命周期函数--监听页面加载
@@ -102,11 +100,9 @@ Page({
             icon: 'loading',
             duration: 1500
           });
-          setTimeout(function () {
-            wx.redirectTo({
-              url: "../user/transfer",
-            })
-          }, 2000);
+          wx.redirectTo({
+            url: "../user/transfer",
+          })
         }
       },
       error: function (e) {
@@ -160,11 +156,9 @@ Page({
               duration: 1500
             });
 
-            setTimeout(function () {
-              wx.redirectTo({
-                url: "../user/wallet",
-              })
-            }, 2000);
+            wx.redirectTo({
+              url: "../user/wallet",
+            });
 
           } else {
             wx.showToast({

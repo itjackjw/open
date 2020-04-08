@@ -59,11 +59,9 @@ Page({
           that.setData({
             money: user.money
           });
-          setTimeout(function () {
-            that.setData({
-              remind: ''
-            });
-          }, 1000);
+          that.setData({
+            remind: ''
+          });
         } else {
           wx.showToast({
             title: '非法操作！',
@@ -90,9 +88,7 @@ Page({
         icon: 'loading',
         duration: 1000
       })
-      setTimeout(function () {
-        wx.hideToast()
-      }, 2000)
+      wx.hideToast();
     }else{
       var that = this;
       wx.request({
