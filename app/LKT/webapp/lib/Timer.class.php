@@ -1,7 +1,8 @@
 <?php
 
+//监测拼团活动有没有过期的，改变其活动状态
 function huodongzhuangtai($db)
-{//监测拼团活动有没有过期的，改变其活动状态
+{
     $rrr = $db->select("select * from lkt_group_product order by group_id desc");
 
     if ($rrr) {
@@ -26,7 +27,7 @@ function huodongzhuangtai($db)
 
             if ($end_time < $data || $g_status == 3) {//处理过期的
 
-                $res = $db->update("UPDATE `lkt_group_product` SET `g_status`='3' WHERE id = " . $value->id);
+                $db->update("UPDATE `lkt_group_product` SET `g_status`='3' WHERE id = " . $value->id);
 
                 $r = $db->select("select * from lkt_group_open where group_id=$value->group_id and ptstatus =1 ");
 
@@ -57,8 +58,9 @@ function huodongzhuangtai($db)
 }
 
 
+//查询该拼团活动是否过期 1 过期，0 没有
 function is_overdue($db, $group_id)
-{//查询该拼团活动是否过期 1 过期，0 没有
+{
     $rrr = $db->select("select * from lkt_group_product where group_id =$group_id ");
     $cfg = unserialize($rrr[0]->group_data);
     $end_time = $cfg->endtime;
@@ -74,8 +76,9 @@ function is_overdue($db, $group_id)
 
 }
 
+//查询该拼团活动拼团人数
 function select_num($db, $group_id)
-{//查询该拼团活动拼团人数
+{
     $man_num = $db->select("select *  from lkt_group_product where group_id ='$group_id'");
 
     if ($man_num) {
@@ -90,10 +93,9 @@ function select_num($db, $group_id)
     return $groupman ? $groupman : 0;
 }
 
+//处理点击停止活动，处理该活动下面所有进行中拼团停止，拼团成功的则不变
 function guoqi($db, $group_id)
-{//处理点击停止活动，处理该活动下面所有进行中拼团停止，拼团成功的则不变
-    // $res = $db->update("UPDATE `lkt_group_product` SET `g_status`='3' WHERE group_id = ".$group_id);
-
+{
     $r = $db->select("select * from lkt_group_open where group_id=$group_id and ptstatus < 2 ");
 
     if ($r) {
@@ -116,8 +118,9 @@ function guoqi($db, $group_id)
     }
 }
 
+//取消订单或者取消支付或者过期未付款修改库存
 function addkuncun($db, $size_id, $pid, $num)
-{//取消订单或者取消支付或者过期未付款修改库存
+{
     // 根据商品id,修改商品数量
     $sql_p = "update lkt_configure set  num = num + $num where id = $size_id";
     $r_p = $db->update($sql_p);
@@ -132,8 +135,9 @@ function addkuncun($db, $size_id, $pid, $num)
     return;
 }
 
+//创建订单修改库存
 function delkuncun($db, $size_id, $pid, $num)
-{//创建订单修改库存
+{
 
     // 根据商品id,修改商品数量
     $sql_p = "update lkt_configure set  num = num - $num where id = $size_id";
@@ -148,8 +152,9 @@ function delkuncun($db, $size_id, $pid, $num)
     return;
 }
 
+//过期修改拼团未成功订单
 function up_status($db, $id, $ptcode)
-{//过期修改拼团未成功订单
+{
     $db->update("update lkt_group_open set ptstatus=3 where id='$id'");//时间到了拼团未满
     $db->update("update lkt_order set status=11,ptstatus = 3 where ptcode='$ptcode'");//订单状态
     // echo "update lkt_order set status=10,ptstatus = 3 where pid='$group_id'";
@@ -168,8 +173,9 @@ function up_status($db, $id, $ptcode)
     return;
 }
 
+//过期修改拼团成功订单
 function up_su_status($db, $id, $ptcode)
-{//过期修改拼团成功订单
+{
     $db->update("update lkt_group_open set ptstatus=2 where id='$id'");//时间到了拼团未满
     $db->update("update lkt_order set status=1,ptstatus = 2 where ptcode='$ptcode'");//订单状态
     $ds = $db->select("select sNo from lkt_order where ptcode='$ptcode'");
