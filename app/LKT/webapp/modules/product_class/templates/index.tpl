@@ -83,13 +83,7 @@ td a{
                     <td>{$item->add_date}</td>
                     <td style="width: 180px;" >
 
-						<a style="text-decoration:none" class="ml-5" href="javascript:void(0);" onclick="on_top(this,'{$item->cid}','{$item->sid}')">
-							<div style="align-items: center;font-size: 12px;display: flex;">
-                            	<div style="margin:0 auto;;display: flex;align-items: center;"> 
-                                    <img src="images/icon1/zd.png"/>&nbsp;置顶
-                            	</div>
-                            </div>
-						</a>
+						
 						<a style="text-decoration:none;" class="ml-5" onclick="del(this,'{$item->cid}','{$item->status}')" >
                         	<div style="align-items: center;font-size: 12px;display: flex;">
                                 <div style="margin:0 auto;display: flex;align-items: center;">
