@@ -314,11 +314,9 @@ Page({
 	},
 	onReady: function() {
 		var that = this;
-		setTimeout(function() {
-			that.setData({
-				remind: ''
-			});
-		}, 1000);
+		that.setData({
+      remind: ''
+    });
 	},
   //获取插件
   get_plug: function (e) {
