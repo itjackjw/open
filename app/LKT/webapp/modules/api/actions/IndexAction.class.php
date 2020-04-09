@@ -31,10 +31,10 @@ class IndexAction extends BaseAction
         }
 
         $shou = [];
-        $sql_cs = "select a.id,a.product_title,a.volume,a.imgurl,c.price 
+        $sql_cs = "select a.id,a.product_title,a.volume,a.imgurl,c.price,a.sort  
 from lkt_product_list AS a RIGHT JOIN (select min(price) price,pid from lkt_configure group by pid) AS c ON a.id = c.pid 
 where a.status = 0 and a.num >0 and s_type like '%4%' 
- order by a.volume desc limit  0,10";
+ order by a.sort asc,a.volume desc limit  0,10";
         $r_cs = $db->select($sql_cs);
         if ($r_cs) {
             foreach ($r_cs as $keyc => $valuec) {

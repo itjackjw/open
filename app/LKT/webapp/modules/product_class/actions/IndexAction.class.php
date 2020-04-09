@@ -37,7 +37,7 @@ class IndexAction extends Action {
     
         if($cid){ // 上级id
             // 根据分类id,查询所有下级
-            $sql = "select * from lkt_product_class where recycle = 0 and sid = '$cid' order by sort desc limit $start,$pagesize";
+            $sql = "select * from lkt_product_class where recycle = 0 and sid = '$cid' order by sort asc limit $start,$pagesize";
             $rr = $db->select($sql);
             if($rr){
                 // 有数据
@@ -59,7 +59,7 @@ class IndexAction extends Action {
                     }
                 }
             }else{ // 没数据，查询当前分类级别
-                $sql = "select level,sid from lkt_product_class where recycle = 0 and cid = '$cid' order by sort desc limit $start,$pagesize";
+                $sql = "select level,sid from lkt_product_class where recycle = 0 and cid = '$cid' order by sort asc limit $start,$pagesize";
                 $rrr = $db->select($sql);
                 $level = $rrr[0]->level+1;
                 $level01 = $rrr[0]->sid;
@@ -68,7 +68,7 @@ class IndexAction extends Action {
             $request->setAttribute("cid",$sid_1);
         }else{
             // 查询分类表，根据sort顺序排列
-            $sql = "select * from lkt_product_class where recycle = 0 and sid = 0 order by sort desc limit $start,$pagesize";
+            $sql = "select * from lkt_product_class where recycle = 0 and sid = 0 order by sort asc limit $start,$pagesize";
             $rr = $db->select($sql);
             $level = 0;
             $level01 = 0;

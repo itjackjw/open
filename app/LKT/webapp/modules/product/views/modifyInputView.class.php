@@ -33,6 +33,8 @@ class modifyInputView extends SmartyView {
         $this->setAttribute('imgurl',$request->getAttribute('imgurl'));
         $this->setAttribute('imgurls',$request->getAttribute('imgurls'));
         $this->setAttribute('freight_list',$request->getAttribute('freight_list'));
+        $this->setAttribute('sort',$request->getAttribute('sort'));
+
         $this->setTemplate("modify.tpl");
     }
 }

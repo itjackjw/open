@@ -305,8 +305,8 @@ class addAction extends Action
         //    开启事务
         $db->begin();
         // 发布产品
-        $sql = "insert into lkt_product_list(product_title,subtitle,product_class,brand_id,weight,imgurl,content,num,s_type,add_date,volume,freight,initial,status) " .
-            "values('$product_title','$subtitle','$product_class','$brand_id','$weight','$image','$content','$z_num','$type',CURRENT_TIMESTAMP,'$volume','$freight','$initial','2')";
+        $sql = "insert into lkt_product_list(product_title,subtitle,product_class,brand_id,weight,imgurl,content,num,s_type,add_date,volume,freight,initial,status,sort) " .
+            "values('$product_title','$subtitle','$product_class','$brand_id','$weight','$image','$content','$z_num','$type',CURRENT_TIMESTAMP,'$volume','$freight','$initial','2',0)";
         $id1 = $db->insert($sql, 'last_insert_id'); // 得到添加数据的id
         if ($id1) {
             $files = ($_FILES['imgurls']['tmp_name']);

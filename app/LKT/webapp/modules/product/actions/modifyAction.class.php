@@ -25,6 +25,7 @@ class modifyAction extends Action
         $sql = "select * from lkt_product_list where id = '$id'";
         $r = $db->select($sql);
         $status = 0;
+        $sort = 0 ;
         if ($r) {
             $product_title = $r[0]->product_title; // 产品标题
             $subtitle = $r[0]->subtitle; // 副标题
@@ -39,6 +40,8 @@ class modifyAction extends Action
             $freight_id = $r[0]->freight;
             $status = $r[0]->status; // 上下架状态
             $initial = $r[0]->initial;//初始值
+            $sort = $r[0]->sort;
+
         }
 
         $arr = explode(',', $s_type);
@@ -242,6 +245,8 @@ class modifyAction extends Action
         $request->setAttribute('imgurl', isset($imgurl) ? $imgurl : '');
         $request->setAttribute('imgurls', isset($imgurls) ? $imgurls : '');
         $request->setAttribute('freight_list', $freight_list);// 运费
+        $request->setAttribute('sort', $sort);
+
         return View :: INPUT;
     }
 
@@ -264,6 +269,7 @@ class modifyAction extends Action
         $initial = $request->getParameter('initial'); // 初始值
         $volume = trim($request->getParameter('volume')); //拟定销量
         $freight = $request->getParameter('freight'); // 运费
+        $sort = $request->getParameter('sort');
 
 
         if ($initial) {
@@ -338,7 +344,7 @@ class modifyAction extends Action
         $sql = "select * from lkt_product_list where id = '$id'";
         $r_arr = $db->select($sql);
         // 根据产品id,修改产品信息
-        $sql_1 = "update lkt_product_list set product_title='$product_title',product_class='$product_class',brand_id ='$brand_id',weight='$weight',s_type='$type',num='$z_num',content='$content',imgurl='$image',subtitle='$subtitle',volume='$volume',freight='$freight',initial='$initial' where id = '$id'";
+        $sql_1 = "update lkt_product_list set product_title='$product_title',product_class='$product_class',brand_id ='$brand_id',weight='$weight',s_type='$type',num='$z_num',content='$content',imgurl='$image',subtitle='$subtitle',volume='$volume',freight='$freight',initial='$initial',sort='$sort' where id = '$id'";
         $r_update = $db->update($sql_1);
 
         if ($r_update == -1) {

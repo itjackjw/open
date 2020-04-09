@@ -193,7 +193,7 @@ function imgShow(outerdiv, innerdiv, bigimg, _this){
             <div class="col-4"> </div>
         </div>
 
-        <div class="row cl" style="display: none;">
+        <div class="row cl" >
             <label class="form-label col-4"><span class="c-red"></span>排序号：</label>
             <div class="formControls col-4">
                 <input type="text" class="input-text" name="sort" value="{$sort}" datatype="*6-18" style="width: 260px;">

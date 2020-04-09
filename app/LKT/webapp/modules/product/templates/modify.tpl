@@ -478,6 +478,14 @@
                     <input type="number" class="input-text" value="{$volume}" name="volume" id="volumeId">
                 </div>
             </div>
+
+
+            <div class="row cl">
+                <label class="form-label col-2">排序：</label>
+                <div class="formControls col-2">
+                    <input type="number" class="input-text" value="{$sort}" name="sort" id="sort">
+                </div>
+            </div>
             
            
         <div class="row cl">

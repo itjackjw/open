@@ -19,7 +19,7 @@ class searchAction extends BaseAction {
     $img = $appConfig['imageRootUrl'];
 
     //查询商品并分类显示返回JSON至小程序
-    $sql_c = "select cid,pname,img,bg from lkt_product_class where sid=0 and recycle != 1 order by sort desc";
+    $sql_c = "select cid,pname,img,bg from lkt_product_class where sid=0 and recycle != 1 order by sort asc";
     $r_c = $db->select($sql_c);
    
     $twoList = [];
@@ -28,7 +28,7 @@ class searchAction extends BaseAction {
     $icons=[];
     if($r_c){
         foreach ($r_c as $key => $value) {
-            $sql_e = 'select cid,pname,img from lkt_product_class where sid=\''.$value->cid.'\' and recycle != 1 order by sort ';
+            $sql_e = 'select cid,pname,img from lkt_product_class where sid=\''.$value->cid.'\' and recycle != 1 order by sort asc';
             $r_e = $db->select($sql_e);
             $son=[];
             if($r_e){
@@ -185,7 +185,7 @@ order by $select $sort
     }
 
       
-        $sql = "select * from lkt_product_list as a where a.recycle = 0 and a.num >0 and a.status = 0 and  a.product_class like '%-$id-' order by status asc,a.add_date desc,a.sort desc limit $start,$end ";
+        $sql = "select * from lkt_product_list as a where a.recycle = 0 and a.num >0 and a.status = 0 and  a.product_class like '%-$id-' order by sort asc,status asc,a.add_date desc,a.sort desc limit $start,$end ";
         $r = $db->select($sql);
         $status_num = 0;
         if($r){

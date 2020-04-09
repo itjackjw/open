@@ -194,6 +194,7 @@ form .select{
                 <th>库存</th>
                 <th>销量</th>
                 <th>状态</th>
+                <th>排序</th>
                 <th style="width: 250px;">操作</th>
             </tr>
             </thead>
@@ -226,6 +227,7 @@ form .select{
                         {else}<span >已下架</span>{/if}
                         
                     </td>
+                    <td style="min-width: 40px;">{$item->sort}</td>
                     <td style="width: 250px;">
                         <a style="text-decoration:none" class="ml-5" href="index.php?module=product&action=see&id={$item->id}&product_title={$item->product_title}&url=Index&uploadImg={$uploadImg}" title="查看">
                             <div style="align-items: center;font-size: 12px;display: flex;">

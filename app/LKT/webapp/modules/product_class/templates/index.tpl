@@ -67,6 +67,7 @@ td a{
                     <th>分类图片</th>
                     <th>分类名称</th>
                     <th>分类级别</th>
+                    <th>排序(从小到大)</th>
                     <th>添加时间</th>
                     <th>操作</th>
                 </tr>
@@ -78,6 +79,7 @@ td a{
                     <td>{if $item->img != ''}<image class="pimg" src="{$uploadImg}{$item->img}" style="width: 50px;height:50px;"/>{else}<span>暂无图片</span>{/if}</td>
                     <td>{$item->pname}</td>
                     <td>{$level_xs}</td>
+                    <td>{$item->sort}</td>
                     <td>{$item->add_date}</td>
                     <td style="width: 180px;" >
 
