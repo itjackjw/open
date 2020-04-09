@@ -688,11 +688,9 @@ Page({
                 that.up_order(that.data.order_sn);
               }
 
-              setTimeout(function () {
-                wx.redirectTo({
-                  url: '../order/detail?orderId=' + that.data.orderId
-                })
-              }, 1000);
+              wx.redirectTo({
+                url: '../order/detail?orderId=' + that.data.orderId
+              });
 						},
 						fail: function(res) {
               that.setData({

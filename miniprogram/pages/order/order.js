@@ -84,20 +84,16 @@ Page({
   //下拉刷新
   onPullDownRefresh: function() {
     wx.showNavigationBarLoading() //在标题栏中显示加载
-    setTimeout(function() {
-      wx.hideNavigationBarLoading() //完成停止加载
-      wx.stopPullDownRefresh() //停止下拉刷新
-    }, 1500);
     this.loadOrderList();
+    wx.hideNavigationBarLoading() //完成停止加载
+    wx.stopPullDownRefresh() //停止下拉刷新
   },
   //页面加载完成函数
   onReady: function() {
     var that = this;
-    setTimeout(function() {
-      that.setData({
-        remind: ''
-      });
-    }, 1000);
+    that.setData({
+      remind: ''
+    });
   },
   onLoad: function(options) {
     if (options.otype) {
@@ -419,11 +415,9 @@ Page({
                     showCancel: false,
                     confirmText: "确定",
                     success: function(res) {
-                      setTimeout(function() {
-                        wx.redirectTo({
-                          url: '../order/detail?orderId=' + oid
-                        })
-                      }, 1000);
+                      wx.redirectTo({
+                        url: '../order/detail?orderId=' + oid
+                      });
                     }
 
                   });
