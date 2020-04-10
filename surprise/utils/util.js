@@ -2,12 +2,9 @@ function formatTime(date) {
   var year = date.getFullYear()
   var month = date.getMonth() + 1
   var day = date.getDate()
-
   var hour = date.getHours()
   var minute = date.getMinutes()
   var second = date.getSeconds()
-
-
   return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
 }
 
@@ -22,7 +19,6 @@ function getUesrBg(that){
     method: 'post',
     data: {
       openid: that.globalData.userInfo.openid,
-
     },
     header: {
       'Content-Type': 'application/x-www-form-urlencoded'
@@ -34,13 +30,9 @@ function getUesrBg(that){
           index: 3,
           text: num,
         })
-      }
-      
-
-
+      }     
     },
     fail: function (e) {
-
     },
   });
 }
@@ -51,7 +43,6 @@ function getUesrBgplus(that,app,is) {
       method: 'post',
       data: {
         openid: app.globalData.userInfo.openid,
-
       },
       header: {
         'Content-Type': 'application/x-www-form-urlencoded'
@@ -74,11 +65,8 @@ function getUesrBgplus(that,app,is) {
             index: 3
           })
         }
-
-
       },
       fail: function (e) {
-
       },
     });
 }

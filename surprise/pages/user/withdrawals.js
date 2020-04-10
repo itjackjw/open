@@ -15,11 +15,9 @@ Page({
   //页面加载完成函数
   onReady: function () {
     var that = this;
-    setTimeout(function () {
-      that.setData({
-        remind: ''
-      });
-    }, 1000);
+    that.setData({
+      remind: ''
+    });
   },
   /**
    * 生命周期函数--监听页面加载
@@ -160,36 +158,28 @@ Page({
         icon: 'loading',
         duration: 1500
       })
-      setTimeout(function () {
-        wx.hideToast()
-      }, 2000)
+      wx.hideToast()
     } else if (res.detail.value.Bank_name.length == 0){
       wx.showToast({
         title: '银行名不得为空!',
         icon: 'loading',
         duration: 1500
       })
-      setTimeout(function () {
-        wx.hideToast()
-      }, 2000)
+      wx.hideToast()
     } else if (res.detail.value.Cardholder.length == 0) {
       wx.showToast({
         title: '持卡人不得为空!',
         icon: 'loading',
         duration: 1500
       })
-      setTimeout(function () {
-        wx.hideToast()
-      }, 2000)
+      wx.hideToast()
     } else if (res.detail.value.Bank_card_number.length == 0) {
       wx.showToast({
         title: '卡号不得为空!',
         icon: 'loading',
         duration: 1500
       })
-      setTimeout(function () {
-        wx.hideToast()
-      }, 2000)
+      wx.hideToast()
     }else{
       var that = this;
       wx.request({
