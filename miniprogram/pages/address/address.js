@@ -239,27 +239,21 @@ Page({
         icon: 'loading',
         duration: 1500
       })
-      setTimeout(function () {
-        wx.hideToast()
-      }, 2000)
+      wx.hideToast()
     } else if (e.detail.value.mobile.length == 0) {
       wx.showToast({
         title: '电话不得为空!',
         icon: 'loading',
         duration: 1500
       })
-      setTimeout(function () {
-        wx.hideToast()
-      }, 2000)
+      wx.hideToast()
     } else if (e.detail.value.province.length == 0) {
       wx.showToast({
         title: '城市不得为空!',
         icon: 'loading',
         duration: 1500
       })
-      setTimeout(function () {
-        wx.hideToast()
-      }, 2000)
+      wx.hideToast()
     } else {
       var cartId = this.data.cartId,
       mobile = e.detail.value.mobile;

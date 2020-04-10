@@ -94,14 +94,12 @@ Page({
     console.log(e)
     var that = this
     WxSearch.wxSearchAddHisKey(that);
-    setTimeout(function () {
-      var value = that.data.wxSearchData.value;
-      if (value){
+    var value = that.data.wxSearchData.value;
+    if (value){
         wx.navigateTo({
           url: "../listdetail/listdetail?keyword=" + value
         })
-      }
-    }, 500);
+    }
   },
   wxSearchInput: function (e) {
     console.log(e)
