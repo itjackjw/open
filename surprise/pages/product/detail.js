@@ -221,13 +221,11 @@ Page({
               url: '../../pages/draw/draw'
             });
           } else {
-            setTimeout(function () {
-              util.getUesrBgplus(that, app, true)
-              util.getUesrBgplus(that, app, false)
-              wx.switchTab({
+            util.getUesrBgplus(that, app, true)
+            util.getUesrBgplus(that, app, false)
+            wx.switchTab({
                 url: '../index/index'
-              })
-            }, 2000);
+            });
             wx.showToast({
               title: res.data.err,
               duration: 2000,

@@ -159,9 +159,7 @@ Page({
     }
 
     if (that.data.pages_sx) {
-      setTimeout(function () {
-        that.Settlement();
-      }, 500);
+      that.Settlement();
     }
 
   },
@@ -223,20 +221,16 @@ Page({
             duration: 2000,
           });
           if (status == 0) {
-            setTimeout(function () {
-              util.getUesrBgplus(that, app, false)
-              wx.navigateBack({
+            util.getUesrBgplus(that, app, false)
+            wx.navigateBack({
                 delta: 1
-              })
-            }, 2000);
+            })
 
           } else {
-            setTimeout(function () {
-              util.getUesrBgplus(that, app, false)
-              wx.navigateBack({
+            util.getUesrBgplus(that, app, false)
+            wx.navigateBack({
                 delta: 1
-              })
-            }, 2000);
+            });
           }
         }
       },

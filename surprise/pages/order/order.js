@@ -417,11 +417,9 @@ Page({
 										showCancel: false,
 										confirmText: "确定",
 										success: function(res) {
-											setTimeout(function() {
-												wx.redirectTo({
-													url: '../order/detail?orderId=' + oid
-												})
-											}, 1000);
+											wx.redirectTo({
+												url: '../order/detail?orderId=' + oid
+											});
 										}
                     
 									});
