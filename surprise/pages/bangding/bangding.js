@@ -267,9 +267,7 @@ Page({
         icon: 'loading',
         duration: 1500
       })
-      setTimeout(function () {
-        wx.hideToast()
-      }, 2000)
+      wx.hideToast()
     }else {
      
       wx.request({
@@ -305,11 +303,9 @@ Page({
               duration: 1500
             });
           }
-            setTimeout(function () {
-              wx.navigateBack({
-                delta: 1
-              })
-            }, 2000);
+          wx.navigateBack({
+            delta: 1
+          });
         },
         error: function (e) {
           wx.showToast({

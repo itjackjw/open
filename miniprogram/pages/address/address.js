@@ -289,11 +289,9 @@ Page({
                   duration: 1000
                 });
                 //成功后返回上一页面
-                setTimeout(function () {
-                  wx.navigateBack({
-                    delta: 1
-                  })
-                }, 1500);
+                wx.navigateBack({
+                  delta: 1
+                });
               } 
             },
             fail: function () {

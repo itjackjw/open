@@ -90,11 +90,9 @@ Page({
             title: '已经评论过了哦，亲!',
             duration: 2000
           });
-          setTimeout(function () {
-            wx.navigateBack({
-              delta: 2
-            })
-          }, 2000);
+          wx.navigateBack({
+            delta: 2
+          });
         }
       },
       fail: function () {
@@ -238,16 +236,9 @@ Page({
             title: res.data.succ,
             duration: 2000
           });
-          setTimeout(function () {
-            // wx.navigateTo({
-            //   url: '../order/order?currentTab=4&order_type1=evaluate&otype=pay'
-            // })
-
-            wx.navigateBack({
-              delta: 1
-            })
-
-          }, 2000);
+          wx.navigateBack({
+            delta: 1
+          });
         } else {
           wx.showToast({
             title: res.data.err,
