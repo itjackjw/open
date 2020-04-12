@@ -9,24 +9,24 @@
 require_once('BaseAction.class.php');
 
 class userAction extends BaseAction {
-    
+
     // 请求我的数据
     public function index(){
         $db = DBAction::getInstance();
         $request = $this->getContext()->getRequest();
         // 获取信息
         $openid = addslashes($_POST['openid']); // 微信id
-        
+
         $appConfig = $this->getAppInfo();
         $img = $appConfig['imageRootUrl'];
         $company = $appConfig['appName'];
         $logo = $appConfig['logo'];
-        
-        
+
+
         // 获取文章信息
         $sql_2 = "select Article_id,Article_prompt,Article_title from lkt_article";
         $r_2 = $db->select($sql_2);
-   
+
         // 查询会员信息
         $sql = "select * from lkt_user where wx_id = '$openid' ";
         $r = $db -> select($sql);
@@ -50,7 +50,7 @@ class userAction extends BaseAction {
         }else{
             $tjr = false;
         }
-        
+
         //个人中心小红点
         $num_arr =[0,1,2,3,4];
         $res_order= [];
@@ -83,7 +83,7 @@ class userAction extends BaseAction {
                 }else{
                     $sql_order = "select num from lkt_order where status = '$value' and  user_id = '$user_id'" ;
                     $order_num = $db -> selectrow($sql_order);
-                    $res_order[$key] =  $order_num; 
+                    $res_order[$key] =  $order_num;
                 }
             }
         }
@@ -121,7 +121,7 @@ class userAction extends BaseAction {
         exit();
         return;
     }
-    
+
     // 验证用户密码
     public function verify_paw(){
         $db = DBAction::getInstance();
@@ -193,7 +193,7 @@ class userAction extends BaseAction {
                 $user['Cardholder'] = ''; // 持卡人
                 $user['Bank_card_number'] = ''; // 银行卡号
             }
-        
+
 
             // 根据推荐人等于会员编号,查询推荐人总数
             $sql = "select count(Referee) as a from lkt_user where Referee = '$user_id'";
@@ -238,7 +238,7 @@ class userAction extends BaseAction {
          $detailed_commission = $db -> select("select sum(s_money) as s_money from lkt_detailed_commission where Referee = '$user_id' and status =1 and recycle =0");
          $detailed_commission1 = $db -> select("select sum(s_money) as s_money from lkt_detailed_commission where Referee = '$user_id' and status =3");
             if($detailed_commission && $detailed_commission[0]->s_money !='null'){
-                
+
                if($detailed_commission1 && $detailed_commission1[0]->s_money !='null'){
                     $detailed_commission =$detailed_commission[0]->s_money - $detailed_commission1[0]->s_money;
                     if($detailed_commission <0){
@@ -247,13 +247,13 @@ class userAction extends BaseAction {
                }else{
                     $detailed_commission =$detailed_commission[0]->s_money;
                }
-                
+
             }else{
                 $detailed_commission='0';
             }
             echo json_encode(array('status'=>1,'user'=>$user,'list_1'=>$list_1,'list_2'=>$list_2,'list_3'=>$list_3,'detailed_commission'=>$detailed_commission));
             exit();
-        
+
             return;
         }
     }
@@ -269,7 +269,7 @@ class userAction extends BaseAction {
             echo json_encode(array('status'=>0,'info'=>'手机号码没获取!'));
             exit();
         }else{
-            
+
             $appConfig = $this->getAppInfo();
 
             $appid = $appConfig['appid'];
@@ -422,7 +422,7 @@ class userAction extends BaseAction {
         $request = $this->getContext()->getRequest();
         $Bank_card_number = $request->getParameter('Bank_card_number');
         // 根据卡号,查询银行名称
-        require_once('bankList.php'); 
+        require_once('bankList.php');
         $r = $this->bankInfo($Bank_card_number,$bankList);
         if($r == ''){
             echo json_encode(array('status'=>0,'err'=>'卡号不正确!'));
@@ -435,26 +435,26 @@ class userAction extends BaseAction {
     }
 
     // 验证卡号是否跟银行匹配
-    function bankInfo($card,$bankList) { 
-      $card_8 = substr($card, 0, 8); 
-      if (isset($bankList[$card_8])) { 
-        return $bankList[$card_8]; 
-      } 
-      $card_6 = substr($card, 0, 6); 
-      if (isset($bankList[$card_6])) { 
-        return $bankList[$card_6]; 
-      } 
-      $card_5 = substr($card, 0, 5); 
-      if (isset($bankList[$card_5])) { 
-        return $bankList[$card_5]; 
-      } 
-      $card_4 = substr($card, 0, 4); 
-      if (isset($bankList[$card_4])) { 
-        return $bankList[$card_4]; 
-      } 
-      return ''; 
-    } 
-    
+    function bankInfo($card,$bankList) {
+      $card_8 = substr($card, 0, 8);
+      if (isset($bankList[$card_8])) {
+        return $bankList[$card_8];
+      }
+      $card_6 = substr($card, 0, 6);
+      if (isset($bankList[$card_6])) {
+        return $bankList[$card_6];
+      }
+      $card_5 = substr($card, 0, 5);
+      if (isset($bankList[$card_5])) {
+        return $bankList[$card_5];
+      }
+      $card_4 = substr($card, 0, 4);
+      if (isset($bankList[$card_4])) {
+        return $bankList[$card_4];
+      }
+      return '';
+    }
+
     // 打开红包
     public function share(){
         $db = DBAction::getInstance();
@@ -463,7 +463,7 @@ class userAction extends BaseAction {
         $n = addslashes($_POST['n']); // 参数
         $id = addslashes($_POST['id']); // 新闻id
         $openid = addslashes($_POST['openid']); // 微信id
-        
+
         if($n == 0){
             // 根据新闻id,查询新闻信息
             $sql = "select * from lkt_news_list where id = '$id'";
@@ -574,7 +574,7 @@ class userAction extends BaseAction {
         $openid = addslashes($_POST['openid']); // 微信id
         $sql = "select * from lkt_user where wx_id = '$openid'";
         $r = $db->select($sql);
-        if($r)
+        if($r){
             $sheng = [];
             $shi = [];
             $xian = [];
@@ -627,6 +627,7 @@ class userAction extends BaseAction {
             exit();
         }
         return;
+
     }
     // 根据省查询市
     public function getCityArr(){
