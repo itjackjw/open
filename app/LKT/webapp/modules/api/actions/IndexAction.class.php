@@ -42,8 +42,7 @@ where a.status = 0 and a.num >0 and s_type like '%4%'
                 $shou[] = $valuec;
             }
         }
-        //查询用户等级判断是否升级
-        $distribus = [];
+
         //列出等级关系
         $distributor = [];
         //查询商品并分类显示返回JSON至小程序
