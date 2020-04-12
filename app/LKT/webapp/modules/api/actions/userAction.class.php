@@ -570,19 +570,11 @@ class userAction extends BaseAction {
 
     public function AddressManagement(){
         $db = DBAction::getInstance();
-        $request = $this->getContext()->getRequest();
         // 接收信息
         $openid = addslashes($_POST['openid']); // 微信id
         $sql = "select * from lkt_user where wx_id = '$openid'";
         $r = $db->select($sql);
-        if($r){
-            $user_id = $r[0]->user_id;
-            $user_name = $r[0]->user_name;
-            $mobile = $r[0]->mobile;
-            $detailed_address = $r[0]->detailed_address;
-            $province = $r[0]->province;
-            $city = $r[0]->city;
-            $county = $r[0]->county;
+        if($r)
             $sheng = [];
             $shi = [];
             $xian = [];
@@ -639,7 +631,6 @@ class userAction extends BaseAction {
     // 根据省查询市
     public function getCityArr(){
         $db = DBAction::getInstance();
-        $request = $this->getContext()->getRequest();   
         $count = addslashes($_POST['count']); // 接收前台传过来省的行数
         if($count == ''){
             $count = 0;
@@ -748,10 +739,8 @@ class userAction extends BaseAction {
         $sql = "select * from admin_cg_group a where a.G_ParentID='$GroupID'";
         $r = $db->select($sql);
         if($r){
-            $GroupID = $r[$xuan]->GroupID;
             $county = $r[$xuan]->G_CName;
         }else{
-            $GroupID = 0;
             $county = '';
         }
 
@@ -763,7 +752,6 @@ class userAction extends BaseAction {
     // 点击保存
     public function SaveAddress(){
         $db = DBAction::getInstance();
-        $request = $this->getContext()->getRequest();
         // 获取小程序传过来的值
         $openid = addslashes($_POST['openid']);
         $user_name = addslashes($_POST['user_name']); // 联系人
@@ -833,7 +821,6 @@ class userAction extends BaseAction {
 
     public function selectuser(){
         $db = DBAction::getInstance();
-        $request = $this->getContext()->getRequest();
         $user_id = addslashes($_POST['user_id']);
         $openid = addslashes($_POST['openid']);
         $sql = "select * from lkt_user where user_id = '$user_id'";
@@ -864,7 +851,6 @@ class userAction extends BaseAction {
             $transfer_multiple = $r0001[0]->transfer_multiple;
             $user['transfer_multiple'] = $transfer_multiple;
         }else{
-            $transfer_multiple = 0;
             $user['transfer_multiple'] = '';
         }
 
