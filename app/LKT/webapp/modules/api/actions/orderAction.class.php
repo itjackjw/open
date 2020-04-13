@@ -56,7 +56,6 @@ class orderAction extends BaseAction {
     public function index(){
         
         $db = DBAction::getInstance();
-        $request = $this->getContext()->getRequest();
         // 查询系统参数
         $res = "";
         $appConfig = $this->getAppInfo();
@@ -123,7 +122,7 @@ class orderAction extends BaseAction {
                     // 根据优惠券id,查询优惠券信息
                     $sql = "select * from lkt_coupon where id = '$coupon_id' ";
                     $rr = $db->select($sql);
-                    // var_dump($sql);
+
                     if($rr){
                         $expiry_time = $rr[0]->expiry_time; // 优惠券到期时间
                         $money = $rr[0]->money; // 优惠券金额
@@ -176,7 +175,7 @@ class orderAction extends BaseAction {
                 $product = [];
                 if($rew['list']){
                     foreach ($rew['list'] as $key => $values) {
-                        // print_r($values);die;
+
                         if(strpos($values -> r_sNo, 'PT') !== false){//通过订单号查询拼团订单
 
                         	$rew['man_num'] =select_num($db,$v->pid);//查询该拼团活动拼团人数 
@@ -207,14 +206,14 @@ class orderAction extends BaseAction {
                         if($res_o == $res_d){
                             //如果订单数量相等 则修改父订单状态
                             $sql = "update lkt_order set status = '$r_status' where sNo = '$sNo'";
-                            $r = $db->update($sql);
+                            $db->update($sql);
                         }else{
                             $res11 = $db->select("select min(r_status) as r_status from lkt_order_details where r_sNo = '$sNo'  AND r_status <= 6 and r_status >= 0 ");
                             $res22 = $db->select("select min(status) as status from lkt_order where sNo = '$sNo'");
                             if($res11[0]->r_status>$res22[0]->status){
                                 $dd=$res11[0]->r_status;
                                  $sql = "update lkt_order set status = '$dd' where sNo = '$sNo'";
-                                 $r = $db->update($sql);
+                                 $db->update($sql);
                             }
                            
                         }
@@ -250,7 +249,7 @@ class orderAction extends BaseAction {
                 $r = $db->update($sql);
                 // 根据订单号,修改订单表
                 $sql02 = "update lkt_order set status = 6,arrive_time = '$time' where sNo = '$sNo'";
-                $rew02 = $db->update($sql02);
+                $db->update($sql02);
             }else{
                 // 根据订单详情id,修改订单详情
                 $sql = "update lkt_order_details set r_status = 3,arrive_time = '$time' where id = '$id'";
@@ -588,7 +587,6 @@ class orderAction extends BaseAction {
             if($r){
                 if($r[0]->otype == 'pt') {
                     $man_num = $db -> select("select group_level from lkt_group_product where group_id='$pid' and attr_id=$sid");
-                    // print_r("select group_level from lkt_group_product where group_id='$pid' and attr_id=$sid");die;
                     $group_level = unserialize($man_num[0] -> group_level);
                     foreach ($group_level as $k_ => $v_){
                         $man_num = $k_;   //几人团 
@@ -614,7 +612,6 @@ class orderAction extends BaseAction {
         $id = addslashes($_POST['id']); // 订单详情id
         $oid = addslashes($_POST['oid']); // 订单号
         $otype = addslashes($_POST['otype']); // 状态
-        // $re_type = $_POST['re_type']; // 退货类型
         $re_type = addslashes(trim($request->getParameter('re_type')));
         $back_remark = htmlentities($_POST['back_remark']); // 退货原因
         $res = $db->select("select * from lkt_order_details where id = '$id'");//查询售后之前的状态
@@ -642,7 +639,6 @@ class orderAction extends BaseAction {
 
             //如果订单数量相等 则修改父订单状态 
             $sql = "update lkt_order set status = 4 where sNo = '$oid'";
-            // print_r($sql);die;
             $r = $db->update($sql);
         }
         if($r>0){
@@ -817,7 +813,7 @@ class orderAction extends BaseAction {
         $data = serialize($array);
 
         $sql_u = "update lkt_order set trade_no='$trade_no' where sNo = '$order_id' ";
-        $r_u = $db->update($sql_u);
+        $db->update($sql_u);
 
         $sql = "insert into lkt_order_data(trade_no,data,addtime) values('$trade_no','$data',CURRENT_TIMESTAMP)";
         $rid = $db->insert($sql);
