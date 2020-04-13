@@ -46,21 +46,14 @@ App({
   },
   onPullDownRefresh: function() {
     wx.showNavigationBarLoading() //在标题栏中显示加载
-    //模拟加载
-    setTimeout(function() {
-      wx.hideNavigationBarLoading() //完成停止加载
-      wx.stopPullDownRefresh() //停止下拉刷新
-    }, 1500);
+    wx.hideNavigationBarLoading() //完成停止加载
+    wx.stopPullDownRefresh() //停止下拉刷新
   },
   getUserInfo: function(cb, stype, uesr, callback) {
     var that = this;
-
     if (this.d.one) {
-
       this.d.one = false;
-      setTimeout(function() {
-        that.getUserInfo(cb, stype);
-      }, 1500);
+      that.getUserInfo(cb, stype);
     } else {
       this.d.one = true;
       //调用登录接口  已更新登入接口  
@@ -68,7 +61,6 @@ App({
         success: function(res) {
           var code = res.code;
           that.globalData.code = res.code;
-
           that.getUserSessionKey(code, cb, uesr, callback);
         }
       });
@@ -155,7 +147,6 @@ App({
     }
   },
   globalData: {
-
     userInfo: {},
     userlogin: wx.getStorageSync('userlogin'),
   },
