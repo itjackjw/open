@@ -544,9 +544,9 @@ $(function() {
         }
     })
 })
-var isShow = false
+
 $(function(){
-    var ue = UE.getEditor('editor');    
+    UE.getEditor('editor');
 });
 
 KindEditor.ready(function (K) {
@@ -560,7 +560,6 @@ KindEditor.ready(function (K) {
         editor.loadPlugin('image', function () {
             editor.plugin.imageDialog({
                 showRemote : true, //网络图片不开启
-                //showLocal : false, //不开启本地图片上传
                 imageUrl: K('#picurl').val(),
                 clickFn: function (url, title, width, height, border, align) {
                     K('#picurl').val(url);
@@ -628,14 +627,11 @@ KindEditor.ready(function (K) {
                 console.log(unit)
                 page.unit = $("#unit").val();
                 $(".unit").val(unit);
-                // $("#unit1").prepend(unit);
             });
             var map = new Map();
             var leve1 = "{/literal}{$data.leve1}{literal}"
             var leve2 = "{/literal}{$data.leve2}{literal}"
             var leve3 = "{/literal}{$data.leve3}{literal}"
-            var leve4 = "{/literal}{$data.leve4}{literal}"
-            var leve5 = "{/literal}{$data.leve5}{literal}"
             var listA = [
                 {title:'一级佣金比例：',num:leve1?leve1:0,lev:1,name:'leve1'},
                 {title:'二级佣金比例：',num:leve2?leve2:0,lev:2,name:'leve2'},
@@ -957,20 +953,7 @@ KindEditor.ready(function (K) {
         });
     }
 
-    function resetButton(){
-        $('#product_numberId').val("");
-        $('#product_titleId').val("");
-        $('#subtitleId').val("");
-        $("#product_classId option[value='0']").attr("selected", "selected");
-        $("#brand_classId option[value='0']").attr("selected", "selected");
-        $('#weightId').val("");
-        $('#sex-1').attr("checked","");
-        $('#sex-2').attr("checked","");
-        $('#sex-3').attr("checked","");
-        $('#volumeId').val("");
-        $("#freightId option[value='0']").attr("selected", "selected");
-        $('#ueditor_0').contents().find('p').html(""); 
-    }
+
     // 表单验证
     function verificationForm(){
 
@@ -1021,21 +1004,7 @@ KindEditor.ready(function (K) {
         return verificationForm()
     }
     
-    function check1() {
-        $.ajax({
-            cache: true,
-            type: "GET",
-            dataType: "json",
-            url: 'index.php?module=product&action=add&m=del',
-            data: $('#form1').serialize(), // 你的formid
-            async: true,
-            success: function(data) {
-                if(data.suc) {
-                    location.href = "index.php?module=product";
-                }
-            }
-        });
-    }
+
 </script>
 {/literal}
 </body>
