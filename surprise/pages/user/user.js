@@ -188,7 +188,7 @@ Page({
     var that = this;
     var score;
     wx.request({
-      url: app.d.ceshiUrl + '&action=sign&m=integral',
+      url: app.d.ceshiUrl + '&action=pi&p=sign&c=Home&m=integral',
       method: 'post',
       data: {
         openid: app.globalData.userInfo.openid,
