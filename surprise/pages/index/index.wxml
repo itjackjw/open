@@ -66,21 +66,21 @@
       <!-- 首页图标 -->
       <view class="nav-area">
         <view class="crbox nav-menu">
-          <navigator class="nav-view" open-type="navigate" url="../group_buy/group" hover-class="none">
+          <view bindtap="getqx" class="nav-view" open-type="navigate" hover-class="none" data-name="拼团" data-path="../group_buy/group" >
             <image src='/images/icons/nav01.png'></image> <view class="n-text">火热拼团</view>
-          </navigator><!--end nav-view-->
+          </view><!--end nav-view-->
 
-          <navigator class="nav-view" open-type="navigate" url="../coupon/index?currentTab=0&type=receive" hover-class="none">
+          <view bindtap="getqx" class="nav-view" open-type="navigate"  hover-class="none"  data-name="优惠券" data-path="../coupon/index?currentTab=0&type=receive">
             <image src='/images/icons/nav02.png'></image> <view class="n-text">领优惠券</view>
-          </navigator><!--end nav-view-->
+          </view><!--end nav-view-->
 
-          <navigator class="nav-view" open-type="navigate" url="../sign_in/sign_in" hover-class="none">
+          <view bindtap="getqx" class="nav-view" open-type="navigate" hover-class="none" data-name="签到" data-path="../sign_in/sign_in" >
             <image src='/images/icons/nav03.png'></image> <view class="n-text">签到有礼</view>
-          </navigator><!--end nav-view-->
+          </view><!--end nav-view-->
 
-          <navigator class="nav-view" open-type="navigate" url="../order/order?currentTab=0&otype=pay" hover-class="none">
+          <view bindtap="getqx" class="nav-view" open-type="navigate"  hover-class="none" data-name="订单" data-path="../order/order?currentTab=0&otype=pay">
             <image src='/images/icons/nav04.png'></image> <view class="n-text">我的订单</view>
-          </navigator><!--end nav-view-->
+          </view><!--end nav-view-->
         </view><!--end nav-menu-->
       </view><!--end nav-area-->
       <!-- 首页图标结束 -->

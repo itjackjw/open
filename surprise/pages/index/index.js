@@ -624,7 +624,7 @@ Page({
   getqx(event){
     let name = event.currentTarget.dataset.name
 
-    if (name === "签到" || name === "钱包"){
+    if (name === "签到" || name === "订单" || name === "优惠券"){
       if (app.userlogin(1)) {
         this.pop.clickPup(this)
         return
