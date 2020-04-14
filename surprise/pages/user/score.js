@@ -78,7 +78,7 @@ Page({
   getRequest: function () {
      var that = this
      wx.request({
-       url: app.d.ceshiUrl + '&action=sign&m=integral',
+       url: app.d.ceshiUrl + '&action=pi&p=sign&c=Home&m=integral',
        method: 'post',
        data: {
          openid: app.globalData.userInfo.openid,
