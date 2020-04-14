@@ -355,9 +355,7 @@ class userAction extends BaseAction {
             $jine = $amoney; // 提现金额
             //开启整数倍提现
             if($multiple){
-                if($amoney%$multiple == 0){
-
-                }else{
+                if($amoney%$multiple != 0){
                     echo json_encode(array('status'=>0,'info'=>'提现金额需要是'.$multiple.'的倍数'));
                     exit();
                 }
@@ -392,7 +390,7 @@ class userAction extends BaseAction {
                     $bank_id = $db->insert($sql,'affectedrows');
                 }
                 $sql = "update lkt_user set money = money - '$jine' where wx_id = '$openid'";
-                $res = $db->update($sql);
+                $db->update($sql);
                 // 在提现列表里添加一条数据
                 $sql = "insert into lkt_withdraw (name,user_id,wx_id,mobile,bank_id,money,s_charge,status,add_date) values ('$user_name','$user_id','$openid','$mobile','$bank_id','$amoney','$cost',0,CURRENT_TIMESTAMP)";
                 $res = $db->insert($sql);

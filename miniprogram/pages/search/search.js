@@ -35,6 +35,9 @@ Page({
           curNav: res.data.List[0].cate_id
         });
         that.onReady();
+        that.setData({
+          remind: ''
+        });
       },
       fail: function () {
         wx.showToast({
@@ -64,6 +67,7 @@ Page({
       }
     }),
     this.search();
+    
   },
   //事件处理函数  
   switchRightTab: function (e) {
@@ -137,9 +141,7 @@ Page({
   // 生命周期函数--监听页面初次渲染完成
   onReady: function () {
     var that = this;
-    that.setData({
-      remind: ''
-    });
+    
     //初始化的时候渲染wxSearchdata
     WxSearch.init(that, 43, this.data.hotwords);
     WxSearch.initMindKeys(['laiketui.com', '微信小程序开发', '微信开发', '微信小程序']);
