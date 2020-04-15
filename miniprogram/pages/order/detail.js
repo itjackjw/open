@@ -380,7 +380,6 @@ Page({
         },
         success: function (res) {
           var status = res.data.status;
-
           var type1 = res.data.type1;
           var dr = res.data.dr;
           var wx_id = res.data.wx_id;

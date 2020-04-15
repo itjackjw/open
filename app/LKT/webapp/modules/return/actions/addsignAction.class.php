@@ -102,7 +102,6 @@ class addsignAction extends Action {
 				$form_id = $froms['fromid'];
 				$page = 'pages/order/detail?orderId=' . $order_id;
 				//消息模板id
-
 				$sql = "select * from lkt_notice where id = '1'";
 				$r = $db -> select($sql);
 				$template_id = $r[0] -> order_delivery;

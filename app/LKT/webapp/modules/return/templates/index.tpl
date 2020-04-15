@@ -513,6 +513,7 @@ i{
                     <th width="150" aria-valuetext="user_id">用户ID</th>
                     <th width="130" aria-valuetext="p_name">产品名称</th>
                     <th width="150" aria-valuetext="p_price">产品价格</th>
+                    <th width="150" aria-valuetext="p_price">运费</th>
                     <th width="150" aria-valuetext="num">数量</th>
                     <th width="150" aria-valuetext="r_sNo">订单号</th>
                     <th width="150" aria-valuetext="add_time">发布时间</th>
@@ -528,6 +529,7 @@ i{
                     <td>{$item->user_id}</td>
                     <td style="text-align:left!important;width: 400px;">{$item->p_name}</td>
                     <td>{$item->p_price}</td>
+                    <td>{$item->freight}</td>
                     <td>{$item->num}</td>
                     <td>{$item->r_sNo}</td>
                     <td>{$item->add_time}</td>
