@@ -55,7 +55,6 @@ Page({
         }
         that.setData({
           notice: notice
-
         })
       },
       fail: function () {

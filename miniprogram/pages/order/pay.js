@@ -123,12 +123,9 @@ Page({
         success: function(res) {
           var status = res.data.status;
           if (status == 1) {
-            that.setData({});
-            setTimeout(function() {
-              that.setData({
-                remind: false
-              });
-            }, 1000);
+            that.setData({
+              remind: false
+            });
           } else {
             that.setData({
               remind: true
@@ -210,11 +207,9 @@ Page({
             freight: res.data.arr.yunfei ? res.data.arr.yunfei : 0, //运费
           });
 
-          setTimeout(function() {
-            that.setData({
-              remind: false
-            });
-          }, 1000);
+          that.setData({
+            remind: false
+          });
         } else {
           that.setData({
             remind: true
