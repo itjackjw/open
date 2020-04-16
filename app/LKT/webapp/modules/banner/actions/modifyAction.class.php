@@ -27,7 +27,7 @@ class modifyAction extends Action {
             $url = '#';
         }
 
-        $sql = 'select a.id,a.product_title,a.sort,a.add_date from lkt_product_list AS a order by a.sort,a.id ';
+        $sql = 'select a.id,a.product_title,a.sort,a.add_date from lkt_product_list AS a  where a.status=0 order by a.sort,a.id ';
         $products = $db->select($sql);
 
         $sql = "select * from lkt_set_notice order by id desc";
