@@ -115,7 +115,7 @@ class memberAction extends PluginAction {
         $rr = $db->update($sql);
         if($type == 1){
             $bsql = "update lkt_group_product set g_status=3 where product_id in($id)";
-            $bres = $db -> update($bsql);
+            $db -> update($bsql);
         }
         if($rr >= 0){
             $db->admin_record($store_id,$admin_name,' 商品id为 '.$id.' 下架成功',3);

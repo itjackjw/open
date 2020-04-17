@@ -8,8 +8,6 @@
 class addgroupAction extends PluginAction{
 
     public function getDefaultView(){
-        $db = DBAction::getInstance();
-        $request = $this->getContext()->getRequest();
 
         return View :: INPUT;
     }

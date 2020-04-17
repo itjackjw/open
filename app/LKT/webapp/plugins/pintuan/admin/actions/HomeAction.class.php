@@ -286,7 +286,7 @@ class HomeAction extends PluginAction
                     $re = $db->select("select lkt_product_list.recycle ,lkt_product_list.status from lkt_group_product,lkt_product_list where group_id = $value->id and lkt_group_product.product_id = lkt_product_list.id");
                     if ($re) {
                         if ($re[0]->recycle != 1 && $re[0]->status != 1) {
-                            $res = $db->update("UPDATE `lkt_group_product` SET `g_status`='2' WHERE id = " . $value->id);
+                            $db->update("UPDATE `lkt_group_product` SET `g_status`='2' WHERE id = " . $value->id);
 
                         }
                     }
@@ -295,7 +295,7 @@ class HomeAction extends PluginAction
 
                 if ($end_time < $data || $g_status == 3) {//处理过期的
 
-                    $res = $db->update("UPDATE `lkt_group_product` SET `g_status`='3' WHERE id = " . $value->id);
+                    $db->update("UPDATE `lkt_group_product` SET `g_status`='3' WHERE id = " . $value->id);
 
                     $r = $db->select("select * from lkt_group_open where group_id=$value->group_id and ptstatus =1 ");
 

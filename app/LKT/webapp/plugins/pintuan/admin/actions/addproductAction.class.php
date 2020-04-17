@@ -90,7 +90,6 @@ class addproductAction extends PluginAction
         }
         $sql = "select  a.id,a.product_title,a.imgurl,product_class,a.num from lkt_product_list as a where $condition and recycle =0 order by status asc,a.add_date desc,a.sort desc limit $start,$pagesize ";
         $r = $db->select($sql);
-        // print_r($sql);die;
         $list = [];
         $status_num = 0;
         foreach ($r as $key => $value) {
