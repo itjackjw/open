@@ -27,11 +27,7 @@ Page({
      titlee: '',
   },
   onPullDownRefresh: function () {
-    wx.showNavigationBarLoading() //在标题栏中显示加载
-    setTimeout(function () {
-      wx.hideNavigationBarLoading() //完成停止加载
-      wx.stopPullDownRefresh() //停止下拉刷新
-    }, 1000);
+    
     wx.setNavigationBarTitle({
       title: '拼团', //修改页面标题
     });
@@ -190,19 +186,9 @@ Page({
   //上拉事件
   onReachBottom: function () {
     var that = this;
-  if (that.data.list.length > 0) {
-    setTimeout(function () {      
+    if (that.data.list.length > 0) {
       that.getMore();    
-      wx.hideNavigationBarLoading() //完成停止加载
-      wx.stopPullDownRefresh() //停止下拉刷新
-      that.setData({
-        loading: false,
-      });
-    }, 1800);
-    that.setData({
-      loading: true,
-    });
-  }
+    }
   },
   //排序
   sort:function (){
@@ -250,11 +236,9 @@ Page({
   onReady: function () {
     this.pop = this.selectComponent("#pop")
     var that = this;
-    setTimeout(function () {
-      that.setData({
-        remind: ''
-      });
-    }, 800);
+    that.setData({
+      remind: ''
+    });
   },
   //点击加载更多
   getMore: function (e) {

@@ -58,11 +58,9 @@ Page({
             return false;
           }
 
-          setTimeout(function () {
-            self.setData({
-              remind: false
-            });
-          }, 1500);
+          self.setData({
+            remind: false
+          });
           if (res.intro) {
             WxParse.wxParse('goodsIntro', 'html', res.intro, self, 5);
           }

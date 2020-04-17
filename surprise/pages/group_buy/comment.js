@@ -95,11 +95,9 @@ Page({
       loading: true,
       page: that.data.page + 1
     })
-    setTimeout(function () {
-      that.getMore()
-      wx.hideNavigationBarLoading() //完成停止加载
-      wx.stopPullDownRefresh() //停止下拉刷新
-    }, 800);
+    that.getMore();
+    wx.hideNavigationBarLoading(); //完成停止加载
+    wx.stopPullDownRefresh(); //停止下拉刷新
   },
   
   //下拉事件
