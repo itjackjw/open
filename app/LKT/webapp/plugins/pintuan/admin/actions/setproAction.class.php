@@ -54,8 +54,8 @@ class setproAction extends PluginAction
         $goods_id = $request->getParameter('goods_id');
         $this->getContext()->getStorage()->write('tuanZ', $tuanZ);
         $this->getContext()->getStorage()->write('goods_id', $goods_id);
-        
-        echo json_encode(array('code' => 1));exit;
+        echo json_encode(array('code' => 1));
+        exit;
         
     }
 

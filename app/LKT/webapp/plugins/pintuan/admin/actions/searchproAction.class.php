@@ -70,10 +70,8 @@ class searchproAction extends PluginAction {
       $sql = "select  a.id,a.product_title,a.imgurl,product_class from lkt_product_list as a where $condition" . ' order by status asc,a.add_date desc,a.sort desc ';
       $r = $db->select($sql);
       $list = [];
-      $status_num = 0;
 
       foreach ($r as $key => $value) {
-        $pid =  $value -> id;
         $class =  $value -> product_class;
         $typestr=trim($class,'-');
         $typeArr=explode('-',$typestr);

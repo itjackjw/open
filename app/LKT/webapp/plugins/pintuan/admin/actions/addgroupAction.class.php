@@ -15,7 +15,6 @@ class addgroupAction extends PluginAction{
     public function execute(){
         $db = DBAction::getInstance();
         $request = $this->getContext()->getRequest();
-        $tuanZ = json_decode($request->getParameter('tuanZ'));
         $gdata = json_decode($request->getParameter('gdata'));
         $goods_id = json_decode($request->getParameter('goods_id'));
         $glevel = $request->getParameter('glevel');
