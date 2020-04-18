@@ -591,7 +591,7 @@ Page({
     var freight = that.data.freight;
     var total = coupon_money * num + freight;
     app.request.wxRequest({
-      url: '&action=groupbuy&m=canOrder',
+      url: '&action=pi&p=pintuan&c=groupbuy&m=canOrder',
       data: {
         uid: app.globalData.userInfo.openid,
         fromid: that.data.form_id,
@@ -783,7 +783,7 @@ Page({
   canGroupNotice: function(order_sn, endtime, price, sum, user_id, form_id, man_num, f_pname, path) {
 
     app.request.wxRequest({
-      url: '&action=groupbuy&m=Send_can',
+      url: '&action=pi&p=pintuan&c=groupbuy&m=Send_can',
       method: 'post',
       data: {
         page: path,
@@ -807,7 +807,7 @@ Page({
   up_out_trade_no: function(status, trade_no) {
     var that = this;
     wx.request({
-      url: app.d.ceshiUrl + '&action=groupbuy&m=up_out_trade_no',
+      url: app.d.ceshiUrl + '&action=pi&p=pintuan&c=groupbuy&m=up_out_trade_no',
       method: 'post',
       data: {
         uid: app.globalData.userInfo.openid,
@@ -846,7 +846,7 @@ Page({
     var that = this;
 
     wx.request({
-      url: app.d.ceshiUrl + '&action=groupbuy&m=verification',
+      url: app.d.ceshiUrl + '&action=pi&p=pintuan&c=groupbuy&m=verification',
       method: 'post',
       data: {
         trade_no: trade_no //微信交易单号
