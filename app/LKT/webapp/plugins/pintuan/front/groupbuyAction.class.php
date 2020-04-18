@@ -1385,6 +1385,7 @@ class groupbuyAction extends PluginAction
     //发送拼团成功消息
     public function Send_success($arr, $endtime, $template_id, $pro_name)
     {
+        $db = DBAction::getInstance();
         $AccessToken = $this->getAccessToken();
         $url = 'https://api.weixin.qq.com/cgi-bin/message/wxopen/template/send?access_token=' . $AccessToken;
 
