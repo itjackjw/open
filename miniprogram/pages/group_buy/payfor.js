@@ -591,7 +591,7 @@ Page({
     var freight = that.data.freight;
     var total = coupon_money * num + freight;
     app.request.wxRequest({
-      url: '&action=pi&p=pintuan&c=groupbuy&m=canOrder',
+      url: '&action=pi&p=pintuan&c=groupbuy&m=can_order',
       data: {
         uid: app.globalData.userInfo.openid,
         fromid: that.data.form_id,
