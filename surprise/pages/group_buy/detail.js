@@ -120,8 +120,6 @@ Page({
         })
         
         var timestamp = Date.parse(new Date())/1000;
-        // console.log(timestamp);
-        // console.log('1111111111111111111111111111111111111111');
         if (timestamp > parseInt(res.control.endtime)) {
            self.setData({
              is_over: true
@@ -229,7 +227,6 @@ Page({
   //倒计时
   countDown: function (endtime) {
     var that = this
-    //var endTime = new Date(endtime.replace(/-/g, '/')).getTime();
     var nowTime = new Date().getTime();
     var total_second = endtime - nowTime;
      that.dateformat(total_second)

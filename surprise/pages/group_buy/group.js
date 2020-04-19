@@ -22,9 +22,7 @@ Page({
     period: false,//显示无数据
     select:0,//选中
     sort: 0,// 1 asc 升序   0 desc 降序
-    // groupman: '',
-    // groupid: '',
-     titlee: '',
+    titlee: '',
   },
   onPullDownRefresh: function () {
     
@@ -47,17 +45,13 @@ Page({
         'content-type': 'application/x-www-form-urlencoded'
       },
       success: function (res) {
-        // var titlee = res.data.groupname;
         wx.setNavigationBarTitle({
           title: '拼团', //修改页面标题
         });
         if (res.data.code == 1){
-        that.setData({
-          list: res.data.list,
-          // groupman: res.data.groupman,
-          // groupid: res.data.groupid,
-          
-        })
+          that.setData({
+            list: res.data.list,
+          })
           
         }
       },
@@ -307,9 +301,6 @@ Page({
     
   },
   onLoad: function (options) {
-    // if (app.userlogin(1)) {
-    //   return
-    // }
     this.setData({
       bgcolor: app.d.bgcolor,
     });
@@ -336,7 +327,6 @@ Page({
         'content-type': 'application/x-www-form-urlencoded'
       },
       success: function (res) {
-        // var titlee = res.data.groupname;
         wx.setNavigationBarTitle({
           title: '拼团', //修改页面标题
 
@@ -350,15 +340,11 @@ Page({
           that.setData({
             page: page,
             list: list,
-            // groupman: res.data.groupman,
-            // groupid: res.data.groupid
           });
           
         }else{
           that.setData({
             list: list,
-            // groupman: res.data.groupman,
-            // groupid: res.data.groupid,
           })
          
         }
