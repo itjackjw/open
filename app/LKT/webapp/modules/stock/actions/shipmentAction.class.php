@@ -2,7 +2,6 @@
 require_once(MO_LIB_DIR . '/DBAction.class.php');
 require_once(MO_LIB_DIR . '/ShowPager.class.php');
 require_once(MO_LIB_DIR . '/Tools.class.php');
-// require_once(MO_LIB_DIR . '/JurisdictionAction.class.php');
 
 class shipmentAction extends Action {
     /**
@@ -105,7 +104,6 @@ class shipmentAction extends Action {
             }
         }
 
-        // $request->setAttribute('button', $button);
         $request->setAttribute("list",$r1);
         $request -> setAttribute('pages_show', $pages_show);
         $request -> setAttribute('product_title', $product_title);
