@@ -53,12 +53,10 @@ class examineAction extends Action
                 $price = number_format($order_res[0]->z_price / $spz_price * $p_price, 2);
             }
 
-            if ($price <= 0 && $pay == 'consumer_pay' && $consumer_money > 0) {
-                $price = $consumer_money;
-            }
             if ($coupon_price) {
-                $price = $price + $coupon_price;
+                //$price = $price + $coupon_price;
             }
+
             if ($freight) {
                 //应该不扣运费
                 //$price = $price -$freight;
