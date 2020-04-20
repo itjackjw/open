@@ -280,10 +280,6 @@
                dataType:"json",
                success:function(data) {
                    if(data.gcode == 1 && data.mcode == 1){
-                       // layer.msg('修改成功!');
-                       // window.parent.location.reload();
-                       // var index = parent.layer.getFrameIndex(window.name);
-                       // parent.layer.close(index);
                        location.href = 'index.php?module=pi&p=pintuan&c=Home';
                    }
                },
@@ -321,7 +317,6 @@ $('.table-sort').dataTable({
 	"aaSorting": [[ 1, "desc" ]],//默认第几个排序
 	"bStateSave": true,//状态保存
 	"aoColumnDefs": [
-	  //{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
 	  {"orderable":false,"aTargets":[0,4]}// 制定列不参与排序
 	]
 });

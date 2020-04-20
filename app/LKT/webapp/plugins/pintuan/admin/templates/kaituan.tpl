@@ -243,7 +243,6 @@ function resetButton(){
     $("#user").val("");
 }
         $(".btn_sty").click(function () {
-            // alert(1);
             $(".btn_sty").removeClass('sel_btn');
             $(this).addClass('sel_btn');
         })

@@ -755,7 +755,7 @@
                     oneYear = oneYear + ' ' + day[1];
                     $("#end_year").val(oneYear)
                 }
-                //alert('你选择的日期是：' + value + '\n获得的对象是' + JSON.stringify(date));
+
             }
         });
 

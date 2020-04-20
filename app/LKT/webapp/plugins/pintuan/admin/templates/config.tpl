@@ -146,7 +146,7 @@
 
 	<form name="form1" action="index.php?module=pi&p=pintuan&c=config" class="form form-horizontal" method="post"   enctype="multipart/form-data" >
 		<div class="config-box">
-{*			<input type="hidden" name="plug_ins_id" value="" placeholder="111" >*}
+
 			<div id="tab-system" class="HuiTab">
 				<div class="s-title">
 					基础设置
@@ -231,11 +231,7 @@
 </div>
 </div>
 <div id="outerdiv" style="position:fixed;top:0;left:0;background:rgba(0,0,0,0.7);z-index:2;width:100%;height:100%;display:none;"><div id="innerdiv" style="position:absolute;"><img id="bigimg" src="" /></div></div>
-<!-- <script type="text/javascript" src="style/js/jquery.js"></script>
-<script type="text/javascript" src="style/js/jquery.min.js"></script>
-<script type="text/javascript" src="style/lib/ueditor/1.4.3/ueditor.config.js"></script>
-<script type="text/javascript" src="style/lib/ueditor/1.4.3/ueditor.all.min.js"></script> -->
-<!-- <script type="text/javascript" src="style/js/layer/layer.js"></script> -->
+
 
 {literal}
 
