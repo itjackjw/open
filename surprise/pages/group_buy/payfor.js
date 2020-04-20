@@ -684,12 +684,8 @@ Page({
   },
   // 调起微信支付
   wxpay: function() {
-
-
     var that = this;
     var cmoney = that.data.coupon_money;
-
-
     wx.request({
       url: app.d.ceshiUrl + '&action=pay&m=pay',
       data: {
@@ -721,7 +717,6 @@ Page({
                 that.canGroupOrder(1, '')
               }
 
-              // that.verification(dingdanhao)
             },
             fail: function(res) {
 
