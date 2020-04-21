@@ -82,7 +82,7 @@ function getUesrBgplus(that,app,is) {
 
 /*
 * 假设你访问的后台登录路径是：https://www.baidu.com/LKT/index.php?module=Login
-* 那么你在这里填的路径应该是：http://www.baidu.com/LKT/index.php?module=api&software_name=3&edition=1.0
+* 那么你在这里填的路径应该是：https://www.baidu.com/LKT/index.php?module=api&software_name=3&edition=1.0
 */
 function getUri(){
   //如果不想安装后台服务，请使用注释这一行做简单数据体验

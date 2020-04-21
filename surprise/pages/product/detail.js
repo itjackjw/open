@@ -501,8 +501,6 @@ Page({
       }
     }
 
-    // console.log(haveSkuBean, "存在于库存清单");
-
     for (var iox = 0; iox < canGetInfo.length; iox++) {
       canGetInfoLog += canGetInfo[iox].attributeValue + " ";
     }

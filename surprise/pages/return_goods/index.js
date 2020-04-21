@@ -155,10 +155,6 @@ Page({
       success: function (res) {
         var status = res.data.status;
         var list = res.data.list;
-        // var h = res.data.h;
-        // that.setData({
-        //   h: h,
-        // });
         switch (that.data.currentTab) {
           case 0:
             that.setData({
