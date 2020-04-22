@@ -12,7 +12,12 @@
 <title>系统参数设置</title>
 </head>
 <body>
-<nav class="breadcrumb"><i class="Hui-iconfont">&#xe616;</i> 文章管理 <span class="c-gray en">&gt;</span> 文章列表管理 <span class="c-gray en">&gt;</span> 分享红包设置 <a class="btn btn-success radius r mr-20" style="line-height:1.6em;margin-top:3px" href="#" onclick="location.href='index.php?module=Article';" title="关闭" ><i class="Hui-iconfont">&#xe6a6;</i></a></nav>
+<nav class="breadcrumb">
+    系统管理 <span class="c-gray en">&gt;</span>
+    <a href="index.php?module=Article">文章列表</a> <span class="c-gray en">&gt;</span>
+    分享红包设置 <span class="c-gray en">&gt;</span>
+    <a href="javascript:history.go(-1)">返回</a>
+</nav>
 <div class="pd-20">
     <form name="form1" action="index.php?module=Article&action=amount" class="form form-horizontal" method="post" enctype="multipart/form-data" style="text-align: center;">
         <input type="hidden" name="id" value="{$id}" />
