@@ -138,7 +138,7 @@ class examineAction extends Action
 
                     $db->insert("insert into lkt_stock(product_id,attribute_id,flowing_num,type,add_date) values('$p_id','$sid','$num',0,CURRENT_TIMESTAMP)");//增加一条入库记录
 
-                    $db->update("update lkt_product_list set num=num+$num,volume=volume-$num where id = '$p_id'");
+                    $db->update("update lkt_product_list set num=num+$num where id = '$p_id'");
 
                     $db->update("update lkt_configure set num=num+$num  where id = '$sid'");
 
