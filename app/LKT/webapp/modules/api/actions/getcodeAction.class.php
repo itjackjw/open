@@ -207,7 +207,7 @@ class getcodeAction extends Action {
         $img_token = isset($uur[0]) ? $uur[0]->img_token:false;
 
        //定义固定分享图片储存路径 以便删除
-        $imgDir = '/';
+        $imgDir = '/product_share_img/';
         $sql = "select * from lkt_config where id=1";
         $r = $db->select($sql);
         if($r){
@@ -226,6 +226,7 @@ class getcodeAction extends Action {
             $font_file  = $font_file_path.'/LKT/style/font/';
         }
 
+        $this->mkFolder($uploadImg.$imgDir);
         $tkt_sql = "select * from lkt_extension where type ='$type' and isdefault='1' ";
         $tkt_r = $db->select($tkt_sql);
 
@@ -351,8 +352,8 @@ class getcodeAction extends Action {
                case 'jpeg': 
                 $imagecreatefromjpeg = 'imagecreatefromjpeg';
                break; 
-               case 'png': 
-                $imagecreatefromjpeg = 'imagecreatefrompng'; 
+               case 'png':
+                $imagecreatefromjpeg = 'imagecreatefrompng';
                break; 
                case 'gif': 
                default: 
@@ -747,6 +748,15 @@ class getcodeAction extends Action {
         }
         echo json_encode(array('status'=>1,'pictures'=>$url));
         exit;
+    }
+
+
+    function mkFolder($path)
+    {
+        if(!is_readable($path))
+        {
+            is_file($path) or mkdir($path,0700);
+        }
     }
 
 

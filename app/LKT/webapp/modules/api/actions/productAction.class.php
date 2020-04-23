@@ -150,7 +150,7 @@ class productAction extends BaseAction
             $product['price11'] = $price01 ? $price01 : '';
             $product['type01'] = $type01 ? $type01 : '';
             $product['photo_x'] = $imgurl;
-            $product['photo_d'] = $res['0']->img;
+            $product['photo_d'] = $res['0']->imgurl;
             $product['content'] = $new_content;
             $product['pro_number'] = $res['0']->id;
             $product['company'] = '件';
