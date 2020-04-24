@@ -186,12 +186,10 @@ class getcodeAction extends Action
         $pid = addslashes($request->getParameter('pid'));
         $price = addslashes($request->getParameter('price'));
         $yprice = addslashes($request->getParameter('yprice'));
-        $nickname = addslashes($request->getParameter('nickname'));
         $head = addslashes($request->getParameter('head'));
         $regenerate = addslashes(trim($request->getParameter('regenerate')));
 
-        //默认底图和logo
-        $logo = '../LKT/images/ditu/logo.png';
+
 
         $path = addslashes($request->getParameter('path'));
         $id = addslashes($request->getParameter('id'));
@@ -337,7 +335,7 @@ class getcodeAction extends Action
             }
         }
 
-        // header("content-type:image/jpeg");
+
         imagejpeg($dest, $uploadImg . $imgDir . $pic);
         $url = $img . $imgDir . $pic;
         echo json_encode(array('status' => true, 'url' => $url, 'waittext' => $waittext));
