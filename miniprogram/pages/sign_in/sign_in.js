@@ -220,7 +220,6 @@ Page({
             dateArr: dateArr, // 签到数组 
             imgurl: res.data.imgurl, // 签到图片
             showModal: true,
-            //sign_status: 0 // 是否签到
           });
           app.globalData.userInfo.sign_status = 0; // 修改签到状态(签到)
           
@@ -233,10 +232,7 @@ Page({
             icon: 'none',
             duration: 2000
             
-          });
-      
-      
-    
+          });    
         }else{ 
           wx.showToast({
             title: res.data.err,

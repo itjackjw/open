@@ -96,8 +96,7 @@ Page({
 	},
 
 	requestMyData: function() {
-    // console.log("==============requestMyData================")
-		var that = this;
+    var that = this;
 		wx.request({
 			url: app.d.ceshiUrl + '&action=user&m=index',
 			method: 'post',

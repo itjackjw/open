@@ -90,7 +90,6 @@ Page({
           that.setData({
             score: res.data.score, // 积分
             logo: res.data.logo, 
-            // rule: res.data.rule,
             sign: res.data.sign, // 获取记录
             consumption: res.data.consumption, // 使用记录
             switch: res.data.switch//转账按钮（0 关闭  1.开启）
