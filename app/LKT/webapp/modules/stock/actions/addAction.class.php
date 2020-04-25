@@ -63,12 +63,9 @@ class addAction extends Action {
     public function execute(){
         $db = DBAction::getInstance();
         $request = $this->getContext()->getRequest();
-        // 接收数据
-
         $admin_name = $this->getContext()->getStorage()->read('admin_name');
         $id = addslashes(trim($request->getParameter('id'))); // 商品属性id
         $pid = addslashes(trim($request->getParameter('pid'))); // 商品id
-//        $total_num1 = addslashes(trim($request->getParameter('total_num1'))); // 总库存
         $total_num = addslashes(trim($request->getParameter('total_num'))); // 总库存
         $num = addslashes(trim($request->getParameter('num'))); // 剩余库存
         $add_num = addslashes(trim($request->getParameter('add_num'))); // 增加库存
@@ -93,7 +90,6 @@ class addAction extends Action {
         if($r4 == -1){
             $db->rollback();
             $db->admin_record($admin_name,'增加商品规格ID为'.$id.'的库存失败',2);
-
             echo json_encode(array('status' =>'未知原因，增加失败！' ));exit;
         }
 
@@ -103,17 +99,12 @@ class addAction extends Action {
         $sql2 = "insert into lkt_stock(product_id,attribute_id,flowing_num,type,add_date) values('$pid','$id','$add_num',0,CURRENT_TIMESTAMP)";
         $r2 = $db->insert($sql2,'last_insert_id');
         if($r1 != -1 && $r2 > 0){
-          
             $db->commit();
-
             $db->admin_record($admin_name,'增加商品规格ID为'.$id.'的库存'.$add_num,2);
-
             echo json_encode(array('status' =>'增加成功！' ,'suc'=>'1'));exit;
         }else{
             $db->rollback();
-
-            $db->admin_record($store_id,$admin_name,'增加商品规格ID为'.$id.'的库存失败',2);
-
+            $db->admin_record($admin_name,'增加商品规格ID为'.$id.'的库存失败',2);
             echo json_encode(array('status' =>'未知原因，增加失败！' ));exit;
         }
         return;

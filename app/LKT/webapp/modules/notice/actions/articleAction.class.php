@@ -29,11 +29,6 @@ class articleAction extends Action {
   }
 
   public function execute() {
-    $db = DBAction::getInstance();
-    $request = $this->getContext()->getRequest();
-    // print_r(12);die;
-    $id= $request->getParameter('id'); // notice
-
 
   }
 
