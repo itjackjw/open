@@ -25,10 +25,7 @@ Page({
     titlee: '',
   },
   onPullDownRefresh: function () {
-    
-    wx.setNavigationBarTitle({
-      title: '拼团', //修改页面标题
-    });
+   
     var that = this;
     var select = that.data.select;
     var sort = that.data.sort;
@@ -46,7 +43,7 @@ Page({
       },
       success: function (res) {
         wx.setNavigationBarTitle({
-          title: '拼团', //修改页面标题
+          title: '火热拼团', //修改页面标题
         });
         if (res.data.code == 1){
           that.setData({
@@ -208,13 +205,10 @@ Page({
         if (res.data.code == 1){
         that.setData({
           list: res.data.list,
-          // groupman: res.data.groupman,
-          // groupid: res.data.groupid
         })
           var titlee = res.data.groupname;
           wx.setNavigationBarTitle({
-            title:'拼团', //修改页面标题
-
+            title:'火热拼团', //修改页面标题
           });
         }
       },
@@ -256,11 +250,7 @@ Page({
       success: function (res) {
         var prolist = res.data.list;
         if (prolist == '' || res.data.status == 0) {
-          /*wx.showToast({
-            title: '没有更多数据！',
-            icon: 'warn',
-            duration: 2000
-          });*/
+          
           that.setData({
             period: true
           });
@@ -328,7 +318,7 @@ Page({
       },
       success: function (res) {
         wx.setNavigationBarTitle({
-          title: '拼团', //修改页面标题
+          title: '火热拼团', //修改页面标题
 
         });
       if(res.data.code == 1){

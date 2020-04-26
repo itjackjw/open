@@ -53,7 +53,7 @@ page{
 .nav_right{  
   /*右侧盒子使用了绝对定位*/  
   position: absolute;  
-  top: 55px;  
+  top: 47px;  
   right: 0;  
   flex: 1;  
   /*宽度75%，高度占满，并使用百分比布局*/  
