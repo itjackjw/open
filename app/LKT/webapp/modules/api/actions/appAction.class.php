@@ -302,7 +302,6 @@ class appAction extends BaseAction
     {
         header("Content-type: text/html; charset=utf-8");
         $db = DBAction::getInstance();
-        $request = $this->getContext()->getRequest();
 
         // 查询插件表里,状态为启用的插件
         $sql = "select name,image,code from lkt_plug_ins where status = 1 and type = 0 ";
@@ -339,8 +338,9 @@ class appAction extends BaseAction
         }
     }
 
+    //推荐人储存
     public function referee_openid()
-    {//推荐人储存
+    {
         $db = DBAction::getInstance();
         $request = $this->getContext()->getRequest();
         $openid = addslashes($request->getParameter('openid'));
@@ -370,7 +370,6 @@ class appAction extends BaseAction
     public function cart()
     {
         $db = DBAction::getInstance();
-        $request = $this->getContext()->getRequest();
         // 获取信息
         $openid = addslashes($_POST['openid']); // 微信id
         $sql_c = 'select count(a.Goods_num) as Goods_num from lkt_cart AS a LEFT JOIN lkt_product_list AS m  ON a.Goods_id = m.id LEFT JOIN lkt_configure AS c ON a.Size_id = c.id where c.num >0 and a.Uid = \'' . $openid . '\' and m.recycle = 0 and c.recycle = 0 order by Create_time desc';
