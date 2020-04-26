@@ -33,8 +33,7 @@ class uploadImgAction extends Action {
             case 5: $msg = '文件大小为0'; break;
             default: $msg = '上传失败'; break;
         }
-
-        $upload_max_filesize = ini_get('upload_max_filesize');
+        
         $imgURL=($_FILES['imgFile']['tmp_name']);
         $type = str_replace('image/', '.', $_FILES['imgFile']['type']);
         $imgURL_name=time().mt_rand(1,1000).$type;

@@ -1,21 +1,19 @@
 <?php
 
 /**
-
  * [Laike System] Copyright (c) 2018 laiketui.com
-
  * Laike is not a free software, it under the license terms, visited http://www.laiketui.com/ for more details.
-
  */
 
 require_once(MO_LIB_DIR . '/DBAction.class.php');
 require_once(MO_LIB_DIR . '/Tools.class.php');
 
-class template_messageAction extends Action {
+class template_messageAction extends Action
+{
 
 
-
-    public function getDefaultView() {
+    public function getDefaultView()
+    {
 
         $db = DBAction::getInstance();
         $request = $this->getContext()->getRequest();
@@ -28,19 +26,19 @@ class template_messageAction extends Action {
     }
 
 
-
-    public function execute(){
+    public function execute()
+    {
         $request = $this->getContext()->getRequest();
         $db = DBAction::getInstance();
-        $notice= $request->getParameter('notice'); 
+        $notice = $request->getParameter('notice');
         $sql = "select * from lkt_notice where 1=1";
         $num = $db->selectrow($sql);
-        if($num < 1){
-         $r = $db->insert_array($notice,'lkt_notice');
-        }else{
-         $r = $db->modify($notice,'lkt_notice',' id = 1');
+        if ($num < 1) {
+            $r = $db->insert_array($notice, 'lkt_notice');
+        } else {
+            $r = $db->modify($notice, 'lkt_notice', ' id = 1');
         }
-        if($r == -1) {
+        if ($r == -1) {
             echo "<script type='text/javascript'>" .
                 "alert('未知原因，修改失败！');" .
                 "location.href='index.php?module=system&action=template_message';</script>";
@@ -57,174 +55,162 @@ class template_messageAction extends Action {
     }
 
 
-
-    public function getRequestMethods(){
+    public function getRequestMethods()
+    {
 
         return Request :: POST;
 
     }
 
 
+    public function unzip($src_file, $dest_dir = false, $create_zip_name_dir = false, $overwrite = true)
+    {
 
+        if ($zip = zip_open($src_file)) {
 
-  public function unzip($src_file, $dest_dir=false, $create_zip_name_dir=false, $overwrite=true){
+            if ($zip) {
 
-  if ($zip = zip_open($src_file)){
+                $splitter = ($create_zip_name_dir === true) ? "." : "/";
 
-    if ($zip){
+                if ($dest_dir === false) {
 
-      $splitter = ($create_zip_name_dir === true) ? "." : "/";
+                    $dest_dir = substr($src_file, 0, strrpos($src_file, $splitter)) . "/";
 
-      if($dest_dir === false){
+                }
 
-        $dest_dir = substr($src_file, 0, strrpos($src_file, $splitter))."/";
+                // 如果不存在 创建目标解压目录
 
-      }
+                $this->create_dirs($dest_dir);
 
-      // 如果不存在 创建目标解压目录
+                // 对每个文件进行解压
 
-      $this->create_dirs($dest_dir);
+                while ($zip_entry = zip_read($zip)) {
 
-       // 对每个文件进行解压
+                    // 文件不在根目录
 
-       while ($zip_entry = zip_read($zip)){
+                    $pos_last_slash = strrpos(zip_entry_name($zip_entry), "/");
 
-          // 文件不在根目录
+                    if ($pos_last_slash !== false) {
 
-          $pos_last_slash = strrpos(zip_entry_name($zip_entry), "/");
+                        // 创建目录 在末尾带 /
 
-          if ($pos_last_slash !== false){
+                        $this->create_dirs($dest_dir . substr(zip_entry_name($zip_entry), 0, $pos_last_slash + 1));
 
-            // 创建目录 在末尾带 /
+                    }
 
-            $this->create_dirs($dest_dir.substr(zip_entry_name($zip_entry), 0, $pos_last_slash+1));
+                    // 打开包
 
-          }
+                    if (zip_entry_open($zip, $zip_entry, "r")) {
 
-          // 打开包
+                        // 文件名保存在磁盘上
 
-          if (zip_entry_open($zip,$zip_entry,"r")){
+                        $file_name = $dest_dir . zip_entry_name($zip_entry);
 
-            // 文件名保存在磁盘上
+                        if ($overwrite === true || $overwrite === false && !is_file($file_name)) {
 
-            $file_name = $dest_dir.zip_entry_name($zip_entry);
+                            // 读取压缩文件的内容
 
-            if ($overwrite === true || $overwrite === false && !is_file($file_name)){
+                            $fstream = zip_entry_read($zip_entry, zip_entry_filesize($zip_entry));
 
-              // 读取压缩文件的内容
+                            file_put_contents($file_name, $fstream);
 
-              $fstream = zip_entry_read($zip_entry, zip_entry_filesize($zip_entry));
+                            // 设置权限
 
-              file_put_contents($file_name, $fstream);
+                            chmod($file_name, 0777);
 
-              // 设置权限
+                        }
 
-              chmod($file_name, 0777);
+                        // 关闭入口
+
+                        zip_entry_close($zip_entry);
+
+                    }
+
+                }
+
+                // 关闭压缩包
+
+                zip_close($zip);
 
             }
 
-            // 关闭入口
+        } else {
 
-            zip_entry_close($zip_entry);
-
-          }
+            return false;
 
         }
 
-        // 关闭压缩包
-
-        zip_close($zip);
-
-      }
-
-    }else{
-
-      return false;
+        return true;
 
     }
 
-    return true;
+    /**
+     * 创建目录
+     */
 
-  }
+    public function create_dirs($path)
+    {
 
-  /**
+        if (!is_dir($path)) {
 
-  * 创建目录
+            $directory_path = "";
 
-  */
+            $directories = explode("/", $path);
 
-  public function create_dirs($path){
+            array_pop($directories);
 
-   if (!is_dir($path)){
+            foreach ($directories as $directory) {
 
-     $directory_path = "";
+                $directory_path .= $directory . "/";
 
-     $directories = explode("/",$path);
+                if (!is_dir($directory_path)) {
 
-     array_pop($directories);
+                    mkdir($directory_path);
 
-     foreach($directories as $directory){
+                    chmod($directory_path, 0777);
 
-       $directory_path .= $directory."/";
+                }
 
-       if (!is_dir($directory_path)){
+            }
 
-         mkdir($directory_path);
+        }
 
-         chmod($directory_path, 0777);
+    }
 
-       }
+    function curPageURL()
 
-     }
+    {
 
-   }
+        $pageURL = 'http';
 
-  }
+        $aaa = $_SERVER["REQUEST_URI"];
 
-function curPageURL() 
+        $url = substr($aaa, 0, strrpos($aaa, "/"));
 
-{
+        if ($_SERVER["REQUEST_SCHEME"] == "https") {
 
-  $pageURL = 'http';
+            $pageURL .= "s";
 
-  $aaa = $_SERVER["REQUEST_URI"];
+        }
 
-  $url = substr($aaa,0,strrpos($aaa,"/"));
+        $pageURL .= "://";
 
-  if ($_SERVER["REQUEST_SCHEME"] == "https") 
+        if ($_SERVER["SERVER_PORT"] != "80") {
 
-  {
+            $pageURL .= $_SERVER["SERVER_NAME"] . ":" . $_SERVER["SERVER_PORT"] . $url;
 
-    $pageURL .= "s";
+        } else {
 
-  }
+            $pageURL .= $_SERVER["SERVER_NAME"] . $url;
 
-  $pageURL .= "://";
+        }
 
-  if ($_SERVER["SERVER_PORT"] != "80") 
+        return $pageURL;
 
-  {
-
-    $pageURL .= $_SERVER["SERVER_NAME"] . ":" . $_SERVER["SERVER_PORT"] . $url;
-
-  } 
-
-  else
-
-  {
-
-    $pageURL .= $_SERVER["SERVER_NAME"] . $url;
-
-  }
-
-  return $pageURL;
-
-}
-
+    }
 
 
 }
-
 
 
 ?>
