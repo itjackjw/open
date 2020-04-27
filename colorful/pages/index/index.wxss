@@ -1026,9 +1026,13 @@ margin-bottom: 40rpx;
     border-radius: 10rpx;
 }
 
+.list-cardx-ljx navigator {
+    position: relative;
+}
+
 .list-cardx-ljx .item .item-body {
     position: absolute;
-    top: 782px;
+    top: 0px;
     margin: 24rpx 24rpx;
 }
 
