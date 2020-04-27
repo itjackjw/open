@@ -179,7 +179,7 @@ group by c.pid  order by a.volume desc limit  $start,$end";
 from lkt_product_list AS a 
 RIGHT JOIN (select min(price) price,pid from lkt_configure group by pid)  AS c 
 ON a.id = c.pid 
-where a.product_class like '%-$ttcid-%' and a.status = 0 and a.num >0
+where a.product_class like '%-$index-%' and a.status = 0 and a.num >0
 order by a.sort DESC LIMIT $start,$end";
             $r_s = $db->select($sql_t);
             $product = [];
