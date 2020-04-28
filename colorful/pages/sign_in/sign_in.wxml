@@ -70,7 +70,7 @@
     
     <view class="block-area">
       <view class="block-title" style="border-bottom: 1px solid #efefef;">
-        <text>签到规则</text>
+        
       </view><!--end block-title-->
       
       <import src="../../wxParse/wxParse.wxml"/> 
