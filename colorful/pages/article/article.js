@@ -33,7 +33,7 @@ Page({
       id: id,
     });
     that.y_detail(id);
-    that.storage();
+    //that.storage();
   },
   onPullDownRefresh: function () {
     wx.showNavigationBarLoading() //在标题栏中显示加载
