@@ -13,7 +13,7 @@
 {literal}
 <style>
    	td a{
-        width: 44%;
+        min-width: 44%;
         margin: 2%!important;
         float: left;
     }
