@@ -170,7 +170,7 @@ Page({
       icon: 'loading',
       duration: 1500,
     });
-    console.log(app.globalData.userInfo)
+    
     app.request.wxRequest({
       url: '&action=getcode&m=product_share',
       data: {
