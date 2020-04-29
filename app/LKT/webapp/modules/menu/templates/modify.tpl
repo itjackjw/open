@@ -213,29 +213,7 @@
       } else {
         document.getElementById('tubiao').style.display = 'none';
       }
-      // $.ajax({
-      //     type: "GET",
-      //     url: location.href+'&action=ajax&s_id='+s_id,
-      //     data: "",
-      //     success: function(msg){
-      //         obj = JSON.parse(msg);
-      //         if(obj.status == 1){
-      //             document.getElementById('zname').style.display = '';
-      //             document.getElementById('name').disabled = 'false';
-      //             if(obj.res == 1){
-      //                 document.getElementById('url').style.display = 'none';
-      //             }else{
-      //                 document.getElementById('url').style.display = '';
-      //             }
-      //             $("#name").val(obj.name);
-      //         }else{
-      //             document.getElementById('zname').style.display = '';
-      //             document.getElementById('url').style.display = 'none';
-      //             document.getElementById('name').disabled = '';
-      //             $("#name").val('');
-      //         }
-      //     }
-      // });
+
     });
     function one() {
       var dropElement1 = document.getElementById("select_1");
@@ -309,7 +287,6 @@
       if (obj) {
         var len = obj.options.length;
         if (len > 0) {
-          //alert(len);
           for (var i = len; i >= 1; i--) {
             obj.remove(i);
           }
