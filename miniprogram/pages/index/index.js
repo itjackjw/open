@@ -60,7 +60,6 @@ Page({
     })
   },
   getMore: function(e) {
-
     var that = this;
     var page = that.data.page;
     var index = that.data.tabid;
@@ -334,13 +333,10 @@ Page({
   //上拉事件
   onReachBottom: function() {
     var that = this;
-    that.setData({
-      loading: true,
-    });
-    that.getMore();
-
+    
   },
   obm: function() {
+    
     var that = this;
     var timestamp = Date.parse(new Date());
     console.log(timestamp, that.data.timestamp)
@@ -348,8 +344,12 @@ Page({
       that.setData({
         timestamp: timestamp,
       });
-
     }
+    that.setData({
+      loading: true,
+      remind: ''
+    });
+    that.getMore();
 
   },
   /**
@@ -423,32 +423,6 @@ Page({
   },
   onLoad: function(e) {
     var that = this;
-    //签到活动弹窗,勿删
-    /*
-    setTimeout(function(){
-      that.setData({
-        sign_image: app.globalData.userInfo.sign_image ? app.globalData.userInfo.sign_image:'', // 签到图片
-        sign_status: app.globalData.userInfo.sign_status ? app.globalData.userInfo.sign_status:'', // 是否签名
-        sign: app.globalData.userInfo.sign ? app.globalData.userInfo.sign:'' // 签名插件是否开启
-      })
-  
-      if (app.globalData.userInfo.sign == true){
-        //如果用户今日已签到则不再显示
-        if (app.globalData.userInfo.sign_status == 1) {
-          that.setData({
-            showModal: true
-          })
-        } else {
-          that.setData({
-            showModal: false
-          })
-        }
-      } else {
-        that.setData({
-          showModal: false
-        })
-      }},5000);
-    */
     that.loadProductDetail();
 
   },
