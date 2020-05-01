@@ -176,20 +176,11 @@ Page({
   //上拉事件
   onReachBottom: function () {
     var that = this;
-    that.getMore();
-    /*
-    setTimeout(function () {
-      that.getMore();
-      wx.hideNavigationBarLoading() //完成停止加载
-      wx.stopPullDownRefresh() //停止下拉刷新
-      that.setData({
-        loading: false,
-      });
-    }, 1500);
-    */
     that.setData({
       loading: true,
     });
+    that.getMore();
+    
 
   },
   //排序
