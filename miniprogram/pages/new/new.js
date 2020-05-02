@@ -23,7 +23,7 @@ Page({
     sort: 0,// 1 asc 升序   0 desc 降序
   },
   onPullDownRefresh: function () {
-   
+    
     wx.showNavigationBarLoading() //在标题栏中显示加载
     var that = this;
     var objectId = that.data.objectId;
@@ -206,7 +206,8 @@ Page({
       success: function (res) {
         var shoplist = res.data.pro;
         that.setData({
-          shopList: shoplist
+          shopList: shoplist,
+          page: page+1
         })
       },
       error: function (e) {
@@ -220,10 +221,10 @@ Page({
   //页面加载完成函数
   onReady: function () {
     var that = this;
-    // app.userlogin(1);
   },
   // 点击加载更多
   getMore: function (e) {
+    console.log('ffffff=====');
     var that = this;
     var page = that.data.page;
     var objectId = that.data.objectId;
@@ -245,7 +246,8 @@ Page({
         var prolist = res.data.pro;
         if (prolist == '' || res.data.status == 0) {
           that.setData({
-            period: true
+            period: true,
+            loading:false
           });
           return false;
         }
@@ -253,6 +255,7 @@ Page({
         //成功返回设置数据
         that.setData({
           remind: '',
+          loading:false,
           page: page+1,
           shopList: that.data.shopList.concat(prolist)
         });

@@ -1680,7 +1680,11 @@ class productAction extends BaseAction
         $start = ($paegr - 1) * 10;
         $end = 10;
 
-        $sql = "select a.s_type,a.id,a.product_title,a.imgurl,a.volume,min(c.price) as price from lkt_product_list AS a RIGHT JOIN lkt_configure AS c ON a.id = c.pid where a.s_type like '%$id%' and a.status = 0 and a.num >0 group by c.pid order by a.sort asc,$select $sort LIMIT $start,$end ";
+        $sql = "select a.s_type,a.id,a.product_title,a.volume,a.imgurl,c.price,a.sort  
+from lkt_product_list AS a RIGHT JOIN (select min(price) price,pid from lkt_configure group by pid) AS c ON a.id = c.pid 
+where a.status = 0 and a.num >0 and s_type like '%$id%' 
+ order by a.sort asc,$select $sort LIMIT $start,$end ";
+
         $r = $db->select($sql);
         if ($r) {
             $product = [];
