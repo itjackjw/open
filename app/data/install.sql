@@ -508,6 +508,7 @@ update lkt_core_menu set recycle = 1 where id = '216';
 update lkt_core_menu set recycle = 1 where id = '215';
 update lkt_core_menu set recycle = 1 where id = '214';
 update lkt_core_menu set recycle = 1 where id = '213';
+INSERT INTO `lkt_core_menu` (`s_id`, `title`, `name`, `image`, `image1`, `module`, `action`, `url`, `sort`, `level`, `is_core`, `type`, `add_time`, `recycle`) VALUES (153, '分销', '', '', '', 'distribution', 'index', 'index.php?module=pi&p=distribution&c=Home', '100', '2', '0', '0', '2020-05-02 20:01:01', '0');
 /*!40000 ALTER TABLE `lkt_core_menu` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1572,7 +1573,7 @@ INSERT INTO `lkt_product_list` VALUES ('4', null, '【3期免息|享保护套】
 /*!40000 ALTER TABLE `lkt_product_list` ENABLE KEYS */;
 UNLOCK TABLES;
 
-
+DROP TABLE IF EXISTS `lkt_detailed_commission`;
 CREATE TABLE `lkt_detailed_commission` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id',
   `userid` varchar(50) DEFAULT NULL,
@@ -2275,6 +2276,38 @@ LOCK TABLES `lkt_withdraw` WRITE;
 /*!40000 ALTER TABLE `lkt_withdraw` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+--
+-- Table structure for table `lkt_detailed_pro`
+--
+DROP TABLE IF EXISTS `lkt_detailed_pro`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `lkt_detailed_pro` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `pro_id` int(11) NOT NULL COMMENT '商品ID',
+  `leve` int(2) DEFAULT NULL COMMENT '向上返几级',
+  `leve1` float(4,2) DEFAULT '0.00' COMMENT '一级佣金比例',
+  `leve2` float(4,2) DEFAULT '0.00' COMMENT '二级佣金比例',
+  `leve3` float(4,2) DEFAULT '0.00' COMMENT '三级佣金比例',
+  `leve4` float(4,2) DEFAULT '0.00' COMMENT '四级佣金比例',
+  `leve5` float(4,2) DEFAULT '0.00' COMMENT '五级佣金比例',
+  `type` int(2) DEFAULT '2' COMMENT '佣金发放类型，1 支付成功 2.确认收货',
+  `commissions` float(4,2) DEFAULT '0.00' COMMENT '分销佣金所需手续费',
+  `is_show` varchar(11) NOT NULL DEFAULT '0' COMMENT '是否显示（0不显示，1热销单品，2.购物车，3.个人中心）',
+  `status` int(4) NOT NULL DEFAULT '0' COMMENT '商品状态状态（0：待上架，1已上架，2下架）',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='分销商品参数设置';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `lkt_detailed_pro`
+--
+
+LOCK TABLES `lkt_detailed_pro` WRITE;
+/*!40000 ALTER TABLE `lkt_detailed_pro` DISABLE KEYS */;
+/*!40000 ALTER TABLE `lkt_detailed_pro` ENABLE KEYS */;
+UNLOCK TABLES;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
