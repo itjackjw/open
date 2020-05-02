@@ -17,13 +17,12 @@ class addGoodsAction extends PluginAction
             $this->$m();
             exit;
         }
-        return View::INPUT;
     }
 
     //查询商品
     public function pro_query()
     {
-
+       
     }
 
     public function execute()

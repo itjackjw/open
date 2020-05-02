@@ -1,11 +1,3 @@
-<!--
- * @Description: In User Settings Edit
- * @Author: your name
- * @Date: 2019-08-26 13:55:23
- * @LastEditTime: 2019-10-12 11:21:11
- * @LastEditors: Please set LastEditors
--->
-
 <!DOCTYPE HTML>
 <html>
 
@@ -16,19 +8,12 @@
 	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
 	<meta http-equiv="Cache-Control" content="no-siteapp" />
 
-	<link rel="Bookmark" href="/favicon.ico">
-	<link rel="Shortcut Icon" href="/favicon.ico" />
-
-	<link rel="stylesheet" type="text/css" href="style/css/H-ui.min.css" />
+	{php}include BASE_PATH."/modules/assets/templates/top.tpl";{/php}
 	<link rel="stylesheet" type="text/css" href="style/css/bootstrap.min.css" />
-	<link rel="stylesheet" type="text/css" href="style/css/style.css" />
-	<link rel="stylesheet" type="text/css" href="style/kindeditor/themes/default/default.css" />
-
 	<script src="style/lib/jquery/1.9.1/jquery.js"></script>
 	<script type="text/javascript" src="style/lib/layer/2.1/layer.js"></script>
 	<script type="text/javascript" src="style/js/H-ui.min.js"></script>
-
-	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+	<script src="style/js/vue.min.js"></script>
 	
 	<title>添加分销商品</title>
 
@@ -253,12 +238,8 @@
 	</div>
 </div>
 <div id="app">
-	<nav class="breadcrumb" style="font-size: 16px;">
-		<i class="Hui-iconfont">&#xe6ca;</i>
-		插件管理
-		<span class="c-gray en">&gt;</span>
-		<a style="margin-top: 10px;" onclick="location.href='index.php?module=distribution&action=goods&status=2';">分销</a>
-		<span class="c-gray en">&gt;</span>
+	<nav class="breadcrumb">
+		<a href="index.php?module=pi&p=distribution&c=Home" >分销管理</a> <span class="c-gray en">&gt;</span>
 		添加商品
 	</nav>
 
@@ -554,7 +535,7 @@
 				getCommodityList(){
 					let vm = this
 					$.ajax({
-						url: "index.php?module=distribution&action=addGoods&m=pro_query&page=1",
+						url: "index.php?module=pi&p=distribution&c=addGoods&m=pro_query&page=1",
 						async: false,
 						success: function (res) {
 							res = JSON.parse(res)
@@ -588,7 +569,7 @@
 					}
 
 					$.ajax({
-						url: "index.php?module=distribution&action=addGoods&m=pro_query&&page=1",
+						url: "index.php?module=pi&p=distribution&c=addGoods&m=pro_query&&page=1",
 						async: false,
 						method: 'POST',
 						data: data,
@@ -718,7 +699,7 @@
 					}
 
 					$.ajax({
-						url: 'index.php?module=distribution&action=addGoods&m=baocun',
+						url: 'index.php?module=pi&p=distribution&c=addGoods&m=baocun',
 						method: 'POST',
 						data: {
 							data:list
@@ -731,7 +712,7 @@
 								layer.msg(res.message);
 
 								setTimeout(function () {
-									location.href = 'index.php?module=distribution&action=goods'
+									location.href = 'index.php?module=pi&p=distribution&c==goods'
 								}, 800)
 
 							} else if (res.status == 1) {
@@ -789,7 +770,7 @@
 				loadmore(page){
 					let vm = this
 					$.ajax({
-						url: "index.php?module=distribution&action=addGoods&m=pro_query&page=" + page,
+						url: "index.php?module=pi&p=distribution&c=addGoods&m=pro_query&page=" + page,
 						async: false,
 						success: function (res) {
 							res = JSON.parse(res)
