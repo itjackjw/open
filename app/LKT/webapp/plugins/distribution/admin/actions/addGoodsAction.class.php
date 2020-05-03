@@ -22,7 +22,7 @@ class addGoodsAction extends PluginAction
     //查询商品
     public function pro_query()
     {
-       
+
     }
 
     public function execute()
