@@ -198,7 +198,8 @@ Page({
       success: function (res) {
         var shoplist = res.data.pro;
         that.setData({
-          shopList: shoplist
+          shopList: shoplist,
+          page: page+1
         })
       },
       error: function (e) {
