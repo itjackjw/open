@@ -360,7 +360,6 @@ Page({
       that.setData({
         timestamp: timestamp,
       });
-
     }
 
   },
