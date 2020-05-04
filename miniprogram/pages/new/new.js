@@ -180,8 +180,6 @@ Page({
       loading: true,
     });
     that.getMore();
-    
-
   },
   //排序
   sort:function (){
@@ -224,12 +222,14 @@ Page({
   },
   // 点击加载更多
   getMore: function (e) {
-    console.log('ffffff=====');
     var that = this;
     var page = that.data.page;
     var objectId = that.data.objectId;
     var select = that.data.select;
     var sort = that.data.sort;
+    that.setData({
+      page: page+1
+    });
     wx.request({
       url: app.d.ceshiUrl + '&action=product&m=new_product',
       method: 'post',
@@ -256,7 +256,6 @@ Page({
         that.setData({
           remind: '',
           loading:false,
-          page: page+1,
           shopList: that.data.shopList.concat(prolist)
         });
 

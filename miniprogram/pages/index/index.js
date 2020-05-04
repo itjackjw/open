@@ -64,6 +64,9 @@ Page({
     var page = that.data.page;
     var index = that.data.tabid;
     var current = that.data.current;
+    that.setData({
+      page: page + 1
+    });
     wx.request({
       url: app.d.ceshiUrl + '&action=Index&m=get_more',
       method: 'post',
@@ -85,13 +88,11 @@ Page({
         if (prolist == '' || res.data.status == 0) {
           return false;
         } else {
-
           var twoList = that.data.twoList;
-
           twoList[current].twodata.push(...prolist)
           var indexTwoData = twoList[0].twodata
           that.setData({
-            page: page + 1,
+            //page: page + 1,
             twoList: twoList,
             indexTwoData: indexTwoData
           });

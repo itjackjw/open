@@ -222,6 +222,9 @@ Page({
     var objectId = that.data.objectId;
     var select = that.data.select;
     var sort = that.data.sort;
+    that.setData({
+      page: page+1
+    });
     wx.request({
       url: app.d.ceshiUrl + '&action=product&m=new_product',
       method: 'post',
@@ -242,11 +245,10 @@ Page({
           });
           return false;
         }
-
         //成功返回设置数据
         that.setData({
           remind: '',
-          page: page+1,
+          //page: page+1,
           shopList: that.data.shopList.concat(prolist)
         });
 
