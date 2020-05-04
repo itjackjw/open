@@ -334,10 +334,9 @@ Page({
   //上拉事件
   onReachBottom: function() {
     var that = this;
-    
+    that.getMore();
   },
   obm: function() {
-    
     var that = this;
     var timestamp = Date.parse(new Date());
     console.log(timestamp, that.data.timestamp)
@@ -409,8 +408,6 @@ Page({
   },
   onShow: function() {
     console.log(app)
-    // app.getUserSessionKey()
-
     var indexchase = app.d.indexchase;
     var that = this;
     if (indexchase) {
