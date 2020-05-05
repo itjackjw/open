@@ -13,8 +13,6 @@ class userAction extends BaseAction {
     // 请求我的数据
     public function index(){
         $db = DBAction::getInstance();
-        $request = $this->getContext()->getRequest();
-        // 获取信息
         $openid = addslashes($_POST['openid']); // 微信id
 
         $appConfig = $this->getAppInfo();
