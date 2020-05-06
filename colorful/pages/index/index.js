@@ -294,9 +294,7 @@ Page({
 
           console.log(res.data.list.length)
           if (res.data.list.length) {
-            // setTimeout(function () {
             that.listnsg();
-            // }, 2000);
           }
 
         },
@@ -327,9 +325,7 @@ Page({
       that.setData({
         zjList_box: false
       })
-      setTimeout(function () {
-        that.listnsg();
-      }, 2000);
+      that.listnsg();
     }, time);
 
     that.setData({
