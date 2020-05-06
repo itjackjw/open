@@ -152,7 +152,6 @@ class userAction extends BaseAction {
     // 请求我的钱包
     public function details(){
         $db = DBAction::getInstance();
-        $request = $this->getContext()->getRequest();
         // 接收信息
         $openid = addslashes($_POST['openid']); // 微信id
         // 查询单位
