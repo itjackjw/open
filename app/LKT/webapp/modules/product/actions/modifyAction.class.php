@@ -421,7 +421,7 @@ class modifyAction extends Action
                     $sql = "insert into lkt_stock(product_id,attribute_id,flowing_num,type,add_date) values('$id','$r_attribute','$num',0,CURRENT_TIMESTAMP)";
                     $db->insert($sql);
                     $db->commit();
-                    
+
                 }
             }
 
