@@ -417,9 +417,11 @@ class modifyAction extends Action
                     return $this->getDefaultView();
 
                 } else {
-                    $db->commit();
+
                     $sql = "insert into lkt_stock(product_id,attribute_id,flowing_num,type,add_date) values('$id','$r_attribute','$num',0,CURRENT_TIMESTAMP)";
                     $db->insert($sql);
+                    $db->commit();
+                    
                 }
             }
 
@@ -433,7 +435,7 @@ class modifyAction extends Action
 
 
         if ($rew1 == 1) {
-            $db->commit();
+
             if ($z_num < 1) {
                 $sql_1 = "update lkt_product_list set status='1' where id = '$id'";
             } else {
@@ -447,16 +449,13 @@ class modifyAction extends Action
 
             }
             $db->update($sql_1);
+            $db->commit();
             //跳转
             jump($_SESSION['url'], '产品修改成功！');
             exit;
 
         } else {
             $db->rollback();
-            foreach ($r_arr[0] as $k_arr => $v_arr) {
-                $sql = "update lkt_product_list set product_title='$v_arr->product_title',product_class='$v_arr->product_class',brand_id ='$v_arr->brand_id',s_type='$v_arr->s_type',num='$v_arr->z_num',sort='$v_arr->sort',content='$v_arr->content',imgurl='$v_arr->image',initial='$v_arr->initial' where id = '$id'";
-            }
-            $db->update($sql);
             echo "<script type='text/javascript'>" .
                 "alert('未知原因，产品修改失败！');" .
                 "location.href='index.php?module=product';</script>";
