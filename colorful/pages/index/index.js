@@ -90,7 +90,6 @@ Page({
           twoList[current].twodata.push(...prolist)
           var indexTwoData = twoList[0].twodata
           that.setData({
-            //page: page + 1,
             twoList: twoList,
             indexTwoData: indexTwoData
           });
@@ -411,9 +410,6 @@ Page({
     this.checkCor();
   },
   onShow: function () {
-    console.log(app)
-    // app.getUserSessionKey()
-
     var indexchase = app.d.indexchase;
     var that = this;
     if (indexchase) {
