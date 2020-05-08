@@ -13,7 +13,7 @@ class viewAction extends PluginAction {
 
 
 	public function getDefaultView() {
-       
+
         return View :: INPUT;
 
 	}
