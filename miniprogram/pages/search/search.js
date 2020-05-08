@@ -48,12 +48,9 @@ Page({
     });
   },
   onShow: function () {
-    var cont = this.data.cont;
-    var that = this;
     
   },
   onLoad: function (options) {
-
     var that = this;
     that.setData({
       color:app.d.bgcolor,
@@ -81,12 +78,10 @@ Page({
     })
   },
   search_confirmType: function (e) {
-    console.log('-----');
     var that = this, value = e.detail.value;
     this.setData({
       value: e.detail.value,
     });
-
     if (value != '') {
       WxSearch.wxSearchAddHisKey(that);
       wx.navigateTo({
