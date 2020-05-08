@@ -90,7 +90,6 @@ Page({
           twoList[current].twodata.push(...prolist)
           var indexTwoData = twoList[0].twodata
           that.setData({
-            //page: page + 1,
             twoList: twoList,
             indexTwoData: indexTwoData
           });
@@ -283,13 +282,9 @@ Page({
             title: title,
             success: function() {},
           });
-
           that.setData({remind: ''});
-
-          console.log(res.data.list.length+"---")
           if (res.data.list.length) {
             that.listnsg();
-            
           }
 
         },
