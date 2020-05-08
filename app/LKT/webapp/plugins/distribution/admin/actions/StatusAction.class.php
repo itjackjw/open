@@ -2,32 +2,19 @@
 
 /**
 
- * [Laike System] Copyright (c) 2018 laiketui.com
+ * [Laike System] Copyright (c) 2020 laiketui.com
 
  * Laike is not a free software, it under the license terms, visited http://www.laiketui.com/ for more details.
 
  */
 
-require_once(MO_LIB_DIR . '/DBAction.class.php');
-require_once(MO_LIB_DIR . '/ShowPager.class.php');
-require_once(MO_LIB_DIR . '/Tools.class.php');
 
 
-class StatusAction extends Action {
+class StatusAction extends PluginAction {
 
 
     public function getDefaultView() {
 
-        $db = DBAction::getInstance();
-        $request = $this->getContext()->getRequest();
-        $beizhu = addslashes(trim($request -> getParameter('admin')));
-        $sNo = addslashes(trim($request -> getParameter('sNo')));
-        $trade = intval($request -> getParameter('trade'));
-
-        $sqll = 'update lkt_order set status='.$trade.'where sNo="'.$sNo.'"';
-        $rl = $db -> update($sqll);
-        $sqld = 'update lkt_order_detail set status='.$trade.'where sNo="'.$sNo.'"';
-        $rd = $db -> update($sqld);
 
 
         return View :: INPUT;
@@ -38,63 +25,7 @@ class StatusAction extends Action {
 
     public function execute() {
 
-        $db = DBAction::getInstance();
-        $request = $this->getContext()->getRequest();
-        $id = intval(trim($request -> getParameter('id')));
-        $uid = addslashes(trim($request -> getParameter('uid')));
-        $price = (float)(trim($request -> getParameter('price')));
-        $p_name = trim($request -> getParameter('p_name'));
-        $sNo = trim($request -> getParameter('sNo'));
-        $paytype = trim($request -> getParameter('paytype'));
-        $trade_no = trim($request -> getParameter('trade_no'));
 
-        $refund = $ordernum = date('Ymd').mt_rand(10000,99999).substr(time(),5);
-       if($paytype == 'wallet_Pay'){
-          $oldmoney = $db -> select("select money from lkt_user where user_id='$uid'");
-          $oldmoney = $oldmoney[0] -> money;
-          $sql = "update lkt_user set money=money+$price where user_id='$uid'";
-          $res = $db -> update($sql);
-          $date = date('Y-m-d H:i:s');
-          $recordsql = "insert into lkt_record(user_id,money,oldmoney,add_date,event,type) values('$uid',$price,$oldmoney,'$date','".$uid."拼团失败退款',5)";
-          $db -> insert($recordsql);
-        }else if($paytype == 'wxPay'){
-          $price1 = $price*100;
-          $res = $this -> wxrefundapi($trade_no,$refund,$price1);
-      }
-
-       if($res > 0 || ($res['return_code'] == 'SUCCESS' && $res['result_code'] == 'SUCCESS')){
-        $sqld = 'update lkt_order set status=11,refundsNo="'.$refund.'" where id='.$id;
-        $resd = $db -> update($sqld);
-        $usermsg = $db -> select("select wx_id,user_name from lkt_user where user_id='$uid'");
-        if(!empty($usermsg)) $usermsg = $usermsg[0];
-        $openid = $usermsg -> wx_id;
-        $fromidsql = "select fromid from lkt_user_fromid where open_id='$openid' and id=(select max(id) from lkt_user_fromid where open_id='$openid')";
-        $fromid = $db -> select($fromidsql);
-        if(!empty($fromid)){
-          $fromid1 = $fromid[0] -> fromid;
-        }else{
-          $fromid1 = '';
-        }
-
-        $usermsg -> p_name = $p_name;
-        $usermsg -> sNo = $sNo;
-        $usermsg -> fromid = $fromid1;
-        $usermsg -> uid = $openid;
-        $usermsg -> price = (string)$price;
-
-        $sql = "select * from lkt_notice where id = '1'";
-        $r = $db->select($sql);
-        $template_id = $r[0]->refund_success;  
-
-        if($paytype == 'wallet_Pay'){
-            $this -> Send_success($usermsg,$template_id,'pages/user/user','退回到钱包');
-         }else if($paytype == 'wxPay'){
-            $this -> Send_success($usermsg,$template_id,'pages/user/user','退回到微信');
-         }
-
-         echo json_encode(array('status'=>1));exit;
-
-        }
 
 
     }
