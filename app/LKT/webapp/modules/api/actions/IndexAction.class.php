@@ -31,7 +31,7 @@ class IndexAction extends BaseAction
         }
 
         $shou = [];
-        $sql_cs = "select a.id,a.product_title,a.volume,a.imgurl,c.price,a.sort  
+        $sql_cs = "select a.initial,a.id,a.product_title,a.volume,a.imgurl,c.price,a.sort  
 from lkt_product_list AS a RIGHT JOIN (select min(price) price,pid from lkt_configure group by pid) AS c ON a.id = c.pid 
 where a.status = 0 and a.num >0 and s_type like '%4%' 
  order by a.sort asc,a.volume desc limit  0,10";
@@ -39,6 +39,8 @@ where a.status = 0 and a.num >0 and s_type like '%4%'
         if ($r_cs) {
             foreach ($r_cs as $keyc => $valuec) {
                 $valuec->imgurl = $img . $valuec->imgurl;
+                $initial = unserialize($valuec->initial);
+                $valuec->yj = $initial['yj']; //原价
                 $shou[] = $valuec;
             }
         }
