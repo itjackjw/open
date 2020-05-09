@@ -23,7 +23,7 @@ class addGoodsAction extends PluginAction
         $my_brand = addslashes(trim($request->getParameter('my_brand')));
         $pro_name = addslashes(trim($request->getParameter('pro_name')));
 
-        $brand = "";
+
         $pagesize = $request->getParameter('pagesize');
         $pagesize = $pagesize ? $pagesize : 10;
         // 每页显示多少条数据
@@ -89,6 +89,13 @@ class addGoodsAction extends PluginAction
             }
         }
 
+        //全部品牌
+        $brandsql = "select brand_id,brand_name from lkt_brand_class where  recycle = 0";
+        $brandrs = $db->select($brandsql);
+        $brand = "";
+        foreach ($brandrs as $key => $value) {
+            $brand .= '<option  value="' . $value->brand_id . '">' . $value->brand_name . '</option>';
+        }
 
         //全部商品
         $sql01 = "select min(b.num) as num,min(a.attribute) attribute,min(a.price) price,min(a.id) AS attr_id,min(b.id) id,min(b.product_title) product_title,min(b.imgurl) imgurl
