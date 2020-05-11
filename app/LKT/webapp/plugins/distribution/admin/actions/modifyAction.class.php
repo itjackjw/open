@@ -12,15 +12,7 @@ class modifyAction extends PluginAction
 
     public function getDefaultView()
     {
-        $request = $this->getContext()->getRequest();
-        $m = $request->getParameter('m');
-        $id = $request->getParameter('id');
-        if ($m != '') {
-            $this->$m();
-            exit;
-        }
-
-        return View::INPUT;
+       return View::INPUT;
     }
 
     public function execute()
