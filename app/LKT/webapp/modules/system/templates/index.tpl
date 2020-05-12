@@ -146,13 +146,13 @@ KindEditor.ready(function(K) {
   var editor = K.editor({
       allowFileManager : true,       
       uploadJson : "index.php?module=system&action=uploadImg", //上传功能
-      fileManagerJson : 'kindeditor/php/file_manager_json.php', //网络空间
+      fileManagerJson : 'style/kindeditor/php/file_manager_json.php', //网络空间
     });
   //上传背景图片
   K('#image').click(function() {
     editor.loadPlugin('image', function() {
       editor.plugin.imageDialog({
-        showRemote : false, //网络图片不开启
+        showRemote : true, //网络图片不开启
         //showLocal : false, //不开启本地图片上传
         imageUrl : K('#picurl').val(),
           clickFn : function(url, title, width, height, border, align) {
