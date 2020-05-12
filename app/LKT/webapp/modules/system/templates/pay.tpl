@@ -12,24 +12,7 @@
 {php}include BASE_PATH."/modules/assets/templates/top.tpl";{/php}
 
 <title>系统参数</title>
-{literal}
 
-
-<style type="text/css">
-
-
-.iconfont {
-  font-family:"iconfont" !important;
-  font-size:30px;
-  font-style:normal;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-.icon-zhengshu-copy:before { content: "\e640"; }
-</style>
-
-{/literal}
 </head>
 
 <body>
