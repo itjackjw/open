@@ -1,15 +1,13 @@
 <?php
 
 /**
-
  * [Laike System] Copyright (c) 2017-2020 laiketui.com
-
  * Laike is not a free software, it under the license terms, visited http://www.laiketui.com/ for more details.
-
  */
-require_once('BaseAction.class.php');
 
-class distributionAction extends BaseAction {
+require_once(MO_WEBAPP_DIR . "/plugins/PluginAction.class.php");
+
+class distributionAction extends PluginAction {
 
     
    public function detailed_commission(){//确认收货后增加佣金明细
