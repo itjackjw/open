@@ -116,8 +116,6 @@ Page({
       show: false
     });
     t = 1;
-
-    // animationEvents(this, moveY, show);
   },
   //滑动事件
   bindChange: function (e) {
