@@ -489,11 +489,9 @@ Page({
     }
   },
   login: function() {
-
     var that = this;
     //取出本地存储用户信息，解决需要每次进入小程序弹框获取用户信息
     var userInfo = wx.getStorageSync('userInfo');
-    console.log(userInfo)
     wx.login({
       success: res => {
         app.globalData.code = res.code
@@ -547,7 +545,6 @@ Page({
     app.globalData.userInfo['avatarUrl'] = userInfo.avatarUrl; // 头像
     app.globalData.userInfo['nickName'] = userInfo.nickName; // 昵称
     app.globalData.userInfo['gender'] = userInfo.gender; //  性别
-
     wx.setStorageSync('userInfo', app.globalData.userInfo);
     //写入缓存
     var nickName = userInfo.nickName;
