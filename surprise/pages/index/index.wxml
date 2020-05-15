@@ -120,6 +120,7 @@
                   <view class="p-sale">爆卖 <span style="color: #f00;">{{twos.volume}}</span>件</view>
                   <view class="goods-text">
                     <view class="p-price">¥ {{twos.price}}</view>
+                    <view class="p-price-y">¥ {{twos.price_yh}}</view>
                   </view>
                   <image src='/images/icon-cart.png' class='icon-cart'></image>
                 </view>

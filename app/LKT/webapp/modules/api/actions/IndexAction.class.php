@@ -40,7 +40,16 @@ where a.status = 0 and a.num >0 and s_type like '%4%'
             foreach ($r_cs as $keyc => $valuec) {
                 $valuec->imgurl = $img . $valuec->imgurl;
                 $initial = unserialize($valuec->initial);
-                $valuec->yj = $initial['yj']; //原价
+
+                $pid = $valuec->id;
+                $sql_ttt = "select price,yprice from lkt_configure where pid ='$pid' order by price asc ";
+                $r_ttt = $db->select($sql_ttt);
+                $price = $r_ttt[0]->price;
+                $price_yh = $r_ttt[0]->yprice;
+
+                $valuec->price = $price;
+                $valuec->price_yh = $price_yh;
+
                 $shou[] = $valuec;
             }
         }
@@ -84,8 +93,8 @@ order by a.sort DESC LIMIT 0,10";
                 $pid = $v->id;
                 $sql_ttt = "select price,yprice from lkt_configure where pid ='$pid' order by price asc ";
                 $r_ttt = $db->select($sql_ttt);
-                $price = $r_ttt[0]->yprice;
-                $price_yh = $r_ttt[0]->price;
+                $price = $r_ttt[0]->price;
+                $price_yh = $r_ttt[0]->yprice;
 
                 $product[$k] = array('id' => $v->id, 'name' => $v->product_title, 'price' => $price, 'price_yh' => $price_yh, 'imgurl' => $imgurl, 'volume' => $v->volume);
             }
@@ -162,11 +171,10 @@ where a.status = 0 and a.num >0 and s_type like '%4%'
                     $pid = $valuec->id;
                     $sql_ttt = "select price,yprice from lkt_configure where pid ='$pid' order by price asc ";
                     $r_ttt = $db->select($sql_ttt);
-                    $price = $r_ttt[0]->yprice;
-                    $price_yh = $r_ttt[0]->price;
-
+                    $price = $r_ttt[0]->price;
+                    $price_yh = $r_ttt[0]->yprice;
                     $valuec->imgurl = $img . $valuec->imgurl;
-                    $product[] = array('id' => $valuec->id, 'product_title' => $valuec->product_title, 'price' => $price, 'price_yh' => $valuec->price, 'imgurl' => $valuec->imgurl, 'volume' => $valuec->volume);
+                    $product[] = array('id' => $valuec->id, 'product_title' => $valuec->product_title, 'price' => $price, 'price_yh' => $price_yh, 'imgurl' => $valuec->imgurl, 'volume' => $valuec->volume);
                 }
             }
 
@@ -190,8 +198,8 @@ where a.status = 0 and a.num >0 and s_type like '%-$index-%'
                     $pid = $v->id;
                     $sql_ttt = "select price,yprice from lkt_configure where pid ='$pid' order by price asc ";
                     $r_ttt = $db->select($sql_ttt);
-                    $price = $r_ttt[0]->yprice;
-                    $price_yh = $r_ttt[0]->price;
+                    $price = $r_ttt[0]->price;
+                    $price_yh = $r_ttt[0]->yprice;
                     $product[$k] = array('id' => $v->id, 'product_title' => $v->product_title, 'price' => $price, 'price_yh' => $price_yh, 'imgurl' => $imgurl, 'volume' => $v->volume);
                 }
                 echo json_encode(array('prolist' => $product, 'status' => 1));
