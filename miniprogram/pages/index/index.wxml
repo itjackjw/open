@@ -133,7 +133,7 @@
                     </view>
                     <view style="display:flex;line-height:50rpx;color:#999">
                       <view class="gmxx" style="  color: red;">¥ {{twos.price}}
-                      <!--{{twos.price_yh}}-->
+                      <!--原价：￥{{twos.price_yh}}-->
                       </view>
                       <view class="ku" style="width:70%">销量：{{twos.volume}}</view>
                     </view>
