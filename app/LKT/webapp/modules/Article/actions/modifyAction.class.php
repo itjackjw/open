@@ -32,7 +32,6 @@ class modifyAction extends Action {
 		
         $dd = $_SERVER['PHP_SELF'];
         $ddd =explode('/', $dd);//打散成数组
-        $dddd =array_pop($ddd);//去除数组最后一个元素
         if($ddd){
             $pic = implode('/', $ddd);
 
@@ -91,7 +90,6 @@ class modifyAction extends Action {
 			return $this->getDefaultView();
 
 		} else {
-
 			header("Content-type:text/html;charset=utf-8");
 			echo "<script type='text/javascript'>" .
 				"alert('文章修改成功！');" .

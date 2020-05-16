@@ -34,15 +34,15 @@ class addGoodsAction extends PluginAction
         } else {
             $start = 0;
         }
-        $data = array();
+        $condition = " and 1=1 ";
         if ($my_class) {
-            $data['product_class'] = "%$my_class%";
+            $condition .= " and b.product_class like '%$my_class' " ;
         }
         if ($my_brand) {
-            $data['brand_id'] = '$my_brand';
+            $condition .= " and b.brand_id = $my_brand " ;
         }
         if ($pro_name) {
-            $data['product_title'] = "%$pro_name%";
+            $condition .= " and b.product_title like '%$pro_name' " ;
         }
 
         //所有商品分类
@@ -101,7 +101,7 @@ class addGoodsAction extends PluginAction
         $sql01 = "select min(b.num) as num,min(a.attribute) attribute,min(a.price) price,min(a.id) AS attr_id,min(b.id) id,min(b.product_title) product_title,min(b.imgurl) imgurl
                 from lkt_configure as a 
                 left join lkt_product_list as b on a.pid = b.id 
-                where b.recycle = 0 and b.num >0 and a.num > 0 and b.status = 0 group by a.pid ";
+                where b.recycle = 0 and b.num >0 and a.num > 0 and b.status = 0 $condition group by a.pid ";
         $res = $db->select($sql01);
 
         $appConfig = $this->getAppInfo();

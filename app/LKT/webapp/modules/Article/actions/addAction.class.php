@@ -18,7 +18,6 @@ class addAction extends Action {
         $db = DBAction::getInstance();
         $dd = $_SERVER['PHP_SELF'];
         $ddd =explode('/', $dd);//打散成数组
-        $dddd =array_pop($ddd);//去除数组最后一个元素
         if($ddd){
             $pic = implode('/', $ddd);
 
@@ -53,10 +52,7 @@ class addAction extends Action {
             $imgurl = preg_replace('/.*\//','',$imgurl);
         }
 
-
-
         // 发布文章
-
         $sql = "insert into lkt_article(Article_title,Article_prompt,Article_imgurl,sort,content,add_date) " .
             "values('$Article_title','$Article_prompt','$imgurl','$sort','$content',CURRENT_TIMESTAMP)";
         $r = $db->insert($sql);
