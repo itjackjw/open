@@ -58,7 +58,7 @@ where a.status = 0 and a.num >0 and s_type like '%4%'
         //列出等级关系
         $distributor = [];
         //查询商品并分类显示返回JSON至小程序
-        $sql_c = 'select cid,pname from lkt_product_class where sid=0 and recycle!=1 order by sort desc';
+        $sql_c = 'select cid,pname from lkt_product_class where sid=0 and recycle!=1 order by sort asc';
         $r_c = $db->select($sql_c);
         $twoList = [];
         foreach ($r_c as $key => $value) {
