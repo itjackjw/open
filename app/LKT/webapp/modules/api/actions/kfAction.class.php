@@ -10,9 +10,9 @@
 require_once(MO_LIB_DIR . '/DBAction.class.php');
 require_once(MO_LIB_DIR . '/ShowPager.class.php');
 require_once(MO_LIB_DIR . '/Tools.class.php');
-define("TOKEN", "weixin");
-define("APP_ID", "wxa9f7cdfa06b2fd0c");
-define("APP_SECRECT", "70a8039ea1b5ee9d78a61ac4aa04117e");
+define("TOKEN", "");
+define("APP_ID", "");
+define("APP_SECRECT", "");
 
 
 //这个类已经取消了
