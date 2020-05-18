@@ -192,7 +192,40 @@ class DBAction {
      * $data 参数一般为数组
      */
     public function preInsert($sql,$data) {
+        $mysqli_stmt=$this->mConnId->prepare($sql);
+        $callback = array($mysqli_stmt, 'bind_param');
+        // 将参数类型描述加入数组
+        array_unshift($data, $this->getParamTypeStr($data));
+        call_user_func_array($callback, $data);
+        //执行预处理语句
+        if($mysqli_stmt->execute()){
+            return $mysqli_stmt->insert_id;
+        }else{
+            return $mysqli_stmt->error;
 
+        }
+
+    }
+
+    private function getParamTypeStr($data){
+        $count = count($data);
+        $typestr = "";
+        for($i = 0; $i<$count; $i++){
+            $type = gettype($data[$i]);
+            switch($type){
+                case "integer":
+                    $typestr.= "i";
+                    break;
+                case "float":
+                case "double":
+                    $typestr.= "d";
+                    break;
+                case "string":
+                    $typestr.= "s";
+                    break;
+            }
+        }
+        return $typestr;
     }
 
     /* 无需使用 */
@@ -203,6 +236,8 @@ class DBAction {
         $rs = mysqli_query($this->mConnId, $sql);
         return $rs;
     }
+
+
 
     /*关闭连接*/
     public function close() {
