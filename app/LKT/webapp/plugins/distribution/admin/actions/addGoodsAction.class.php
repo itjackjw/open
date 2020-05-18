@@ -132,6 +132,40 @@ class addGoodsAction extends PluginAction
 
     public function baocun()
     {
+        $request = $this->getContext()->getRequest();
+        $data = $request->getParameter('data'); //活动商品ID
+
+        $db = DBAction::getInstance();
+        $db->begin();
+        $r_num = 0;
+        if ($data) {
+            foreach ($data as $key => $value) {
+                $dd[] =  $value['id'];
+                $dd[] =  $value['leve'] ? $value['leve'] : '0';
+                $dd[] =  $value['leve1'] ? $value['leve1'] : '0';
+                $dd[] =  $value['leve2'] ? $value['leve2'] : '0';
+                $dd[] =  $value['leve3'] ? $value['leve3'] : '0';
+                $dd[] =  $value['type'];
+                $dd[] =  $value['commissions'];
+                $dd[] = 0;
+                $dd[] = $value['is_show'] ? $value['is_show'] : '0';
+                $db->preInsert("insert into lkt_detailed_pro(pro_id,leve,leve1,leve2,leve3,type,commissions,status,is_show) values(?,?,?,?,?,?,?,?,?)", $dd);
+                $r_num = $r_num + 1;
+            }
+            if ($r_num == count($data)) { //
+                $db->commit();
+                echo json_encode(array('code' => 200, 'message' => '添加成功!'));
+                exit();
+            } else {
+                $db->rollback();
+                echo json_encode(array('code' => 400, 'message' => '未知原因，添加失败!'));
+                exit();
+            }
+        } else {
+            $db->rollback();
+            echo json_encode(array('code' => 400, 'message' => '未传参'));
+            exit();
+        }
 
     }
 

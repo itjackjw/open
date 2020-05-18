@@ -82,7 +82,6 @@ class DBAction {
     public function insert($sql, $return = "affectedrows") {
         $sql = trim($sql);
         if (empty ($sql)) {return -1;}
-
         $rs = $this->query($sql);
         if ($rs == false) {return -1;}
         if (strtolower($return) == "last_insert_id") {
@@ -107,17 +106,14 @@ class DBAction {
                 if($value == 'CURRENT_TIMESTAMP'){
                     $sql.= $value.',';
                 }elseif(is_array($value)){
-                    // echo "不是数组";
                     return false;
                 }elseif(is_object($value)){
-                    // echo "不是对象";
                     return false;
                 }else{
                     $sql.= '\''.$value.'\',';
                 }
             }
             $sql = rtrim($sql, ',').')';
-            // echo $sql;
             if ($xs_sql) {
                 echo $sql;
             }else{
@@ -166,7 +162,6 @@ class DBAction {
                 if($value == 'CURRENT_TIMESTAMP'){
                     $sql.= $key.' = '.$value;
                 }elseif(is_array($value)){
-                    // echo "不是数组";
                     return false;
                 }elseif(is_object($value)){
                     return false;
@@ -180,7 +175,6 @@ class DBAction {
             }else{
                 $sql.= " 1=1";
             }
-            // echo $sql;
             if ($xs_sql) {
                 echo $sql;
             }else{
@@ -190,6 +184,15 @@ class DBAction {
         }else{
             return false;
         }
+    }
+
+
+    /*
+     * 预处理插入
+     * $data 参数一般为数组
+     */
+    public function preInsert($sql,$data) {
+
     }
 
     /* 无需使用 */
