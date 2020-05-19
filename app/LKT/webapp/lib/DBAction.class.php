@@ -197,7 +197,6 @@ class DBAction {
         // 将参数类型描述加入数组
         array_unshift($data, $this->getParamTypeStr($data));
         call_user_func_array($callback, $data);
-        //执行预处理语句
         if($mysqli_stmt->execute()){
             return $mysqli_stmt->insert_id;
         }else{
