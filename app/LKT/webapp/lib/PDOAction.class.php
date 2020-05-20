@@ -31,7 +31,6 @@ class PDOAction {
     {
         $pdo = $this->dbh->prepare($sql);
         $pdo->execute($params);
-        //读取关联数组
         $data = $pdo->fetch(PDO::FETCH_ASSOC);
         return $data;
     }
@@ -41,7 +40,6 @@ class PDOAction {
     {
         $pdo = $this->dbh->prepare($sql);
         $pdo->execute($params);
-        //读取关联数组
         $data = $pdo->fetchAll(PDO::FETCH_ASSOC);
         return $data;
     }
