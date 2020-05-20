@@ -50,7 +50,7 @@ class PDOAction {
     public function insert($sql, $params = array())
     {
         $pdo = $this->dbh->prepare($sql);
-        $result = $pdo->execute($params);
+        $pdo->execute($params);
         $count = $this->dbh->lastInsertId();
         return $count;
     }
