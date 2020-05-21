@@ -99,9 +99,7 @@
                         <td class="text-c" style="width:50px;">
                             {if $item->leve >= 1}1级：{$item->leve1}%<br/>{/if} 
                             {if $item->leve >= 2}2级：{$item->leve2}%<br/>{/if} 
-                            {if $item->leve >= 3}3级：{$item->leve3}%<br/>{/if} 
-                            {if $item->leve >= 4}4级：{$item->leve4}%<br/>{/if} 
-                            {if $item->leve >= 5}5级：{$item->leve5}%{/if} 
+                            {if $item->leve >= 3}3级：{$item->leve3}%{/if}
                         </td>
 
                         <td style="width:50px;">
