@@ -710,9 +710,8 @@
 							if (res.code == 200) {
 
 								layer.msg(res.message);
-
 								setTimeout(function () {
-									location.href = 'index.php?module=pi&p=distribution&c==goods'
+									location.href = 'index.php?module=pi&p=distribution&c=goods'
 								}, 800)
 
 							} else if (res.status == 1) {

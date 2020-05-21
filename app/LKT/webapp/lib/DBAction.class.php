@@ -196,7 +196,7 @@ class DBAction {
         $callback = array($mysqli_stmt, 'bind_param');
         // 将参数类型描述加入数组
         array_unshift($data, $this->getParamTypeStr($data));
-        call_user_func_array($callback, $data);
+        call_user_func_array($callback, $this->refValues($data));
         if($mysqli_stmt->execute()){
             return $mysqli_stmt->insert_id;
         }else{
@@ -225,6 +225,17 @@ class DBAction {
             }
         }
         return $typestr;
+    }
+
+
+    private function refValues($arr){
+        if (version_compare(PHP_VERSION, '5.3.0') >= 0) {
+            $refs = array();
+            foreach($arr as $key => $value)
+                $refs[$key] = &$arr[$key];
+            return $refs;
+        }
+        return $arr;
     }
 
     /* 无需使用 */
