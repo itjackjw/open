@@ -129,7 +129,7 @@
                         </td>
 
                         <td class="tab_editor" style="width:150px;">
-                            <a style="text-decoration:none" class="ml-5" href="index.php?module=distribution&action=modify&id={$item->id}" onclick="return confirm('确定要修改该分销商品吗?')">
+                            <a style="text-decoration:none" class="ml-5" href="index.php?module=pi&p=distribution&c=modify&id={$item->id}" onclick="return confirm('确定要修改该分销商品吗?')">
                                 <div style="margin:0 auto;"> 
                                     <img src="images/icon1/xg.png" />&nbsp;编辑
                                 </div>
@@ -160,7 +160,7 @@
 
 
 
-                            <a style="text-decoration:none" class="ml-5" href="index.php?module=distribution&action=goods&m=del&id={$item->id}" onclick="return confirm('确定要删除该分销商品吗?')">
+                            <a style="text-decoration:none" class="ml-5" href="index.php?module=pi&p=distribution&c=goods&m=del&id={$item->id}" onclick="return confirm('确定要删除该分销商品吗?')">
                                 <div style="margin:0 auto;"> 
                                     <img src="images/icon1/del.png"/>&nbsp;删除
                                 </div>
@@ -209,7 +209,7 @@
 
     function updataStatus(id,status){
         $.ajax({
-            url: "index.php?module=distribution&action=goods&m=ststus",
+            url: "index.php?module=pi&p=distribution&c=goods&m=ststus",
             async: false,
             data:{
                 id:id,
@@ -258,7 +258,7 @@
             btn: ['确定','取消'] //按钮
         }, function(){
             $.ajax({
-                url: "index.php?module=distribution&action=goods&m=del",
+                url: "index.php?module=pi&p=distribution&c=goods&m=del",
                 async: false,
                 method:'POST',
                 data:{
