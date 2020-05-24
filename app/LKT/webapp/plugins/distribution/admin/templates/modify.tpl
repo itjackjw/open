@@ -20,7 +20,7 @@
 	<script type="text/javascript" src="style/lib/layer/2.1/layer.js"></script>
 	<script type="text/javascript" src="style/js/H-ui.min.js"></script>
 
-	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+	<script src="style/js/vue.min.js"></script>
 	
 	<title>添加分销商品</title>
 
@@ -143,7 +143,7 @@
 		<i class="Hui-iconfont">&#xe6ca;</i>
 		插件管理
 		<span class="c-gray en">&gt;</span>
-		<a style="margin-top: 10px;" onclick="location.href='index.php?module=distribution&action=goods&status=2';">分销</a>
+		<a style="margin-top: 10px;" onclick="location.href='index.php?module=pi&p=distribution&c=goods&status=2';">分销</a>
 		<span class="c-gray en">&gt;</span>
 		编辑分销商品
 	</nav>
@@ -316,7 +316,7 @@
 				getCommodityList(){
 					let vm = this
 					$.ajax({
-						url: "index.php?module=distribution&action=modify&m=ajaxmodify&id=" + this.getQueryVariable('id'),
+						url: "index.php?module=pi&p=distribution&c=modify&m=ajaxmodify&id=" + this.getQueryVariable('id'),
 						async: false,
 						success: function (res) {
 							res = JSON.parse(res)
@@ -426,7 +426,7 @@
 					}
 					
 					$.ajax({
-							url:'index.php?module=distribution&action=modify&m=baocun',
+							url:'index.php?module=pi&p=distribution&c=modify&m=baocun',
 							method:'POST',
 							data:{
 								id: this.getQueryVariable('id'),
@@ -448,7 +448,7 @@
 									layer.msg(res.message);
 
 									setTimeout(function () {
-										location.href = 'index.php?module=distribution&action=goods'
+										location.href = 'index.php?module=pi&p=distribution&c=goods'
 									}, 800)
 
 								} else if (res.status == 1) {
