@@ -13,8 +13,7 @@ class relationshipInputView extends PluginInputView {
 	
 
     public function execute() {
-		$request = $this->getContext()->getRequest();
-        $this->setTemplate("relationship.tpl");
+		$this->setTemplate("relationship.tpl");
 
     }
 

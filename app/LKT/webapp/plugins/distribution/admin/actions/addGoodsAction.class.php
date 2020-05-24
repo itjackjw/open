@@ -152,7 +152,7 @@ class addGoodsAction extends PluginAction
                 $db->preInsert("insert into lkt_detailed_pro(pro_id,leve,leve1,leve2,leve3,type,commissions,status,is_show) values(?,?,?,?,?,?,?,?,?)", $dd);
                 $r_num = $r_num + 1;
             }
-            if ($r_num == count($data)) { //
+            if ($r_num == count($data)) {
                 $db->commit();
                 echo json_encode(array('code' => 200, 'message' => '添加成功!'));
                 exit();
