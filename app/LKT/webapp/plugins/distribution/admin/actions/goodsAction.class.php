@@ -24,12 +24,7 @@ class goodsAction extends PluginAction
         } else {
             $start = 0;
         }
-        $data = array();
-        //如果名字不为空
-        if ($name != '') {
-            $data['name'] = "%$name%";
-        }
-
+        
         $appConfig = $this->getAppInfo();
         $img = $appConfig['imageRootUrl'];
 

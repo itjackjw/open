@@ -133,7 +133,7 @@ class addGoodsAction extends PluginAction
     public function baocun()
     {
         $request = $this->getContext()->getRequest();
-        $data = $request->getParameter('data'); //活动商品ID
+        $data = $request->getParameter('data');
 
         $db = DBAction::getInstance();
         $db->begin();
