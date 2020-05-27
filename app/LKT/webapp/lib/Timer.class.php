@@ -123,7 +123,7 @@ function addkuncun($db, $size_id, $pid, $num)
 {
     // 根据商品id,修改商品数量
     $sql_p = "update lkt_configure set  num = num + $num where id = $size_id";
-    $r_p = $db->update($sql_p);
+    $db->update($sql_p);
     // 根据商品id,修改卖出去的销量
     $sql_x = "update lkt_product_list set volume = volume - $num,num = num+$num where id = $pid";
     $db->update($sql_x);
@@ -157,7 +157,6 @@ function up_status($db, $id, $ptcode)
 {
     $db->update("update lkt_group_open set ptstatus=3 where id='$id'");//时间到了拼团未满
     $db->update("update lkt_order set status=11,ptstatus = 3 where ptcode='$ptcode'");//订单状态
-    // echo "update lkt_order set status=10,ptstatus = 3 where pid='$group_id'";
     $ds = $db->select("select sNo,z_price,user_id from lkt_order where ptcode='$ptcode'");
     if ($ds) {
         foreach ($ds as $key => $value) {
