@@ -45,8 +45,8 @@
             <h2>数据库连接信息</h2>
 			<div>数据库连接类型，服务器支持的情况下建议使用mysqli</div>
                 <select name="db[]">
-				<option>mysql</option>
-                    <option>mysqli</option>
+					<option>mysqli</option>
+					<option>mysql</option>
                 </select>
 			    <div>数据库服务器，数据库服务器IP，一般为127.0.0.1</div>
                 <input name="db[]" id='localhost' value="127.0.0.1" type="text">
