@@ -322,7 +322,7 @@
 							res = JSON.parse(res)
 							if(res.code === 200){
 
-								let attributes = res.data[0].attributes
+								let attributes = res.data[0]
 								let { commissions, leve, is_show } = attributes
 
 								vm.selectdefault = leve
