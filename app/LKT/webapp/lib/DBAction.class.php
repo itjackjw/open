@@ -206,6 +206,21 @@ class DBAction {
 
     }
 
+    public function preUpdate($sql,$data) {
+        $mysqli_stmt=$this->mConnId->prepare($sql);
+        $callback = array($mysqli_stmt, 'bind_param');
+        // 将参数类型描述加入数组
+        array_unshift($data, $this->getParamTypeStr($data));
+        call_user_func_array($callback, $this->refValues($data));
+        if($mysqli_stmt->execute()){
+            return $mysqli_stmt->affected_rows;
+        }else{
+            return $mysqli_stmt->error;
+
+        }
+
+    }
+
     private function getParamTypeStr($data){
         $count = count($data);
         $typestr = "";

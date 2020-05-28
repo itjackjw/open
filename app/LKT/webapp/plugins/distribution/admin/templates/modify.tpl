@@ -380,14 +380,12 @@
 				},
 				baocungroup(){
 
-
 					let data = {}
-					
 					if(this.commissions != 0){
 						data['commissions'] = this.commissions
 					} else {
 						layer.msg('请输入佣金手续费！')
-						return 
+						return
 					}
 
 					if(this.isshowtyoe){
@@ -403,20 +401,16 @@
 						if(this.is_show3){
 							isshowlist.push(3)
 						}
-						
 						isshowlist.push(4)
-						
-
 						if(!isshowlist.length){
 							layer.msg('请选择显示位置！')
 							return
 						}
-
 						data['is_show'] = isshowlist.join(',')
 					} else {
 						data['is_show'] = '0'
 					}
-					
+
 					data['leve'] = this.leve
 					data['type'] = this.type
 
@@ -424,7 +418,7 @@
 						let s =  parseInt(i) + 1
 						data['leve' + s] = this.lvlist[i].name
 					}
-					
+
 					$.ajax({
 							url:'index.php?module=pi&p=distribution&c=modify&m=baocun',
 							method:'POST',
@@ -434,14 +428,11 @@
 								leve1: data.leve1,
 								leve2: data.leve2 || 0,
 								leve3: data.leve3 || 0,
-								leve4: data.leve4 || 0,
-								leve5: data.leve5 || 0,
 								is_show: data.is_show,
 								commissions: data.commissions,
 								type: data.type
 							},
 							success:function(res){
-
 								res = JSON.parse(res)
 								if (res.code == 200) {
 
@@ -457,7 +448,7 @@
 									layer.msg(res.info);
 								}
 							}
-						})
+					})
 
 				},
 				radios(ele){

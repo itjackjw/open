@@ -33,8 +33,6 @@ class modifyAction extends PluginAction
         $leve1 = $request->getParameter('leve1'); //一级佣金比例
         $leve2 = $request->getParameter('leve2');  //二级佣金比例
         $leve3 = $request->getParameter('leve3'); //三级佣金比例
-        $leve4 = $request->getParameter('leve4'); //四级佣金比例
-        $leve5 = $request->getParameter('leve5'); //五级佣金比例
         $is_show = $request->getParameter('is_show'); //是否显示（0不显示，1热销单品，2.购物车，3.个人中心,4.分销商品显示）
 
         $data[] = $leve = $leve ? $leve : '0';
@@ -46,11 +44,10 @@ class modifyAction extends PluginAction
         $data[] = $commissions = $request->getParameter('commissions'); //分销佣金所需手续费
         $data[] = $is_show ? $is_show : '0'; //是否显示（0不显示，1热销单品，2.购物车，3.个人中心，4分销商品显示）
         $data[] = $id = $request->getParameter('id'); //id
-        $conn = new LaiketuiDB(); //开启事务
-        $db = $conn->connection();
-        $db->transaction();
-        $r_update =  DistributionModel::updataPro($data, '');
-        if ($r_update >= 0) { //
+
+        $db = DBAction::getInstance();
+        $res = $db->preUpdate("update lkt_detailed_pro set leve = ?,leve1 = ?,leve2 = ?,leve3 = ?,type = ?,commissions = ?,is_show = ? where id = ?",$data);
+        if ($res > 0) { //
             $db->commit();
             echo json_encode(array('code' => 200, 'message' => '修改成功!'));
             exit();
