@@ -76,7 +76,6 @@ class goodsAction extends PluginAction
         $data[] = $id;
         $db = DBAction::getInstance();
         $res = $db->preUpdate("update lkt_detailed_pro set status=? where id = ?",$data);
-
         if ($res >= 0) { 
             echo json_encode(array('code' => 200, 'message' => '修改成功!'));
             exit();

@@ -103,17 +103,7 @@
 {php}include BASE_PATH."/modules/assets/templates/footer.tpl";{/php}
 {literal}
 <script type="text/javascript">
-      // var group_end_time = $('#group_end_time');
-      //     group_end_time.val('');
-      //     var startdate = $("#group_start_time").val();
-          // if(startdate != '' && startdate.length == 19){
-          //   var day = startdate.split(' ');
-          //   var str = startdate.replace(/-/g,'/');
-          //   var d = new Date(str);
-          //   var oneYear = oneYearPast(d);
-          //   oneYear = oneYear + ' ' + day[1];
-          //   $("#end_year").val(oneYear)
-          // }
+      
        laydate.render({
           elem: '#group_start_time', //指定元素
            trigger: 'click',
