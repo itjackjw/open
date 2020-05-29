@@ -209,7 +209,7 @@
 
     function updataStatus(id,status){
         $.ajax({
-            url: "index.php?module=pi&p=distribution&c=goods&m=ststus",
+            url: "index.php?module=pi&p=distribution&c=goods&m=status",
             async: false,
             data:{
                 id:id,

@@ -65,6 +65,29 @@ class goodsAction extends PluginAction
         return View::INPUT;
     }
 
+    //商品上下架
+    public function status()
+    {
+        $request = $this->getContext()->getRequest();
+        $id = intval($request->getParameter('id'));
+        $status = intval($request->getParameter('status')); //1上架，2下架
+        $data = array();
+        $data[] = $status;
+        $data[] = $id;
+        $db = DBAction::getInstance();
+        $res = $db->preUpdate("update lkt_detailed_pro set status=? where id = ?",$data);
+
+        if ($res >= 0) { 
+            echo json_encode(array('code' => 200, 'message' => '修改成功!'));
+            exit();
+        } else {
+            $db->rollback();
+            echo json_encode(array('code' => 400, 'message' => '未知原因，修改失败!'));
+            exit();
+        }
+        return;
+    }
+
 
     public function execute()
     {
