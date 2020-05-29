@@ -76,12 +76,53 @@ class goodsAction extends PluginAction
         $data[] = $id;
         $db = DBAction::getInstance();
         $res = $db->preUpdate("update lkt_detailed_pro set status=? where id = ?",$data);
-        if ($res >= 0) { 
+        if ($res > 0) {
             echo json_encode(array('code' => 200, 'message' => '修改成功!'));
             exit();
         } else {
-            $db->rollback();
             echo json_encode(array('code' => 400, 'message' => '未知原因，修改失败!'));
+            exit();
+        }
+        return;
+    }
+
+
+    public function del()
+    {
+        $request = $this->getContext()->getRequest();
+        $id = $request->getParameter('id');
+        $type = $request->getParameter('type');
+        $db = DBAction::getInstance();
+        $res = 0;
+        if ($id) {
+            $data = explode(',', $id);
+            foreach ($data as $key => $value) {
+                $res = $db->preUpdate("delete from lkt_detailed_pro where id =  ?",array($value));
+                if ($res==0){
+                    break;
+                }
+            }
+        }
+
+        if ($res > 0) {
+            if ($type==1){
+                header("Content-type:text/html;charset=utf-8");
+                echo "<script type='text/javascript'>" .
+                    "alert('删除成功！');" .
+                    "location.href='index.php?module=pi&p=distribution&c=goods';</script>";
+            }else{
+                echo json_encode(array('code' => 200, 'message' => '删除成功!'));
+            }
+            exit();
+        } else {
+            if ($type==1){
+                header("Content-type:text/html;charset=utf-8");
+                echo "<script type='text/javascript'>" .
+                    "alert('删除失败！');" .
+                    "location.href='index.php?module=pi&p=distribution&c=goods';</script>";
+            }else{
+                echo json_encode(array('code' => 400, 'message' => '未知原因，删除失败!'));
+            }
             exit();
         }
         return;

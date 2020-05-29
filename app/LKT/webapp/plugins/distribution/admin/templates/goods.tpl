@@ -160,7 +160,7 @@
 
 
 
-                            <a style="text-decoration:none" class="ml-5" href="index.php?module=pi&p=distribution&c=goods&m=del&id={$item->id}" onclick="return confirm('确定要删除该分销商品吗?')">
+                            <a style="text-decoration:none" class="ml-5" href="index.php?module=pi&p=distribution&c=goods&m=del&id={$item->id}&type=1" onclick="return confirm('确定要删除该分销商品吗?')">
                                 <div style="margin:0 auto;"> 
                                     <img src="images/icon1/del.png"/>&nbsp;删除
                                 </div>
@@ -265,9 +265,18 @@
                     id:list.join(',')
                 },
                 success: function (res) {
-                    setTimeout(function(){
-                        location.reload()
-                    },600)
+                    res = JSON.parse(res)
+                    if(res.code === 200){
+                        layer.msg('删除成功！')
+                        setTimeout(function(){
+                            location.reload()
+                        },600)
+                    } else {
+                        layer.msg('删除成功！')
+                        setTimeout(function(){
+                            location.reload()
+                        },600)
+                    }
                 }
             })
 

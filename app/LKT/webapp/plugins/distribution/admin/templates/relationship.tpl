@@ -103,7 +103,7 @@
 {php}include BASE_PATH."/modules/assets/templates/footer.tpl";{/php}
 {literal}
 <script type="text/javascript">
-      
+
        laydate.render({
           elem: '#group_start_time', //指定元素
            trigger: 'click',
