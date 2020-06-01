@@ -48,7 +48,7 @@ class relationshipAction extends PluginAction
             $res1 = array_slice($res, $start, $pagesize); //分页
         }
         $pager = new ShowPager($total, $pagesize, $page);
-        $url = "index.php?module=pi&p=distribution&c=relationship&username=$username&wx_id=wx_id&pagesize=" . urlencode($pagesize);
+        $url = "index.php?module=pi&p=distribution&c=relationship&username=$username&wx_id=$wx_id&pagesize=" . urlencode($pagesize);
         $pages_show = $pager->multipage($url, $total, $page, $pagesize, $start, $para = '');
         $request->setAttribute("list", $res1);
         $request->setAttribute("wx_id", $wx_id);
