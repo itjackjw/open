@@ -46,7 +46,7 @@ class relationshipAction extends PluginAction
             $data['Referee'] = $wx_id;
         }
 
-        $res = Users::SelectUser($data);
+        $res = array();
         $total = count($res);
 
         if ($res) {
@@ -55,7 +55,7 @@ class relationshipAction extends PluginAction
 
                 $dd['user_id'] =  $value->referee;
 
-                $rr = Users::SelectUser($dd); //查询上级信息
+                $rr = array(); //查询上级信息
                 $R_user_name = $rr ? $rr[0]->user_name : '';
                 $R_user_id = $rr ? $rr[0]->user_id : '';
                 $res1[$key]->setCustomerAttr("R_user_name",  $R_user_name);
@@ -64,7 +64,7 @@ class relationshipAction extends PluginAction
             }
         }
         $pager = new ShowPager($total, $pagesize, $page);
-        $url = "index.php?module=distribution&action=relationship&status=$status&username=$username&start_time=$start_time&end_time=$end_time&pagesize=" . urlencode($pagesize);
+        $url = "index.php?module=pi&p=distribution&c==relationship&status=$status&username=$username&start_time=$start_time&end_time=$end_time&pagesize=" . urlencode($pagesize);
         $pages_show = $pager->multipage($url, $total, $page, $pagesize, $start, $para = '');
         $request->setAttribute("list", $res1);
         $request->setAttribute("status", $status);
