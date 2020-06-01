@@ -26,7 +26,6 @@ class relationshipAction extends PluginAction
         }
         $data = array();
         $res1 = array();
-        $dd = array();
         //如果名字不为空
         $condition = "  1=1 ";
         if ($username != '') {
