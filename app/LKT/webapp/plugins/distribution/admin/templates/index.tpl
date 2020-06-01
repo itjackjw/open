@@ -33,7 +33,7 @@
             <input type="hidden" name="module" value="pi"/>
             <input type="hidden" name="p" value="distribution"/>
             <input type="hidden" name="c" value="Home"/>
-            <input type="text" name="username" size='8' value="{$username}" id="" placeholder="请输入用户名称/用户ID" style="width:200px" class="input-text">
+            <input type="text" name="username" size='8' value="{$username}" id="" placeholder="请输入用户ID" style="width:200px" class="input-text">
             <input type="text" name="sNo" size='8' value="{$sNo}" id="" placeholder="请输入订单编号" style="width:200px" class="input-text">
             <div style="">
                 <input type="text" class="input-text" value="{$starttime}" autocomplete="off" placeholder="请输入开始时间" id="group_start_time" name="starttime" style="width:150px;">
