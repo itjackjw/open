@@ -27,16 +27,12 @@
   <div class="page_h16"></div>
   <div class="text-c" >
       <form name="form1" action="index.php" method="get" style="display: flex;">
-          <input type="hidden" name="module" value="distribution"/>
-          <input type="hidden" name="action" value="relationship"/>
-          <input type="hidden" name="status" value="1"/>
+          <input type="hidden" name="module" value="pi"/>
+          <input type="hidden" name="p" value="distribution"/>
+          <input type="hidden" name="c" value="relationship"/>
           <input type="text" name="username" size='8' value="{$username}" id="" placeholder="请输入用户名称/用户ID" style="width:200px" class="input-text">
+          <input type="text" name="wx_id" size='8' value="{$wx_id}" id="" placeholder="请输入推荐人ID" style="width:200px" class="input-text">
 
-          <div>
-            <input type="text" class="input-text" value="{$start_time}" autocomplete="off" placeholder="请输入开始时间" id="group_start_time" name="starttime" style="width:150px;">
-            至
-            <input type="text" class="input-text" value="{$end_time}" autocomplete="off" placeholder="请输入结束时间" id="group_end_time" name="group_end_time" style="width:150px;">
-          </div>
           
           <input type="button" value="重置" id="btn8" style="border: 1px solid #D5DBE8; color: #6a7076; height: 31px;" class="reset" onclick="empty()" />
           <input name="" id="" class="btn btn-success buttom_hover" type="submit" value="查询">
@@ -70,24 +66,20 @@
                                 {$item->user_id}
                         </td>
                         <td >               
-                                {$item->user_name}
+                                {$item->wx_name}
                         </td>
                             <td>
-                              {$item->R_user_id}
-                            </td><td>
-                                {$item->R_user_name}
+                              {$item->Referee}
+                            </td>
+                            <td>
+                                {$item->parent_name}
                             </td>
                             <td style="text-align: center;">
-                                {$item->Register_data "}
+                                {$item->Register_data}
                             </td>
-                        <td class="tab_editor">
-                            <a style="text-decoration:none" class="ml-5" href="index.php?module=distribution&action=relationship&wx_id={$item->user_id}&&status=1" >
-                              <div style="margin:0 auto;;display: flex;align-items: center;"> 
-                                查看下级
-                                <!-- <img src="images/icon1/del.png"/>&nbsp;删除 -->
-                              </div>
-                      
-                        </a>
+                        <td>
+                            <a   href="index.php?module=pi&p=distribution&c=relationship&wx_id={$item->user_id}" >
+                                查看下级</a>
                         </td>
 
                     </tr>
