@@ -248,7 +248,7 @@
                     </div>
 
 
-                    <div class="form-group">
+                    <div class="form-group" style="display:none">
 
                         <label class="col-xs-12 col-sm-3 col-md-2 control-label"><span style='color:red'>*</span>
                             生成二维码关键词</label>
@@ -557,10 +557,7 @@
                     return false;
                 }
 
-                if ($(':input[name=keyword]').isEmpty()) {
-                    Tip.focus($(':input[name=keyword]'), '请输入回复关键词!');
-                    return false;
-                }
+                
 
                 if ($(':radio[name=type]:checked').val() == '4') {
                     if ($(':radio[name=paytype]:checked').val() == '1') {
