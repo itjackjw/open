@@ -557,7 +557,7 @@
                     return false;
                 }
 
-                
+
 
                 if ($(':radio[name=type]:checked').val() == '4') {
                     if ($(':radio[name=paytype]:checked').val() == '1') {
