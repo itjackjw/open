@@ -32,10 +32,7 @@ class distributionAction extends PluginAction {
        $db = DBAction::getInstance();
        $request = $this->getContext()->getRequest();
        $pagesize = 10;
-       // 每页显示多少条数据
        $page = $request->getParameter('page');
-
-       // 页码
        if ($page) {
            $start = ($page - 1) * $pagesize;
        } else {
@@ -64,8 +61,6 @@ class distributionAction extends PluginAction {
 
        echo json_encode(array('r01' => $r01, 'num' => $num, 'total' => $total));
        exit();
-       echo json_encode(array('res'=>'正在开发中!','status'=>1));
-      exit();
 
    }
 
