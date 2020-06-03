@@ -67,7 +67,6 @@ class groupbuyAction extends PluginAction
             foreach ($restime as $key => $v) {
                 $sumsql = "select count(sNo) as sum from lkt_order where pid =$v->group_id";
                 $sumres = $db->select($sumsql);
-                $group_data = unserialize($v->group_data);
                 $group_level = unserialize($v->group_level);
                 $min_man = 1;
                 $min_bili = 100;
