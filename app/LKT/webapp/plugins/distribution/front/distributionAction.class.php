@@ -11,8 +11,17 @@ class distributionAction extends PluginAction {
 
     
    public function detailed_commission(){//确认收货后增加佣金明细
-        echo json_encode(array('res'=>'正在开发中!','status'=>1));
-        exit();
+       $db = DBAction::getInstance();
+       $request = $this->getContext()->getRequest();
+       $order_id = $request->getParameter('order_id'); // 订单号
+       $r = $db->select("select Referee,s_money from lkt_detailed_commission where sNo ='$order_id' and recycle =0");
+       if ($r) {
+           foreach ($r as $key => $value) {
+               $Referee = $value->Referee;
+               $s_money = $value->s_money;
+           }
+       }
+       exit();
         
 
    }
