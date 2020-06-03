@@ -32,15 +32,16 @@ class distributionAction extends PluginAction {
        $db = DBAction::getInstance();
        $request = $this->getContext()->getRequest();
        $pagesize = 10;
-       $page = $request->getParameter('page');
+       $page = addslashes($request->getParameter('page'));
+       $start = 0;
        if ($page) {
            $start = ($page - 1) * $pagesize;
-       } else {
-           $start = 0;
        }
-       $openid = $request->getParameter('openid');
+       $openid = addslashes($request->getParameter('openid'));
        $r = $db->select("select user_id from lkt_user where wx_id = '$openid' ");
        $num = 0;
+       $total = 0 ;
+       $r01 = '';
        if ($r) {
            $user_id = $r[0]->user_id;
            $r01 = $db->select("select user_id,user_name,headimgurl,wx_id as openid,Register_data from lkt_user where Referee = '$user_id' order by Register_data desc limit $start,$pagesize");
@@ -54,9 +55,6 @@ class distributionAction extends PluginAction {
                    $value->num = $r02;
                }
            }
-       } else {
-           $r01 = '';
-           $total = 0;
        }
 
        echo json_encode(array('r01' => $r01, 'num' => $num, 'total' => $total));
