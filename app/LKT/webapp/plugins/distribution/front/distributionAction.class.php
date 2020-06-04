@@ -15,12 +15,7 @@ class distributionAction extends PluginAction {
        $request = $this->getContext()->getRequest();
        $order_id = $request->getParameter('order_id'); // 订单号
        $r = $db->select("select Referee,s_money from lkt_detailed_commission where sNo ='$order_id' and recycle =0");
-       if ($r) {
-           foreach ($r as $key => $value) {
-               $Referee = $value->Referee;
-               $s_money = $value->s_money;
-           }
-       }
+       echo json_encode(array('list' => $r));
        exit();
         
 
