@@ -22,15 +22,7 @@ class delAction extends Action {
 		$r0=0;
 		$k0=0;
         foreach ($id as $k => $v){
-            $sa= $db->select("select id from lkt_group_product where product_id = $v and recycle = 0 and g_status < 3");//查询该商品是否正在参加拼团活动
-            if($sa){
-                   $res = array('status' => '2','info'=>'该商品有参与插件活动，无法删除！');
-                   $db-> rollback();
-                    echo json_encode($res);
-            return;
 
-            }
-            
             $sql = "delete from lkt_cart where Goods_id = '$v'";
             $db->delete($sql);
 
@@ -42,7 +34,7 @@ class delAction extends Action {
             // 根据产品id，删除产品信息
             $sql01 = "update lkt_product_list set recycle = 1,status = 1 where id = '$v'";
             $re0=$db->update($sql01);
-			if($re0=1){
+			if($re0 ==1){
 				$r0++;
 			}
 			$k0++;	
@@ -60,7 +52,7 @@ class delAction extends Action {
 			$db-> commit();
 			echo json_encode($res);
 		}else{
-         $db-> rollback();
+            $db-> rollback();
         }
         return;
     }

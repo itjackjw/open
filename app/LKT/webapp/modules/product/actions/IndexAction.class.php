@@ -108,12 +108,7 @@ class IndexAction extends Action
                 $initial = unserialize($value->initial);
                 $prrr = $initial['sj'];
             }
-            $sa = $db->select("select id from lkt_group_product where product_id = $pid and g_status = 2");//查询该商品是否正在参加拼团活动
-            if ($sa) {
-                $value->g_status = 1;//正在参加拼团活动
-            } else {
-                $value->g_status = 0;//未参加拼团活动
-            }
+
             $class = $value->product_class;//产品类别
             $num = $value->num;//数量
             $value->s_type = explode(',', $value->s_type);//产品值属性 1：新品,2：热销，3：推荐 (1,2,3)
