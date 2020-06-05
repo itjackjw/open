@@ -31,18 +31,8 @@
       <text class="qb_02">{{user.money}}</text>
       <text class="qb_01">账户余额({{user.unit}})</text>
     </view>
-    <navigator url="../distribution/commission">
-      <view class="brokerage">
-        <view class='nav-title'>预计佣金(元)</view>
-        <view class='nav-sum'>
-          <view class='nav-sum-s'>{{ detailed_commission }}</view>
-          <image src='../../images/icons/qbjt.png'></image>
-        </view>
-      </view>
-    </navigator>
   </view> 
-
-
+  
   <view class="use_detail" style="width: 100%;margin: 0 auto;position: relative;height:55%;">
     <view class="swiper-tab">
       <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">入账记录</view>
