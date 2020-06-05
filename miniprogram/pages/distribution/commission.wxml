@@ -1,11 +1,5 @@
 <!--pages/distribution/commission.wxml-->
 <view>
-  <view class="search_no" style='padding-top:60px' wx:if="{{list_3== 1}}">
-    <view class="font_14" style='padding-bottom:2%;'>
-      <image class="scimg" src="/images/search_no.png"></image>
-    </view>
-    <text>请购买商业权限/(ㄒoㄒ)/~~</text>
-  </view>
   <view class="search_no" style='padding-top:60px' wx:if="{{list_3.length < 1}}">
     <view class="font_14" style='padding-bottom:2%;'>
       <image class="scimg" src="/images/search_no.png"></image>

@@ -5,11 +5,7 @@
 
 <view class='record'>
   <view class='record-content'>
-    <view class="search_no" style='padding-top:60px' wx:if="{{r01== 1}}">
-    <view class="font_14"  style='padding-bottom:2%;'><image class="scimg" src="/images/search_no.png"></image></view>
-    <text>请购买商业权限/(ㄒoㄒ)/~~</text>
-  </view>
-
+    
     <view class='content-list'  wx:if="{{r01!= 1}}">
 
       <view class='list-item' wx:for="{{ r01 }}" data-openid="{{ item.openid }}" data-title="{{ item.user_name }}" data-num="{{ item.num }}" bindtap="setNav">
