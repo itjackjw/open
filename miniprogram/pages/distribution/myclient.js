@@ -93,7 +93,7 @@ Page({
     if (that.data.load) {
       that.data.load = false
       wx.request({
-        url: app.d.ceshiUrl + '&action=distribution&m=membership',
+        url: app.d.ceshiUrl + '&action=pi&p=distribution&m=membership',
         method: 'post',
         data: {
           openid: app.globalData.userInfo.openid,
