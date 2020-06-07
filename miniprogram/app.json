@@ -49,9 +49,9 @@
     "pages/distribution/commission",
     "pages/distribution/brokerage",
     "pages/distribution/brokeragedatails",
-    "pages/live/index"
+    "pages/live/index",
+    "pages/distribution/list"
   ],
-  
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#ffffff",
