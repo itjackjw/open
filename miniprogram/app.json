@@ -50,7 +50,8 @@
     "pages/distribution/brokerage",
     "pages/distribution/brokeragedatails",
     "pages/live/index",
-    "pages/distribution/list"
+    "pages/distribution/list",
+    "pages/distribution/user"
   ],
   "window": {
     "backgroundTextStyle": "light",
