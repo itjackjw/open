@@ -231,7 +231,7 @@ Page({
       page: page+1
     });
     wx.request({
-      url: app.d.ceshiUrl + '&action=product&m=new_product',
+      url: app.d.ceshiUrl + '&action=pi&p=distribution&c=distribution&m=home',
       method: 'post',
       data: {
         page: page,
