@@ -76,10 +76,6 @@
               <view class="{{heng}}">
                   <navigator class="pr pr_xt" style='display:flex;margin-bottom:0px;width:100%;margin-left:0px;' url="../product/detail?productId={{item.id}}&size={{item.size}}" hover-class="changestyle" wx:for="{{shopList}}" wx:key="*this" data-id="{{item.id}}">
 
-                    <!-- <view class='photo-c'>
-                      <image class="photo" style='height:220rpx;width:230rpx;margin-left:3px;' src="{{item.imgurl}}"></image>
-                      <image class="photo-right" wx:if="{{item.s_type==1}}" src="../../images/new.png"></image>
-                    </view>   设置右上角图标样式 目前不启用 -->
                     <view class='photo-c'>
                       <image class="photo" style='height:220rpx;width:230rpx;margin-left:20rpx;padding-top:20rpx' src="{{item.imgurl}}"></image>
                     </view>
@@ -94,9 +90,9 @@
                           <view class="gmx" style='text-align:right;'>¥ {{item.price}}</view>
                         </view>
                         <view style="display:flex;line-height:50rpx;color:#999">
-                         <!--<view class="gmxx" style="font-size:28rpx;width:30%">
-                            <text>新品</text>
-                          </view> -->
+                         <view class="gmxx" style="font-size:28rpx;">
+                            <text>分享赚 {{item.fan}} 积分</text>
+                          </view> 
                           <view class="ku">销量：{{item.volume}}</view>
                         </view>
                     </view>

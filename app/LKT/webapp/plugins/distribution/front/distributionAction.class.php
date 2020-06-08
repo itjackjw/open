@@ -23,7 +23,7 @@ class distributionAction extends PluginAction
         } elseif ($select == 1) {
             $select = 'a.volume';
         } else {
-            $select = 'price';
+            $select = 'a.price';
         }
 
         $sort = addslashes(trim($request->getParameter('sort'))); // 排序方式  1 asc 升序   0 desc 降序
@@ -42,12 +42,9 @@ class distributionAction extends PluginAction
         $start = ($paegr - 1) * 10;
         $end = 10;
 
-        $sql = "select a.s_type,a.id,a.product_title,a.volume,a.imgurl,c.price,a.sort  
-from lkt_product_list AS a RIGHT JOIN (select min(price) price,pid from lkt_configure group by pid) AS c ON a.id = c.pid 
-where a.status = 0 and a.num >0 and s_type like '%$id%' 
- order by a.sort asc,$select $sort LIMIT $start,$end ";
-
+        $sql = "select a.*,b.leve1  from lkt_product_list AS a,lkt_detailed_pro AS b where a.id = b.pro_id   AND a.num > 0  order by $select $sort LIMIT $start,$end   ";
         $r = $db->select($sql);
+
         if ($r) {
             $product = [];
             foreach ($r as $k => $v) {
@@ -57,7 +54,14 @@ where a.status = 0 and a.num >0 and s_type like '%$id%'
                 $r_ttt = $db->select($sql_ttt);
                 $price = $r_ttt[0]->yprice;
                 $price_yh = $r_ttt[0]->price;
-                $product[$k] = array('id' => $v->id, 'name' => $v->product_title, 'price' => $price, 'price_yh' => $price_yh, 'imgurl' => $imgurl, 'volume' => $v->volume, 's_type' => $v->s_type);
+
+                $attr = unserialize($v->initial);
+                $attr = array_values($attr);
+                if ($attr) {
+                    if (gettype($attr[0]) != 'string') unset($attr[0]);
+                }
+
+                $product[$k] = array('id' => $v->id, 'name' => $v->product_title, 'price' => $price, 'price_yh' => $price_yh, 'imgurl' => $imgurl, 'volume' => $v->volume, 's_type' => $v->s_type, 'fan' => $price*$v->leve1/100);
             }
             echo json_encode(array('status' => 1, 'pro' => $product));
             exit;
@@ -65,6 +69,7 @@ where a.status = 0 and a.num >0 and s_type like '%$id%'
             echo json_encode(array('status' => 0, 'err' => '没有了！'));
             exit;
         }
+
     }
 
 
