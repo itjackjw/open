@@ -111,8 +111,11 @@ class distributionAction extends PluginAction
             $sql = "select * from lkt_user  where Referee='$user_id'  order by id desc  ";
             $list_1 = $db->select($sql);
 
-            $list_2 = null;
-            $list_3 = null;
+            //收益记录
+            $sql = "select a.*,b.wx_name parent_name from lkt_detailed_commission as a,lkt_user as b where a.userid='$user_id' and a.Referee=b.user_id  order by a.id desc";
+            $list_2 = $db->select($sql);
+
+            $list_3 = $list_2;
 
 
             echo json_encode(array('status'=>1,'user'=>$user,'list_1'=>$list_1,'list_2'=>$list_2,'list_3'=>$list_3));
