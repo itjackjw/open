@@ -92,26 +92,34 @@ class distributionAction extends PluginAction
 
     }
 
-    //会员人数
-    public function membership()
+    //分销中心
+    public function user()
     {
         $db = DBAction::getInstance();
         $request = $this->getContext()->getRequest();
-        $pagesize = 10;
-        $page = addslashes($request->getParameter('page'));
-        $start = 0;
-        if ($page) {
-            $start = ($page - 1) * $pagesize;
-        }
         $openid = addslashes($request->getParameter('openid'));
-        $r = $db->select("select user_id from lkt_user where wx_id = '$openid' ");
-        if ($r) {
-            $user_id = $r[0]->user_id;
-            $sql = "select a.*,b.wx_name parent_name from lkt_user AS a left join lkt_user AS b ON a.Referee = b.user_id where a.Referee='$user_id'  order by a.id desc  ";
-            $r01 = $db->select($sql);
-            echo json_encode(array('r01' => $r01));
+        $user = $db->selectOne("select * from lkt_user where wx_id = '$openid' ");
+        if ($user) {
+            $user_id = $user->user_id;
+
+            //累计收益
+            $sql = "select sum(s_money) ss from lkt_detailed_commission where userid='$user_id' ";
+            $rs = $db->selectOne($sql);
+            $ljyj = $rs->ss;
+            $user->ljyj = $ljyj;
+
+            $sql = "select * from lkt_user  where Referee='$user_id'  order by id desc  ";
+            $list_1 = $db->select($sql);
+
+            $list_2 = null;
+            $list_3 = null;
+
+
+            echo json_encode(array('status'=>1,'user'=>$user,'list_1'=>$list_1,'list_2'=>$list_2,'list_3'=>$list_3));
+
         }
         exit();
+
 
     }
 

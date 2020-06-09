@@ -53,6 +53,17 @@ class DBAction {
         return $data;
     }
 
+    //查询
+    public function selectOne($sql) {
+        $sql = trim($sql);
+        if (empty ($sql)) {return;}
+        $rs = $this->query($sql);
+        if ((!$rs) || empty ($rs)) {return;}
+        $rd = mysqli_fetch_object($rs);
+        mysqli_free_result($rs);
+        return $rd;
+    }
+
     //查询返回数组
     public function selectarray($sql){
         $sql = trim($sql);
