@@ -269,7 +269,7 @@
   <view class="footfixed tc">
     
     
-      <view class="fl_l w40 font_12 hui03 df">
+      <view class="fl_l font_12 hui03 df" style="width: 20%;">
 
         <view class="df_1 l_h15 pt5 bre" st>
           <view bindtap="t_index">
@@ -278,27 +278,11 @@
           </view>
         </view>
 
-        <view class="df_1 l_h15 pt5 bre">
-          <view class="go_cart" bindtap="go_cart">
-            <image class="icon_kf" style='width:25px;height:25px;' src="/images/icons/cart.png"></image>
-            <view class="dbtext">购物车</view>
-            <view class="bg" wx:if="{{cart> 0}}">{{cart}}</view>
-
-          </view>
-        </view>
-
-        <view class="df_1 l_h15 pt5 bre">
-          <button bindtap="set_share" data-status="1" style='line-height:100%;background-color:#fff;border:0;border-radius:0px;padding:0;'>
-            <image class="icon_kf" style='width:25px;height:25px;' src="/images/f.png"></image>
-            <view class="dbtext">分享</view>
-          </button>
-        </view>
-
       </view>
-      <view class="fl_l w60">
+      <view class="fl_l" style="width: 80%;">
         <form bindsubmit="add_fromid" report-submit='true'>
 
-        <button class="w50 fl_l white" style="background: #f7c747;font-size: 15px;line-height: 50px;color: #fff;padding:0;" form-type="submit" type="default" data-type="addcart" data-status="1">分享有礼</button>
+        <button class="w50 fl_l white" style="background: #f7c747;font-size: 15px;line-height: 50px;color: #fff;padding:0;" type="default" bindtap="set_share" data-status="1"  >分享有礼</button>
 
           <button  class="w50 fl_l white" style="background: #ec612a;padding:0;font-size: 15px;line-height: 50px;color: #fff;" form-type="submit" type="default" data-type="buynow" data-status="1">立刻购买</button>
 
