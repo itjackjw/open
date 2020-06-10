@@ -44,11 +44,6 @@
     "pages/notice/index",
     "pages/logins/logins.wx",
     "pages/logins/logins",
-    "pages/distribution/myclient",
-    "pages/distribution/myclientdef",
-    "pages/distribution/commission",
-    "pages/distribution/brokerage",
-    "pages/distribution/brokeragedatails",
     "pages/live/index",
     "pages/distribution/list",
     "pages/distribution/user"
