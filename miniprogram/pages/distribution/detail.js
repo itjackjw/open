@@ -114,12 +114,9 @@ Page({
     that.setData({
       productId: option.productId,
       userid: option.userid ? option.userid : false,
-      choujiangid: option.choujiangid ? option.choujiangid : '',
-      type1: option.type1 ? option.type1 : '',//判断是抽奖还是其他活动
       role: option.role ? option.role : '',
       size: option.size ? option.size : '',
       earn: option.earn ? option.earn : false,
-      // cart: app.globalData.userInfo.cart ? app.globalData.userInfo.cart:0//购物车数量
     });
     //显示数据
     that.loadProductDetail();
@@ -150,28 +147,22 @@ Page({
   // 商品详情数据获取 
   loadProductDetail: function () {
     var that = this;
-    var choujiangid = that.data.choujiangid;
     var openid = app.globalData.userInfo.openid;
-    console.log(app.globalData.userInfo, 'openid')
-    // if (openid) {
-      var bgcolor = app.d.bgcolor;
-      wx.setNavigationBarColor({
+    var bgcolor = app.d.bgcolor;
+    wx.setNavigationBarColor({
         frontColor: app.d.frontColor,
         backgroundColor: bgcolor, // 页面标题为路由参数
         animation: {
           duration: 400,
           timingFunc: 'easeIn'
         }
-      });
-      console.log(that.data.userid)
-      wx.request({
+    });
+    wx.request({
         url: app.d.ceshiUrl + '&action=product&m=index',
         method: 'post',
         data: {
           pro_id: that.data.productId,
           openid: openid,
-          type1: that.data.type1,//判断是抽奖还是其他活动
-          choujiangid: that.data.choujiangid,
           role: that.options.role ? that.options.role : '',
           size: that.data.size,
           userid: that.data.userid
@@ -328,6 +319,7 @@ Page({
       }
     };
   },
+
   //首次进去选中
   one: function () {
     var attrListIn = this.data.attrList;
@@ -347,7 +339,6 @@ Page({
     itemData.price_yh = select_list.price;
     itemData.num = select_list.count;
     var sizeid = select_list.cid;
-
     // 重新赋值
     this.setData({
       attrList: attrListIn,
@@ -384,7 +375,6 @@ Page({
     var attrListIn = this.data.attrList;
     for (var i = 0; i < attrListIn.length; i++) {
       var attrListBig = attrListIn[i];
-
       //当前类别之外的选择列表
       var attrsOtherSelect = [];
       for (var j = 0; j < attrListIn.length; j++) {
@@ -400,17 +390,13 @@ Page({
       }
 
       var enableIds = [];
-
       var skuBeanListIn = this.data.skuBeanList;
-
       for (var z = 0; z < skuBeanListIn.length; z++) {
         var ism = true;
         var skuBean = skuBeanListIn[z];
-
         for (var j = 0; j < attrsOtherSelect.length; j++) {
           var enable = false;
           for (var k = 0; k < skuBean.attributes.length; k++) {
-
             var goodAttrBean = skuBean.attributes[k];
             if (attrsOtherSelect[j].attributeId == goodAttrBean.attributeId
               && attrsOtherSelect[j].id == goodAttrBean.attributeValId) {
@@ -420,18 +406,15 @@ Page({
           }
           ism = enable && ism;
         }
-
         if (ism) {
           for (var o = 0; o < skuBean.attributes.length; o++) {
             var goodAttrBean = skuBean.attributes[o];
-
             if (attrListBig.id == goodAttrBean.attributeId) {
               enableIds.push(goodAttrBean.attributeValId);
             }
           }
         }
       }
-
       var integers = enableIds;
       for (var s = 0; s < attrListBig.attr.length; s++) {
         var attrItem = attrListBig.attr[s];
@@ -459,15 +442,11 @@ Page({
     if (!item.enable) {
       return;
     }
-
     var select = !item.select;
-
     for (var i = 0; i < items.attr.length; i++) {
       items.attr[i].select = false;
     }
-
     item.select = select;
-
     // 获取点击属性列表
     var canGetInfo = [];
     for (var skuIndex = 0; skuIndex < listItem.length; skuIndex++) {
@@ -479,9 +458,7 @@ Page({
     }
 
     var canGetInfoLog = "";
-
     var skuBeanList = this.data.skuBeanList;
-
     var haveSkuBean = [];
     // 对应库存清单扫描
     for (var skuBeanIndex = 0; skuBeanIndex < skuBeanList.length; skuBeanIndex++) {
@@ -541,7 +518,6 @@ Page({
   submit: function (e) {
     var that = this;
     var sizeid = that.data.sizeid;
-
     if (sizeid == '' || sizeid.length < 1) {
       wx.showToast({
         title: '请完善属性',
@@ -566,9 +542,7 @@ Page({
     //添加到购物车
     var that = this;
     var pro_type = e.target.dataset.type;
-    var ptype = e.currentTarget.dataset.type;
-    // console.log(ptype, '--jnkmjkl')
-      wx.request({
+    wx.request({
         url: app.d.ceshiUrl + '&action=product&m=add_cart',
         method: 'post',
         data: {
@@ -623,7 +597,7 @@ Page({
     var that = this;
     that.setData({ currentTab: e.detail.current });
   },
-  initNavHeight: function () {////获取系统信息
+  initNavHeight: function () {//获取系统信息
     var that = this;
     wx.getSystemInfo({
       success: function (res) {
@@ -650,11 +624,9 @@ Page({
     }
   },
 
-
   onShareAppMessage: function (res) {
     var that = this;
     var id = that.data.productId;
-    var type1 = that.data.type1;
     var uname = app.globalData.userInfo.nickName ? app.globalData.userInfo.nickName + '超值推荐 ' : '我发现一个好的东西 推荐给你们 ';
     var title = uname + that.data.title;
     var referee_openid = app.globalData.userInfo.user_id;

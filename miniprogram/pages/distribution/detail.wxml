@@ -179,12 +179,7 @@
     <view class="swiper-tab">
       <view class="bre swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">图文详情</view>
       <view class="bre swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">产品参数</view>
-      <view wx:if="{{type1 == 1}}" class="swiper-tab-list {{currentTab==2 ? 'on' : ''}}" data-current="2" bindtap="swichNav">
-        <view data-current="2">抽奖规则</view>
-      </view>
-      <block wx:else>
-        <view class="swiper-tab-list {{currentTab==2 ? 'on' : ''}}" data-current="2" bindtap="swichNav">商品评价</view>
-      </block>
+      <view class="swiper-tab-list {{currentTab==2 ? 'on' : ''}}" data-current="2" bindtap="swichNav">商品评价</view>
     </view>
 
     <!-- 图文详情 -->
@@ -204,10 +199,7 @@
           <view class="name">商品名称：</view>
           <view class="df_1 c3">{{itemData.name}}</view>
         </view>
-        <!-- <view class="canshu df">
-              <view class="name">品牌：</view>
-              <view class="df_1 c3">{{itemData.brand_name}}</view>
-            </view> -->
+        
         <view class="canshu df">
           <view class="name">商品编号：</view>
           <view class="df_1 c3">{{itemData.pro_number}}</view>
@@ -216,17 +208,14 @@
           <view class="name">分类：</view>
           <view class="df_1 c3">{{itemData.cat_name}}</view>
         </view>
-        <!-- <view class="canshu df">
-              <view class="name">售后：</view>
-              <view class="df_1 c3">签收之日48小时内无条件退货</view>
-            </view> -->
+        
       </view>
     </view>
 
     <!-- 商品评价 -->
 
     <view hidden="{{!(currentTab==2)}}" style="height:100%;margin-bottom:100rpx;min-height:500rpx;">
-      <view wx:if="{{type1 != 1 && !comments.length}}">
+      <view wx:if="{{!comments.length}}">
         <view class="search_no" style='padding:10px;'>
           <view class="font_14">
             <image class="scimg" src="/images/search_no.png"></image>
@@ -235,10 +224,7 @@
         </view>
       </view>
       <view wx:else>
-        <view wx:if="{{type1 == 1}}">
-          <view>{{itemData.type01}}</view>
-        </view>
-        <block wx:else>
+        
           <!-- 用户评价 -->
           <view class="comment_box" wx:for="{{comments}}" wx:key="{{item.id}}">
             <view class="comment">
@@ -274,35 +260,15 @@
 
 
           </view>
-        </block>
+        
       </view>
     </view>
 
   </view>
   <!---底部开始-->
   <view class="footfixed tc">
-    <view wx:if="{{type1 == 1}}">
-      <view class="fl_l w60" style='width:100%'>
-        <view class="df_1  pt5 bre fl_l" style='width:19%;line-height:15px;'>
-          <view bindtap="t_index">
-            <image class="icon_kf" style='width:25px;height:25px;' src="/images/icons/home.png"></image>
-            <view class="dbtext">首页</view>
-          </view>
-        </view>
-        <!--获取formid  -->
-        <view class=" w40 fl_l" style='background:#f7c747;' bindtap="setModalStatus" data-status="1" data-type="buynow">单独买 ¥ {{itemData.price_yh}}</view>
-
-        <form bindsubmit="getUserformid" report-submit="true" data-status="1" data-type="canjiapintuan" style='width:40%;'>
-          <button type="primary" formType="submit" style='width:40.6%;height:50px;background: #ec612a;color:#fff !important;display:flex;flex-direction:column;justify-content:center;border-radius:0;margin:0;float:left;'>
-            <view class=" fl_l" bindtap="setModalStatus" data-status="1" data-type="canjiapintuan" style='font-size:14px;'>
-              参加拼团 ¥{{itemData.price11}}
-            </view>
-          </button>
-        </form>
-
-      </view>
-    </view>
-    <block wx:else>
+    
+    
       <view class="fl_l w40 font_12 hui03 df">
 
         <view class="df_1 l_h15 pt5 bre" st>
@@ -334,13 +300,12 @@
 
         <button class="w50 fl_l white" style="background: #f7c747;font-size: 15px;line-height: 50px;color: #fff;padding:0;" form-type="submit" type="default" data-type="addcart" data-status="1">分享有礼</button>
 
-
           <button  class="w50 fl_l white" style="background: #ec612a;padding:0;font-size: 15px;line-height: 50px;color: #fff;" form-type="submit" type="default" data-type="buynow" data-status="1">立刻购买</button>
 
         </form>
 
       </view>
-    </block>
+    
   </view>
 
   <!-- 弹窗 -->
