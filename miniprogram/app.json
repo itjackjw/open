@@ -46,7 +46,8 @@
     "pages/logins/logins",
     "pages/live/index",
     "pages/distribution/list",
-    "pages/distribution/user"
+    "pages/distribution/user",
+    "pages/distribution/detail"
   ],
   "window": {
     "backgroundTextStyle": "light",

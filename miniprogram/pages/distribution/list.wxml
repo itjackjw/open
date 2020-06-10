@@ -46,11 +46,8 @@
           <view class="cont" style='padding-top:10px;'>
             
               <view  class="{{shu}}">
-                <navigator class="pr {{shu}}" url="../product/detail?productId={{item.id}}&size={{item.size}}" hover-class="changestyle" wx:for="{{shopList}}" wx:key="*this" data-id="{{item.id}}">
-                    <!-- <view class='photo-c'>
-                      <image class="photo" src="{{item.imgurl}}"></image>
-                      <image class="photo-right" wx:if="{{item.s_type==1}}" src="../../images/new.png"></image>
-                    </view>  不启用样式  右上角  -->
+                <navigator class="pr {{shu}}" url="detail?productId={{item.id}}&size={{item.size}}" hover-class="changestyle" wx:for="{{shopList}}" wx:key="*this" data-id="{{item.id}}">
+                    
                     <view class='photo-c'>
                       <image class="photo" src="{{item.imgurl}}"></image>
                     </view>
@@ -74,7 +71,7 @@
                   </navigator>
               </view>
               <view class="{{heng}}">
-                  <navigator class="pr pr_xt" style='display:flex;margin-bottom:0px;width:100%;margin-left:0px;' url="../product/detail?productId={{item.id}}&size={{item.size}}" hover-class="changestyle" wx:for="{{shopList}}" wx:key="*this" data-id="{{item.id}}">
+                  <navigator class="pr pr_xt" style='display:flex;margin-bottom:0px;width:100%;margin-left:0px;' url="detail?productId={{item.id}}&size={{item.size}}" hover-class="changestyle" wx:for="{{shopList}}" wx:key="*this" data-id="{{item.id}}">
 
                     <view class='photo-c'>
                       <image class="photo" style='height:220rpx;width:230rpx;margin-left:20rpx;padding-top:20rpx' src="{{item.imgurl}}"></image>
