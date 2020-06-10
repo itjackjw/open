@@ -30,8 +30,14 @@ class PluginAction {
     }
 
     //支付的异步回调函数
-    public function notify($trade_no,$order){
-        return "success";
+    public function notify($order=null){
+        return $order;
+    }
+
+
+    //确认收货接口
+    public function okOrder($order=null){
+        return $order;
     }
 
     //封装请求参数方法
