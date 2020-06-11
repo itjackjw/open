@@ -242,8 +242,6 @@ Page({
           });
         },
       });
-    
-
   },
   // 弹窗
   setModalStatus: function (e) {
