@@ -179,19 +179,14 @@ Page({
   //上拉事件
   onReachBottom: function () {
     var that = this;
-  if (that.data.list.length > 0) {
-    
-    that.getMore();    
-    wx.hideNavigationBarLoading() //完成停止加载
-    wx.stopPullDownRefresh() //停止下拉刷新
-    that.setData({
-      loading: false,
-    });
-
-    that.setData({
-      loading: true,
-    });
-  }
+    if (that.data.list.length > 0) {
+        that.getMore();    
+        wx.hideNavigationBarLoading() //完成停止加载
+        wx.stopPullDownRefresh() //停止下拉刷新
+        that.setData({
+          loading: true,
+        });
+    }
   },
   //排序
   sort:function (){
@@ -215,14 +210,9 @@ Page({
       },
       success: function (res) {
         if (res.data.code == 1){
-        that.setData({
-          list: res.data.list,
-        })
-          var titlee = res.data.groupname;
-          wx.setNavigationBarTitle({
-            title:'拼团', //修改页面标题
-
-          });
+          that.setData({
+            list: res.data.list,
+          })
         }
       },
       error: function (e) {
@@ -325,10 +315,6 @@ Page({
         'content-type': 'application/x-www-form-urlencoded'
       },
       success: function (res) {
-        wx.setNavigationBarTitle({
-          title: '拼团', //修改页面标题
-
-        });
       if(res.data.code == 1){
         var list = res.data.list;
         var prolist = that.data.list;
@@ -360,7 +346,6 @@ Page({
   },
   //详情页跳转
   lookdetail: function (e) {
-    debugger
     var lookid = e.currentTarget.dataset;
     wx.navigateTo({
       url: "../group_buy/detail?gid=" + lookid.id
