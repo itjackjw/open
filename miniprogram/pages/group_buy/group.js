@@ -27,10 +27,6 @@ Page({
      titlee: '',
   },
   onPullDownRefresh: function () {
-    
-    wx.setNavigationBarTitle({
-      title: '拼团', //修改页面标题
-    });
     var that = this;
     var select = that.data.select;
     var sort = that.data.sort;
@@ -47,16 +43,10 @@ Page({
         'content-type': 'application/x-www-form-urlencoded'
       },
       success: function (res) {
-        // var titlee = res.data.groupname;
-        wx.setNavigationBarTitle({
-          title: '拼团', //修改页面标题
-        });
         if (res.data.code == 1){
         that.setData({
           list: res.data.list,
-          // groupman: res.data.groupman,
-          // groupid: res.data.groupid,
-          
+          remind: false
         })
           
         }
@@ -244,9 +234,6 @@ Page({
   onReady: function () {
     this.pop = this.selectComponent("#pop")
     var that = this;
-    that.setData({
-      remind: ''
-    });
   },
   //点击加载更多
   getMore: function (e) {
@@ -270,11 +257,6 @@ Page({
       success: function (res) {
         var prolist = res.data.list;
         if (prolist == '' || res.data.status == 0) {
-          /*wx.showToast({
-            title: '没有更多数据！',
-            icon: 'warn',
-            duration: 2000
-          });*/
           that.setData({
             period: true
           });
@@ -285,6 +267,7 @@ Page({
         that.setData({
           page: page,
           list: that.data.list.concat(prolist),
+          remind: false
         });
         }else{
           that.setData({
@@ -346,17 +329,17 @@ Page({
       if(res.data.code == 1){
         var list = res.data.list;
         var prolist = that.data.list;
-       
-       
         if (prolist.length > 1){
           that.setData({
             page: page,
             list: list,
+            remind: false
           });
           
         }else{
           that.setData({
             list: list,
+            remind: false
           })
          
         }
