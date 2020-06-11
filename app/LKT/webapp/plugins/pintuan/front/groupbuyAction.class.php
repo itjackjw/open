@@ -1652,19 +1652,19 @@ class groupbuyAction extends PluginAction
     }
 
     //支付的异步回调函数
-    public function notify($trade_no,$order){
-
+    public function notify($order=null){
+        $db = DBAction::getInstance();
+        $trade_no = $order->trade_no;
         $dsql = "select data from lkt_order_data where trade_no = '$trade_no'";
         $dres = $db->select($dsql);
         $data = unserialize($dres[0]->data);
-        $ptres = "";
         if ($data['pagefrom'] == 'kaituan') {
-            $ptres = $this->creatgroup_notify($data);
+            $this->creatgroup_notify($data);
         } else {
-            $ptres = $this->can_order_notify($data);
+            $this->can_order_notify($data);
         }
 
-        return $ptres;
+        return $order;
     }
 
     private function creatgroup_notify($order){
