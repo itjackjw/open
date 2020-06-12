@@ -45,11 +45,10 @@ Page({
       },
       success: function (res) {
         if (res.data.code == 1){
-        that.setData({
-          list: res.data.list,
-          remind: false
-        })
-          
+          that.setData({
+            list: res.data.list,
+            remind: false
+          })          
         }
       },
       error: function (e) {
@@ -226,13 +225,11 @@ Page({
   //页面加载完成函数
   onReady: function () {
     this.pop = this.selectComponent("#pop")
-    var that = this;
   },
   //点击加载更多
   getMore: function (e) {
     var that = this;
     var page = that.data.page + 1;
-    var objectId = that.data.objectId;
     var select = that.data.select;
     var sort = that.data.sort;
     wx.request({
