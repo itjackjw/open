@@ -60,21 +60,16 @@ Page({
   //下拉刷新
   onPullDownRefresh: function() {
     wx.showNavigationBarLoading() //在标题栏中显示加载
-    setTimeout(function() {
-      wx.hideNavigationBarLoading() //完成停止加载
-      wx.stopPullDownRefresh() //停止下拉刷新
-    }, 1500);
+    wx.hideNavigationBarLoading() //完成停止加载
+    wx.stopPullDownRefresh() //停止下拉刷新
 
   },
   onShow: function() {
     // 页面显示
     var vm = this;
-    var windowWidth = wx.getSystemInfoSync().windowWidth; // 屏幕宽度
     vm.onLoad(vm.data.options);
   },
   onLoad: function(options) {
-    console.log(options, '24444----------------------')
-
     if (options.referee_openid != '') {
       app.globalData.userInfo['referee_openid'] = options.referee_openid;
     } else {
@@ -138,7 +133,6 @@ Page({
           proattr: res.proattr, //产品属性
           groupres: res.groupres, //拼团信息     
           dat: res.dat, //拼团信息       
-
           groupid: options.groupid,
           sizeid: options.sizeid,
           bgcolor: app.d.bgcolor, // 背景颜色
@@ -705,9 +699,6 @@ Page({
 
         if (res.data) {
 
-          var dingdanhao = res.data.out_trade_no;
-          // that.up_out_trade_no(1, dingdanhao)
-
           wx.requestPayment({
             timeStamp: res.data.timeStamp,
             nonceStr: res.data.nonceStr,
@@ -721,7 +712,6 @@ Page({
                 that.canGroupOrder(1, '')
               }
 
-              // that.verification(dingdanhao)
             },
             fail: function(res) {
 
