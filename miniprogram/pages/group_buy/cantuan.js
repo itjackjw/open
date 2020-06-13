@@ -36,13 +36,11 @@ Page({
   loadProductDetail: function () {
     var self = this, 
     options = this.data.options;
-    var openid = app.globalData.userInfo.openid;
       app.request.wxRequest({
         url: '&action=pi&p=pintuan&c=groupbuy&m=cangroup',
         data: { oid: options.id, groupid: options.groupid, gid: options.pro_id, userid: app.globalData.userInfo.openid },
         method: 'post',
-        success: function (res) {
-          
+        success: function (res) {          
           if (res.isplug == 0) {
             wx.showModal({
               title: '温馨提示!',
@@ -187,7 +185,6 @@ Page({
   },
   goToBuy:function(){
     var that = this;
-    console.log(that,'that///////////////')
     var obj = '';
     var value = [];
     if (that.data.prostatus == 1) {
