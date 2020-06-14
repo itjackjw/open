@@ -14,7 +14,6 @@ class distributionAction extends PluginAction
     {
         $db = DBAction::getInstance();
         $request = $this->getContext()->getRequest();
-        $id = addslashes(trim($request->getParameter('cid'))); //  '分类ID'
         $paegr = addslashes(trim($request->getParameter('page'))); //  '页面'
 
         $select = addslashes(trim($request->getParameter('select'))); //  选中的方式 0 默认  1 销量   2价格

@@ -110,7 +110,8 @@ class payAction extends BaseAction {
             $data['RETURN_CODE'] = $array['RETURN_CODE'];
             $data['RETURN_MSG'] = $array['RETURN_MSG'];
         }
-        echo json_encode($data);exit;
+        echo json_encode($data);
+        exit;
     }
 
 
