@@ -137,6 +137,12 @@ class distributionAction extends PluginAction
     {
 
     }
+
+    //确认收货接口，在这里面加上分销的核心算法
+    public function okOrder($order=null){
+        return $order;
+    }
+
 }
 
 ?>
