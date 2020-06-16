@@ -802,11 +802,7 @@ Page({
             signType: 'MD5',
             paySign: res.data.paySign,
             success: function(res) {
-
               wx.hideLoading()
-
-
-              console.log(app.globalData.userInfo.referee_openid, 'app.globalData.userInfo.referee_openid')
               //支付成功  修改订单
               if (app.globalData.userInfo.referee_openid && app.globalData.userInfo.openid && app.globalData.userInfo.referee_openid != 'undefined') {
 

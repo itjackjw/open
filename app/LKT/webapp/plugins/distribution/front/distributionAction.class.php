@@ -115,11 +115,10 @@ class distributionAction extends PluginAction
             $list_2 = $db->select($sql);
 
             $list_3 = $list_2;
-
-
             echo json_encode(array('status'=>1,'user'=>$user,'list_1'=>$list_1,'list_2'=>$list_2,'list_3'=>$list_3));
 
         }
+
         exit();
 
 
@@ -140,6 +139,7 @@ class distributionAction extends PluginAction
 
     //确认收货接口，在这里面加上分销的核心算法
     public function okOrder($order=null){
+
         return $order;
     }
 
