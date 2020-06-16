@@ -34,8 +34,6 @@ Page({
 
     wx.checkSession({
       success: function (e) {
-        console.log(e)
-        console.log('session_key 未过期' + app.globalData.userInfo.session_key)
         //session_key 未过期，并且在本生命周期一直有效
         app.globalData.userInfo['session_key'] = app.globalData.userInfo.session_key;
 
@@ -60,14 +58,10 @@ Page({
   },
   //获取好友ID
   withdrawals: function (e) {
-    
-    var that = this;
     var user_id = e.detail.value.user_id;
-
     wx.redirectTo({//跳转
       url: "../user/transfer_jifen1?user_id=" + user_id,
     })
-
   }
 
 
