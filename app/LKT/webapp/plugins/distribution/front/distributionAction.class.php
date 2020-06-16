@@ -139,6 +139,18 @@ class distributionAction extends PluginAction
 
     //确认收货接口，在这里面加上分销的核心算法
     public function okOrder($order=null){
+        $oid = $order->id;
+        $db = DBAction::getInstance();
+        $order = $db->selectOne("select * from lkt_order where id=$oid and plugin='FX' ");
+        if ($order){
+            $sNo = $order->sNo;
+            $sql = "select a.*,b.leve,b.leve1,b.leve2,b.leve3,b.commissions from lkt_order_details as a,lkt_detailed_pro as b where a.r_sNo='$sNo' and a.p_id = b.pro_id ";
+            $details = $db->select($sql);
+            foreach ($details as $key => $values) {
+
+            }
+
+        }
 
         return $order;
     }
