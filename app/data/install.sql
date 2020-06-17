@@ -1254,6 +1254,7 @@ CREATE TABLE `lkt_order` (
   `allow` int(8) DEFAULT '0' COMMENT '积分',
   `parameter` text COMMENT '参数',
   `source` tinyint(4) DEFAULT NULL COMMENT '来源 1.小程序 2.app',
+  `plugin` varchar(255) DEFAULT NULL COMMENT '插件标志',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='订单列表';
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -1355,6 +1356,7 @@ CREATE TABLE `lkt_order_details` (
   `freight` int(4) DEFAULT '0' COMMENT '运费',
   `size` varchar(100) DEFAULT NULL COMMENT '配置名称',
   `sid` char(11) DEFAULT NULL,
+  `plugin` varchar(255) DEFAULT NULL COMMENT '插件标志',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='订单详情列表';
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -1389,7 +1391,7 @@ CREATE TABLE `lkt_plug_ins` (
   `sort` int(11) DEFAULT NULL COMMENT '排序',
   `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '状态 0：未启用 1：启用',
   `Customer_id` varchar(15) DEFAULT '' COMMENT '客户id',
-  `code` varchar(11) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '插件标志',
+  `code` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '插件标志',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='插件表';
 /*!40101 SET character_set_client = @saved_cs_client */;

@@ -141,7 +141,7 @@ class distributionAction extends PluginAction
     public function okOrder($order=null){
         $oid = $order->id;
         $db = DBAction::getInstance();
-        $order = $db->selectOne("select * from lkt_order where id=$oid and plugin='FX' ");
+        $order = $db->selectOne("select * from lkt_order where id=$oid and plugin='distribution' ");
         if ($order){
             $user_id = $order->user_id;
             $sNo = $order->sNo;

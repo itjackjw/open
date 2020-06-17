@@ -964,9 +964,6 @@ Page({
     })
   },
 
-
-
-
   //获取插件
   get_plug: function(e) {
     var that = this;
