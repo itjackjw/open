@@ -155,6 +155,31 @@ class distributionAction extends PluginAction
                 $leve2 = $values->leve2;
                 $leve3 = $values->leve3;
                 $commissions = $values->commissions;
+                $bili = array($leve1,$leve2,$leve3);
+                $total = $p_price*$num;
+                //进行返回积分
+                $i=0;
+                $uid = $user_id;
+                while ($leve>0 && $i<$leve){
+                    $money = $total*$bili[$i];
+                    $s_money = $money - $money*$commissions;
+                    if ($money>0){
+                        $sql = "select * from lkt_user where user_id='$uid' ";
+                        $user = $db->selectOne($sql);
+                        $pid = $user->Referee;
+                        if ($pid) {
+                            $creattime = date('Y-m-d H:i:s');
+                            $sql = "insert into lkt_detailed_commission(userid,sNo,money,s_money,status,addtime,type,Referee) values('$pid',$sNo,$money,$s_money,2,'$creattime',1,'$user_id')";
+                            $db->insert($sql);
+                            //充值积分
+                            $sql = "update lkt_user set score=score+$s_money where user_id='$pid' ";
+                            $db->update($sql);
+                        }
+                        $uid = $pid;
+                    }
+                    $i++;
+                }
+
 
             }
 
