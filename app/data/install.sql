@@ -272,6 +272,7 @@ CREATE TABLE `lkt_cart` (
   `Goods_num` int(11) DEFAULT NULL COMMENT '数量',
   `Create_time` timestamp NULL DEFAULT NULL COMMENT '添加时间',
   `Size_id` char(15) NOT NULL DEFAULT '' COMMENT '商品属性id',
+  `plugin` varchar(255) DEFAULT NULL COMMENT '插件标志',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='购物车';
 /*!40101 SET character_set_client = @saved_cs_client */;
