@@ -143,10 +143,18 @@ class distributionAction extends PluginAction
         $db = DBAction::getInstance();
         $order = $db->selectOne("select * from lkt_order where id=$oid and plugin='FX' ");
         if ($order){
+            $user_id = $order->user_id;
             $sNo = $order->sNo;
             $sql = "select a.*,b.leve,b.leve1,b.leve2,b.leve3,b.commissions from lkt_order_details as a,lkt_detailed_pro as b where a.r_sNo='$sNo' and a.p_id = b.pro_id ";
             $details = $db->select($sql);
             foreach ($details as $key => $values) {
+                $p_price = $values->p_price;
+                $num = $values->num;
+                $leve = $values->leve;
+                $leve1 = $values->leve1;
+                $leve2 = $values->leve2;
+                $leve3 = $values->leve3;
+                $commissions = $values->commissions;
 
             }
 
