@@ -1003,8 +1003,8 @@ class groupbuyAction extends PluginAction
 
                 $istsql3 = "insert into lkt_order_details(user_id,p_id,p_name,p_price,num,r_sNo,add_time,r_status,size,sid,freight) values('$uid',$pro_id,'$pro_name',$y_price,$buy_num,'$ordernum','$creattime','$ordstatus','$pro_size',$sizeid,'$freight')";
                 $res3 = $db->insert($istsql3);
-                $nu = $db->update("update lkt_product_list set volume=volume+$buy_num,num=num-$buy_num where id='$pro_id'");
-                $nu11 = $db->update("update lkt_configure set num=num-$buy_num where id='$sizeid'");//改变库存和销量
+                $db->update("update lkt_product_list set volume=volume+$buy_num,num=num-$buy_num where id='$pro_id'");
+                $db->update("update lkt_configure set num=num-$buy_num where id='$sizeid'");//改变库存和销量
                 if ($res3 < 1) {
                     $db->rollback();
                     echo json_encode(array('code' => 3, 'sql' => $istsql3));
@@ -1045,8 +1045,8 @@ class groupbuyAction extends PluginAction
                     exit;
                 }
 
-                $nu = $db->update("update lkt_product_list set volume=volume+$buy_num,num=num-$buy_num where id='$pro_id'");
-                $nu11 = $db->update("update lkt_configure set num=num-$buy_num where id='$sizeid'");//改变库存和销量
+                $db->update("update lkt_product_list set volume=volume+$buy_num,num=num-$buy_num where id='$pro_id'");
+                $db->update("update lkt_configure set num=num-$buy_num where id='$sizeid'");//改变库存和销量
 
                 $updsql = "update lkt_group_open set ptnumber=ptnumber+1,ptstatus=2 where group_id='$groupid' and ptcode='$oid'";
                 $updres = $db->update($updsql);
@@ -1480,7 +1480,6 @@ class groupbuyAction extends PluginAction
     {//查运费
 
         $db = DBAction::getInstance();
-        $request = $this->getContext()->getRequest();
         $z_freight = 0;
         $num = $buy_num;
         $sqll = "select  G_CName  from admin_cg_group a  where a.GroupID=" . $sheng;
