@@ -109,17 +109,7 @@ class Plugin {
         // 确保我们只赶上CR线结束。
         // Make sure we catch CR-only line endings.
         $file_data = str_replace( "\r", "\n", $file_data );
-        /**
-         * 通过上下文过滤额外的文件头。
-         * Filters extra file headers by context.
-         *
-         * The dynamic portion of the hook name, `$context`, refers to
-         * the context where extra headers might be loaded.
-         *
-         * @since 2.9.0
-         *
-         * @param array $extra_context_headers Empty array by default.
-         */
+
 
         if ( $context && $extra_headers = apply_filters( "extra_{$context}_headers", array() ) ) {
             // 通过合并两个数组来创建一个新数组，其中的一个数组元素为键名，另一个数组元素为键值
