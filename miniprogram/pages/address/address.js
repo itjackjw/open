@@ -7,9 +7,6 @@ var shi = [];//城市
 var xian = [];//区县
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
     sheng: sheng,
     shi: shi,

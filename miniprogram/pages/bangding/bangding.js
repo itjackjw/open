@@ -255,11 +255,6 @@ Page({
       }
     }
     var sex = that.data.sex;
-    // for (var i = 0; i < that.data.items.length; i++) {
-    //   if (that.data.items[i].checked == 'true'){
-    //     sex = that.data.items[i].name;
-    //   }
-    // }
     var province = region[0], city = region[1], county = region[2];
     if (res.detail.value.name.length == 0) {
       wx.showToast({
