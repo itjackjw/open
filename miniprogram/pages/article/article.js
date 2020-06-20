@@ -33,7 +33,6 @@ Page({
       id: id,
     });
     that.y_detail(id);
-    //that.storage();
   },
   onPullDownRefresh: function () {
     
