@@ -1070,6 +1070,10 @@ class productAction extends BaseAction
         $total = addslashes($_POST['total']); // 付款金额
         $plugin = addslashes(trim($request->getParameter('plugin'))); //  '插件类型'
 
+        $sql = "select * from lkt_cart where id = $cart_id  ";
+        $cart = $db->selectOne($sql);
+        $plugin = $cart->plugin;
+
         $appConfig = $this->getAppInfo();
         $img = $appConfig['imageRootUrl'];
 
@@ -1216,7 +1220,7 @@ class productAction extends BaseAction
                     }
 
                     // 循环插入订单附表
-                    $sql_d = 'insert into lkt_order_details(user_id,p_id,p_name,p_price,num,unit,r_sNo,add_time,r_status,size,sid,freight) VALUES ' . "('$userid','$pid','$product_title','$price','$num','$unit','$sNo',CURRENT_TIMESTAMP,0,'$size','$size_id','$freight')";
+                    $sql_d = 'insert into lkt_order_details(user_id,p_id,p_name,p_price,num,unit,r_sNo,add_time,r_status,size,sid,freight,plugin) VALUES ' . "('$userid','$pid','$product_title','$price','$num','$unit','$sNo',CURRENT_TIMESTAMP,0,'$size','$size_id','$freight','$plugin')";
 
                     $beres = $db->insert($sql_d);
 
@@ -1283,8 +1287,8 @@ class productAction extends BaseAction
             $z_price = $z_price + $z_freight; // 订单总价
 
             // 在订单表里添加一条数据
-            $sql_o = 'insert into lkt_order(user_id,name,mobile,num,z_price,sNo,sheng,shi,xian,address,remark,pay,add_time,status,coupon_id,consumer_money,coupon_activity_name,spz_price,reduce_price,coupon_price,red_packet,source) VALUES ' .
-                "('$userid','$name','$mobile','$z_num','$z_price','$sNo','$sheng','$shi','$xian','$address',' ','$type',CURRENT_TIMESTAMP,0,'$coupon_id','$allow','$coupon_activity_name','$spz_price','$reduce_money','$c_money','$red_packet',1)";
+            $sql_o = 'insert into lkt_order(user_id,name,mobile,num,z_price,sNo,sheng,shi,xian,address,remark,pay,add_time,status,coupon_id,consumer_money,coupon_activity_name,spz_price,reduce_price,coupon_price,red_packet,source,plugin) VALUES ' .
+                "('$userid','$name','$mobile','$z_num','$z_price','$sNo','$sheng','$shi','$xian','$address',' ','$type',CURRENT_TIMESTAMP,0,'$coupon_id','$allow','$coupon_activity_name','$spz_price','$reduce_money','$c_money','$red_packet',1,'$plugin')";
 
             $r_o = $db->insert($sql_o, "last_insert_id");
             if ($r_o > 0) {
