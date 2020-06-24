@@ -322,7 +322,6 @@ class productAction extends BaseAction
         $Goods_id = addslashes(trim($request->getParameter('pid'))); //  '产品id',
         $Goods_num = addslashes(trim($request->getParameter('num'))); //  '数量',
         $size_id = addslashes(trim($request->getParameter('sizeid'))); //  '商品属性id',
-        $pro_type = addslashes(trim($request->getParameter('pro_type'))); //  '点击类型',
         $plugin = addslashes(trim($request->getParameter('plugin'))); //  '插件类型',
 
         if (empty($Uid) || empty($Goods_id) || empty($Goods_id) || empty($size_id)) {
