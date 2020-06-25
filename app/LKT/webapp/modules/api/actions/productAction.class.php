@@ -436,7 +436,7 @@ class productAction extends BaseAction
             $product = [];
             foreach ($r as $k => $v) {
                 $imgurl = $img . $v->img;/* end 保存*/
-                $product[$k] = array('id' => $v->id, 'name' => $v->product_title . $names, 'price' => $v->yprice, 'size' => $v->sizeid, 'price_yh' => $v->price, 'imgurl' => $imgurl, 'volume' => $v->volume);
+                $product[$k] = array('id' => $v->id, 'name' => $v->product_title, 'price' => $v->yprice, 'size' => $v->sizeid, 'price_yh' => $v->price, 'imgurl' => $imgurl, 'volume' => $v->volume);
             }
             echo json_encode(array('status' => 1, 'pro' => $product));
             exit;
@@ -565,7 +565,6 @@ class productAction extends BaseAction
         $usort = 0;
 
         foreach ($typeArr as $key => $value) {
-            //echo "select m.status,c.num  from lkt_cart AS a LEFT JOIN lkt_product_list AS m ON a.Goods_id = m.id LEFT JOIN lkt_configure AS c ON a.Size_id = c.id  where  a.id = '$value'";
             $r_c01 = $db->select("select m.status,c.num  from lkt_cart AS a LEFT JOIN lkt_product_list AS m ON a.Goods_id = m.id LEFT JOIN lkt_configure AS c ON a.Size_id = c.id  where  a.id = '$value'");
             if ($r_c01 && $r_c01[0]->status && $r_c01[0]->status != 0) {
                 $db->delete('delete from lkt_cart where id="' . $value . '"');
