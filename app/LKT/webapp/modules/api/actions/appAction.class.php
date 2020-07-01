@@ -67,12 +67,11 @@ class appAction extends BaseAction
         }
 
         // 判断是否存在推荐人微信id
-        $pid = '';
         if ($pid == '' || $pid == 'undefined') {
             $Referee = false;
         } else {
-            if (strlen($pid) == '32') {
-                $sql = "select * from lkt_user where wx_id = '$pid'";
+            if (strlen($pid) > 12 ) {
+                $sql = "select * from lkt_user where wx_id = '$pid' or user_id='$pid' ";
                 $r = $db->select($sql);
                 $Referee = $r[0]->user_id;
             } else {
