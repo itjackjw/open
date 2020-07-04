@@ -47,7 +47,7 @@ Page({
           shopList: shoplist,
           page: 2,
           period: false,
-          remind:false
+          remind: false
         })
         wx.hideNavigationBarLoading() //完成停止加载
         wx.stopPullDownRefresh() //停止下拉刷新
@@ -207,7 +207,7 @@ Page({
         that.setData({
           shopList: shoplist,
           page: page + 1,
-          remind:false
+          remind: false
         })
       },
       error: function (e) {
@@ -242,7 +242,7 @@ Page({
         cid: 1,
         select: select,
         sort: sort,
-        remind:false
+        remind: false
       },
       header: {
         'Content-Type': 'application/x-www-form-urlencoded'
