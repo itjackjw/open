@@ -14,28 +14,18 @@ class CouponAction extends BaseAction
     public function index()
     {
         $db = DBAction::getInstance();
-        $request = $this->getContext()->getRequest();
-
-        $start_time_1 = date("Y-m-d H:i:s", mktime(0, 0, 0, date('m'), date('d'), date('Y'))); // 今天开始时间
-        $end_time_1 = date("Y-m-d H:i:s", mktime(0, 0, 0, date('m'), date('d') + 1, date('Y')) - 1); // 今天结束时间
-        $time = date('Y-m-d H:i:s');  // 当前时间
 
         // 根据活动为开启状态,查询活动列表,根据开始时间降序排列
         $sql = "select * from lkt_coupon_activity where status = 1 and recycle = 0 order by start_time desc";
         $r_1 = $db->select($sql);
-        $rew_1 = 0;
-        $arr = [];
         if ($r_1) {
             foreach ($r_1 as $k => $v) {
-                $rew_1 = $k;
                 $v = $this->index_coupon($v);
                 $v->point = '领取';
 
             }
 
         }
-
-
         echo json_encode(array('list' => $r_1));
         exit();
 
@@ -46,18 +36,9 @@ class CouponAction extends BaseAction
     {
 
         $db = DBAction::getInstance();
-        $request = $this->getContext()->getRequest();
-
-
-        $activity_id = $v->id; // 活动id
         $activity_type = $v->activity_type; // 活动类型
         $product_class_id = $v->product_class_id; // 商品类型
         $product_id = $v->product_id; // 商品id
-        $start_time_2 = $v->start_time; // 活动开始时间
-        $end_time_2 = $v->end_time; // 活动结束时间
-        $money = $v->money; // 满减金额
-        $z_money = $v->z_money; // 满减金额
-        $num = $v->num; // 活动金额个数
         $v->start_time = date('Y-m-d', strtotime($v->start_time)); // 活动开始时间
         $v->end_time = date('Y-m-d', strtotime($v->end_time)); // 活动结束时间
 
@@ -113,7 +94,6 @@ class CouponAction extends BaseAction
         $sql = "select user_id,Register_data from lkt_user where wx_id = '$openid' ";
         $user = $db->select($sql);
         $user_id = $user[0]->user_id; // 用户id
-        $Register_data = $user[0]->Register_data; // 注册时间
         $time = date('Y-m-d H:i:s');  // 当前时间
 
         // 根据活动id,查询活动
@@ -131,7 +111,7 @@ class CouponAction extends BaseAction
             $sql = "select * from lkt_coupon where user_id = '$user_id' and hid = '$id' ";
             $r_2 = $db->select($sql);
             if ($r_2) {//已经领取了
-                echo json_encode(array('status' => 0, 'info' => '不能重复领取'));
+                echo json_encode(array('status' => 0, 'info' => '已经领取了'));
                 exit();
             } else {//未领取
                 if ($activity_type == 1) {//注册
