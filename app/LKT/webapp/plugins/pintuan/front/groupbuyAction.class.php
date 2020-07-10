@@ -1625,11 +1625,15 @@ class groupbuyAction extends PluginAction
         if ($ds) {
             foreach ($ds as $key => $value) {
                 $r_sNo = $value->sNo;
-                $db->update("update lkt_order_details set r_status=11 where r_sNo='$r_sNo'");//订单详情
-                $db->update("UPDATE lkt_user SET money =money+$value->z_price WHERE user_id = '" . $value->user_id . "'");
-                $event = $value->user_id . '退回拼团金额' . $value->z_price . '';
-                $sqlldr = "insert into lkt_record (user_id,money,oldmoney,event,type) values ('$value->user_id','$value->z_price','','$event',5)";
-                $db->insert($sqlldr);
+                $sql = "select * from lkt_order_details where r_sNo='$r_sNo' ";
+                $rs = $db->select($sql);
+                if ($rs[0]->r_status!=11){
+                    $db->update("update lkt_order_details set r_status=11 where r_sNo='$r_sNo'");//订单详情
+                    $db->update("UPDATE lkt_user SET money =money+$value->z_price WHERE user_id = '" . $value->user_id . "'");
+                    $event = $value->user_id . '退回拼团金额' . $value->z_price . '';
+                    $sqlldr = "insert into lkt_record (user_id,money,oldmoney,event,type) values ('$value->user_id','$value->z_price','','$event',5)";
+                    $db->insert($sqlldr);
+                }
             }
         }
 
