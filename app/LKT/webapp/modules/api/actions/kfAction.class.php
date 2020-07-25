@@ -23,14 +23,7 @@ class kfAction extends Action
 
     public function execute()
     {
-        if (isset($_GET['echostr'])) {
-            // 2.调用方法
-            $this->valid();
-        } else {
-            // 3.响应用户消息
-            $this->responseMsg();
-        }
-        return;
+        
     }
 
     public function getRequestMethods()
