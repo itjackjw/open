@@ -488,54 +488,10 @@ class getcodeAction extends Action
         return $result;
     }
 
-    //抽奖通知
-    public function Send_success($rew)
-    {
-        $db = DBAction::getInstance();
-        $request = $this->getContext()->getRequest();
-        $sql = "select * from lkt_config where id=1";
-        $r = $db->select($sql);
-        if ($r) {
-            $appid = $r[0]->appid; // 小程序唯一标识
-            $appsecret = $r[0]->appsecret; // 小程序的 app secret
-            $AccessToken = $this->getAccessToken($appid, $appsecret);
-            $url = 'https://api.weixin.qq.com/cgi-bin/message/wxopen/template/send?access_token=' . $AccessToken;
-        }
-
-        foreach ($rew as $k => $v) {
-
-            foreach ($v as $key => $value) {
-                $lottery_status = $value[''];
-                $product_title = $value['product_title'];
-                $name = $value['name'];
-                $time = $value['time'];
-                $openid = $value['openid'];
-                $fromid = $value['fromid'];
-                $lottery_status = $value['lottery_status'];
-                $data = array();
-                $data['access_token'] = $AccessToken;
-                $data['touser'] = $openid;
-                $sql = "select * from lkt_notice where id = '1'";
-                $r = $db->select($sql);
-                $template_id = $r[0]->lottery_res;
-                $data['template_id'] = $template_id;
-                $data['form_id'] = $fromid;
-                $minidata = array('keyword1' => array('value' => $name, 'color' => "#173177"), 'keyword2' => array('value' => $product_title, 'color' => "#173177"), 'keyword3' => array('value' => $time, 'color' => "#173177"), 'keyword4' => array('value' => $lottery_status, 'color' => "#173177"));
-                $data['data'] = $minidata;
-                $data = json_encode($data);
-
-                $da = $this->httpsRequest($url, $data);
-                $delsql = "delete from lkt_draw_user_fromid where open_id='$openid' and fromid='$fromid'";
-                $db->delete($delsql);
-                var_dump(json_encode($da));
-            }
-        }
-    }
 
     public function getToken()
     {
         $db = DBAction::getInstance();
-        $request = $this->getContext()->getRequest();
         $sql = "select * from lkt_config where id=1";
         $r = $db->select($sql);
         if ($r) {
