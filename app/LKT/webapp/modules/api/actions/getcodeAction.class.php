@@ -564,21 +564,7 @@ class getcodeAction extends Action
         file_put_contents($fileName, $accessToken);
         return $accessToken;
     }
-
-    //生成红包文字
-    function madeCode()
-    {
-        $db = DBAction::getInstance();
-        $sql = "select * from lkt_config where id=1";
-        $r = $db->select($sql);
-        $company = $r[0]->company;
-        $instring = $company . '给你发红包啦';
-
-        echo json_encode(array('status' => 1, 'text' => $instring));
-        exit();
-        return;
-    }
-
+    
     //生成推广图片
     function getPromotion($name, $ditu, $x, $y, $wx_id, $kuan = 300)
     {
