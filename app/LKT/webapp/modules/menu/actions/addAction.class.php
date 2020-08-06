@@ -62,15 +62,7 @@ class addAction extends Action {
                 "</script>";
             return $this->getDefaultView();
         }
-        $sql = "select id from lkt_core_menu where title = '$title' and s_id = '$s_id' and recycle = 0";
-        $rr = $db->select($sql);
-        if($rr){
-            header("Content-type:text/html;charset=utf-8");
-            echo "<script type='text/javascript'>" .
-                "alert('菜单名称".$title."已存在！');" .
-                "</script>";
-            return $this->getDefaultView();
-        }
+        
         if($level != 1){
             if($url){
                 if(count(explode('?',$url)) < 2){
@@ -102,7 +94,6 @@ class addAction extends Action {
         $r = $db->insert($sql);
         if($r == -1){
             $db->admin_record($admin_id,' 添加菜单失败 ',1);
-
             header("Content-type:text/html;charset=utf-8");
             echo "<script type='text/javascript'>" .
                 "alert('未知原因，添加失败！');" .
