@@ -403,8 +403,10 @@ Page({
   //页面加载完成函数
   onReady: function () {
     var that = this;
-    that.setData({
-      remind: ''
-    });
+    setTimeout(function () {
+      that.setData({
+        remind: ''
+      });
+    }, 1000);
   },
 })
