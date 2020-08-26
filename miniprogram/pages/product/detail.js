@@ -98,11 +98,13 @@ Page({
   },
   // 传值
   onLoad: function (option) {
-    console.log(option)
-    var scene = decodeURIComponent(option.scene);
+    console.log(option+"--------")
     var that = this;
-    if (scene != 'undefined' && scene.length > 1 && scene != '') {
-      option = scene;
+    if(scene in option){
+      var scene = decodeURIComponent(option.scene);
+      if (scene != 'undefined' && scene.length > 1 && scene != '') {
+        option = scene;
+      }
     }
     that.initNavHeight();
     if (option.referee_openid != '') {
@@ -114,11 +116,10 @@ Page({
       productId: option.productId,
       userid: option.userid ? option.userid : false,
       choujiangid: option.choujiangid ? option.choujiangid : '',
-      type1: option.type1 ? option.type1 : '',//判断是抽奖还是其他活动
+      type1: option.type1 ? option.type1 : '',
       role: option.role ? option.role : '',
       size: option.size ? option.size : '',
       earn: option.earn ? option.earn : false,
-      // cart: app.globalData.userInfo.cart ? app.globalData.userInfo.cart:0//购物车数量
     });
     //显示数据
     that.loadProductDetail();
