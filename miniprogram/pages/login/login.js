@@ -1,20 +1,15 @@
 var app = getApp();
 Page({
 	data: {},
-	onLoad: function(e) {
-	
+	onLoad: function(e) {	
 	},
 	onReady: function() {
-	
 	},
 	onShow: function() {
-		
 	},
 	onHide: function() {
-	
 	},
 	onUnload: function() {
-    
 	},
   getUserInfo: function (t) {
     wx.showLoading({
@@ -178,6 +173,4 @@ Page({
       }
     })
   }
-
-
 });

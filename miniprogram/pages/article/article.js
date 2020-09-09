@@ -100,7 +100,6 @@ Page({
       imageUrl:that.data.article.Article_imgurl,
       path: '/pages/index/index?id?p_openid=' + app.globalData.userInfo.openid,
       success: function (res) {
-        // 转发成功
         wx.request({
           url: app.d.ceshiUrl + '&action=envelope&m=share',
           method: 'post',
@@ -151,7 +150,7 @@ Page({
         'Content-Type': 'application/x-www-form-urlencoded'
       },
       success: function (res) {
-        
+       
       },
       fail: function (e) {
         
