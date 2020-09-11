@@ -55,10 +55,8 @@ Page({
     });
     console.log(e.detail.userInfo)
     if (e.detail.errMsg == 'getUserInfo:ok') {
-      //获取成功设置状态
       app.globalData.userlogin = true;
       wx.setStorageSync('userlogin', true);
-      //设置用户信息本地存储
       try {
         wx.setStorageSync('userInfo', e.detail.userInfo);
       } catch (e) {
