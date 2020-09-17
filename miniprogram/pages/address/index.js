@@ -331,8 +331,8 @@ Page({
       data: {
         openid: app.globalData.userInfo.openid,
       },
-      method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      header: {// 设置请求的 header
+      method: 'POST', 
+      header: {
         'Content-Type': 'application/x-www-form-urlencoded'
       },
       success: function (res) {
