@@ -152,12 +152,11 @@ Page({
     var that = this;
     var choujiangid = that.data.choujiangid;
     var openid = app.globalData.userInfo.openid;
-    console.log(app.globalData.userInfo, 'openid')
-    // if (openid) {
+    
     var bgcolor = app.d.bgcolor;
     wx.setNavigationBarColor({
       frontColor: app.d.frontColor,
-      backgroundColor: bgcolor, // 页面标题为路由参数
+      backgroundColor: bgcolor, 
       animation: {
         duration: 400,
         timingFunc: 'easeIn'
@@ -170,7 +169,7 @@ Page({
       data: {
         pro_id: that.data.productId,
         openid: openid,
-        type1: that.data.type1,//判断是抽奖还是其他活动
+        type1: that.data.type1,
         choujiangid: that.data.choujiangid,
         role: that.options.role ? that.options.role : '',
         size: that.data.size,
