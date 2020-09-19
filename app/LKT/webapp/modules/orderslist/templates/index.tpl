@@ -1151,6 +1151,162 @@
         }
 
 
+        function send_btn(obj, otype, id, status, sNo) {
+            var dingdan = id;
+            var stu = status;
+            $('.order_id').val(id);
+            $('.otype').val(otype ? otype : 'yb');
+
+            if (stu == 6) {
+                appenMask1('订单已关闭，不能发货!', "ts");
+            }
+            if (stu >= 2 && stu != 6) {
+                appenMask1('订单已发货，请勿重复操作!', "ts");
+            }
+
+            if (stu == 0) {
+                appenMask1('订单还没付款!', "ts");
+            }
+
+            if (stu == 1) {
+                location.href = 'index.php?module=orderslist&action=addsign&sNo=' + dingdan
+            }
+
+        };
+
+        function send_btn1(obj, id, courier_num, is = false) {
+
+            var r_sNo = id;
+
+            $.ajax({
+                url: 'index.php?module=orderslist&action=kuaidishow&r_sNo=' + r_sNo + '&courier_num=' + courier_num,
+                type: "post",
+                success: function (res) {
+                    var data = JSON.parse(res);
+
+                    if (!data[0].data.length) {
+                        appendMask('暂无物流信息！', "ts");
+                        return
+                    }
+
+                    if (is) {
+                        d = []
+                        for (var item of data) {
+                            if (item.courier_num === courier_num) {
+                                d.push(item)
+                            }
+                        }
+                        data = d
+                    }
+
+                    if (data.length) {
+                        closeMask1();
+                        var str = '';
+                        var title = ''
+
+                        function getnr(data) {
+                            for (var aaa of data) {
+
+                                str += `
+
+
+									<li>
+										<i style="color:rgba(151,160,180,1);font-size:14px;font-style: initial;">${aaa.time}</i>
+										<i style="color:rgba(65,70,88,1);font-size:14px;font-style: initial;">${aaa.context}</i>
+									</li>
+
+
+								`
+
+
+                            }
+
+                            return str
+                        }
+
+                        for (var item of data) {
+                            title = `
+
+						<div class="row">
+
+							<div class="col-2" style="text-align: end;color: rgba(65,70,88,1);font-size: 14px;">物流公司：</div>
+							<div class="col-9" style="color:rgba(65,70,88,1);font-size: 14px;">${ item.kuaidi_name}</div>
+						</div>
+
+						<div class="row">
+							<div class="col-2" style="text-align: end;color: rgba(65,70,88,1);font-size: 14px;">运单号码：</div>
+							<div class="col-9" style="color:rgba(65,70,88,1);font-size: 14px;">${ item.courier_num}</div>
+						</div>
+
+						<div class="row">
+							<div class="col-2" style="text-align: end;color: rgba(65,70,88,1);font-size: 14px;">物流跟踪：</div>
+							<div class="col-9">
+									<ul>
+							${
+
+                                getnr(item.data)
+
+                                }
+							</ul>
+							</div>
+						</div>
+						`
+                        }
+
+                        wl_appendMask(title, "cg");
+                    } else {
+                        appendMask('暂无物流信息！', "ts");
+                    }
+                },
+            });
+        };
+
+
+
+        function appendMask(content, src) {
+            $("body").append(`
+				<div class="maskNew ">
+					<div class="maskNewContent">
+						<a href="javascript:void(0);" class="closeA" onclick=closeMask1() ><img src="images/icon1/gb.png"/></a>
+						<div class="maskTitle">提示</div>
+						<div style="text-align:center;margin-top:30px"><img src="images/icon1/${src}.png"></div>
+						<div style="height: 50px;position: relative;top:20px;font-size: 22px;text-align: center;">
+							${content}
+						</div>
+						<div style="text-align:center;margin-top:30px">
+							<button class="closeMask" onclick=closeMask1() >确认</button>
+						</div>
+					</div>
+				</div>
+			`)
+        }
+
+
+        function wl_appendMask(content, src) {
+            $("body").append(`
+				<div class="wl_maskNew">
+
+					<div class="wl_maskNewContent">
+						<a href="javascript:void(0);" class="closeA" onclick=close_wl_Mask1() ><img src="images/icon1/gb.png"/></a>
+						<div class="maskTitle" style="display: block;font-size:16px;font-weight:bold;">物流信息</div>
+						<div style="height: 470px;position: relative;top:20px;font-size: 22px;overflow: scroll;">
+							${content}
+						</div>
+						<div style="text-align:center;margin-top:30px">
+					<button class="closeMask" onclick=close_wl_Mask1() >确认</button>
+				</div>
+					</div>
+				</div>
+
+
+			`)
+        }
+
+        function close_wl_Mask1() {
+            $(".wl_maskNew").remove();
+        }
+
+
 
 
 	</script>
