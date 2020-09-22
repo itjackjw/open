@@ -68,7 +68,7 @@ class addAction extends Action {
                 }
             }
         }
-
+        
         $request->setAttribute("list",$res);
         $request->setAttribute("name",$name);
         $request->setAttribute("activity_type",$activity_type?$activity_type:1);
