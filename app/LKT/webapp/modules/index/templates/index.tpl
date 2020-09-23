@@ -534,6 +534,7 @@
                                             定制开发
                                         </a><br/>
 QQ群：<a href="//shang.qq.com/wpa/qunwpa?idkey=e608e87cf657e7f0d0a6fe85b127784efd373f6e1e18d21b590af85f2612df55" target="_blank" rel="noopener"> 631252151</a> | <a href="//shang.qq.com/wpa/qunwpa?idkey=2bc690569245606dcfbf7e67a9abcd8086cd825b4d946bb122ba3b091044a6e4" target="_blank" rel="noopener"> 615981686</a>
+                                        LaiKeTui商城系统·专注用户体验
                                     </div>
 
 
