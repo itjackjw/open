@@ -207,7 +207,7 @@ function CheckEmail(address) {
 }
 
 /*
-*身份证号合法性验证
+*身份证号合法性验证，返回对象{'pass':true,'msg':'格式正确'}
 *支持15位和18位身份证号
 *支持地址编码、出生日期、校验位验证
 */
@@ -267,7 +267,6 @@ function IdCodeValid(code) {
         //18位身份证需要验证最后一位校验位
         if (code.length == 18) {
             code = code.split('');
-            //∑(ai×Wi)(mod 11)
             //加权因子
             var factor = [7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2];
             //校验位
