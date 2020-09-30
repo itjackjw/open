@@ -4,9 +4,7 @@ require_once(MO_LIB_DIR . '/DBAction.class.php');
 class addAction extends Action {
 
 	public function getDefaultView() {
-
-      
-		return View :: INPUT;
+        return View :: INPUT;
 	}
 
 	public function execute(){
@@ -19,13 +17,10 @@ class addAction extends Action {
         if ($zip->open($filepath) === true) {
             $zip->extractTo($path.'zip/');
             $zip->close();
-            $name =str_replace(strrchr($name, "."),"",$name);//文件夹名称
+            $name =str_replace(strrchr($name, "."),"",$name);
             $filepath= getcwd().'\zip\\'.$name.'\index.php';
-            require_once $filepath;//执行index文件
-        } else {
-            // echo 'error';
-        }
-
+            require_once $filepath;
+        } 
 	    return;
 	}
 
