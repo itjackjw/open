@@ -24,6 +24,7 @@ class modifyAction extends PluginAction
         echo json_encode(array('code' => 200, 'data' => $res));
         exit();
     }
+    
     public function baocun()
     {
         $request = $this->getContext()->getRequest();
