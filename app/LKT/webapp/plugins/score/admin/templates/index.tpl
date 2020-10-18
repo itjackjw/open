@@ -31,8 +31,8 @@
     <div class="text-c" >
         <form name="form1" action="index.php" method="get" style="display: flex;">
             <input type="hidden" name="module" value="pi"/>
-            <input type="hidden" name="p" value="distribution"/>
-            <input type="hidden" name="c" value="goods"/>
+            <input type="hidden" name="p" value="score"/>
+            <input type="hidden" name="c" value="Home"/>
             <input type="text" name="username" size='8' value="{$name}" id="" placeholder="请输入商品名称" style="width:220px;height:36px;background:rgba(255,255,255,1);border:1px solid rgba(213,219,232,1);border-radius:2px;" class="input-text">
             <input name="" id="" class="btn btn-success buttom_hover" style="width:60px;height:36px;background:rgba(40,144,255,1);border-radius:2px;" type="submit" value="查询">
         </form>
