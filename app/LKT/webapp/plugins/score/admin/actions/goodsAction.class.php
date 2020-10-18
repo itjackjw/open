@@ -15,7 +15,6 @@ class goodsAction extends PluginAction
         return View::INPUT;
     }
 
-    //商品上下架
     public function status()
     {
         
