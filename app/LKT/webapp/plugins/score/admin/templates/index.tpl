@@ -41,7 +41,7 @@
     <div class="page_bgcolor page_t">
       <div class="page_h16"></div>
 
-      <a class="btn newBtn radius" style="width: 112px;height: 36px !important;background: rgba(56,180,237,1);" href="index.php?module=pi&p=distribution&c=addGoods">
+      <a class="btn newBtn radius" style="width: 112px;height: 36px !important;background: rgba(56,180,237,1);" href="index.php?module=pi&p=score&c=addGoods">
         <div style="height: 100%;display: flex;align-items: center;">
           <img src="images/icon1/add.png" />&nbsp;添加商品
         </div>
