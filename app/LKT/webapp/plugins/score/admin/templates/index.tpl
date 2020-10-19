@@ -68,7 +68,7 @@
                     <th style="width:300px;">商品名称</th>
                     <th style="width:50px;">价格</th>
                     <th style="width:50px;">库存</th>
-                    <th style="width:50px;">佣金比例</th>
+                    <th style="width:50px;">积分消耗</th>
                     <th style="width:100px;">状态</th>
                     <th style="width:100px;">是否显示</th>
                     <th style="width: 150px;">操作</th>
@@ -98,9 +98,7 @@
                         </td>
 
                         <td class="text-c" style="width:50px;">
-                            {if $item->leve >= 1}1级：{$item->leve1}%<br/>{/if} 
-                            {if $item->leve >= 2}2级：{$item->leve2}%<br/>{/if} 
-                            {if $item->leve >= 3}3级：{$item->leve3}%{/if}
+                            
                         </td>
 
                         <td style="width:50px;">
@@ -130,7 +128,7 @@
                         </td>
 
                         <td class="tab_editor" style="width:150px;">
-                            <a style="text-decoration:none" class="ml-5" href="index.php?module=pi&p=distribution&c=modify&id={$item->id}" onclick="return confirm('确定要修改该分销商品吗?')">
+                            <a style="text-decoration:none" class="ml-5" href="index.php?module=pi&p=score&c=modify&id={$item->id}" onclick="return confirm('确定要修改该积分商品吗?')">
                                 <div style="margin:0 auto;"> 
                                     <img src="images/icon1/xg.png" />&nbsp;编辑
                                 </div>
@@ -161,7 +159,7 @@
 
 
 
-                            <a style="text-decoration:none" class="ml-5" href="index.php?module=pi&p=distribution&c=goods&m=del&id={$item->id}&type=1" onclick="return confirm('确定要删除该分销商品吗?')">
+                            <a style="text-decoration:none" class="ml-5" href="index.php?module=pi&p=score&c=goods&m=del&id={$item->id}&type=1" onclick="return confirm('确定要删除该积分商品吗?')">
                                 <div style="margin:0 auto;"> 
                                     <img src="images/icon1/del.png"/>&nbsp;删除
                                 </div>
@@ -210,7 +208,7 @@
 
     function updataStatus(id,status){
         $.ajax({
-            url: "index.php?module=pi&p=distribution&c=goods&m=status",
+            url: "index.php?module=pi&p=score&c=goods&m=status",
             async: false,
             data:{
                 id:id,
@@ -251,15 +249,15 @@
         let list = Array.from($(".che[type=checkbox]:checked"),item => item.dataset.id)
         
         if(!list.length){
-            layer.msg('请选择需删除的分销商品！')
+            layer.msg('请选择需删除的积分商品！')
             return 
         }
 
-        layer.confirm('确定要删除该所选分销商品吗？', {
+        layer.confirm('确定要删除该所选积分商品吗？', {
             btn: ['确定','取消'] //按钮
         }, function(){
             $.ajax({
-                url: "index.php?module=pi&p=distribution&c=goods&m=del",
+                url: "index.php?module=pi&p=score&c=goods&m=del",
                 async: false,
                 method:'POST',
                 data:{
