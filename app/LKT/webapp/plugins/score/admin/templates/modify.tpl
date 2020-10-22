@@ -22,7 +22,7 @@
 
 	<script src="style/js/vue.min.js"></script>
 	
-	<title>添加分销商品</title>
+	<title>修改积分商品</title>
 
 	{literal}
 	<style type="text/css">
@@ -139,13 +139,9 @@
 <body>
 {literal}
 <div id="app">
-	<nav class="breadcrumb" style="font-size: 16px;">
-		<i class="Hui-iconfont">&#xe6ca;</i>
-		插件管理
-		<span class="c-gray en">&gt;</span>
-		<a style="margin-top: 10px;" onclick="location.href='index.php?module=pi&p=distribution&c=goods&status=2';">分销</a>
-		<span class="c-gray en">&gt;</span>
-		编辑分销商品
+	<nav class="breadcrumb">
+		<a href="index.php?module=pi&p=score&c=Home" >积分商城</a> <span class="c-gray en">&gt;</span>
+		编辑商品
 	</nav>
 
 	<div id="addpro" class="pd-20" style="background-color: white;">
