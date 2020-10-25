@@ -535,7 +535,7 @@
 				getCommodityList(){
 					let vm = this
 					$.ajax({
-						url: "index.php?module=pi&p=distribution&c=addGoods&m=pro_query&page=1",
+						url: "index.php?module=pi&p=score&c=addGoods&m=pro_query&page=1",
 						async: false,
 						success: function (res) {
 							res = JSON.parse(res)
@@ -569,7 +569,7 @@
 					}
 
 					$.ajax({
-						url: "index.php?module=pi&p=distribution&c=addGoods&m=pro_query&&page=1",
+						url: "index.php?module=pi&p=score&c=addGoods&m=pro_query&&page=1",
 						async: false,
 						method: 'POST',
 						data: data,
