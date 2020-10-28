@@ -91,6 +91,7 @@
 
 ### PC端截图（平台自营+商家入驻）
 ![输入图片说明](https://images.gitee.com/uploads/images/2020/1028/153642_4638f4ac_2029865.png "2020080506311086.png")
+![输入图片说明](https://images.gitee.com/uploads/images/2020/1028/153825_36541a46_2029865.png "psfe50bd6222200d16-8d2c-4b0a-b4be-88b4f5b4d4d7.png")
 
 ### 相关思维导图
 ![前端](https://images.gitee.com/uploads/images/2018/1101/171831_05d3ecb6_2029865.jpeg "来客小程序.jpg")
