@@ -17,7 +17,7 @@
 ，群二：615981686  [点击加入](http://shang.qq.com/wpa/qunwpa?idkey=2bc690569245606dcfbf7e67a9abcd8086cd825b4d946bb122ba3b091044a6e4)
 ，群三：340645969  [点击加入](http://shang.qq.com/wpa/qunwpa?idkey=427109459854834986069455266c718998467b63c78f455940d6291de01a7d0b)
 
-![[输入链接说明](http://https://www.laiketui.com/action)](https://images.gitee.com/uploads/images/2020/1028/154030_e846fed0_2029865.jpeg "6-1.jpg")
+[![输入图片说明](https://images.gitee.com/uploads/images/2020/1028/154030_e846fed0_2029865.jpeg "商业V3版")](http://https://www.laiketui.com/action)
 
 ### 小程序端截图
 
@@ -38,7 +38,7 @@
 
 ### 软件架构
 
-- PHP5.6+、 MYSQL5.5+、Uniapp、原生小程序、原生IOS、原生Android、 自主研发框架（古典式开发框架，附30分钟快速入门教程）
+- PHP5.6+、 MYSQL5.5+、Uniapp、原生小程序、原生IOS、原生Android、 自主研发框架（极速开发框架，附30分钟快速入门教程）
 
 ### 安装教程、开发文档、操作手册请进入官网查询
 
