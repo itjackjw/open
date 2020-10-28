@@ -17,7 +17,7 @@
 ，群二：615981686  [点击加入](http://shang.qq.com/wpa/qunwpa?idkey=2bc690569245606dcfbf7e67a9abcd8086cd825b4d946bb122ba3b091044a6e4)
 ，群三：340645969  [点击加入](http://shang.qq.com/wpa/qunwpa?idkey=427109459854834986069455266c718998467b63c78f455940d6291de01a7d0b)
 
-### 全场景体验 PC商城+IOS+Android+各种小程序+H5，请访问
+### 全场景快速体验 PC商城+IOS+Android+各种小程序+H5，请访问下列地址：
 
 - [http://www.laiketui.com/action/](http://www.laiketui.com/action/)
 
