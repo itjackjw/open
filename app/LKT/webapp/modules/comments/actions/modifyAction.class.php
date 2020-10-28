@@ -43,15 +43,12 @@ class ModifyAction extends Action
         $db       = DBAction::getInstance();
         $request  = $this->getContext()->getRequest();
         $admin_id = $this->getContext()->getStorage()->read('admin_id');
-
         $id            = addslashes(trim($request->getParameter('id')));
         $comment_input = addslashes(trim($request->getParameter('comment_input')));
         $comment_type  = addslashes(trim($request->getParameter('comment_type')));
-
         $sql = "update lkt_comments set content= '$comment_input' ,CommentType='$comment_type'  where id= '$id' ";
         $up  = $db->update($sql);
         $db->admin_record($admin_id, ' 修改评论id为 ' . $id . ' 的信息 ', 2);
-
         echo $up;
         exit;
     }
