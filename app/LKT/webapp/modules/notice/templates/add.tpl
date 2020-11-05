@@ -87,7 +87,7 @@ KindEditor.ready(function(K) {
   K('#image').click(function() {
     editor.loadPlugin('image', function() {
       editor.plugin.imageDialog({
-        showRemote : false, //网络图片不开启
+        showRemote : true, //网络图片不开启
         imageUrl : K('#picurl').val(),
           clickFn : function(url, title, width, height, border, align) {
           K('#picurl').val(url);
