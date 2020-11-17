@@ -777,10 +777,7 @@
             var express = $('select[name=kuaidi]').val(); // 快递公司id
             var express_name = $('select[name=kuaidi]').find("option:selected").text(); // 快递公司名称
             var courier_num = $('input[name=danhao]').val(); // 快递单号
-            // var freight = $('input[name=yunfei]').val();
             var otype = $(".otype").val(); // 类型
-            console.log(courier_num, express_name, express, "as4d65");
-            console.log(express_name.length, express.length)
             if (express_name.length < 1) {
                 appendMask_tj('请选择快递公司', "ts");
             } else if (courier_num.length < 10) {
