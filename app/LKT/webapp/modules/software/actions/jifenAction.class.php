@@ -17,12 +17,9 @@ public function getDefaultView() {
         $db = DBAction::getInstance();
         $request = $this->getContext()->getRequest();
         $sql = "select * from lkt_software_jifen where id = 1";
-
         $r = $db->select($sql);
-        if($r){
+        if(!$r){
             $r = $r;
-        }else{
-            $r = 1;
         }
         $request->setAttribute("r",$r);
 
@@ -33,18 +30,14 @@ public function getDefaultView() {
 	public function execute(){
 
 		$db = DBAction::getInstance();
-
 		$request = $this->getContext()->getRequest();
-
         $jifennum = $request->getParameter('jifennum');
         $switch = $request->getParameter('switch');
         $rule = trim($request->getParameter('rule'));
-
         if($jifennum >= 0){
              $sql = "select * from lkt_software_jifen where id = 1";
              $r = $db->select($sql);
              if(!$r){
-
                 $sql = "insert into lkt_software_jifen(jifennum,switch,rule) values('$jifennum','$switch','$rule')";
                 $r = $db->insert($sql);
                 if($r > 0){
