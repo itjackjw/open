@@ -36,7 +36,6 @@ class envelopeAction extends BaseAction {
             echo json_encode(array('status'=>0,'err'=>'网络繁忙！'));
             exit();
         }
-        return;
     }
     // 新闻详情点击分享
     public function share(){
