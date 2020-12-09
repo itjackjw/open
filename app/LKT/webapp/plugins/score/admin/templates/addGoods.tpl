@@ -412,12 +412,12 @@
 
 							<div class="formControls col-10" style="display: flex;">
 								<div>
-									<input type="radio" name="drone" value="1" checked @click="radios">
+									<input type="radio" name="is_show" v-model="is_show" value="1" checked @click="radios">
 									<label for="dewey">是</label>
 								</div>
 
 								<div style="margin-left: 20px;">
-									<input type="radio" name="drone" value="0" @click="radios">
+									<input type="radio" name="is_show" v-model="is_show" value="0" @click="radios">
 									<label for="louie">否</label>
 								</div>
 							</div>
@@ -444,13 +444,8 @@
 				total: 0,
 				checkboxlist: [],
 				lvlist: [],
-				isshowtyoe: true,
-				is_show1: false,
-				is_show2: false,
-				is_show3: false,
 				score: 0,
-				type: 2,
-				leve: 0,
+				is_show: 1,
 				page: 2,
 				loaddingtext:'加载更多...'
 			},
@@ -552,16 +547,7 @@
 					let value = parseInt(ele.target.value)
 					this.lvlist = []
 					this.leve = value
-					if(value){
-						for(let i = 0; i < value;i++){
 
-							this.lvlist.push({
-								text: i + 1 + '级佣金比例',
-								name:0
-							})
-
-						}
-					}
 				},
 				baocungroup(){
 
@@ -572,69 +558,29 @@
 
 					let data = {}
 
-					if(!this.leve){
-						layer.msg('请选择分销层级！')
-						return
-					}
-
-					data['leve'] = this.leve
 
 					if(this.score.toString() == ''){
-						layer.msg('请输入佣金手续费！')
+						layer.msg('请输入积分！')
 						return
 					}
 
 					data['score'] = this.score
 
-					if(this.isshowtyoe){
-						let isshowlist = []
-						if(this.is_show1){
-							isshowlist.push(1)
-						}
+					data['is_show'] = this.is_show
 
-						if(this.is_show2){
-							isshowlist.push(2)
-						}
-
-						if(this.is_show3){
-							isshowlist.push(3)
-						}
-						isshowlist.push(4)
-
-						if(!isshowlist.length){
-							layer.msg('请选择显示位置！')
-							return
-						}
-
-						data['is_show'] = isshowlist.join(',')
-					}
-
-					data['type'] = this.type
-
-					for(let i in this.lvlist){
-						let s =  parseInt(i) + 1
-						data['leve' + s] = this.lvlist[i].name
-					}
 
 					let list = []
 					for(let item of this.checkboxlist){
 
 						list.push({
 							id: item.id,
-							leve: data.leve || 0,
-							leve1: data.leve1 || 0,
-							leve2: data.leve2 || 0,
-							leve3: data.leve3 || 0,
-							leve4: data.leve4 || 0,
-							leve5: data.leve5 || 0,
 							is_show: data.is_show || 0,
-							score: data.score,
-							type: data.type
+							score: data.score
 						})
 					}
 
 					$.ajax({
-						url: 'index.php?module=pi&p=distribution&c=addGoods&m=baocun',
+						url: 'index.php?module=pi&p=score&c=addGoods&m=insert',
 						method: 'POST',
 						data: {
 							data:list
@@ -646,7 +592,7 @@
 
 								layer.msg(res.message);
 								setTimeout(function () {
-									location.href = 'index.php?module=pi&p=distribution&c=goods'
+									location.href = 'index.php?module=pi&p=score&c=Home'
 								}, 800)
 
 							} else if (res.status == 1) {
@@ -704,7 +650,7 @@
 				loadmore(page){
 					let vm = this
 					$.ajax({
-						url: "index.php?module=pi&p=distribution&c=addGoods&m=pro_query&page=" + page,
+						url: "index.php?module=pi&p=score&c=addGoods&m=pro_query&page=" + page,
 						async: false,
 						success: function (res) {
 							res = JSON.parse(res)

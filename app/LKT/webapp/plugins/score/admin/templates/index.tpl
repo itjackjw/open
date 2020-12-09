@@ -98,7 +98,7 @@
                         </td>
 
                         <td class="text-c" style="width:50px;">
-                            
+                            {$item->score}
                         </td>
 
                         <td style="width:50px;">
@@ -159,7 +159,7 @@
 
 
 
-                            <a style="text-decoration:none" class="ml-5" href="index.php?module=pi&p=score&c=goods&m=del&id={$item->id}&type=1" onclick="return confirm('确定要删除该积分商品吗?')">
+                            <a style="text-decoration:none" class="ml-5" href="index.php?module=pi&p=score&c=Home&m=del&id={$item->id}&type=1" onclick="return confirm('确定要删除该积分商品吗?')">
                                 <div style="margin:0 auto;"> 
                                     <img src="images/icon1/del.png"/>&nbsp;删除
                                 </div>
@@ -208,7 +208,7 @@
 
     function updataStatus(id,status){
         $.ajax({
-            url: "index.php?module=pi&p=score&c=goods&m=status",
+            url: "index.php?module=pi&p=score&c=Home&m=status",
             async: false,
             data:{
                 id:id,
@@ -257,7 +257,7 @@
             btn: ['确定','取消'] //按钮
         }, function(){
             $.ajax({
-                url: "index.php?module=pi&p=score&c=goods&m=del",
+                url: "index.php?module=pi&p=score&c=Home&m=del",
                 async: false,
                 method:'POST',
                 data:{

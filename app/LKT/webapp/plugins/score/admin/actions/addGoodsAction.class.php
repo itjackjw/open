@@ -134,39 +134,32 @@ class addGoodsAction extends PluginAction
         exit;
     }
 
-    public function baocun()
+    public function insert()
     {
         $request = $this->getContext()->getRequest();
         $data = $request->getParameter('data');
-        $db = DBAction::getInstance();
-        $db->begin();
+        lkt_start();
         $r_num = 0;
         if ($data) {
             foreach ($data as $key => $value) {
                 $dd = array();
                 $dd[] =  $value['id'];
-                $dd[] =  $value['leve'] ? $value['leve'] : '0';
-                $dd[] =  $value['leve1'] ? $value['leve1'] : '0';
-                $dd[] =  $value['leve2'] ? $value['leve2'] : '0';
-                $dd[] =  $value['leve3'] ? $value['leve3'] : '0';
-                $dd[] =  $value['type'];
-                $dd[] =  $value['commissions'];
-                $dd[] = 0;
-                $dd[] = $value['is_show'] ? $value['is_show'] : '0';
-                $db->preInsert("insert into lkt_detailed_pro(pro_id,leve,leve1,leve2,leve3,type,commissions,status,is_show) values(?,?,?,?,?,?,?,?,?)", $dd);
+                $dd[] =  $value['score'];
+                $dd[] =  $value['is_show'];
+                lkt_execute("insert into lkt_score_pro(pro_id,score,is_show) values(?,?,?)", $dd);
                 $r_num = $r_num + 1;
             }
             if ($r_num == count($data)) {
-                $db->commit();
+                lkt_commit();
                 echo json_encode(array('code' => 200, 'message' => '添加成功!'));
                 exit();
             } else {
-                $db->rollback();
+                lkt_rollback();
                 echo json_encode(array('code' => 400, 'message' => '未知原因，添加失败!'));
                 exit();
             }
         } else {
-            $db->rollback();
+            lkt_rollback();
             echo json_encode(array('code' => 400, 'message' => '未传参'));
             exit();
         }
