@@ -56,7 +56,7 @@ class HomeAction extends PluginAction
         }
 
         $pager = new ShowPager($total, $pagesize, $page);
-        $url = "index.php?module=pi&p=score&c=goods&name=$name&pagesize=" . urlencode($pagesize);
+        $url = "index.php?module=pi&p=score&c=Home&name=$name&pagesize=" . urlencode($pagesize);
         $pages_show = $pager->multipage($url, $total, $page, $pagesize, $start, $para = '');
         $request->setAttribute("list", $res1);
         $request->setAttribute("name", $name);
