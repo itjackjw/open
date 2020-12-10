@@ -8,21 +8,21 @@
 <meta http-equiv="Cache-Control" content="no-siteapp" />
 {php}include BASE_PATH."/modules/assets/templates/top.tpl";{/php}
 
-<title>分销管理</title>
+<title>兑换记录</title>
 </head>
 <body>
 
 
 <nav class="breadcrumb">
     <a href="index.php?module=pi&p=score&c=Home" >积分商城</a> <span class="c-gray en">&gt;</span>
-    积分商品
+    兑换记录
 </nav>
 
 <div class="page-container pd-20 page_absolute">
 
     <div style="display: flex;flex-direction: row;font-size: 16px;" class="page_bgcolor">
-        <div class="status qh isclick"><a href="index.php?module=pi&p=score&c=Home">积分商品</a></div>
-        <div class="status qh "  ><a href="index.php?module=pi&p=score&c=log">积分明细</a></div>
+        <div class="status qh "><a href="index.php?module=pi&p=score&c=Home">积分商品</a></div>
+        <div class="status qh isclick"  ><a href="index.php?module=pi&p=score&c=log">兑换记录</a></div>
     </div>
 
 
@@ -31,20 +31,14 @@
         <form name="form1" action="index.php" method="get" style="display: flex;">
             <input type="hidden" name="module" value="pi"/>
             <input type="hidden" name="p" value="score"/>
-            <input type="hidden" name="c" value="Home"/>
-            <input type="text" name="username" size='8' value="{$name}" id="" placeholder="请输入商品名称" style="width:220px;height:36px;background:rgba(255,255,255,1);border:1px solid rgba(213,219,232,1);border-radius:2px;" class="input-text">
+            <input type="hidden" name="c" value="log"/>
+            <input type="text" name="username" size='8' value="{$name}" id="" placeholder="请输入用户ID" style="width:220px;height:36px;background:rgba(255,255,255,1);border:1px solid rgba(213,219,232,1);border-radius:2px;" class="input-text">
             <input name="" id="" class="btn btn-success buttom_hover" style="width:60px;height:36px;background:rgba(40,144,255,1);border-radius:2px;" type="submit" value="查询">
         </form>
     </div>
 
     <div class="page_bgcolor page_t">
       <div class="page_h16"></div>
-
-      <a class="btn newBtn radius" style="width: 112px;height: 36px !important;background: rgba(56,180,237,1);" href="index.php?module=pi&p=score&c=addGoods">
-        <div style="height: 100%;display: flex;align-items: center;">
-          <img src="images/icon1/add.png" />&nbsp;添加商品
-        </div>
-      </a>
 
       <a class="btn newBtn radius" style="width: 112px;height: 36px !important;background: rgba(255,255,255,1) !important;" onclick="alldel()">
         <div style="height: 100%;display: flex;align-items: center;font-size: 14px;font-weight: 400;color: rgba(106,112,118,1);">
@@ -65,11 +59,9 @@
                     序号
                     </th>
                     <th style="width:300px;">商品名称</th>
-                    <th style="width:50px;">价格</th>
-                    <th style="width:50px;">库存</th>
-                    <th style="width:50px;">积分</th>
+                    <th style="width:50px;">用户ID</th>
+                    <th style="width:50px;">消耗积分</th>
                     <th style="width:100px;">状态</th>
-                    <th style="width:100px;">是否显示</th>
                     <th style="width: 150px;">操作</th>
                 </tr>
                 </thead>
@@ -87,13 +79,10 @@
                             </div>
 
                         </td>
-                    
-                        <td style="width:50px;">               
-                            ￥ {$item->price}
-                        </td>
+
 
                         <td style="width:50px;">
-                                {$item->num}
+                                {$item->uid}
                         </td>
 
                         <td class="text-c" style="width:50px;">
@@ -103,62 +92,22 @@
                         <td style="width:50px;">
                             {if $item->status == 0}
                                 <span class="statusssah">
-                                    待上架
+                                    成功
                                 </span>
                             {/if}
-                            
+
+
                             {if $item->status == 1}
-                                <span class="statusssa">已上架</span>
-                                
-                            {/if}
-
-                            {if $item->status == 2}
-                                <span class="statusssah">已下架</span>
+                                <span class="statusssah">失败</span>
                             {/if}
                         </td>
 
-                        <td style="width:50px;">
-                            {if $item->is_show == "0"}
-                                不显示
 
-                            {else}
-                                显示  
-                            {/if}
-                        </td>
 
                         <td class="tab_editor" style="width:150px;">
-                            <a style="text-decoration:none" class="ml-5" href="index.php?module=pi&p=score&c=modify&id={$item->id}" onclick="return confirm('确定要修改该积分商品吗?')">
-                                <div style="margin:0 auto;"> 
-                                    <img src="images/icon1/xg.png" />&nbsp;编辑
-                                </div>
-                            </a>
-
-                            {if $item->status == 1}
-                                <a style="text-decoration:none" class="ml-5" onclick="updataStatus({ $item->id },2)">
-                                    <div style="margin:0 auto;"> 
-                                        <img src="images/icon1/xj.png" />&nbsp;下架
-                                    </div>
-                                </a>
-                            {else}
-                                {if $item->sta == 0}
-                                    <a style="text-decoration:none" class="ml-5" onclick="updataStatus({ $item->id },1)">
-                                        <div style="margin:0 auto;"> 
-                                            <img src="images/icon1/sj_g.png" />&nbsp;上架
-                                        </div>
-                                    </a>
-                                {else}
-                                    <a style="text-decoration:none;background-color: rgb(213, 219, 232);" class="ml-5">
-                                        <div style="margin:0 auto;"> 
-                                            <img src="images/icon1/sj_g.png" />&nbsp;上架
-                                        </div>
-                                    </a>
-                                {/if}
-                            {/if}
 
 
-
-
-                            <a style="text-decoration:none" class="ml-5" href="index.php?module=pi&p=distribution&c=goods&m=del&id={$item->id}&type=1" onclick="return confirm('确定要删除该分销商品吗?')">
+                            <a style="text-decoration:none" class="ml-5" href="index.php?module=pi&p=score&c=log&m=del&id={$item->id}&type=1" onclick="return confirm('确定要删除该记录吗?')">
                                 <div style="margin:0 auto;"> 
                                     <img src="images/icon1/del.png"/>&nbsp;删除
                                 </div>
@@ -248,15 +197,15 @@
         let list = Array.from($(".che[type=checkbox]:checked"),item => item.dataset.id)
         
         if(!list.length){
-            layer.msg('请选择需删除的分销商品！')
+            layer.msg('请选择需删除的记录！')
             return 
         }
 
-        layer.confirm('确定要删除该所选分销商品吗？', {
+        layer.confirm('确定要删除该所选记录吗？', {
             btn: ['确定','取消'] //按钮
         }, function(){
             $.ajax({
-                url: "index.php?module=pi&p=distribution&c=goods&m=del",
+                url: "index.php?module=pi&p=score&c=log&m=del",
                 async: false,
                 method:'POST',
                 data:{
