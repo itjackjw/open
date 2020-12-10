@@ -33,8 +33,7 @@ class HomeAction extends PluginAction
             $condition .= "  AND b.product_title like '%$name%' ";
         }
 
-        $db = DBAction::getInstance();
-        $res = $db->select("select a.*,b.product_title,b.volume,b.imgurl,b.num,b.status as sta,b.initial  from lkt_score_pro AS a,lkt_product_list AS b where a.pro_id = b.id AND b.num > 0  " . $condition . " order by a.id desc  ");
+        $res = lkt_gets("select a.*,b.product_title,b.volume,b.imgurl,b.num,b.status as sta,b.initial  from lkt_score_pro AS a,lkt_product_list AS b where a.pro_id = b.id AND b.num > 0  " . $condition . " order by a.id desc  ");
 
         $total = count($res);
         if ($res) {
@@ -123,7 +122,7 @@ class HomeAction extends PluginAction
             }
             exit();
         }
-        return;
+
     }
 
 

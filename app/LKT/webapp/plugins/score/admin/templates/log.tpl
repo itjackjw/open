@@ -130,57 +130,10 @@
 
 {literal}
 <script type="text/javascript">
-    var group_end_time = $('#group_end_time');
 
-    var startdate = $("#group_start_time").val();
-
-    laydate.render({
-        elem: '#group_start_time', //指定元素
-        trigger: 'click',
-        type: 'datetime',
-
-    });
-    
-    laydate.render({
-        elem: '#group_end_time',
-        trigger: 'click',
-        type: 'datetime'
-    });
 
     function empty() {
         $("input[name='username']").val('');
-        $("input[name='sNo']").val('');
-        $("input[name='starttime']").val('');
-        $("input[name='group_end_time']").val('');
-    }
-
-    function updataStatus(id,status){
-        $.ajax({
-            url: "index.php?module=pi&p=distribution&c=goods&m=status",
-            async: false,
-            data:{
-                id:id,
-                status:status
-            },
-            success: function (res) {
-                res = JSON.parse(res)
-                if(res.code === 200){
-                    if(status == 2){
-                        layer.msg('下架成功！')
-                    } else {
-                        layer.msg('上架成功！')
-                    }
-                    
-                    setTimeout(function(){
-                        location.reload()
-                    },600)
-                } else {
-                    setTimeout(function(){
-                        location.reload()
-                    },600)
-                }
-            }
-        })
     }
 
     $(function(){
