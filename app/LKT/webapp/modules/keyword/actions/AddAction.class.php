@@ -35,7 +35,6 @@ class AddAction extends Action {
                     "</script>";
             }
         }
-        return;                                                                                                                                                                                                                                
     }
 
     public function getRequestMethods(){
