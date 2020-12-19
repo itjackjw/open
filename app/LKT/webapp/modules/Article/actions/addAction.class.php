@@ -9,7 +9,7 @@
  */
 
 
-require_once(MO_LIB_DIR . '/PDOAction.class.php');
+require_once(MO_LIB_DIR . '/db.class.php');
 
 class addAction extends Action {
 
