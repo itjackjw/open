@@ -213,7 +213,7 @@ class IndexAction extends Action
     //所有的商品分类
     public function product_class($rr, $product_class)
     {
-        
+
         $res = '';
         if ($rr) {
             foreach ($rr as $key => $value) {
