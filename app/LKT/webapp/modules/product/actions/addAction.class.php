@@ -239,7 +239,6 @@ class addAction extends Action
 
     public function execute()
     {
-        $db = DBAction::getInstance();
         $request = $this->getContext()->getRequest();
         // 接收数据
         $attr = $request->getParameter('attr'); // 属性
@@ -323,7 +322,7 @@ class addAction extends Action
         $data[] = $initial;
         $data[] = 2;
         $data[] = 0;
-        $id1 = lkt_execute($sql,$data);
+        $id1 = lkt_insert($sql,$data);
 
         if ($id1) {
             $files = ($_FILES['imgurls']['tmp_name']);
