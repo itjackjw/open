@@ -10,12 +10,9 @@ require_once(MO_LIB_DIR . '/Tools.class.php');
 class seeAction extends Action {
     
     public function getDefaultView() {
-       $db = DBAction::getInstance();
+        $db = DBAction::getInstance();
         $request = $this->getContext()->getRequest();
-
-        // 接收信息
-        $id = intval($request->getParameter("id")); // 产品id
-
+        $id = intval($request->getParameter("id"));
         $sql = "select * from lkt_config where id = '1'";
         $r = $db->select($sql);
         $uploadImg = $r[0]->uploadImg; // 图片上传位置
@@ -37,22 +34,15 @@ class seeAction extends Action {
             $volume = $r[0]->volume;//volume拟定销量
             $freight_id = $r[0]->freight;
             $status = $r[0]->status; // 上下架状态
-             $initial = $r[0]->initial;//初始值
+            $initial = $r[0]->initial;//初始值
         }
 
         $arr = explode(',',$s_type);
-
-        if (!empty($brand_class)) {
-            $sql01 = "select brand_id ,brand_name from lkt_brand_class where brand_id = $brand_class";
-            $r01 = $db->select($sql01);
-            $brand_name = $r01[0]->brand_name ; // 产品品牌
-        }
-
-        //运费
+        
 
         $sql = "select id,name from lkt_freight order by id ";
-            $r_freight = $db->select($sql);
-            $freight_list = '';
+        $r_freight = $db->select($sql);
+        $freight_list = '';
         if($r_freight){
             foreach ($r_freight as $key => $value) {
                 $freight_id1 = $value->id ; // 运费规则id
@@ -186,7 +176,7 @@ class seeAction extends Action {
         $request->setAttribute("uploadImg",$uploadImg);
         $request->setAttribute("checked_attr_list",$checked_attr_list);
         $request->setAttribute("attr_group_list",$attr_group_list);
-         $request->setAttribute('initial', isset($initial) ? $initial : '');
+        $request->setAttribute('initial', isset($initial) ? $initial : '');
         $request->setAttribute('s_type', $arr);  
         $request->setAttribute("ctypes",$res);
         $request->setAttribute('id', $id);
