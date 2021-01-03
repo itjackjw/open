@@ -176,7 +176,7 @@ class appAction extends BaseAction
             $event = '会员' . $user_id . '登录';
             // 在操作列表里添加一条会员登录信息
             $sql = "insert into lkt_record (user_id,event,type) values ('$user_id','$event',0)";
-            $r = lkt_insert($sql);
+            lkt_insert($sql);
 
             // 查询订单设置表
             $sql = "select * from lkt_order_config where id = 1";
@@ -225,10 +225,10 @@ class appAction extends BaseAction
 
         } else {
             // 查询会员列表的最大id
-            $sql = "select max(id) as userid from lkt_user";
+            $sql = "select max(id) as mid from lkt_user";
             $r = lkt_gets($sql);
-            $rr = $r[0]->userid;
-            $user_id = 'user' . ($rr + 1);
+            $rr = $r[0]->mid;
+            $user_id = 'LKT' . ($rr + 1);
             // 在会员列表添加一条数据
 
             // 默认头像和名称
@@ -276,7 +276,6 @@ class appAction extends BaseAction
     public function get_plug()
     {
         header("Content-type: text/html; charset=utf-8");
-
         // 查询插件表里,状态为启用的插件
         $sql = "select name,image,code from lkt_plug_ins where status = 1 and type = 0 ";
         $r_c = lkt_gets($sql);
@@ -322,8 +321,10 @@ class appAction extends BaseAction
         $sql = "select Referee,user_id from lkt_user where wx_id = '$openid'";//判断有没有推荐人
         $rr = lkt_gets($sql);
         $userid = $rr[0]->user_id;
-        $sql01 = $db->selectrow("select * from lkt_user where Referee = '$userid'");//同时有没有下级
-        if (!$rr[0]->Referee && $sql01 < 1 && $referee_openid != $userid) {//同时推荐人不是自己
+        $sql = "select count(*) as cid from lkt_user where Referee = '$userid'";
+        $rs = lkt_get($sql);
+        $cid = $rs?$rs->cid:0;
+        if (!$rr[0]->Referee && $cid < 1 && $referee_openid != $userid) {//同时推荐人不是自己
             $sql01 = "update lkt_user set Referee = '$referee_openid' where wx_id = '$openid' ";
             lkt_execute($sql01);
         }
