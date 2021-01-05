@@ -799,7 +799,7 @@ class userAction extends BaseAction
             echo json_encode(array('status' => 0, 'info' => '手机号码有误！'));
             exit();
         }
-       
+
     }
 
     public function selectuser()
