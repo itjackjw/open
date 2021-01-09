@@ -478,9 +478,8 @@ class userAction extends BaseAction
                         $ymoney = $r[0]->money;
                         $event = $user_id . '分享获得了' . $money . '元';
                         $sqll = "insert into lkt_record (user_id,money,oldmoney,event,type) values ('$user_id','$money','$ymoney','$event',3)";
-                        $rr = lkt_insert($sqll);
+                        lkt_insert($sqll);
 
-                        $text = $wx_name . '领取了' . $money . '元';
                         echo json_encode(array('status' => 1, 'text' => $money, 'wishing' => $wishing));
                         exit();
                     } else {
@@ -899,7 +898,7 @@ class userAction extends BaseAction
             $r0001 = lkt_insert($sql0001);
             $sql0002 = "insert into lkt_record (user_id,money,oldmoney,add_date,event,type) values ('$user_id','$money','$money002','$date_time','好友转账','13')";//好友
             $r0002 = lkt_insert($sql0002);
-            if ($r01 > 0 && $r02 > 0) {
+            if ($r01 > 0 && $r02 > 0 && $r0001>0 && $r0002>0) {
                 lkt_commit();
                 echo json_encode(array('status' => 1, 'err' => '转账成功！'));
                 exit();
