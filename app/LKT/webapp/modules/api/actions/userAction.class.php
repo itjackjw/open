@@ -956,4 +956,3 @@ class userAction extends BaseAction
     }
 }
 
-?>

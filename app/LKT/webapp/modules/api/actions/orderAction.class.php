@@ -827,4 +827,3 @@ class orderAction extends BaseAction
 
 }
 
-?>
