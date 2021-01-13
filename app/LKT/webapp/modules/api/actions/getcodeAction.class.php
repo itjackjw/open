@@ -4,16 +4,14 @@
  * [Laike System] Copyright (c) 2017-2020 laiketui.com
  * Laike is not a free software, it under the license terms, visited http://www.laiketui.com/ for more details.
  */
-require_once(MO_LIB_DIR . '/DBAction.class.php');
-require_once(MO_LIB_DIR . '/Tools.class.php');
+require_once('BaseAction.class.php');
 
-class getcodeAction extends Action
+class getcodeAction extends BaseAction
 {
 
     public function getDefaultView()
     {
 
-       
     }
 
     public function execute()
@@ -25,7 +23,6 @@ class getcodeAction extends Action
             $this->$m();
         }
 
-        return;
     }
 
     public function getRequestMethods()
