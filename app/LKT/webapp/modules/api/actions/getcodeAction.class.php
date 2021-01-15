@@ -301,8 +301,8 @@ class getcodeAction extends BaseAction
             $imagecreatefromjpeg = 'imagecreatefromstring';
             $pic_path = file_get_contents($pic_path);
         }
-        $im = $imagecreatefromjpeg($pic_path);
-        return $im;
+
+        return $imagecreatefromjpeg($pic_path);
     }
 
     public function getRealData($data)
@@ -604,7 +604,7 @@ class getcodeAction extends BaseAction
 
         // /* 图片组合完成 保存图片 */
         $pic = $userid . $name . 'tui.jpg';
-        $res = imagejpeg($dest, $dirName . $pic);
+        imagejpeg($dest, $dirName . $pic);
         $url = 'http://' . $_SERVER['HTTP_HOST'] . '/LKT/images/' . $pic;/* end 保存*/
         return $url;
     }
