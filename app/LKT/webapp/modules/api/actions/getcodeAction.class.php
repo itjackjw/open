@@ -513,7 +513,6 @@ class getcodeAction extends BaseAction
             $appsecret = $r[0]->appsecret; // 小程序的 app secret
             $address = $r[0]->company;
 
-            $company = array('value' => $address, "color" => "#173177");
             $time = array('value' => $time, "color" => "#173177");
             $f_pname = array('value' => $f_pname, "color" => "#173177");
             $f_sNo = array('value' => $f_sNo, "color" => "#173177");
