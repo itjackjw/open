@@ -400,13 +400,15 @@ Page({
     this.checkCor();
   },
   onShow: function () {
-    console.log(app)
+    console.log('index onshow')
     var indexchase = app.d.indexchase;
     var that = this;
+    that.onLoad();
+    /*
     if (indexchase) {
       that.onLoad();
       app.d.indexchase = false;
-    }
+    }*/
     util.getUesrBgplus(that, app, false)
   },
   onReady: function () {
