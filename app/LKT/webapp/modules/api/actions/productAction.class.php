@@ -901,6 +901,7 @@ class productAction extends BaseAction
 
         $cartstr = trim($carts, ','); // 移除两侧的逗号
         $cartArr = explode(',', $cartstr); // 字符串打散为数组
+        $res = "";
         //循环删除指定的购物车商品
         foreach ($cartArr as $key => $value) {
             $sql = 'delete from lkt_cart where id="' . $value . '"';
