@@ -1082,6 +1082,7 @@ class productAction extends BaseAction
 
 
         if ($type == 'wallet_Pay' && $user_money < $total) { // 当余额小于付款金额
+            lkt_commit();
             echo json_encode(array('status' => 0, 'err' => '余额不足！'));
             exit;
         } else {
