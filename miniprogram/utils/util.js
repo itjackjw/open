@@ -15,7 +15,7 @@ function formatNumber(n) {
 
 function getUesrBg(that) {
   wx.request({
-    url: that.d.ceshiUrl + '&action=app&m=cart',
+    url: that.d.laikeUrl + '&action=app&m=cart',
     method: 'post',
     data: {
       openid: that.globalData.userInfo.openid,
@@ -44,7 +44,7 @@ function getUesrBg(that) {
 
 function getUesrBgplus(that, app, is) {
   wx.request({
-    url: app.d.ceshiUrl + '&action=app&m=cart',
+    url: app.d.laikeUrl + '&action=app&m=cart',
     method: 'post',
     data: {
       openid: app.globalData.userInfo.openid,
