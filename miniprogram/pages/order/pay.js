@@ -384,9 +384,9 @@ Page({
         }
       }
     } else if (i == 2) {
-      console.log('两种支付方式')
+      console.log('两种支付方式'+Number(user_money))
       //两种支付方式时当支付金额大于用户余额 则抵扣全部余额 并验证 //否则 直接选择默认钱包支付
-      if (Number(user_money) >= Number(coupon_money)) {
+      if (Number(user_money) >= Number(coupon_money) && Number(user_money)!=0) {
         for (var j = 0; j < pay_type.length; j++) {
           if (pay_type[j].value == check) {
             pay_type[j].checked = true;
@@ -402,6 +402,26 @@ Page({
 
       } else {
         // 组合支付
+        if(Number(user_money)==0){
+          wx.showToast({
+            title: '钱包余额不足',
+            icon: 'none',
+            duration: 2000,
+          });
+          for (var j = 0; j < pay_type.length; j++) {
+            if (pay_type[j].value == 'wxPay') {
+              pay_type[j].checked = true;
+            } else {
+              pay_type[j].checked = false;
+            }
+          }
+
+          that.setData({
+            paytype: false,
+            pays: pay_type
+          });
+          return;
+        }
         wx.showModal({
           title: '组合支付',
           content: '是否使用余额抵用？',
