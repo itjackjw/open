@@ -47,34 +47,12 @@ class userAction extends BaseAction
         foreach ($num_arr as $key => $value) {
             if ($value == '4') {
                 $sql_order = "select num from lkt_order_details where r_status = '$value' and  user_id = '$user_id'";
-                $order_num = lkt_rows($sql_order);
+                $order_num = sizeof(lkt_gets($sql_order));
                 $res_order[$key] = $order_num;
             } else {
-                if ($value == 1) {
-                    $sql_order01 = "select drawid from lkt_order where status = '$value' and  user_id = '$user_id'";
-                    $re = lkt_gets($sql_order01);
-                    if (!empty($re)) {//未发货
-                        foreach ($re as $key001 => $value001) {
-                            $drawid = $value001->drawid;
-                            if ($drawid > 0) {
-                                $sql0001 = "select lottery_status,draw_id from lkt_draw_user where id= '$drawid'";
-                                $ddd = lkt_gets($sql0001);
-                                if (!empty($ddd)) {
-                                    $lottery_status = $ddd[0]->lottery_status;
-                                    if ($lottery_status != 4) {
-                                        //抽奖成功
-                                        unset($re[$key001]);
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    $res_order[$key] = sizeof($re);
-                } else {
-                    $sql_order = "select num from lkt_order where status = '$value' and  user_id = '$user_id'";
-                    $order_num = lkt_rows($sql_order);
-                    $res_order[$key] = $order_num;
-                }
+                $sql_order = "select num from lkt_order where status = '$value' and  user_id = '$user_id'";
+                $order_num = sizeof(lkt_gets($sql_order));
+                $res_order[$key] = $order_num;
             }
         }
 
@@ -403,6 +381,7 @@ class userAction extends BaseAction
         $request = $this->getContext()->getRequest();
         $Bank_card_number = $request->getParameter('Bank_card_number');
         // 根据卡号,查询银行名称
+        $bankList = "";
         require_once('bankList.php');
         $r = $this->bankInfo($Bank_card_number, $bankList);
         if ($r == '') {
@@ -848,8 +827,7 @@ class userAction extends BaseAction
 
     public function transfer()
     {
-        //开启事务
-        lkt_start();
+
         $user_id = addslashes($_POST['user_id']);
         $openid = addslashes($_POST['openid']);
         $money = addslashes($_POST['money']);
@@ -864,15 +842,16 @@ class userAction extends BaseAction
             if ($r) {
                 $transfer_multiple = $r[0]->transfer_multiple;
                 if ($transfer_multiple) {
-                    if ($money % $transfer_multiple == 0) {
-
-                    } else {
+                    if ($money % $transfer_multiple != 0) {
                         echo json_encode(array('status' => 0, 'err' => '转账金额需要是' . $transfer_multiple . '的倍数'));
                         exit();
                     }
                 }
             }
 
+            //开启事务
+            lkt_start();
+            
             $sql001 = "select user_id,money from lkt_user where wx_id = '$openid'";
             $r001 = lkt_gets($sql001);//本人
             if ($r001) {
