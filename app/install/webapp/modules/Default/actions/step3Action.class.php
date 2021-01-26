@@ -279,5 +279,3 @@ class step3Action extends Action
     }
 
 }
-
-?>
