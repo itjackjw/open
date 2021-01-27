@@ -201,9 +201,8 @@ class step3Action extends Action
             return true;
         } else {
             $sqp_drop = "DROP database $database;";
-            $_drop = $conn->query($sqp_drop);
-            $rrr = $conn->query($sql);
-            return $rrr;
+            $conn->query($sqp_drop);
+            return $conn->query($sql);
         }
 
     }
