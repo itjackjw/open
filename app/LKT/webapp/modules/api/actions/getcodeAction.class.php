@@ -76,8 +76,7 @@ class getcodeAction extends BaseAction
             $url = 'https://api.weixin.qq.com/cgi-bin/wxaapp/createwxaqrcode?access_token=' . $AccessToken;
             //获取二维码API地址
             $da = $this->httpsRequest($url, $data);
-            //发送post带参数请求 
-
+            //发送post带参数请求
             $newFile = fopen($newFilePath, "w"); //打开文件准备写入
             fwrite($newFile, $da); //写入二进制流到文件
             fclose($newFile); //关闭文件
