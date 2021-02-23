@@ -48,8 +48,6 @@ class getcodeAction extends BaseAction
     //获得二维码
     public function get_qrcode($AccessToken)
     {
-        // header('content-type:image/jpeg');  测试时可打开此项 直接显示图片
-
         $request = $this->getContext()->getRequest();
         $path = addslashes($request->getParameter('path'));
         $width = addslashes($request->getParameter('width'));
