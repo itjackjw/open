@@ -273,7 +273,7 @@ class DetailAction extends Action
 
     public function execute()
     {
-        
+
     }
 
 
