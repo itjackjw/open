@@ -1020,7 +1020,7 @@ class productAction extends BaseAction
                     $r = lkt_execute($sql);
                     $event = $userid . '使用了' . $total . '元余额';
                     $sqll = "insert into lkt_record (user_id,money,oldmoney,event,type) values ('$userid','$total','$user_money','$event',4)";
-                    $rr = lkt_execute($sqll);
+                    lkt_execute($sqll);
                 }
                 echo json_encode(array('status' => 1, 'succ' => '扣款成功!'));
             } else {
