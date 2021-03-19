@@ -12,13 +12,10 @@ class userAction extends BaseAction
     public function index()
     {
         $openid = addslashes($_POST['openid']); // 微信id
-
         $appConfig = $this->getAppInfo();
         $img = $appConfig['imageRootUrl'];
         $company = $appConfig['appName'];
         $logo = $appConfig['logo'];
-
-
         // 获取文章信息
         $sql_2 = "select Article_id,Article_prompt,Article_title from lkt_article";
         $r_2 = lkt_gets($sql_2);
