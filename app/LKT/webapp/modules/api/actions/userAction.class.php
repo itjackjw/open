@@ -229,9 +229,7 @@ class userAction extends BaseAction
             echo json_encode(array('status' => 0, 'info' => '手机号码没获取!'));
             exit();
         } else {
-
             $appConfig = $this->getAppInfo();
-
             $appid = $appConfig['appid'];
             include_once "wxBizDataCrypt.php";
             $data = '';
