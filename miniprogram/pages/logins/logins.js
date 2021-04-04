@@ -83,7 +83,8 @@ Page({
             wx.setStorageSync('userlogin', true);
             //设置用户信息本地存储
             wx.setStorageSync('userInfo', userInfo);
-            
+            //that.clickPup()
+            thatplus.onLoad()
 
           }
         })
