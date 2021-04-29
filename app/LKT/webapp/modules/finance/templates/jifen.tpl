@@ -106,8 +106,7 @@ td a{
 	                    	{if $item->type == 4 }好友转积分{/if}
 							{if $item->type == 5 }系统扣除{/if}
 							{if $item->type == 6 }系统充值{/if}
-							{if $item->type == 7 }抽奖{/if}
-	                    </td>
+						</td>
 	                    <td style="min-width:120px;">
 							<a style="text-decoration:none" class="ml-5" href="index.php?module=finance&action=jifen_see&user_id={$item->user_id}" title="查看">
 								<div style="align-items: center;font-size: 12px;display: flex;">
