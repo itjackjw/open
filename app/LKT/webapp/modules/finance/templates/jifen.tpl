@@ -65,8 +65,6 @@ td a{
 				</select>
 				<input type="text" class="input-text" style="width:250px" placeholder="用户名/用户ID" autocomplete="off" name="user_name" value="{$user_name}">
 				<input type="text" class="input-text" style="width:250px" placeholder="手机号" autocomplete="off" name="mobile" value="{$mobile}">
-
-				
 				<input type="submit" class="btn btn-success" id="btn1" value="查 询">
 				<input type="button" value="导出" class="btn btn-success" id="btn2" onclick="excel('all')">
 			</div>
@@ -91,7 +89,6 @@ td a{
 	                <tr class="text-c">
 	                    <td>{$item->user_id}</td>
 	                    <td>{$item->user_name}</td>
-	         			
 	                    <td>
 							{if $item->type ==0 ||$item->type ==2|| $item->type ==4 || $item->type ==6 || $item->type ==7}+{$item->sign_score}{/if}
 							{if $item->type ==1 ||$item->type ==3 ||$item->type ==5}-{$item->sign_score}{/if}
