@@ -817,7 +817,6 @@ Page({
   },
   // 分享到朋友圈
   close_share: function (e) {
-
     var that = this;
     that.setData({
       maskHidden: false
