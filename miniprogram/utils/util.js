@@ -83,7 +83,7 @@ function getUesrBgplus(that, app, is) {
 * 假设你访问的后台登录路径是：https://www.baidu.com/LKT/index.php?module=Login
 * 那么你在这里填的路径应该是：https://www.baidu.com/LKT/index.php?module=api&software_name=3&edition=1.0
 
-* &software_name=3&edition=1.0 这条路径必需带上
+* &software_name=3&edition=1.0 这条路径必需带上，不带会发生登录不了的情况
 */
 function getUri() {
   return 'http://localhost/open/app/LKT/index.php?module=api&software_name=3&edition=1.0'
