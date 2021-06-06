@@ -32,12 +32,8 @@ function getUesrBg(that) {
           text: num,
         })
       }
-
-
-
     },
     fail: function (e) {
-
     },
   });
 }
