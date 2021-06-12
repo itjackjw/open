@@ -410,11 +410,9 @@ Page({
           },
           success: function (res) {
             util.getUesrBgplus(that, app, false)
-            //--init data
             var data = res.data;
             if (data.status == 1) {
-              that.loadProductData();
-            
+              that.loadProductData();            
             } else {
               wx.showToast({
                 title: '操作失败！',
