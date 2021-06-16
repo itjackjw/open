@@ -166,7 +166,6 @@ Page({
     }
     that.removeShopCard(toastStr);
   },
-
   //移至收藏
   shouc: function () {
     var that = this;
