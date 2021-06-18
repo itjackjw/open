@@ -31,7 +31,6 @@ Page({
     var that = this;
     var select = that.data.select;
     var sort = that.data.sort;
-    //ajax请求数据
     wx.request({
       url: app.d.laikeUrl + '&action=pi&p=pintuan&c=groupbuy&m=grouphome',
       method: 'post',
@@ -359,7 +358,6 @@ Page({
     })
   },
   onHide: function () {
-    // 页面隐藏
   },
   onUnload: function () {
   },
