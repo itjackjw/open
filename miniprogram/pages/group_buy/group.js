@@ -22,8 +22,6 @@ Page({
     period: false,//显示无数据
     select: 0,//选中
     sort: 0,// 1 asc 升序   0 desc 降序
-    // groupman: '',
-    // groupid: '',
     titlee: '',
   },
   onPullDownRefresh: function () {
