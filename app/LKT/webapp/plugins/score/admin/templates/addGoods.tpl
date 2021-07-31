@@ -519,7 +519,7 @@
 									}
 								})
 							}
-							
+
 
 							vm.splist = res.res
 							vm.total = res.total
