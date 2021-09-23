@@ -1,4 +1,3 @@
-// pages/set/set.js
 var app = getApp()
 Page({
   data: {
@@ -6,7 +5,7 @@ Page({
   onLoad: function (options) {
     wx.setNavigationBarColor({
       frontColor: app.d.frontColor,
-      backgroundColor: app.d.bgcolor, //页面标题为路由参数
+      backgroundColor: app.d.bgcolor, 
       animation: {
         duration: 400,
         timingFunc: 'easeIn'
