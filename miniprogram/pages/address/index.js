@@ -294,8 +294,8 @@ Page({
             openid: app.globalData.userInfo.openid,
             id_arr: addrId
           },
-          method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-          header: {// 设置请求的 header
+          method: 'POST', 
+          header: {
             'Content-Type': 'application/x-www-form-urlencoded'
           },
           success: function (res) {
@@ -325,7 +325,6 @@ Page({
   // 数据加载
   DataonLoad: function () {
     var that = this;
-    // 页面初始化 options为页面跳转所带来的参数
     wx.request({
       url: app.d.laikeUrl + '&action=address&m=index',
       data: {
