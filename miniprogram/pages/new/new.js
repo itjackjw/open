@@ -211,11 +211,10 @@ Page({
       }
     })
   },
-  //页面加载完成函数
+  
   onReady: function () {
-    
   },
-  // 点击加载更多
+  
   getMore: function (e) {
     var that = this;
     var page = that.data.page;
