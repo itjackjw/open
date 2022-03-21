@@ -24,7 +24,7 @@ Page({
   },
   onPullDownRefresh: function () {
 
-    wx.showNavigationBarLoading() //在标题栏中显示加载
+    wx.showNavigationBarLoading() 
     var that = this;
     var objectId = that.data.objectId;
     var select = that.data.select;
