@@ -3,7 +3,7 @@
  * 这个配置文件不起作用，大家可以不用理会
  */
 
-// 此处主机域名配置是无效的
+// 此处主机域名配置是无效的，不需要配置
 var host = "https://open.laiketui.com"
 
 var config = {
