@@ -193,9 +193,9 @@ Page({
           var title = res.data.title;
           app.d.bgcolor = bgcolor;
           var arr = Object.keys(twoList[0].distributor);
-          var banner_num = Object.keys(banner); // 轮播图
+          var banner_num = Object.keys(banner);
           var notice = res.data.notice;
-          var indexTwoData = twoList[0].twodata // 获取首页的数据对象
+          var indexTwoData = twoList[0].twodata 
 
           app.globalData.logoimg = res.data.logo
           app.globalData.title = res.data.title
