@@ -370,7 +370,7 @@ Page({
       tabid: data.tabid
     });
   },
-  //设置点击tab大于第七个是自动跳到后面
+  
   checkCor: function (e) {
     if (this.data.current > 4) {
       this.setData({
