@@ -270,7 +270,7 @@ Page({
     });
     that.sort();
   },
-  // 价格
+  
   choosesort2: function (e) {
     var that = this;
     if (this.data.daindex2 == 0) {
