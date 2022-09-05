@@ -91,7 +91,7 @@ Page({
       bgcolor: app.d.bgcolor,
     })
     wx.setNavigationBarColor({
-      frontColor: app.d.frontColor,//
+      frontColor: app.d.frontColor,
       backgroundColor: app.d.bgcolor //页面标题为路由参数
     });
   },
@@ -226,7 +226,6 @@ Page({
 
     for (var i = 0; i < attrListIn.length; i++) {
       var attrListBig = attrListIn[i];
-
       //当前类别之外的选择列表
       var attrsOtherSelect = [];
       for (var j = 0; j < attrListIn.length; j++) {
