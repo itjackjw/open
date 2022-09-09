@@ -13,7 +13,7 @@ Page({
 
     wx.setNavigationBarColor({
       frontColor: app.d.frontColor,
-      backgroundColor: app.d.bgcolor, //页面标题为路由参数
+      backgroundColor: app.d.bgcolor, 
       animation: {
         duration: 400,
         timingFunc: 'easeIn'
@@ -23,8 +23,8 @@ Page({
     var orderId = options.orderId;
     var details = options.details ? options.details : '';
     var type = options.type ? options.type : '';
-    var courier_num = options.courier_num;//kuaididanhao
-    var express_id = options.express_id;//快递编号
+    var courier_num = options.courier_num;
+    var express_id = options.express_id;
     wx.request({
       url: app.d.laikeUrl + '&action=order&m=logistics',
       method: 'post',
