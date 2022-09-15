@@ -1,4 +1,3 @@
-// pages/logistics/logistics.js
 var app = getApp();
 Page({
 
