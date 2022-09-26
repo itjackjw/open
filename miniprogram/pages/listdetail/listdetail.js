@@ -22,7 +22,7 @@ Page({
     loading: false,
     period: false,
     select: 0,
-    sort: 0,// 1 asc 升序   0 desc 降序
+    sort: 0,
     types: '刷新', 
     bg: ''
   },
