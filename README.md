@@ -1,5 +1,5 @@
-# 来客电商，免费商用，可去LOGO
-### 这是一款能跑起来的开源商城系统！稳定且小巧！
+![输入图片说明](https://foruda.gitee.com/images/1664178249623598776/13aa2a84_11650488.png "码云主.png")
+
 ### JAVA版本请移驾：[https://www.laiketui.com/cpc/web/index.html?source=gitee](https://www.laiketui.com/cpc/web/index.html?source=gitee)
 ### PHP版本请移驾：[https://www.laiketui.com/cpc/web/product/phpExtension.html?source=gitee](https://www.laiketui.com/cpc/web/product/phpExtension.html?source=gitee)
 
