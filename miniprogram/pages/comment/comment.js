@@ -107,7 +107,7 @@ Page({
     wx.chooseImage({
       count: 3, 
       sizeType: ['compressed'],
-      sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+      sourceType: ['album', 'camera'], 
       success: function (res) {
         var tempFilePaths = res.tempFilePaths;
         var commentList = that.data.commentList;
