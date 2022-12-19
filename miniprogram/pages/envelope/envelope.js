@@ -11,7 +11,7 @@ Page({
     var viewWidth = 718,           
       viewHeight = 718 / ratio;    
     var image = this.data.images;
-    //将图片的datadata-index作为image对象的key,然后存储图片的宽高值
+   
     image[e.target.dataset.index] = {
       width: viewWidth,
       height: viewHeight
