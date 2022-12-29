@@ -161,7 +161,7 @@ Page({
       urls: images
     });
   },
-  //保存评论内容
+  
   setcon: function (e) {
     var commentList = this.data.commentList;
     var index = parseInt(e.currentTarget.dataset.index);
