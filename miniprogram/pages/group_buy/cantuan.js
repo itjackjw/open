@@ -92,7 +92,7 @@ Page({
     })
     wx.setNavigationBarColor({
       frontColor: app.d.frontColor,
-      backgroundColor: app.d.bgcolor //页面标题为路由参数
+      backgroundColor: app.d.bgcolor 
     });
   },
   //首次进去选中
