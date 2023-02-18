@@ -29,7 +29,9 @@
       <view class='user_top' style="background-color:{{bgcolor}}">
 
         <view class='user_top_two'>
-          <image style='display:block;' class='user_top_image' src="{{user.headimgurl ? user.headimgurl:'../../images/heads.png'}}" />
+          <button style="margin: 0px;padding: 0px;" class='user_top_image'  open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
+          <image style='display:block;margin: 0px;border:0px' class='user_top_image' src="{{avatarUrl}}" />
+        </button>
           <block wx:if="{{ user.user_id }}">
             <view class='user_mc' bindtap="copyText" data-text="{{user.user_id}}" style='display:block;'>
               <view>{{user.wx_name}}</view>

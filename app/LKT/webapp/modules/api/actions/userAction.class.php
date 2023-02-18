@@ -908,6 +908,7 @@ class userAction extends BaseAction
         $request = $this->getContext()->getRequest();
         $user_id = addslashes(trim($request->getParameter('user_id'))); // 微信id
         $name = addslashes(trim($request->getParameter('name'))); // 姓名
+        $user_name = addslashes(trim($request->getParameter('user_name')));
         $mobile = addslashes(trim($request->getParameter('mobile'))); // mobile
         $province = addslashes(trim($request->getParameter('province'))); // province
         $city = addslashes(trim($request->getParameter('city'))); // city
@@ -919,7 +920,7 @@ class userAction extends BaseAction
         $name = base64_encode($name);
         $name = base64_decode($name);
 
-        $sql02 = "update lkt_user set real_name = '$name',mobile='$mobile',sex='$sex',province='$province',city='$city',county='$county',wechat_id='$wx_id',birthday='$date' where user_id = '$user_id'";
+        $sql02 = "update lkt_user set user_name='$user_name',wx_name='$user_name',real_name = '$name',mobile='$mobile',sex='$sex',province='$province',city='$city',county='$county',wechat_id='$wx_id',birthday='$date' where user_id = '$user_id'";
         $r02 = lkt_execute($sql02);
         if ($r02) {
             echo json_encode(array('status' => 1, 'succ' => '修改成功！'));
