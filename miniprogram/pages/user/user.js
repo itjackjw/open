@@ -38,14 +38,7 @@ Page({
 		remind: '加载中',
 		tjr: false,
 	},
-  
-  onChooseAvatar(e) {
-    const { avatarUrl } = e.detail 
-    this.setData({
-      avatarUrl,
-    })
-  },
-
+	
 	onPullDownRefresh: function () {
 		wx.showNavigationBarLoading() 
 		this.requestMyData();
@@ -126,8 +119,7 @@ Page({
 						that.login();
 					} else {
 						that.setData({
-              user: user,
-              avatarUrl:user.headimgurl ? user.headimgurl:'../../images/heads.png',
+							user: user,
 							article: res.data.article,
 							logo: res.data.logo,
 							company: res.data.company,

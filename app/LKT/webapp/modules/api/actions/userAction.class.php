@@ -929,5 +929,27 @@ class userAction extends BaseAction
         }
         exit();
     }
+
+    //上传头像与昵称
+    public function upload(){
+        // 查询配置表信息
+        $sql = "select * from lkt_config where id = '1'";
+        $r = lkt_gets($sql);
+        if ($r) {
+            $uploadImg = $r[0]->uploadImg;
+            // 图片上传位置
+            if (empty($uploadImg)) {
+                $uploadImg = "../LKT/images";
+            }
+        } else {
+            $uploadImg = "../LKT/images";
+        }
+
+        $imgURL = ($_FILES['file']['tmp_name']);
+        $type = str_replace('image/', '.', $_FILES['file']['type']);
+        $imgURL_name = time() . mt_rand(1, 1000) . $type;
+        move_uploaded_file($imgURL, $uploadImg . $imgURL_name);
+        echo $imgURL_name;
+    }
 }
 
