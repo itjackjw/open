@@ -2,6 +2,8 @@
 */.DS_Store
 .idea
 php/app/.idea/workspace.xml
+php/app/install/webapp/_compile/
+php/app/install/webapp/_cache/
 php/app/data/install.lock
 php/app/LKT/accessToken
 php/app/LKT/webapp/_compile/
