@@ -3,8 +3,6 @@
 .idea
 php/app/.idea/workspace.xml
 php/app/data/install.lock
-php/app/install/webapp/_cache/
-php/app/install/webapp/_compile/
 php/app/LKT/accessToken
 php/app/LKT/webapp/_compile/
 php/app/LKT/webapp/_cache/
