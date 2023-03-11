@@ -6,7 +6,7 @@ Page({
     pays: [],
     itemData: {},
     userId: 0,
-    paytype: 'wxPay', //支付方式
+    paytype: 'wxPay', 
     cartId: 0,
     addrId: 0, 
     btnDisabled: false,
