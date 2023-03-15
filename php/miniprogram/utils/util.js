@@ -82,7 +82,7 @@ function getUesrBgplus(that, app, is) {
 * &software_name=3&edition=1.0 这条路径必需带上，不带会发生登录不了的情况
 */
 function getUri() {
-  return 'http://localhost/open/app/LKT/index.php?module=api&software_name=3&edition=1.0'
+  return 'http://localhost/open/php/app/LKT/index.php?module=api&software_name=3&edition=1.0'
 }
 
 module.exports = {

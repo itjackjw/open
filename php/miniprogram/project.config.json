@@ -37,7 +37,8 @@
     "useStaticServer": true,
     "showES6CompileOption": false,
     "useCompilerPlugins": false,
-    "minifyWXML": true
+    "minifyWXML": true,
+    "lazyloadPlaceholderEnable": false
   },
   "compileType": "miniprogram",
   "libVersion": "2.15.0",
