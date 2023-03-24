@@ -1,5 +1,3 @@
-<include src="/commons/extension/extension" />
-<include src="/commons/navbar/navbar" />
 
 <view class="after-navber">
 	<view style="padding: 0 60rpx">
