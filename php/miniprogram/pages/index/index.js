@@ -7,7 +7,7 @@ Page({
     pop: null,
     inforList: [], //公告
     banner: [],
-    indicatorDots: true, // 是否显示面板指示点
+    indicatorDots: true, 
     autoplay: true, // 是否自动切换
     interval: 5000, // 自动切换时间间隔
     duration: 1000, // 滑动动画时长
@@ -32,7 +32,6 @@ Page({
   },
  
   onPullDownRefresh: function () {
-    var that = this;
     this.loadProductDetail();
   },
   current1Change: function (e) {
