@@ -40,9 +40,9 @@ Page({
     })
   },
   imgW: function (e) {
-    var $width = e.detail.width, //获取图片真实宽度
+    var $width = e.detail.width, 
       $height = e.detail.height,
-      ratio = $width / $height; //图片的真实宽高比例
+      ratio = $width / $height; 
     var viewWidth = 718, //设置图片显示宽度，左右留有16rpx边距
       viewHeight = 718 / ratio; //计算的高度值
     var image = this.data.images;
