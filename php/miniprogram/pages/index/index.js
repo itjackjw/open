@@ -43,10 +43,10 @@ Page({
     var $width = e.detail.width, 
       $height = e.detail.height,
       ratio = $width / $height; 
-    var viewWidth = 718, //设置图片显示宽度，左右留有16rpx边距
-      viewHeight = 718 / ratio; //计算的高度值
+    var viewWidth = 718, 
+      viewHeight = 718 / ratio; 
     var image = this.data.images;
-    //将图片的datadata-index作为image对象的key,然后存储图片的宽高值
+    
     image[e.target.dataset.index] = {
       width: viewWidth,
       height: viewHeight
