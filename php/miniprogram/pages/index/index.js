@@ -8,12 +8,12 @@ Page({
     inforList: [], //公告
     banner: [],
     indicatorDots: true, 
-    autoplay: true, // 是否自动切换
-    interval: 5000, // 自动切换时间间隔
-    duration: 1000, // 滑动动画时长
-    circular: true, // 是否采用衔接滑动
-    scrollLeft: 0, //tab标题的滚动条位置
-    current: 0, //当前选中的Tab项
+    autoplay: true, 
+    interval: 5000, 
+    duration: 1000, 
+    circular: true, 
+    scrollLeft: 0, 
+    current: 0, 
     current1: 0,
     page: 1,
     index: 1,
