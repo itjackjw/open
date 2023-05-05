@@ -5,7 +5,7 @@ var util = require('../../utils/util.js')
 Page({
   data: {
     pop: null,
-    inforList: [], //公告
+    inforList: [], 
     banner: [],
     indicatorDots: true, 
     autoplay: true, 
