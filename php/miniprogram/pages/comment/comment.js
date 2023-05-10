@@ -178,7 +178,7 @@ Page({
       'commentList': commentList
     });
   },
-  //保存图片
+  
   saveimg: function (id, key) {
     var commentList = that.data.commentList;
     var images = commentList[key].images;
