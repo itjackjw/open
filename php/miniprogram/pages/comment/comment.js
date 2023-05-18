@@ -192,9 +192,9 @@ Page({
     var commentList = [];
     for (var i = 0, len = vm.data.commentList.length; i < len; i++) {
       commentList.push({
-        commodityId: vm.data.commentList[i].commodityId, // 商品id
-        images: vm.data.commentList[i].images, // 商品id
-        content: e.detail.value['content_' + i], // 评论内容
+        commodityId: vm.data.commentList[i].commodityId, 
+        images: vm.data.commentList[i].images, 
+        content: e.detail.value['content_' + i], 
         score: vm.data.commentList[i].commentType, // 评论类型(好评、中评、差评)
         size: vm.data.commentList[i].size, // 属性名称
         attribute_id: vm.data.commentList[i].sid, // 属性名称
