@@ -196,11 +196,11 @@ Page({
         images: vm.data.commentList[i].images, 
         content: e.detail.value['content_' + i], 
         score: vm.data.commentList[i].commentType, // 评论类型(好评、中评、差评)
-        size: vm.data.commentList[i].size, // 属性名称
-        attribute_id: vm.data.commentList[i].sid, // 属性名称
+        size: vm.data.commentList[i].size, 
+        attribute_id: vm.data.commentList[i].sid, 
         orderId: vm.data.orderId, // 订单号
         userid: app.globalData.userInfo.openid, // 微信id 
-        pingid: vm.data.commentList[i].id // 第几条数据
+        pingid: vm.data.commentList[i].id 
       });
     }
     wx.request({
