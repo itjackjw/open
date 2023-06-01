@@ -198,8 +198,8 @@ Page({
         score: vm.data.commentList[i].commentType, // 评论类型(好评、中评、差评)
         size: vm.data.commentList[i].size, 
         attribute_id: vm.data.commentList[i].sid, 
-        orderId: vm.data.orderId, // 订单号
-        userid: app.globalData.userInfo.openid, // 微信id 
+        orderId: vm.data.orderId, 
+        userid: app.globalData.userInfo.openid, 
         pingid: vm.data.commentList[i].id 
       });
     }
