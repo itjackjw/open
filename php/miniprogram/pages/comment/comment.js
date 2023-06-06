@@ -195,7 +195,7 @@ Page({
         commodityId: vm.data.commentList[i].commodityId, 
         images: vm.data.commentList[i].images, 
         content: e.detail.value['content_' + i], 
-        score: vm.data.commentList[i].commentType, // 评论类型(好评、中评、差评)
+        score: vm.data.commentList[i].commentType, 
         size: vm.data.commentList[i].size, 
         attribute_id: vm.data.commentList[i].sid, 
         orderId: vm.data.orderId, 
