@@ -249,7 +249,7 @@ Page({
       name: name,
       header: {
         'content-type': 'multipart/form-data'
-      }, // 设置请求的 header
+      }, 
       formData: formData, // HTTP 请求中其他额外的 form data
       success: function (res) {
         console.log(res);
