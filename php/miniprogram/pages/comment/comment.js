@@ -250,7 +250,7 @@ Page({
       header: {
         'content-type': 'multipart/form-data'
       }, 
-      formData: formData, // HTTP 请求中其他额外的 form data
+      formData: formData, 
       success: function (res) {
         console.log(res);
       },
