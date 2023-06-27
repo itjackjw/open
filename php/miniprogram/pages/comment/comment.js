@@ -241,7 +241,7 @@ Page({
       }
     });
   },
-  //上传文件
+  
   upload_file: function (url, filePath, name, formData, success, fail) {
     wx.uploadFile({
       url: app.d.laikeUrl + url,
