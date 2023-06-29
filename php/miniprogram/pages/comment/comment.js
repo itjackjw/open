@@ -140,7 +140,7 @@ Page({
       }
     })
   },
-  //删除图片
+  
   delete: function (e) {
     var id = e.currentTarget.id;
     var index = e.currentTarget.dataset.index;
