@@ -117,7 +117,7 @@ Page({
         productId: option.productId,
         userid: option.userid ? option.userid : false,
         choujiangid: option.choujiangid ? option.choujiangid : '',
-        type1: option.type1 ? option.type1 : '',//判断是抽奖还是其他活动
+        type1: option.type1 ? option.type1 : '',
         role: option.role ? option.role : '',
         size: option.size ? option.size : '',
         earn: option.earn ? option.earn : false
