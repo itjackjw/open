@@ -86,7 +86,7 @@ Page({
       })
     }.bind(that), 200)
   },
-  //页面加载完成函数
+  
   onReady: function () {
     this.pop = this.selectComponent("#pop")
   },
