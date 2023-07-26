@@ -132,13 +132,13 @@ Page({
     var that = this;
 
   },
-  //接受formid
+  
   getUserformid: function (e) {
     var formid = e.detail.formId;
     this.sendFormid(formid, 'kt1');
     this.setModalStatus(e);
   },
-  //接受formid
+  
   sendFormid: function (fromid, page) {
     var that = this
     app.request.wxRequest({
