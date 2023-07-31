@@ -150,7 +150,7 @@ Page({
       }
     })
   },
-  // 商品详情数据获取 
+   
   loadProductDetail: function () {
     var that = this;
     var choujiangid = that.data.choujiangid;
