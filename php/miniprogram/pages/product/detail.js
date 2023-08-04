@@ -123,14 +123,11 @@ Page({
         earn: option.earn ? option.earn : false
       });
     }
-    
-    //显示数据
     that.loadProductDetail();
   },
   // 属性选择
   onShow: function () {
     var that = this;
-
   },
   
   getUserformid: function (e) {
