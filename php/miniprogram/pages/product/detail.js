@@ -125,7 +125,7 @@ Page({
     }
     that.loadProductDetail();
   },
-  // 属性选择
+  
   onShow: function () {
     var that = this;
   },
