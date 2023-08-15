@@ -64,7 +64,6 @@ Page({
     })
   },
 
-  // 数据加载
   DataonLoad: function () {
     var that = this;
     wx.request({
