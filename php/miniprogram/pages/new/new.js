@@ -170,7 +170,7 @@ Page({
       })
     }.bind(this), 200)
   },
-  //上拉事件
+  
   onReachBottom: function () {
     var that = this;
     that.setData({
