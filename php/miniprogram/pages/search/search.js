@@ -64,8 +64,7 @@ Page({
     }),
     this.search();
     
-  },
-  //事件处理函数  
+  },  
   switchRightTab: function (e) {
     let id = e.target.dataset.id,
       index = parseInt(e.target.dataset.index);
