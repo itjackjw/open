@@ -87,7 +87,7 @@ Page({
       }
     })
   },
-  // 点击选择城市
+  
   translate: function (e) {
     moveY = 200;
     this.data.show = true;
