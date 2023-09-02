@@ -54,9 +54,7 @@ Page({
       }
     })
   },
-  /**
-   * 添加地址
-   */
+  
   AddressManagement: function () {
     var that = this;
     wx.request({
