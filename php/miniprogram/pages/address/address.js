@@ -274,7 +274,7 @@ Page({
                 icon: 'success',
                 duration: 1000
               });
-              //成功后返回上一页面
+              
               wx.navigateBack({
                 delta: 1
               });
