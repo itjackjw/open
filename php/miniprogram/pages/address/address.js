@@ -243,7 +243,7 @@ Page({
     } else {
       var cartId = this.data.cartId,
         mobile = e.detail.value.mobile;
-      //预处理验证手机号码
+      
       if (mobile.match(/^\d{11}$/)) {
         wx.request({
           url: app.d.laikeUrl + '&action=user&m=SaveAddress',
