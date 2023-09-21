@@ -117,8 +117,8 @@ Page({
       val[2] = 0;
       index[1] = 0;
       index[2] = 0;
-      this.getCityArr(val[0]);//获取地级市数据
-      this.getCountyInfo(val[0], val[1]);//获取区县数据
+      this.getCityArr(val[0]);
+      this.getCountyInfo(val[0], val[1]);
     } else {    
       if (index[1] != val[1]) {
         val[2] = 0;
