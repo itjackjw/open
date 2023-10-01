@@ -18,10 +18,10 @@ Page({
   },
   // 下拉刷新
   onPullDownRefresh: function () {
-    wx.showNavigationBarLoading() //在标题栏中显示加载
+    wx.showNavigationBarLoading() 
     this.AddressManagement();
-    wx.hideNavigationBarLoading() //完成停止加载
-    wx.stopPullDownRefresh() //停止下拉刷新
+    wx.hideNavigationBarLoading() 
+    wx.stopPullDownRefresh() 
   },
   /**
    * 生命周期函数--监听页面加载
